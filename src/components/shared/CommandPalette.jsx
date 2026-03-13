@@ -86,11 +86,15 @@ export function CommandPalette({ isOpen, onClose }) {
   const inputRef = useRef(null)
   const listRef = useRef(null)
 
-  const { navigate, team, locations, shootingDays, logout } = useStore(useShallow(s => ({
+  const { navigate, team, locations, shootingDays, parsedScripts, parsedCharacters, universe, departmentItems, logout } = useStore(useShallow(s => ({
     navigate: s.navigate,
     team: s.team,
     locations: s.locations,
     shootingDays: s.shootingDays,
+    parsedScripts: s.parsedScripts,
+    parsedCharacters: s.parsedCharacters,
+    universe: s.universe,
+    departmentItems: s.departmentItems,
     logout: s.logout,
   })))
 
@@ -183,6 +187,71 @@ export function CommandPalette({ isOpen, onClose }) {
           })
         }
       })
+
+      // Scenes from parsed scripts
+      Object.entries(parsedScripts || {}).forEach(([epId, ep]) => {
+        ;(ep?.scenes || []).forEach(scene => {
+          const heading = scene.heading?.full || scene.heading?.location || ''
+          const action = scene.action || ''
+          if (fuzzyMatch(heading, search) || fuzzyMatch(action, search)) {
+            cmds.push({
+              id: `scene-${epId}-${scene.id}`,
+              label: heading || `Cena ${scene.sceneNumber || scene.id}`,
+              sublabel: `${epId} · ${scene.heading?.interior_exterior || ''} ${scene.heading?.time_of_day || ''}`.trim(),
+              category: 'data',
+              icon: FileText,
+              action: () => { navigate('script'); addRecent('script') },
+              score: fuzzyScore(heading, search),
+            })
+          }
+        })
+      })
+
+      // Parsed characters (from FDX scripts)
+      ;(parsedCharacters || []).forEach(c => {
+        const name = typeof c === 'string' ? c : (c.name || '')
+        if (name && fuzzyMatch(name, search)) {
+          cmds.push({
+            id: `pchar-${name}`,
+            label: name,
+            sublabel: 'Personagem (guião)',
+            category: 'data',
+            icon: Users,
+            action: () => { navigate('script-analysis'); addRecent('script-analysis') },
+            score: fuzzyScore(name, search),
+          })
+        }
+      })
+
+      // Universe characters
+      ;(universe?.chars || []).forEach(c => {
+        if (fuzzyMatch(c.name || '', search) || fuzzyMatch(c.role || '', search)) {
+          cmds.push({
+            id: `char-${c.id}`,
+            label: c.name,
+            sublabel: c.role || c.group,
+            category: 'data',
+            icon: Users,
+            action: () => { navigate('universe'); addRecent('universe') },
+            score: fuzzyScore(c.name || '', search),
+          })
+        }
+      })
+
+      // Department items
+      ;(departmentItems || []).forEach(item => {
+        if (fuzzyMatch(item.name || '', search) || fuzzyMatch(item.department || '', search) || fuzzyMatch(item.description || '', search)) {
+          cmds.push({
+            id: `dept-${item.id}`,
+            label: item.name,
+            sublabel: item.department,
+            category: 'data',
+            icon: Palette,
+            action: () => { navigate('departments'); addRecent('departments') },
+            score: fuzzyScore(item.name || '', search),
+          })
+        }
+      })
     }
 
     // Actions
@@ -205,7 +274,7 @@ export function CommandPalette({ isOpen, onClose }) {
     }
 
     return cmds
-  }, [search, navigate, team, locations, shootingDays, logout])
+  }, [search, navigate, team, locations, shootingDays, parsedScripts, parsedCharacters, universe, departmentItems, logout])
 
   // Build flat render list (headers + items) for clean indexing
   const { renderList, flatItems } = useMemo(() => {

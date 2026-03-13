@@ -145,6 +145,14 @@ export const useStore = create(
       // [{ id, ruleId, source, target, description, auto, data, timestamp }]
       reactiveAudit: [],
 
+      // ── Equipamento ──────────────────────────────────────────
+      // [{ id, name, category, dept, status, photo, quantity, serialNumber, condition, notes, checkOuts[], createdAt }]
+      // category: 'camera'|'sound'|'lighting'|'grip'|'transport'|'misc'
+      // status: 'available'|'checked-out'|'maintenance'|'missing'
+      // condition: 'excellent'|'good'|'fair'|'poor'
+      // checkOuts: [{ id, memberId?, memberName, checkedOutAt, dueBack?, returnedAt?, notes? }]
+      equipment: [],
+
       // ── Captures ─────────────────────────────────────────────
       // [{ id, type, base64Key, textContent, interpretation, questions, answers, status, capturedAt, destinations }]
       captures: [],
@@ -204,7 +212,7 @@ export const useStore = create(
       ui: {
         activeModule:    'dashboard',  // dashboard | universe | pre-production | ...
         activeSubModule: null,
-        sidebarOpen:       false,
+        sidebarOpen:       true,
         mobileSidebarOpen: false,
         activeDay:         null,
         modals:          {},           // { [id]: boolean }
@@ -717,6 +725,36 @@ export const useStore = create(
       })),
       removeDepartmentItem: (id) => set(state => ({
         departmentItems: state.departmentItems.filter(i => i.id !== id),
+      })),
+
+      // ── Acções: Equipamento ───────────────────────────────────
+      addEquipmentItem: (item) => set(state => ({
+        equipment: [...state.equipment, { ...item, id: item.id || `eq_${Date.now()}_${Math.random().toString(36).slice(2,6)}`, checkOuts: item.checkOuts || [], createdAt: new Date().toISOString() }],
+      })),
+      updateEquipmentItem: (id, patch) => set(state => ({
+        equipment: state.equipment.map(i => i.id === id ? { ...i, ...patch } : i),
+      })),
+      removeEquipmentItem: (id) => set(state => ({
+        equipment: state.equipment.filter(i => i.id !== id),
+      })),
+      addEquipmentCheckOut: (itemId, checkOut) => set(state => ({
+        equipment: state.equipment.map(i => i.id === itemId
+          ? { ...i, status: 'checked-out', checkOuts: [...i.checkOuts, { ...checkOut, id: checkOut.id || `co_${Date.now()}`, checkedOutAt: new Date().toISOString() }] }
+          : i
+        ),
+      })),
+      returnEquipmentItem: (itemId, checkOutId, returnedAt, notes) => set(state => ({
+        equipment: state.equipment.map(i => i.id === itemId
+          ? {
+              ...i,
+              status: 'available',
+              checkOuts: i.checkOuts.map(co => co.id === checkOutId
+                ? { ...co, returnedAt: returnedAt || new Date().toISOString(), notes: notes || co.notes }
+                : co
+              ),
+            }
+          : i
+        ),
       })),
 
       // ── Acções: Captures ──────────────────────────────────────

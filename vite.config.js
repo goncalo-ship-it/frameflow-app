@@ -5,6 +5,11 @@ import { visualizer } from 'rollup-plugin-visualizer'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), visualizer({ open: false, filename: 'dist/bundle-report.html', gzipSize: true })],
+  resolve: {
+    alias: {
+      'motion/react': 'framer-motion',
+    },
+  },
   optimizeDeps: {
     include: ['mammoth'],
   },

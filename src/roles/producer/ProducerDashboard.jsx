@@ -34,7 +34,7 @@ const DEPT_ICONS = {
 }
 
 const TAG_COLORS = {
-  INT: '#10B981', EXT: '#EF4444', 'INT/EXT': '#6366f1',
+  INT: '#3b82f6', EXT: '#10b981', 'INT/EXT': '#6366f1',
   DIA: '#6B7280', NOITE: '#4B5563', ANOITECER: '#92400E', AMANHECER: '#D97706',
 }
 
@@ -199,99 +199,104 @@ export function ProducerDashboard() {
     <div className={styles.dashboard}>
       <div className={styles.content}>
 
-        {/* ── "O TEU DIA" Header ── */}
-        <div className={styles.dayHeader}>
-          <div className={styles.dayHeaderLeft}>
-            <h1 className={styles.dayHeaderTitle}>O TEU DIA</h1>
-            <p className={styles.dayHeaderSub}>{todayCap} &bull; {userName}</p>
-          </div>
-          <div className={styles.dayHeaderRight} onClick={() => todayDay && setScheduleOpen(true)} style={{ cursor: todayDay ? 'pointer' : 'default' }}>
-            <span className={styles.dayHeaderClock}>{clockStr}</span>
-          </div>
-        </div>
+        {/* ── Hero Card: O TEU DIA + Service Btn + 3 Stat Cards ── */}
+        <div className={styles.heroCard}>
 
-        {/* ── Service Sheet Button ── */}
-        <button className={styles.serviceBtn} onClick={() => navigate('callsheet')}>
-          <Calendar size={16} />
-          <span>{'\uD83D\uDCCB'} FOLHA DE SERVIÇO DO DIA</span>
-        </button>
-
-        {/* ── 3 Stat Cards ── */}
-        <div className={styles.statRow}>
-          {/* Weather */}
-          <div className={styles.statCard} onClick={() => setWeatherOpen(true)}>
-            <div className={styles.statIcon} style={{ background: 'rgba(59,130,246,0.15)' }}>
-              <CloudSun size={20} color="#3b82f6" />
+          {/* Header row */}
+          <div className={styles.dayHeader}>
+            <div className={styles.dayHeaderLeft}>
+              <h1 className={styles.dayHeaderTitle}>O TEU DIA</h1>
+              <p className={styles.dayHeaderSub}>{todayCap} &bull; {userName}</p>
             </div>
-            <div className={styles.statBody}>
-              <span className={styles.statLabel}>METEOROLOGIA</span>
-              <span className={styles.statValue}>{weather ? `${weather.temp}°C` : '—'}</span>
-              <span className={styles.statDesc}>{weather?.desc || 'Sem dados'}</span>
-              <div className={styles.statMeta}>
-                <span><Sunrise size={10} /> {todayDay?.sunrise || '07:24'}</span>
-                <span><Sunset size={10} /> {todayDay?.sunset || '18:42'}</span>
+            <div className={styles.dayHeaderRight} onClick={() => todayDay && setScheduleOpen(true)} style={{ cursor: todayDay ? 'pointer' : 'default' }}>
+              <span className={styles.dayHeaderClock}>{clockStr}</span>
+            </div>
+          </div>
+
+          {/* Service Sheet Button */}
+          <button className={styles.serviceBtn} onClick={() => navigate('callsheet')}>
+            <Calendar size={16} />
+            <span>📋 FOLHA DE SERVIÇO DO DIA</span>
+          </button>
+
+          {/* 3 Stat Cards */}
+          <div className={styles.statRow}>
+            {/* Weather */}
+            <div className={styles.statCard} onClick={() => setWeatherOpen(true)}>
+              <div className={styles.statIcon} style={{ background: 'rgba(59,130,246,0.18)' }}>
+                <CloudSun size={20} color="#3b82f6" />
+              </div>
+              <div className={styles.statBody}>
+                <span className={styles.statLabel}>METEOROLOGIA</span>
+                <span className={styles.statValue}>{weather ? `${weather.temp}°C` : '—'}</span>
+                <span className={styles.statDesc}>{weather?.desc || 'Sem dados'}</span>
+                <div className={styles.statMeta}>
+                  <span><Sunrise size={10} /> {todayDay?.sunrise || '07:24'}</span>
+                  <span><Sunset size={10} /> {todayDay?.sunset || '18:42'}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Next Call */}
+            <div className={styles.statCard} onClick={() => todayDay && setScheduleOpen(true)}>
+              <div className={styles.statIcon} style={{ background: 'rgba(16,185,129,0.18)' }}>
+                <Clock size={20} color="#10b981" />
+              </div>
+              <div className={styles.statBody}>
+                <span className={styles.statLabel}>PRÓXIMA CHAMADA</span>
+                <span className={styles.statValue}>{callTime}</span>
+                <span className={styles.statDesc}>
+                  {nextScene ? `Cena ${nextScene.sceneNumber} \u2022 ${nextScene.location || '—'}` : 'Sem cenas'}
+                </span>
+              </div>
+            </div>
+
+            {/* Next Location */}
+            <div className={styles.statCard} onClick={() => todayLocation && navigate('locations')}>
+              <div className={styles.statIcon} style={{ background: 'rgba(168,85,247,0.18)' }}>
+                <MapPin size={20} color="#a855f7" />
+              </div>
+              <div className={styles.statBody}>
+                <span className={styles.statLabel}>PRÓXIMA LOCALIZAÇÃO</span>
+                <span className={styles.statValue}>{todayLocation?.displayName || todayLocation?.name || '—'}</span>
+                <span className={styles.statDesc}>
+                  {todayLocation?.city || todayLocation?.address || ''}
+                  {todayLocation?.travelTime ? ` \u2022 ${todayLocation.travelTime}` : ''}
+                </span>
+                {todayLocation?.googleMapsUrl && (
+                  <a href={todayLocation.googleMapsUrl} target="_blank" rel="noopener noreferrer" className={styles.mapLink}
+                    onClick={e => e.stopPropagation()}>
+                    <MapPin size={10} /> Abrir no Maps
+                  </a>
+                )}
               </div>
             </div>
           </div>
 
-          {/* Next Call */}
-          <div className={`${styles.statCard} ${styles.statCardHighlight}`} onClick={() => todayDay && setScheduleOpen(true)}>
-            <div className={styles.statIcon} style={{ background: 'rgba(59,130,246,0.15)' }}>
-              <Clock size={20} color="#3b82f6" />
-            </div>
-            <div className={styles.statBody}>
-              <span className={styles.statLabel}>PRÓXIMA CHAMADA</span>
-              <span className={styles.statValue}>{callTime}</span>
-              <span className={styles.statDesc}>
-                {nextScene ? `Cena ${nextScene.sceneNumber} \u2022 ${nextScene.location || '—'}` : 'Sem cenas'}
-              </span>
-            </div>
-          </div>
-
-          {/* Next Location */}
-          <div className={styles.statCard} onClick={() => todayLocation && navigate('locations')}>
-            <div className={styles.statIcon} style={{ background: 'rgba(168,85,247,0.15)' }}>
-              <MapPin size={20} color="#a855f7" />
-            </div>
-            <div className={styles.statBody}>
-              <span className={styles.statLabel}>PRÓXIMA LOCALIZAÇÃO</span>
-              <span className={styles.statValue}>{todayLocation?.displayName || todayLocation?.name || '—'}</span>
-              <span className={styles.statDesc}>
-                {todayLocation?.city || todayLocation?.address || ''}
-                {todayLocation?.travelTime ? ` \u2022 ${todayLocation.travelTime}` : ''}
-              </span>
-              {todayLocation?.googleMapsUrl && (
-                <a href={todayLocation.googleMapsUrl} target="_blank" rel="noopener noreferrer" className={styles.mapLink}
-                  onClick={e => e.stopPropagation()}>
-                  <MapPin size={10} /> Abrir no Maps
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
+        </div>{/* /heroCard */}
 
         {/* ── Department Pills ── */}
-        <div className={styles.pillRow}>
-          <div className={styles.pillGroup}>
-            {deptPills.map(([dept, count]) => {
-              const Icon = DEPT_ICONS[dept] || Film
-              const color = DEPT_COLORS[dept] || deptConfigMap[dept]?.color || '#6E6E78'
-              const label = deptConfigMap[dept]?.label || dept
-              return (
-                <button key={dept} className={styles.pill}
-                  style={{ borderColor: color + '66', background: color + '33' }}
-                  onClick={() => navigate('departments')}
-                >
-                  <Icon size={13} style={{ color }} />
-                  <span style={{ color: '#fff' }}>{label}</span>
-                  <span className={styles.pillCount} style={{ background: color }}>{count}</span>
-                </button>
-              )
-            })}
+        <div className={styles.pillCard}>
+          <div className={styles.pillRow}>
+            <div className={styles.pillGroup}>
+              {deptPills.map(([dept, count]) => {
+                const Icon = DEPT_ICONS[dept] || Film
+                const color = DEPT_COLORS[dept] || deptConfigMap[dept]?.color || '#6E6E78'
+                const label = deptConfigMap[dept]?.label || dept
+                return (
+                  <button key={dept} className={styles.pill}
+                    style={{ borderColor: color + '66', background: color + '22' }}
+                    onClick={() => navigate('departments')}
+                  >
+                    <Icon size={13} style={{ color }} />
+                    <span style={{ color: '#fff', fontWeight: 700 }}>{label}</span>
+                    <span className={styles.pillCount} style={{ background: color }}>{count}</span>
+                  </button>
+                )
+              })}
+            </div>
+            <span className={styles.filmedBadge}>● FILMANDO</span>
           </div>
-          {scenesFilmed > 0 && (
-            <span className={styles.filmedBadge}>FILMANDO</span>
-          )}
         </div>
 
         {/* ── Scene Cards (horizontal with thumbnails) ── */}

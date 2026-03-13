@@ -30,6 +30,21 @@ const GpsNavModule = lazy(() => import('./modules/gps-nav/index.jsx').then(m => 
 const IntegrationsModule = lazy(() => import('./modules/integrations/index.jsx').then(m => ({ default: m.IntegrationsModule })))
 const InvitesModule = lazy(() => import('./modules/invites/index.jsx').then(m => ({ default: m.InvitesModule })))
 const StoreModule = lazy(() => import('./modules/store/index.jsx').then(m => ({ default: m.StoreModule })))
+const EquipmentModule = lazy(() => import('./app/pages/Equipment.tsx').then(m => ({ default: m.EquipmentModule })))
+const ProductionModulePage = lazy(() => import('./app/pages/ProductionModule.tsx').then(m => ({ default: m.ProductionModule })))
+
+// ── New app/pages shells ─────────────────────────────────────────
+const DeptArteModule      = lazy(() => import('./app/pages/DepartamentoArte.tsx').then(m => ({ default: m.DepartamentoArteModule })))
+const DeptGuardaRoupa     = lazy(() => import('./app/pages/GuardaRoupa.tsx').then(m => ({ default: m.GuardaRoupaModule })))
+const DeptMakeupModule    = lazy(() => import('./app/pages/DepartamentoMakeup.tsx').then(m => ({ default: m.DepartamentoMakeupModule })))
+const DeptCameraModule    = lazy(() => import('./app/pages/DepartamentoCamera.tsx').then(m => ({ default: m.DepartamentoCameraModule })))
+const DeptSomModule       = lazy(() => import('./app/pages/DepartamentoSom.tsx').then(m => ({ default: m.DepartamentoSomModule })))
+const DeptCastingModule   = lazy(() => import('./app/pages/DepartamentoCasting.tsx').then(m => ({ default: m.DepartamentoCastingModule })))
+const DeptTransModule     = lazy(() => import('./app/pages/DepartamentoTransporte.tsx').then(m => ({ default: m.DepartamentoTransporteModule })))
+const DeptStuntsModule    = lazy(() => import('./app/pages/DepartamentoStunts.tsx').then(m => ({ default: m.DepartamentoStuntsModule })))
+const DailiesModule       = lazy(() => import('./app/pages/DailiesModule.tsx').then(m => ({ default: m.DailiesModule })))
+const EspelhoShell        = lazy(() => import('./app/pages/EspelhoModule.tsx').then(m => ({ default: m.EspelhoModule })))
+const RealTimeInfoModule  = lazy(() => import('./app/pages/RealTimeInfoModule.tsx').then(m => ({ default: m.RealTimeInfoModule })))
 
 export function AppShell() {
   const {  ui, wallpaper  } = useStore(useShallow(s => ({ ui: s.ui, wallpaper: s.wallpaper })))
@@ -41,23 +56,25 @@ export function AppShell() {
       case 'dashboard':        return <Dashboard />
       case 'universe':         return <UniverseModule />
       case 'script-analysis':  return <UniverseModule initialSection="guioes" />
-      case 'mirror':           return <UniverseModule initialSection="espelho" />
+      case 'mirror':           return <EspelhoShell />
       case 'pre-production':   return <PreProductionModule />
       case 'schedule':         return <ProductionModule initialTab="schedule" />
-      case 'production':       return <ProductionModule />
+      case 'production':       return <ProductionModulePage />
       case 'optimization':     return <OptimizationModule />
       case 'locations':        return <LocationsModule />
       case 'team':             return <TeamModule />
       case 'departments':      return <TeamModule initialSection="departamentos" />
       case 'cast':             return <TeamModule initialSection="equipa" initialFilter="elenco" />
-      case 'dept-arte':
-      case 'dept-guardaroupa':
-      case 'dept-makeup':
-      case 'dept-camara':
-      case 'dept-som':
-      case 'dept-casting':
-      case 'dept-transporte':
-      case 'dept-stunts':      return <TeamModule initialSection="departamentos" />
+      case 'dept-arte':        return <DeptArteModule />
+      case 'dept-guardaroupa': return <DeptGuardaRoupa />
+      case 'dept-makeup':      return <DeptMakeupModule />
+      case 'dept-camara':      return <DeptCameraModule />
+      case 'dept-som':         return <DeptSomModule />
+      case 'dept-casting':     return <DeptCastingModule />
+      case 'dept-transporte':  return <DeptTransModule />
+      case 'dept-stunts':      return <DeptStuntsModule />
+      case 'dailies':          return <DailiesModule />
+      case 'realtime':         return <RealTimeInfoModule />
       case 'continuity':       return <ContinuityModule />
       case 'budget':           return <BudgetModule />
       case 'finance':          return <BudgetModule initialTab="finance" />
@@ -77,6 +94,7 @@ export function AppShell() {
       case 'integrations':     return <IntegrationsModule />
       case 'invites':          return <InvitesModule />
       case 'store':            return <StoreModule />
+      case 'equipment':        return <EquipmentModule />
       default:                 return <Dashboard />
     }
   }
@@ -84,6 +102,7 @@ export function AppShell() {
   return (
     <>
     <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+    {/* <main> — flex-1, SEM z-index (crítico: modais fixed z-[100]+ precisam escapar para SC pai) */}
     <main style={{
       flex: 1,
       minHeight: 0,
@@ -91,12 +110,13 @@ export function AppShell() {
       display: 'flex',
       flexDirection: 'column',
       background: 'transparent',
+      position: 'relative',
     }}>
       <AnimatePresence mode="popLayout">
         <motion.div
           key={activeModule}
           className="scroll-edge"
-          style={{ flex: 1, overflow: 'auto', height: '100%' }}
+          style={{ flex: 1, minHeight: 0, overflow: 'auto', paddingBottom: 80 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

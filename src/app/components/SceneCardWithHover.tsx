@@ -159,7 +159,7 @@ export function SceneCardWithHover({
 
   return (
     <motion.div
-      className="relative"
+      style={{ position: 'relative' }}
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={springConfigs.gentle}
@@ -424,15 +424,16 @@ export function SceneCardWithHover({
         </div>
       </motion.div>
 
-      {/* HOVER DETAIL PANEL — Rich Overlay via LiquidOverlayCard */}
+      {/* HOVER DETAIL PANEL — absolute inside relative wrapper */}
       <LiquidOverlayCard
         isVisible={isHovered && overlaySections.length > 0}
         accentColor={color}
         title="Detalhes da Cena"
-        subtitle={`${location}`}
+        subtitle={location}
         sections={overlaySections}
-        position="bottom"
-        maxWidth={520}
+        position="auto"
+        maxWidth={400}
+        interactive
       />
     </motion.div>
   );

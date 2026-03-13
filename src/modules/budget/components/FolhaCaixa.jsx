@@ -1,13 +1,143 @@
 // Folha de Caixa — despesas diárias + OCR de recibos
 import { useState, useRef, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Plus, Trash2, Check, X, Edit2, Receipt, Camera, Loader } from 'lucide-react'
+import { Plus, Trash2, Check, X, Edit2, Receipt, Camera, Loader, FileSpreadsheet, FileDown } from 'lucide-react'
 import { useStore } from '../../../core/store.js'
 import { useShallow } from 'zustand/react/shallow'
 import { fetchAPI, MODEL_FAST } from '../../../core/api.js'
+import { getXLSX } from '../../../core/xlsx-loader.js'
 import { fmt, toCents, toEuros } from '../utils/moneyUtils.js'
 import { CATEGORIAS } from '../utils/marketData.js'
 import styles from '../Budget.module.css'
+
+// ── Exportar Excel ────────────────────────────────────────────────
+async function exportExcel(expenses, projectName) {
+  const XLSX = await getXLSX()
+  const catLabel = id => CATEGORIAS.find(c => c.id === id)?.label || ''
+  const rows = expenses.map(e => ({
+    'Data':          e.data || '',
+    'Fornecedor':    e.fornecedor || '',
+    'Descrição':     e.descricao || '',
+    'Categoria':     catLabel(e.categoria),
+    'S/ IVA (€)':    ((e.valorSemIva || 0) / 100).toFixed(2),
+    'Taxa IVA':      `${Math.round((e.taxaIva || 0.23) * 100)}%`,
+    'C/ IVA (€)':    ((e.valor || 0) / 100).toFixed(2),
+    'Estado':        e.estado || 'pendente',
+    'Dia Rodagem':   e.dayId || '',
+  }))
+
+  const ws = XLSX.utils.json_to_sheet(rows)
+  // Column widths
+  ws['!cols'] = [10,22,30,20,12,10,12,12,14].map(w => ({ wch: w }))
+
+  const wb = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(wb, ws, 'Despesas')
+
+  // Folha de resumo por data
+  const byDate = {}
+  expenses.forEach(e => {
+    const d = e.data || 'sem-data'
+    if (!byDate[d]) byDate[d] = 0
+    byDate[d] += (e.valor || 0)
+  })
+  const sumRows = Object.entries(byDate).sort().map(([d, v]) => ({
+    'Data': d,
+    'Total c/ IVA (€)': (v / 100).toFixed(2),
+  }))
+  sumRows.push({ 'Data': 'TOTAL', 'Total c/ IVA (€)': (expenses.reduce((s, e) => s + (e.valor || 0), 0) / 100).toFixed(2) })
+  const ws2 = XLSX.utils.json_to_sheet(sumRows)
+  ws2['!cols'] = [14, 18].map(w => ({ wch: w }))
+  XLSX.utils.book_append_sheet(wb, ws2, 'Resumo por Dia')
+
+  const filename = `folha-caixa-${(projectName || 'projecto').toLowerCase().replace(/\s+/g, '-')}-${new Date().toISOString().slice(0,10)}.xlsx`
+  XLSX.writeFile(wb, filename)
+}
+
+// ── Exportar PDF ──────────────────────────────────────────────────
+async function exportPDF(expenses, projectName) {
+  const { jsPDF } = await import('jspdf')
+  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
+  const W = 210, margin = 14, col = W - margin * 2
+  const catLabel = id => CATEGORIAS.find(c => c.id === id)?.label || ''
+
+  // Header
+  doc.setFillColor(16, 24, 40)
+  doc.rect(0, 0, W, 28, 'F')
+  doc.setTextColor(255, 255, 255)
+  doc.setFontSize(16); doc.setFont('helvetica', 'bold')
+  doc.text('Folha de Caixa', margin, 12)
+  doc.setFontSize(9); doc.setFont('helvetica', 'normal')
+  doc.text(projectName || 'FrameFlow', margin, 19)
+  doc.text(new Date().toLocaleDateString('pt-PT'), W - margin, 19, { align: 'right' })
+
+  let y = 36
+
+  // Group by date
+  const byDate = {}
+  expenses.forEach(e => {
+    const d = e.data || 'sem-data'
+    if (!byDate[d]) byDate[d] = []
+    byDate[d].push(e)
+  })
+
+  Object.entries(byDate).sort().forEach(([date, items]) => {
+    if (y > 260) { doc.addPage(); y = 20 }
+
+    // Day header
+    doc.setFillColor(30, 40, 60)
+    doc.roundedRect(margin, y, col, 8, 2, 2, 'F')
+    doc.setTextColor(200, 220, 255)
+    doc.setFontSize(9); doc.setFont('helvetica', 'bold')
+    doc.text(date === 'sem-data' ? 'Sem data' : date, margin + 3, y + 5.5)
+    const dayTotal = items.reduce((s, e) => s + (e.valor || 0), 0)
+    doc.text(fmt(dayTotal), W - margin - 3, y + 5.5, { align: 'right' })
+    y += 11
+
+    // Column headers
+    doc.setFontSize(7); doc.setFont('helvetica', 'bold')
+    doc.setTextColor(120, 140, 160)
+    doc.text('FORNECEDOR / DESCRIÇÃO', margin + 2, y)
+    doc.text('CATEGORIA', margin + 80, y)
+    doc.text('S/IVA', margin + 120, y)
+    doc.text('IVA', margin + 138, y)
+    doc.text('TOTAL', W - margin - 2, y, { align: 'right' })
+    y += 4
+    doc.setDrawColor(50, 60, 80)
+    doc.line(margin, y, W - margin, y)
+    y += 4
+
+    items.forEach(e => {
+      if (y > 268) { doc.addPage(); y = 20 }
+      doc.setFontSize(8); doc.setFont('helvetica', 'bold')
+      doc.setTextColor(220, 230, 240)
+      doc.text(doc.splitTextToSize(e.fornecedor || '—', 70)[0], margin + 2, y)
+      doc.setFont('helvetica', 'normal')
+      doc.setTextColor(150, 165, 180)
+      doc.text(doc.splitTextToSize(e.descricao || '', 70)[0], margin + 2, y + 3.5)
+      doc.setTextColor(180, 195, 210)
+      doc.text(doc.splitTextToSize(catLabel(e.categoria), 30)[0], margin + 80, y)
+      doc.text(((e.valorSemIva || 0) / 100).toFixed(2) + ' €', margin + 120, y)
+      doc.text(`${Math.round((e.taxaIva || 0.23) * 100)}%`, margin + 138, y)
+      doc.setFont('helvetica', 'bold')
+      doc.setTextColor(230, 240, 255)
+      doc.text(fmt(e.valor || 0), W - margin - 2, y, { align: 'right' })
+      y += 8
+    })
+    y += 4
+  })
+
+  // Total final
+  if (y > 260) { doc.addPage(); y = 20 }
+  doc.setFillColor(16, 185, 129)
+  doc.roundedRect(margin, y, col, 9, 2, 2, 'F')
+  doc.setTextColor(255, 255, 255)
+  doc.setFontSize(10); doc.setFont('helvetica', 'bold')
+  doc.text('TOTAL GERAL', margin + 3, y + 6)
+  doc.text(fmt(expenses.reduce((s, e) => s + (e.valor || 0), 0)), W - margin - 3, y + 6, { align: 'right' })
+
+  const filename = `folha-caixa-${(projectName || 'projecto').toLowerCase().replace(/\s+/g, '-')}-${new Date().toISOString().slice(0,10)}.pdf`
+  doc.save(filename)
+}
 
 const ESTADOS = ['pendente', 'aprovado', 'rejeitado']
 const ESTADO_COLORS = {
@@ -223,7 +353,7 @@ function AddExpenseForm({ onAdd, onCancel, shootingDays, initialValues }) {
 }
 
 export function FolhaCaixa({ budget, calc, onAdd, onUpdate, onRemove }) {
-  const {  apiKey, shootingDays  } = useStore(useShallow(s => ({ apiKey: s.apiKey, shootingDays: s.shootingDays })))
+  const { apiKey, shootingDays, projectName } = useStore(useShallow(s => ({ apiKey: s.apiKey, shootingDays: s.shootingDays, projectName: s.projectName })))
   const fileInputRef = useRef(null)
   const [showForm, setShowForm] = useState(false)
   const [ocrLoading, setOcrLoading] = useState(false)
@@ -359,6 +489,23 @@ export function FolhaCaixa({ budget, calc, onAdd, onUpdate, onRemove }) {
           >
             {ocrLoading ? <Loader size={13} className={styles.spinIcon} /> : <Camera size={13} />}
             {ocrLoading ? 'A ler...' : 'Ler fatura'}
+          </button>
+
+          <button
+            className={styles.btnSecondary}
+            onClick={() => exportExcel(filteredExpenses, projectName)}
+            title="Exportar Excel"
+            disabled={filteredExpenses.length === 0}
+          >
+            <FileSpreadsheet size={13} /> Excel
+          </button>
+          <button
+            className={styles.btnSecondary}
+            onClick={() => exportPDF(filteredExpenses, projectName)}
+            title="Exportar PDF"
+            disabled={filteredExpenses.length === 0}
+          >
+            <FileDown size={13} /> PDF
           </button>
 
           <button className={styles.btnAdd} onClick={() => { setOcrPrefill(null); setShowForm(v => !v) }}>

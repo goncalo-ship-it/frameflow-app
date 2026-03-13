@@ -6,6 +6,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import './styles/design-system.css';
+@import './styles/theme.css';
 
 /* ── iOS SAFE AREAS (Capacitor) ──────────────────────────────── */
 :root {
@@ -21,8 +22,8 @@ body {
 
 /* ── TOKENS DE COR ─────────────────────────────────────────────── */
 :root {
-  /* Superfícies — Dark (Figma ref: slate→deep-blue-teal) */
-  --bg-base:        #3C424C;
+  /* Superfícies — cinza azulado (Figma spec) */
+  --bg-base:        #1c1d24;
   --bg-surface:     rgba(255, 255, 255, 0.07);
   --bg-elevated:    rgba(255, 255, 255, 0.10);
   --bg-overlay:     rgba(255, 255, 255, 0.14);
@@ -136,7 +137,7 @@ body {
   --space-16: 4rem;
 
   /* ── LAYOUT ─────────────────────────────────────────────────── */
-  --sidebar-width:      72px;
+  --sidebar-width:      87px;
   --sidebar-width-open: 240px;
   --header-height:      64px;
 
@@ -184,10 +185,10 @@ body {
   --fb-emerald-dark: #059669;
   --fb-emerald-glow: rgba(16, 185, 129, 0.4);
 
-  --fb-bg-primary: #2A3040;
-  --fb-bg-secondary: #343A46;
-  --fb-bg-tertiary: #3E4450;
-  --fb-bg-elevated: #4A5060;
+  --fb-bg-primary: #0d0d0d;
+  --fb-bg-secondary: #1a1a1a;
+  --fb-bg-tertiary: #262626;
+  --fb-bg-elevated: #333333;
 
   --fb-glass-subtle: rgba(255, 255, 255, 0.05);
   --fb-glass-default: rgba(255, 255, 255, 0.07);
@@ -277,11 +278,12 @@ body {
   color-scheme: light;
 }
 
-/* Light body gradient — lavanda atmosférico (Figma ref) */
-[data-theme="light"] body {
-  background:
-    radial-gradient(ellipse at 5% 5%, rgba(190, 195, 210, 0.4) 0%, transparent 50%),
-    linear-gradient(155deg, #B0B4BE 0%, #A4A8B2 35%, #989CA8 65%, #8C909C 100%);
+/* Todos os temas usam --app-background (definido em styles/theme.css) */
+[data-theme="light"] body,
+[data-theme="bright"] body,
+[data-theme="dark"] body {
+  background: var(--app-background);
+  background-attachment: fixed;
 }
 
 /* ── SCROLL EDGE DISSOLVE (Apple Liquid Glass) ───────────── */
@@ -360,6 +362,18 @@ body {
   background-size: 128px 128px;
 }
 
+/* ── SKELETON SHIMMER ───────────────────────────────────────────── */
+@keyframes liquid-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── ALERT PULSE ────────────────────────────────────────────────── */
+@keyframes liquid-alert-pulse {
+  0%, 100% { border-color: rgba(255, 255, 255, 0.15); }
+  50%       { border-color: rgba(255, 255, 255, 0.40); }
+}
+
 /* ── RESET ──────────────────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -376,10 +390,7 @@ html {
 
 body {
   height: 100%;
-  /* Dark: slate atmosférico → deep blue-teal (Figma ref) */
-  background:
-    radial-gradient(ellipse at 95% 95%, rgba(30, 60, 56, 0.3) 0%, transparent 50%),
-    linear-gradient(155deg, #50565F 0%, #3A4048 35%, #2C3340 65%, #1E2830 100%);
+  background: var(--app-background);
   background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-body);
@@ -395,19 +406,24 @@ body {
 
 /* ── SCROLLBAR (Emerald — FF05) ────────────────────────────────── */
 * {
-  scrollbar-color: rgba(16, 185, 129, 0.35) rgba(0, 0, 0, 0.10);
+  scrollbar-color: rgba(16, 185, 129, 0.4) rgba(13, 13, 20, 0.2);
   scrollbar-width: thin;
 }
-::-webkit-scrollbar        { width: 5px; height: 5px; }
-::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar        { width: 10px; height: 10px; }
+::-webkit-scrollbar-track  {
+  background: linear-gradient(90deg, rgba(13, 13, 20, 0.2), rgba(26, 26, 40, 0.3));
+  border-radius: 10px;
+}
 ::-webkit-scrollbar-thumb  {
   background: linear-gradient(180deg, rgba(16, 185, 129, 0.5), rgba(5, 150, 105, 0.6));
-  border-radius: var(--radius-full);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
   box-shadow: 0 0 8px rgba(16, 185, 129, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, rgba(16, 185, 129, 0.7), rgba(5, 150, 105, 0.8));
-  box-shadow: 0 0 16px rgba(16, 185, 129, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.5);
 }
 
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }

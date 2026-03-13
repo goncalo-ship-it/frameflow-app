@@ -56,70 +56,112 @@ const LOCATIONS = [
 ]
 
 // ═══════════════════════════════════════════════════════════════════════
-// DIAS DE RODAGEM (7 dias — a partir de 20/03/2026)
+// DIAS DE RODAGEM (8 dias — hoje 13/03/2026 + a partir de 20/03/2026)
 // ═══════════════════════════════════════════════════════════════════════
 const SHOOTING_DAYS = [
-  { id: `day_${uid()}`, date: '2026-03-20', label: 'D1', dayNumber: 1, episodeNumber: 1, dayInEpisode: 1, callTime: '07:00', status: 'planned', notes: 'Primeiro dia — INT Apartamento Miguel + Café Tertúlia. Equipa completa.', catering: { time: '12:30', location: 'Base camp — Largo da Graça', menu: ['Sopa de legumes', 'Bacalhau à Brás', 'Frango grelhado c/ arroz', 'Salada mista', 'Fruta da época'], provider: 'Catering Lisboa Lda.' } },
-  { id: `day_${uid()}`, date: '2026-03-23', label: 'D2', dayNumber: 2, episodeNumber: 1, dayInEpisode: 2, callTime: '07:30', status: 'planned', notes: 'INT Escritório + EXT Miradouro (golden hour ao fim do dia).', catering: { time: '13:00', location: 'Av. da República — sala reuniões', menu: ['Caldo verde', 'Arroz de pato', 'Bife grelhado', 'Legumes salteados'], provider: 'Catering Lisboa Lda.' } },
-  { id: `day_${uid()}`, date: '2026-03-24', label: 'D3', dayNumber: 3, episodeNumber: 1, dayInEpisode: 3, callTime: '06:30', status: 'planned', notes: 'EXT Praia do Guincho — flashback. Depende do tempo. Backup: Armazém Alcântara.', catering: { time: '12:00', location: 'Parque estacionamento Guincho', menu: ['Sanduíches variadas', 'Sopa quente', 'Fruta', 'Café e chá'], provider: 'Catering Lisboa Lda.' } },
-  { id: `day_${uid()}`, date: '2026-03-25', label: 'D4', dayNumber: 4, episodeNumber: 2, dayInEpisode: 1, callTime: '08:00', status: 'planned', notes: 'INT Palácio Sintra — cenas de mistério. Gerador + catering autónomo.', catering: { time: '13:00', location: 'Tenda base camp Sintra', menu: ['Sopa', 'Arroz de frango', 'Salada Caesar', 'Sobremesa do dia'], provider: 'Sabores da Serra' } },
-  { id: `day_${uid()}`, date: '2026-03-26', label: 'D5', dayNumber: 5, episodeNumber: 2, dayInEpisode: 2, callTime: '09:00', status: 'planned', notes: 'INT Igreja São Roque — cenas Padre Silva + funeral. Silêncio absoluto no set.', catering: { time: '13:30', location: 'Largo Trindade Coelho', menu: ['Sopa de grão', 'Polvo à lagareiro', 'Arroz de tomate', 'Salada'], provider: 'Catering Lisboa Lda.' } },
-  { id: `day_${uid()}`, date: '2026-03-27', label: 'D6', dayNumber: 6, episodeNumber: 2, dayInEpisode: 3, callTime: '14:00', status: 'planned', notes: 'NOITE — INT/EXT Armazém Alcântara. Cena de confronto final ep.2. Call da tarde.', catering: { time: '19:00', location: 'Armazém — zona craft', menu: ['Jantar completo — ementa TBD'], provider: 'Catering Lisboa Lda.' } },
-  { id: `day_${uid()}`, date: '2026-03-30', label: 'D7', dayNumber: 7, episodeNumber: 1, dayInEpisode: 4, callTime: '07:00', status: 'planned', notes: 'Pickup day — cenas em falta EP01 + planos de corte. Locais: Apt Miguel + Miradouro.' },
+  { id: `day_${uid()}`, date: '2026-03-13', label: 'D1', dayNumber: 1, episodeNumber: 1, dayInEpisode: 1, callTime: '07:30', status: 'filming', notes: 'EP01 — Exteriores escola + rua. Call time 7:30. Base camp Largo da Escola. Equipa completa.', catering: { time: '13:00', location: 'Base camp — Largo da Escola', menu: ['Sopa do dia', 'Frango grelhado c/ arroz', 'Salada mista', 'Fruta da época'], provider: 'Catering Lisboa Lda.' } },
+  { id: `day_${uid()}`, date: '2026-03-20', label: 'D2', dayNumber: 2, episodeNumber: 1, dayInEpisode: 2, callTime: '07:00', status: 'planned', notes: 'Interiores — Cozinha + Mercearia + Casa Rúben. Equipa completa.', catering: { time: '12:30', location: 'Base camp — Largo da Graça', menu: ['Sopa de legumes', 'Bacalhau à Brás', 'Frango grelhado c/ arroz', 'Salada mista', 'Fruta da época'], provider: 'Catering Lisboa Lda.' } },
+  { id: `day_${uid()}`, date: '2026-03-23', label: 'D3', dayNumber: 3, episodeNumber: 1, dayInEpisode: 3, callTime: '07:30', status: 'planned', notes: 'INT Escola + Biblioteca + Pátio tarde. Cenas EP01 SC008-SC016.', catering: { time: '13:00', location: 'Base camp — Escola', menu: ['Caldo verde', 'Arroz de pato', 'Bife grelhado', 'Legumes salteados'], provider: 'Catering Lisboa Lda.' } },
+  { id: `day_${uid()}`, date: '2026-03-24', label: 'D4', dayNumber: 4, episodeNumber: 1, dayInEpisode: 4, callTime: '06:30', status: 'planned', notes: 'EXT Rua tarde + Porta Prédio + Jardim. EP01 SC013-SC022. Backup interior se chuva.', catering: { time: '12:00', location: 'Base camp — Rua', menu: ['Sanduíches variadas', 'Sopa quente', 'Fruta', 'Café e chá'], provider: 'Catering Lisboa Lda.' } },
+  { id: `day_${uid()}`, date: '2026-03-25', label: 'D5', dayNumber: 5, episodeNumber: 2, dayInEpisode: 1, callTime: '08:00', status: 'planned', notes: 'EP02 — INT Escola (Sala Aula, Corredor, WC, Balneário, Ginásio). SC009-SC014.', catering: { time: '13:00', location: 'Base camp — Escola EP02', menu: ['Sopa', 'Arroz de frango', 'Salada Caesar', 'Sobremesa do dia'], provider: 'Sabores da Serra' } },
+  { id: `day_${uid()}`, date: '2026-03-26', label: 'D6', dayNumber: 6, episodeNumber: 2, dayInEpisode: 2, callTime: '09:00', status: 'planned', notes: 'EP02 — EXT Rua + Esquina Pôr do Sol + INT Cozinha João. SC015-SC021.', catering: { time: '13:30', location: 'Base camp — Praça', menu: ['Sopa de grão', 'Polvo à lagareiro', 'Arroz de tomate', 'Salada'], provider: 'Catering Lisboa Lda.' } },
+  { id: `day_${uid()}`, date: '2026-03-27', label: 'D7', dayNumber: 7, episodeNumber: 2, dayInEpisode: 3, callTime: '14:00', status: 'planned', notes: 'NOITE — EP02 INT Quarto João + Sala de Estar. SC022-SC024 + pickup madrugadas.', catering: { time: '19:00', location: 'Base camp — zona craft', menu: ['Jantar completo — ementa TBD'], provider: 'Catering Lisboa Lda.' } },
+  { id: `day_${uid()}`, date: '2026-03-30', label: 'D8', dayNumber: 8, episodeNumber: 1, dayInEpisode: 5, callTime: '07:00', status: 'planned', notes: 'Pickup day — cenas em falta EP01 + EP02. Interiores cozinha + sala manhã + SC023-SC024 EP01.' },
 ]
 
 // ═══════════════════════════════════════════════════════════════════════
-// GUIÕES PARSED (EP01 — 10 cenas, EP02 — 8 cenas)
+// GUIÕES PARSED — real FDX data (EP01 — 24 cenas, EP02 — 24 cenas)
+// Source: DESDOBRADO_EP_01.fdx + DESDOBRADO_EP_02.fdx
 // ═══════════════════════════════════════════════════════════════════════
 const PARSED_SCRIPTS = {
   EP01: {
     episode: 'EP01',
-    title: 'A Maré Sobe',
+    title: 'O João',
     metadata: {
       characters: [
-        { name: 'MIGUEL', scenes: [1,2,3,4,5,7,8,10], lineCount: 87 },
-        { name: 'CLARA', scenes: [2,3,5,6,8,9,10], lineCount: 64 },
-        { name: 'TOMÁS', scenes: [4,7,8], lineCount: 31 },
-        { name: 'ROSA', scenes: [3,6,9], lineCount: 22 },
-        { name: 'PADRE SILVA', scenes: [6], lineCount: 8 },
-        { name: 'DETECTIVE SOUSA', scenes: [7,10], lineCount: 15 },
+        { name: 'JOÃO', scenes: [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,21,22,24], lineCount: 176 },
+        { name: 'LU', scenes: [3,4,5,6,7,8,10,11,14,15,16,20,21,22], lineCount: 112 },
+        { name: 'MÃE', scenes: [1,2,18], lineCount: 24 },
+        { name: 'RUBEN', scenes: [17,19,20], lineCount: 24 },
+        { name: 'JÚLIO', scenes: [5,10], lineCount: 16 },
+        { name: 'PROF', scenes: [6,9], lineCount: 16 },
+        { name: 'SR ANTÓNIO', scenes: [4], lineCount: 8 },
+        { name: 'FÁBIO', scenes: [7], lineCount: 8 },
+        { name: 'ALUNO', scenes: [10], lineCount: 8 },
       ],
     },
     scenes: [
-      { id: 'SC001', sceneNumber: 'SC001', heading: 'EXT. MIRADOURO DA GRAÇA - AMANHECER', location: 'Miradouro Graça', timeOfDay: 'amanhecer', summary: 'Miguel contempla Lisboa ao nascer do sol. Voz off sobre a cidade que o viu nascer. Estabelece tom melancólico.', pageLength: 1.5, characters: ['MIGUEL'], type: 'action', cast: ['MIGUEL'] },
-      { id: 'SC002', sceneNumber: 'SC002', heading: 'INT. APARTAMENTO MIGUEL - SALA - DIA', location: 'Apartamento Miguel', timeOfDay: 'dia', summary: 'Miguel recebe telefonema de Clara. Discussão tensa sobre o testamento do pai. Primeira vez que ouvimos Clara.', pageLength: 2.0, characters: ['MIGUEL', 'CLARA'], type: 'dialogue', cast: ['MIGUEL', 'CLARA'] },
-      { id: 'SC003', sceneNumber: 'SC003', heading: 'INT. CAFÉ TERTÚLIA - DIA', location: 'Café Tertúlia', timeOfDay: 'dia', summary: 'Miguel encontra-se com Clara no café. Tensão palpável. Ela mostra-lhe documentos que põem em causa a herança. Rosa telefona a interromper.', pageLength: 3.5, characters: ['MIGUEL', 'CLARA', 'ROSA'], type: 'dialogue', cast: ['MIGUEL', 'CLARA', 'ROSA'] },
-      { id: 'SC004', sceneNumber: 'SC004', heading: 'INT. ESCRITÓRIO ADVOCACIA - DIA', location: 'Escritório Advocacia', timeOfDay: 'dia', summary: 'Tomás, advogado de família, revela as condições do testamento. Miguel descobre que há um segredo que o pai guardou durante décadas.', pageLength: 3.0, characters: ['MIGUEL', 'TOMÁS'], type: 'dialogue', cast: ['MIGUEL', 'TOMÁS'] },
-      { id: 'SC005', sceneNumber: 'SC005', heading: 'EXT. PRAIA DO GUINCHO - FIM DE TARDE', location: 'Praia do Guincho', timeOfDay: 'fim de tarde', summary: 'FLASHBACK — Miguel e Clara adolescentes na praia. Momento de felicidade inocente que contrasta com o presente.', pageLength: 2.0, characters: ['MIGUEL', 'CLARA'], type: 'action', cast: ['MIGUEL', 'CLARA'] },
-      { id: 'SC006', sceneNumber: 'SC006', heading: 'INT. IGREJA SÃO ROQUE - DIA', location: 'Igreja São Roque', timeOfDay: 'dia', summary: 'Clara visita Padre Silva para pedir conselho. Rosa aparece inesperadamente. Confronto mãe-nora no espaço sagrado.', pageLength: 2.5, characters: ['CLARA', 'PADRE SILVA', 'ROSA'], type: 'dialogue', cast: ['CLARA', 'PADRE SILVA', 'ROSA'] },
-      { id: 'SC007', sceneNumber: 'SC007', heading: 'INT. ARMAZÉM ALCÂNTARA - NOITE', location: 'Armazém Alcântara', timeOfDay: 'noite', summary: 'Miguel encontra Tomás no armazém. Tomás revela que está a ser chantageado. Detective Sousa observa de longe.', pageLength: 3.0, characters: ['MIGUEL', 'TOMÁS', 'DETECTIVE SOUSA'], type: 'dialogue', cast: ['MIGUEL', 'TOMÁS', 'DETECTIVE SOUSA'] },
-      { id: 'SC008', sceneNumber: 'SC008', heading: 'INT. APARTAMENTO MIGUEL - QUARTO - NOITE', location: 'Apartamento Miguel', timeOfDay: 'noite', summary: 'Miguel não consegue dormir. Examina fotografias antigas do pai. Clara entra — tentativa de reconciliação. Tomás liga a avisar.', pageLength: 2.5, characters: ['MIGUEL', 'CLARA', 'TOMÁS'], type: 'dialogue', cast: ['MIGUEL', 'CLARA', 'TOMÁS'] },
-      { id: 'SC009', sceneNumber: 'SC009', heading: 'INT/EXT. CASA AVÓ ROSA - DIA', location: 'Casa Avó Rosa', timeOfDay: 'dia', summary: 'Clara visita Rosa em Setúbal. Rosa conta a verdade sobre o passado da família. Cena emotiva no quintal.', pageLength: 3.0, characters: ['CLARA', 'ROSA'], type: 'dialogue', cast: ['CLARA', 'ROSA'] },
-      { id: 'SC010', sceneNumber: 'SC010', heading: 'EXT. MIRADOURO DA GRAÇA - NOITE', location: 'Miradouro Graça', timeOfDay: 'noite', summary: 'Miguel e Clara no miradouro. Decisão de enfrentar Tomás juntos. Detective Sousa aparece — twist final. Cliffhanger.', pageLength: 2.0, characters: ['MIGUEL', 'CLARA', 'DETECTIVE SOUSA'], type: 'dialogue', cast: ['MIGUEL', 'CLARA', 'DETECTIVE SOUSA'] },
+      { id: 'SC001', sceneNumber: 'SC001', heading: 'INT. COZINHA JOÃO. MANHÃ', intExt: 'INT', location: 'Cozinha João', timeOfDay: 'Manhã', summary: 'Vemos o João a servir leite numa taça de cereais, a comer a ver algo no telefone em cima da bancada. Vemos a mãe a passar e a tirar-lhe o telefone.', pageLength: 1.0, characters: ['JOÃO', 'MÃE'], cast: ['JOÃO', 'MÃE'], type: 'dialogue' },
+      { id: 'SC002', sceneNumber: 'SC002', heading: 'INT. HALL PRÉDIO. DIA', intExt: 'INT', location: 'Hall Prédio', timeOfDay: 'Manhã', summary: 'Vemos o João a sair pela porta de casa e automaticamente a voltar para trás. Vemos o João a calçar-se e a sair enquanto a mãe grita lá uns degraus abaixo.', pageLength: 0.38, characters: ['MÃE', 'JOÃO'], cast: ['MÃE', 'JOÃO'], type: 'dialogue' },
+      { id: 'SC003', sceneNumber: 'SC003', heading: 'EXT. RUA. MANHÃ', intExt: 'EXT', location: 'Rua', timeOfDay: 'Manhã', summary: 'O João sai de um carro e fica à espera. Está distraído com o telefone. Passados uns segundos vemos uma rapariga que se aproxima. Enquanto andam pela rua.', pageLength: 1.12, characters: ['JOÃO', 'LU'], cast: ['JOÃO', 'LU'], type: 'dialogue' },
+      { id: 'SC004', sceneNumber: 'SC004', heading: 'EXT. PORTÃO ESCOLA. MANHÃ', intExt: 'EXT', location: 'Portão Escola', timeOfDay: 'Manhã', summary: 'Portão com guarita e regulamento afixado. Vemos vários alunos a entrar enquanto falam. Sr. António na guarita.', pageLength: 0.62, characters: ['LU', 'JOÃO', 'SR ANTÓNIO'], cast: ['LU', 'JOÃO', 'SR ANTÓNIO'], type: 'dialogue' },
+      { id: 'SC005', sceneNumber: 'SC005', heading: 'EXT. PÁTIO DA ESCOLA. DIA', intExt: 'EXT', location: 'Pátio Da Escola', timeOfDay: 'Dia', summary: 'Recreio animado. Júlio aborda João e Lu com a sua energia habitual. Interacções de grupo.', pageLength: 1.0, characters: ['JÚLIO', 'JOÃO', 'LU'], cast: ['JÚLIO', 'JOÃO', 'LU'], type: 'dialogue' },
+      { id: 'SC006', sceneNumber: 'SC006', heading: 'INT. SALA DE AULA. DIA', intExt: 'INT', location: 'Sala Aula', timeOfDay: 'Dia', summary: 'Aula com o Prof. Lu e João sentados próximos. Dinâmica de sala de aula, momentos de cumplicidade entre os dois.', pageLength: 1.12, characters: ['LU', 'JOÃO', 'PROF'], cast: ['LU', 'JOÃO', 'PROF'], type: 'dialogue' },
+      { id: 'SC007', sceneNumber: 'SC007', heading: 'EXT. ESCOLA. DIA', intExt: 'EXT', location: 'Escola', timeOfDay: 'Dia', summary: 'Exterior escola, pausa entre aulas. João encontra Fábio e Lu. Tensão subtil.', pageLength: 0.62, characters: ['JOÃO', 'FÁBIO', 'LU'], cast: ['JOÃO', 'FÁBIO', 'LU'], type: 'dialogue' },
+      { id: 'SC008', sceneNumber: 'SC008', heading: 'INT. BIBLIOTECA ESCOLA. DIA', intExt: 'INT', location: 'Biblioteca Escola', timeOfDay: 'Dia', summary: 'Lu e João na biblioteca. Momento mais íntimo — conversa mais honesta. Algo muda entre eles.', pageLength: 1.25, characters: ['LU', 'JOÃO'], cast: ['LU', 'JOÃO'], type: 'dialogue' },
+      { id: 'SC009', sceneNumber: 'SC009', heading: 'INT. SALA DE AULA. DIA', intExt: 'INT', location: 'Sala De Aula', timeOfDay: 'Dia', summary: 'Professor chama João para falar. Conversa a sós — implicações para o percurso do João.', pageLength: 1.0, characters: ['PROF', 'JOÃO'], cast: ['PROF', 'JOÃO'], type: 'dialogue' },
+      { id: 'SC010', sceneNumber: 'SC010', heading: 'EXT. PÁTIO ESCOLA. DIA', intExt: 'EXT', location: 'Pátio Escola', timeOfDay: 'Dia', summary: 'Cena de grupo alargado — Aluno, João, Júlio, Lu. Conflito ou jogo. Dinâmicas sociais da turma.', pageLength: 1.38, characters: ['ALUNO', 'JOÃO', 'JÚLIO', 'LU'], cast: ['ALUNO', 'JOÃO', 'JÚLIO', 'LU'], type: 'dialogue' },
+      { id: 'SC011', sceneNumber: 'SC011', heading: 'EXT. PÁTIO ESCOLA. DIA', intExt: 'EXT', location: 'Pátio Escola', timeOfDay: 'Dia', summary: 'Lu e João a sós no pátio. Continuação da conversa anterior — mais privado.', pageLength: 1.0, characters: ['LU', 'JOÃO'], cast: ['LU', 'JOÃO'], type: 'dialogue' },
+      { id: 'SC012', sceneNumber: 'SC012', heading: 'INT. MERCEARIA. TARDE', intExt: 'INT', location: 'Mercearia', timeOfDay: 'Tarde', summary: 'João na mercearia do bairro. Cena de personagem — observamos os seus hábitos.', pageLength: 0.5, characters: ['JOÃO'], cast: ['JOÃO'], type: 'action' },
+      { id: 'SC013', sceneNumber: 'SC013', heading: 'EXT. RUA. TARDE', intExt: 'EXT', location: 'Rua', timeOfDay: 'Tarde', summary: 'João sozinho na rua. Transição — plano de personagem em movimento.', pageLength: 0.25, characters: [], cast: [], type: 'action' },
+      { id: 'SC014', sceneNumber: 'SC014', heading: 'EXT. PORTA PRÉDIO. DIA', intExt: 'EXT', location: 'Porta Prédio', timeOfDay: 'Dia', summary: 'João e Lu à porta do prédio. Cena longa e importante — algo é revelado ou decidido.', pageLength: 1.62, characters: ['JOÃO', 'LU'], cast: ['JOÃO', 'LU'], type: 'dialogue' },
+      { id: 'SC015', sceneNumber: 'SC015', heading: 'EXT. RUA. DIA', intExt: 'EXT', location: 'Rua', timeOfDay: 'Dia', summary: 'Lu e João a caminhar. Conversa breve — pós-revelação da cena anterior.', pageLength: 0.38, characters: ['LU', 'JOÃO'], cast: ['LU', 'JOÃO'], type: 'dialogue' },
+      { id: 'SC016', sceneNumber: 'SC016', heading: 'EXT. RUA. TARDE', intExt: 'EXT', location: 'Rua', timeOfDay: 'Tarde', summary: 'João e Lu na rua ao fim da tarde. Cena central emocional — a mais longa do episódio (2p).', pageLength: 2.12, characters: ['JOÃO', 'LU'], cast: ['JOÃO', 'LU'], type: 'dialogue' },
+      { id: 'SC017', sceneNumber: 'SC017', heading: 'INT. FIM DE DIA. DIA', intExt: 'INT', location: 'Fim De Dia', timeOfDay: 'Dia', summary: 'João e Ruben. Encontro de amigos — contexto do mundo do João fora da escola.', pageLength: 0.75, characters: ['JOÃO', 'RUBEN'], cast: ['JOÃO', 'RUBEN'], type: 'dialogue' },
+      { id: 'SC018', sceneNumber: 'SC018', heading: 'INT. NOITE. DIA', intExt: 'INT', location: 'Noite', timeOfDay: 'Noite', summary: 'Mãe e João em casa à noite. Cena familiar — tensão ou ternura. Contexto doméstico.', pageLength: 0.75, characters: ['MÃE', 'JOÃO'], cast: ['MÃE', 'JOÃO'], type: 'dialogue' },
+      { id: 'SC019', sceneNumber: 'SC019', heading: 'INT. CASA DO RÚBEN — PORTA. DIA', intExt: 'INT', location: 'Casa Do Rúben Porta', timeOfDay: 'Noite', summary: 'João chega a casa do Rúben. Cena curta de entrada.', pageLength: 0.38, characters: ['RUBEN', 'JOÃO'], cast: ['RUBEN', 'JOÃO'], type: 'dialogue' },
+      { id: 'SC020', sceneNumber: 'SC020', heading: 'INT. CASA DO RÚBEN — SALA. DIA', intExt: 'INT', location: 'Casa Do Rúben Sala', timeOfDay: 'Noite', summary: 'João, Ruben e Lu na sala do Rúben. Grupo de amigos — dinâmica diferente do contexto escolar.', pageLength: 0.88, characters: ['RUBEN', 'JOÃO', 'LU'], cast: ['RUBEN', 'JOÃO', 'LU'], type: 'dialogue' },
+      { id: 'SC021', sceneNumber: 'SC021', heading: 'EXT. RUA NOITE. DIA', intExt: 'EXT', location: 'Rua', timeOfDay: 'Noite', summary: 'João e Lu na rua à noite. Cena pequena mas significativa — pós-saída da casa do Rúben.', pageLength: 0.5, characters: ['JOÃO', 'LU'], cast: ['JOÃO', 'LU'], type: 'dialogue' },
+      { id: 'SC022', sceneNumber: 'SC022', heading: 'EXT. JARDIM — BANCO DE JARDIM. DIA', intExt: 'EXT', location: 'Jardim Banco De Jardim', timeOfDay: 'Noite', summary: 'João e Lu num banco de jardim. Cena longa e emotiva — o momento de maior proximidade do episódio.', pageLength: 1.5, characters: ['JOÃO', 'LU'], cast: ['JOÃO', 'LU'], type: 'dialogue' },
+      { id: 'SC023', sceneNumber: 'SC023', heading: 'INT. COZINHA. MANHÃ', intExt: 'INT', location: 'Cozinha', timeOfDay: 'Manhã', summary: 'Cena de manhã seguinte — atmosfera diferente. Transição visual para novo estado emocional.', pageLength: 0.25, characters: [], cast: [], type: 'action' },
+      { id: 'SC024', sceneNumber: 'SC024', heading: 'INT. SALA. MANHÃ', intExt: 'INT', location: 'Sala', timeOfDay: 'Manhã', summary: 'João na sala de manhã. Cena final do episódio — setup do que vem a seguir.', pageLength: 0.38, characters: ['JOÃO'], cast: ['JOÃO'], type: 'action' },
     ],
   },
   EP02: {
     episode: 'EP02',
-    title: 'Debaixo da Ponte',
+    title: 'A Lu',
     metadata: {
       characters: [
-        { name: 'MIGUEL', scenes: [1,2,3,5,6,8], lineCount: 72 },
-        { name: 'CLARA', scenes: [1,3,4,6,7,8], lineCount: 58 },
-        { name: 'TOMÁS', scenes: [2,5,6,8], lineCount: 35 },
-        { name: 'ROSA', scenes: [4,7], lineCount: 18 },
-        { name: 'DETECTIVE SOUSA', scenes: [2,3,8], lineCount: 25 },
-        { name: 'PADRE SILVA', scenes: [4], lineCount: 6 },
+        { name: 'JOÃO', scenes: [4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,23,24], lineCount: 152 },
+        { name: 'CAS', scenes: [6,7,10,11,12,13,14,15,16,20,21,23,24], lineCount: 104 },
+        { name: 'MATI', scenes: [5,6,10,11,12,14,15,16,19,20,21,23], lineCount: 96 },
+        { name: 'PEQUENO', scenes: [11,12,14,15,18,20,21,23,24], lineCount: 72 },
+        { name: 'JU', scenes: [6,11,12,15,21,23,24], lineCount: 56 },
+        { name: 'LU', scenes: [12,16], lineCount: 16 },
+        { name: 'MÃE', scenes: [18,20,21], lineCount: 24 },
+        { name: 'SR. ANTÓNIO', scenes: [8], lineCount: 8 },
+        { name: 'PROF', scenes: [10], lineCount: 8 },
+        { name: 'JÚLIO', scenes: [11], lineCount: 8 },
+        { name: 'PROF GINÁSTICA', scenes: [14], lineCount: 8 },
+        { name: 'MAE LU', scenes: [16], lineCount: 8 },
+        { name: 'JOÃO PEQUENO', scenes: [6,9,12], lineCount: 24 },
       ],
     },
     scenes: [
-      { id: 'SC001', sceneNumber: 'SC001', heading: 'INT. APARTAMENTO MIGUEL - SALA - MANHÃ', location: 'Apartamento Miguel', timeOfDay: 'manhã', summary: 'Dia seguinte ao twist. Miguel e Clara discutem o que Detective Sousa revelou. Pequeno-almoço tenso.', pageLength: 2.0, characters: ['MIGUEL', 'CLARA'], type: 'dialogue', cast: ['MIGUEL', 'CLARA'] },
-      { id: 'SC002', sceneNumber: 'SC002', heading: 'INT. ESCRITÓRIO ADVOCACIA - DIA', location: 'Escritório Advocacia', timeOfDay: 'dia', summary: 'Miguel confronta Tomás. Detective Sousa interrompe com mandado. Tomás é detido para interrogatório.', pageLength: 3.5, characters: ['MIGUEL', 'TOMÁS', 'DETECTIVE SOUSA'], type: 'dialogue', cast: ['MIGUEL', 'TOMÁS', 'DETECTIVE SOUSA'] },
-      { id: 'SC003', sceneNumber: 'SC003', heading: 'EXT. MIRADOURO DA GRAÇA - DIA', location: 'Miradouro Graça', timeOfDay: 'dia', summary: 'Miguel e Clara tentam processar os acontecimentos. Detective Sousa surge — precisa da ajuda deles.', pageLength: 2.5, characters: ['MIGUEL', 'CLARA', 'DETECTIVE SOUSA'], type: 'dialogue', cast: ['MIGUEL', 'CLARA', 'DETECTIVE SOUSA'] },
-      { id: 'SC004', sceneNumber: 'SC004', heading: 'INT/EXT. CASA AVÓ ROSA - DIA', location: 'Casa Avó Rosa', timeOfDay: 'dia', summary: 'Clara e Rosa. Padre Silva visita. Revelação: Rosa sabia do segredo desde sempre. Cena de perdão.', pageLength: 3.0, characters: ['CLARA', 'ROSA', 'PADRE SILVA'], type: 'dialogue', cast: ['CLARA', 'ROSA', 'PADRE SILVA'] },
-      { id: 'SC005', sceneNumber: 'SC005', heading: 'INT. PALÁCIO SINTRA - SALA PRINCIPAL - FIM DE TARDE', location: 'Palácio Sintra', timeOfDay: 'fim de tarde', summary: 'Miguel descobre o esconderijo do pai no palácio abandonado. Tomás aparece — fugiu da custódia. Confronto.', pageLength: 4.0, characters: ['MIGUEL', 'TOMÁS'], type: 'action', cast: ['MIGUEL', 'TOMÁS'] },
-      { id: 'SC006', sceneNumber: 'SC006', heading: 'INT/EXT. PALÁCIO SINTRA - JARDIM - NOITE', location: 'Palácio Sintra', timeOfDay: 'noite', summary: 'Perseguição pelo jardim em ruínas. Clara chega. Tomás ameaça destruir as provas. Momento de alta tensão.', pageLength: 3.5, characters: ['MIGUEL', 'CLARA', 'TOMÁS'], type: 'action', cast: ['MIGUEL', 'CLARA', 'TOMÁS'] },
-      { id: 'SC007', sceneNumber: 'SC007', heading: 'INT. CAFÉ TERTÚLIA - NOITE', location: 'Café Tertúlia', timeOfDay: 'noite', summary: 'Clara e Rosa no café, tarde da noite. Reconciliação familiar. Rosa entrega algo a Clara — objecto misterioso.', pageLength: 2.0, characters: ['CLARA', 'ROSA'], type: 'dialogue', cast: ['CLARA', 'ROSA'] },
-      { id: 'SC008', sceneNumber: 'SC008', heading: 'INT. ARMAZÉM ALCÂNTARA - NOITE', location: 'Armazém Alcântara', timeOfDay: 'noite', summary: 'Cena final. Todos convergem no armazém. Detective Sousa revela a verdade completa. Tomás cede. Miguel e Clara abraçam-se. Setup para ep.3.', pageLength: 4.0, characters: ['MIGUEL', 'CLARA', 'TOMÁS', 'DETECTIVE SOUSA'], type: 'dialogue', cast: ['MIGUEL', 'CLARA', 'TOMÁS', 'DETECTIVE SOUSA'] },
+      { id: 'SC001', sceneNumber: 'SC001', heading: 'INT. MADRUGADA. DIA', intExt: 'INT', location: 'Madrugada', timeOfDay: 'Madrugada', summary: 'Cena de madrugada — atmosfera silenciosa. Estabelece o tom do episódio centrado na Lu.', pageLength: 0.25, characters: [], cast: [], type: 'action' },
+      { id: 'SC002', sceneNumber: 'SC002', heading: 'INT. MADRUGADA. DIA', intExt: 'INT', location: 'Madrugada', timeOfDay: 'Madrugada', summary: 'Segunda cena de madrugada — continuação da atmosfera de véspera.', pageLength: 0.25, characters: [], cast: [], type: 'action' },
+      { id: 'SC003', sceneNumber: 'SC003', heading: 'INT. COZINHA. MANHÃ', intExt: 'INT', location: 'Cozinha', timeOfDay: 'Manhã', summary: 'Cena de manhã silenciosa — rotina doméstica que revela estado emocional.', pageLength: 0.25, characters: [], cast: [], type: 'action' },
+      { id: 'SC004', sceneNumber: 'SC004', heading: 'INT. SALA. MANHÃ', intExt: 'INT', location: 'Sala', timeOfDay: 'Manhã', summary: 'João na sala de manhã — ponto de partida do episódio antes de sair.', pageLength: 0.38, characters: ['JOÃO'], cast: ['JOÃO'], type: 'action' },
+      { id: 'SC005', sceneNumber: 'SC005', heading: 'INT. PORTA DA RUA. MANHÃ', intExt: 'INT', location: 'Porta Da Rua', timeOfDay: 'Manhã', summary: 'Mati e João à porta da rua. Combinações para o dia — energia de amizade masculina.', pageLength: 0.88, characters: ['MATI', 'JOÃO'], cast: ['MATI', 'JOÃO'], type: 'dialogue' },
+      { id: 'SC006', sceneNumber: 'SC006', heading: 'EXT. PRÉDIO. MANHÃ', intExt: 'EXT', location: 'Prédio', timeOfDay: 'Manhã', summary: 'Grupo à frente do prédio — João Pequeno, Ju, Cas, João e Mati. Energia de bando, preparação para a escola.', pageLength: 0.88, characters: ['JOÃO PEQUENO', 'JU', 'CAS', 'JOÃO', 'MATI'], cast: ['JOÃO PEQUENO', 'JU', 'CAS', 'JOÃO', 'MATI'], type: 'dialogue' },
+      { id: 'SC007', sceneNumber: 'SC007', heading: 'EXT. JARDIM. MANHÃ', intExt: 'EXT', location: 'Jardim', timeOfDay: 'Manhã', summary: 'João e Cas no jardim — conversa a dois antes das aulas. Relação de amizade próxima.', pageLength: 1.0, characters: ['JOÃO', 'CAS'], cast: ['JOÃO', 'CAS'], type: 'dialogue' },
+      { id: 'SC008', sceneNumber: 'SC008', heading: 'EXT. PORTÃO ESCOLA. MANHÃ', intExt: 'EXT', location: 'Portão Escola', timeOfDay: 'Manhã', summary: 'Sr. António e João no portão. Encontro recorrente — desta vez com dinâmica diferente.', pageLength: 0.88, characters: ['SR. ANTÓNIO', 'JOÃO'], cast: ['SR. ANTÓNIO', 'JOÃO'], type: 'dialogue' },
+      { id: 'SC009', sceneNumber: 'SC009', heading: 'INT. CORREDOR ESCOLA. DIA', intExt: 'INT', location: 'Corredor Escola', timeOfDay: 'Dia', summary: 'João e João Pequeno no corredor. Interacção entre os dois — João mais novo observa o mais velho.', pageLength: 0.5, characters: ['JOÃO', 'JOÃO PEQUENO'], cast: ['JOÃO', 'JOÃO PEQUENO'], type: 'dialogue' },
+      { id: 'SC010', sceneNumber: 'SC010', heading: 'INT. SALA AULA. DIA', intExt: 'INT', location: 'Sala Aula', timeOfDay: 'Dia', summary: 'Cena de sala de aula alargada — João, Prof, Mati, Cas, Ruben. Cena mais longa (2p), conflito ou acontecimento importante.', pageLength: 2.0, characters: ['JOÃO', 'PROF', 'MATI', 'CAS', 'RUBEN'], cast: ['JOÃO', 'PROF', 'MATI', 'CAS', 'RUBEN'], type: 'dialogue' },
+      { id: 'SC011', sceneNumber: 'SC011', heading: 'INT. CORREDOR ESCOLA. DIA', intExt: 'INT', location: 'Corredor Escola', timeOfDay: 'Dia', summary: 'Corredor lotado — João, Cas, Júlio, Random, Pequeno, Mati, Ju. Pós-aula, tensão ou agitação.', pageLength: 1.12, characters: ['JOÃO', 'CAS', 'JÚLIO', 'PEQUENO', 'MATI', 'JU'], cast: ['JOÃO', 'CAS', 'JÚLIO', 'PEQUENO', 'MATI', 'JU'], type: 'dialogue' },
+      { id: 'SC012', sceneNumber: 'SC012', heading: 'INT. WC ESCOLA. DIA', intExt: 'INT', location: 'Wc Escola', timeOfDay: 'Dia', summary: 'Cena importante no WC da escola — João, Lu, Ju, Cas, João Pequeno, Mati, Pequeno. Grande grupo, cena de 2.25p — conflito central do episódio.', pageLength: 2.25, characters: ['JOÃO', 'LU', 'JU', 'CAS', 'JOÃO PEQUENO', 'MATI', 'PEQUENO'], cast: ['JOÃO', 'LU', 'JU', 'CAS', 'JOÃO PEQUENO', 'MATI', 'PEQUENO'], type: 'dialogue' },
+      { id: 'SC013', sceneNumber: 'SC013', heading: 'INT. BALNEÁRIO. DIA', intExt: 'INT', location: 'Balneário', timeOfDay: 'Dia', summary: 'João e Cas no balneário. Conversa pós-conflito — mais íntima, a dois.', pageLength: 0.38, characters: ['JOÃO', 'CAS'], cast: ['JOÃO', 'CAS'], type: 'dialogue' },
+      { id: 'SC014', sceneNumber: 'SC014', heading: 'INT. GINÁSIO. DIA', intExt: 'INT', location: 'Ginásio', timeOfDay: 'Dia', summary: 'Aula de ginástica — Prof Ginástica, João, Pequeno, Cas, Mati. Acção física, dinâmicas de grupo no desporto.', pageLength: 1.38, characters: ['PROF GINÁSTICA', 'JOÃO', 'PEQUENO', 'CAS', 'MATI'], cast: ['PROF GINÁSTICA', 'JOÃO', 'PEQUENO', 'CAS', 'MATI'], type: 'action' },
+      { id: 'SC015', sceneNumber: 'SC015', heading: 'EXT. RUA. DIA', intExt: 'EXT', location: 'Rua', timeOfDay: 'Dia', summary: 'Grupo alargado na rua pós-escola — João, Cas, Pequeno, Mati, Ju. Energia de fim de dia escolar.', pageLength: 1.38, characters: ['JOÃO', 'CAS', 'PEQUENO', 'MATI', 'JU'], cast: ['JOÃO', 'CAS', 'PEQUENO', 'MATI', 'JU'], type: 'dialogue' },
+      { id: 'SC016', sceneNumber: 'SC016', heading: 'EXT. ESQUINA PÔR DO SOL. DIA', intExt: 'EXT', location: 'Esquina Por Do Sol', timeOfDay: 'Pôr do Sol', summary: 'Lu, João, Mãe da Lu, Cas, Mati ao pôr do sol numa esquina. Encontro de mundos — família e amigos. Cena emotiva de 1.25p.', pageLength: 1.25, characters: ['LU', 'JOÃO', 'MAE LU', 'CAS', 'MATI'], cast: ['LU', 'JOÃO', 'MAE LU', 'CAS', 'MATI'], type: 'dialogue' },
+      { id: 'SC017', sceneNumber: 'SC017', heading: 'INT. PORTA DE CASA JOÃO. DIA', intExt: 'INT', location: 'Porta De Casa João', timeOfDay: 'Noite', summary: 'João à porta de casa — regresso. Cena flash de transição.', pageLength: 0.12, characters: [], cast: [], type: 'action' },
+      { id: 'SC018', sceneNumber: 'SC018', heading: 'INT. COZINHA JOÃO. DIA', intExt: 'INT', location: 'Cozinha João', timeOfDay: 'Noite', summary: 'Mãe, João e Pequeno na cozinha de noite. Atmosfera familiar, o Pequeno presente muda a dinâmica.', pageLength: 0.75, characters: ['MÃE', 'JOÃO', 'PEQUENO'], cast: ['MÃE', 'JOÃO', 'PEQUENO'], type: 'dialogue' },
+      { id: 'SC019', sceneNumber: 'SC019', heading: 'INT. COZINHA. DIA', intExt: 'INT', location: 'Cozinha', timeOfDay: 'Noite', summary: 'João e Mati na cozinha — conversa a dois, tom de intimidade.', pageLength: 0.25, characters: ['JOÃO', 'MATI'], cast: ['JOÃO', 'MATI'], type: 'dialogue' },
+      { id: 'SC020', sceneNumber: 'SC020', heading: 'INT. COZINHA. DIA', intExt: 'INT', location: 'Cozinha', timeOfDay: 'Noite', summary: 'João, Mãe, Cas e Mati na cozinha. Cena de grupo doméstico — dinâmica da "família alargada" do João.', pageLength: 1.0, characters: ['JOÃO', 'MÃE', 'CAS', 'MATI'], cast: ['JOÃO', 'MÃE', 'CAS', 'MATI'], type: 'dialogue' },
+      { id: 'SC021', sceneNumber: 'SC021', heading: 'INT. COZINHA. DIA', intExt: 'INT', location: 'Cozinha', timeOfDay: 'Noite', summary: 'Cena de grupo completo na cozinha — João, Mãe, Cas, Pequeno, Mati, Ju. A maior cena doméstica do episódio (1.75p).', pageLength: 1.75, characters: ['JOÃO', 'MÃE', 'CAS', 'PEQUENO', 'MATI', 'JU'], cast: ['JOÃO', 'MÃE', 'CAS', 'PEQUENO', 'MATI', 'JU'], type: 'dialogue' },
+      { id: 'SC022', sceneNumber: 'SC022', heading: 'INT. SALA DE ESTAR. DIA', intExt: 'INT', location: 'Sala De Estar', timeOfDay: 'Noite', summary: 'Sala de estar — transição silenciosa. Momento de pausa antes da cena final.', pageLength: 0.12, characters: [], cast: [], type: 'action' },
+      { id: 'SC023', sceneNumber: 'SC023', heading: 'INT. QUARTO JOÃO. DIA', intExt: 'INT', location: 'Quarto João', timeOfDay: 'Noite', summary: 'Cas, Pequeno, Mati, João e Ju no quarto do João — grupo de amigos íntimos, noite de convívio.', pageLength: 1.0, characters: ['CAS', 'PEQUENO', 'MATI', 'JOÃO', 'JU'], cast: ['CAS', 'PEQUENO', 'MATI', 'JOÃO', 'JU'], type: 'dialogue' },
+      { id: 'SC024', sceneNumber: 'SC024', heading: 'INT. QUARTO JOÃO. AMANHECER', intExt: 'INT', location: 'Quarto João', timeOfDay: 'Amanhecer', summary: 'Cas, João, Pequeno e Ju ao amanhecer. Cena final do episódio — noite virou dia, algo mudou.', pageLength: 0.25, characters: ['CAS', 'JOÃO', 'PEQUENO', 'JU'], cast: ['CAS', 'JOÃO', 'PEQUENO', 'JU'], type: 'action' },
     ],
   },
 }
@@ -128,29 +170,66 @@ const PARSED_SCRIPTS = {
 // ATRIBUIÇÕES DE CENAS → DIAS
 // ═══════════════════════════════════════════════════════════════════════
 function buildSceneAssignments(days) {
-  // days[0]=D1, days[1]=D2, etc.
+  // days[0]=D1 Hoje 13/03, days[1]=D2 20/03, days[2]=D3 23/03, days[3]=D4 24/03,
+  // days[4]=D5 25/03, days[5]=D6 26/03, days[6]=D7 27/03, days[7]=D8 30/03
   const d = days.map(d => d.id)
   return {
-    // EP01
-    'EP01-SC001': d[0],  // D1 — Miradouro
-    'EP01-SC002': d[0],  // D1 — Apt Miguel
-    'EP01-SC003': d[0],  // D1 — Café
-    'EP01-SC004': d[1],  // D2 — Escritório
-    'EP01-SC005': d[2],  // D3 — Praia Guincho
-    'EP01-SC006': d[4],  // D5 — Igreja
-    'EP01-SC007': d[5],  // D6 — Armazém (noite)
-    'EP01-SC008': d[6],  // D7 — Pickup Apt Miguel
-    'EP01-SC009': d[6],  // D7 — Pickup (filma-se em Setúbal noutro dia — simplificado)
-    'EP01-SC010': d[1],  // D2 — Miradouro (golden hour)
-    // EP02
-    'EP02-SC001': d[6],  // D7 — Apt Miguel
-    'EP02-SC002': d[1],  // D2 — Escritório
-    'EP02-SC003': d[6],  // D7 — Miradouro
-    'EP02-SC004': d[6],  // D7 — Setúbal (simplificado)
-    'EP02-SC005': d[3],  // D4 — Palácio Sintra
-    'EP02-SC006': d[3],  // D4 — Palácio Sintra
-    'EP02-SC007': d[4],  // D5 — Café (noite)
-    'EP02-SC008': d[5],  // D6 — Armazém (noite)
+    // EP01 — D1 Hoje: Exteriores escola + rua manhã
+    'EP01-SC001': d[0],  // D1 Hoje — Cozinha João (INT manhã)
+    'EP01-SC002': d[0],  // D1 Hoje — Hall Prédio (INT)
+    'EP01-SC003': d[0],  // D1 Hoje — Rua (EXT manhã)
+    'EP01-SC004': d[0],  // D1 Hoje — Portão Escola (EXT)
+    'EP01-SC005': d[0],  // D1 Hoje — Pátio Escola (EXT)
+    'EP01-SC006': d[0],  // D1 Hoje — Sala Aula (INT)
+    // EP01 — D2: Interior escola continuação
+    'EP01-SC007': d[1],  // D2 — Exterior Escola
+    'EP01-SC008': d[1],  // D2 — Biblioteca Escola
+    'EP01-SC009': d[1],  // D2 — Sala de Aula (prof/joão)
+    'EP01-SC010': d[1],  // D2 — Pátio Escola grupo
+    'EP01-SC011': d[1],  // D2 — Pátio a dois
+    // EP01 — D3: Exteriores bairro + noite
+    'EP01-SC012': d[2],  // D3 — Mercearia
+    'EP01-SC013': d[2],  // D3 — Rua tarde
+    'EP01-SC014': d[2],  // D3 — Porta Prédio
+    'EP01-SC015': d[2],  // D3 — Rua dia
+    'EP01-SC016': d[2],  // D3 — Rua tarde (cena central)
+    'EP01-SC017': d[2],  // D3 — Fim de dia
+    'EP01-SC018': d[2],  // D3 — Noite casa
+    'EP01-SC019': d[2],  // D3 — Casa Rúben porta
+    'EP01-SC020': d[2],  // D3 — Casa Rúben sala
+    'EP01-SC021': d[2],  // D3 — Rua noite
+    'EP01-SC022': d[2],  // D3 — Jardim banco
+    // EP01 — D8 Pickup: Cenas manhã restantes
+    'EP01-SC023': d[7],  // D8 — Cozinha manhã
+    'EP01-SC024': d[7],  // D8 — Sala manhã
+    // EP02 — D4: Exteriores manhã + portão
+    'EP02-SC001': d[7],  // D8 — Madrugada (pickup)
+    'EP02-SC002': d[7],  // D8 — Madrugada (pickup)
+    'EP02-SC003': d[7],  // D8 — Cozinha manhã
+    'EP02-SC004': d[3],  // D4 — Sala manhã
+    'EP02-SC005': d[3],  // D4 — Porta da Rua
+    'EP02-SC006': d[3],  // D4 — Prédio exterior
+    'EP02-SC007': d[3],  // D4 — Jardim manhã
+    'EP02-SC008': d[3],  // D4 — Portão Escola
+    // EP02 — D5: Interior escola
+    'EP02-SC009': d[4],  // D5 — Corredor Escola
+    'EP02-SC010': d[4],  // D5 — Sala Aula
+    'EP02-SC011': d[4],  // D5 — Corredor grupo
+    'EP02-SC012': d[4],  // D5 — WC Escola (cena central)
+    'EP02-SC013': d[4],  // D5 — Balneário
+    'EP02-SC014': d[4],  // D5 — Ginásio
+    // EP02 — D6: Exteriores tarde + noite
+    'EP02-SC015': d[5],  // D6 — Rua dia grupo
+    'EP02-SC016': d[5],  // D6 — Esquina pôr do sol
+    'EP02-SC017': d[5],  // D6 — Porta de casa
+    'EP02-SC018': d[5],  // D6 — Cozinha João noite
+    'EP02-SC019': d[5],  // D6 — Cozinha (João/Mati)
+    'EP02-SC020': d[5],  // D6 — Cozinha grupo
+    'EP02-SC021': d[5],  // D6 — Cozinha completo
+    // EP02 — D7: Noite/amanhecer quarto
+    'EP02-SC022': d[6],  // D7 — Sala de estar
+    'EP02-SC023': d[6],  // D7 — Quarto João
+    'EP02-SC024': d[6],  // D7 — Quarto amanhecer (final ep02)
   }
 }
 
@@ -358,17 +437,36 @@ const PRE_PRODUCTION = {
 // PARSED CHARACTERS + LOCATIONS (do guião)
 // ═══════════════════════════════════════════════════════════════════════
 const PARSED_CHARACTERS = [
-  { name: 'MIGUEL', scenes: [1,2,3,4,5,7,8,10], lineCount: 87 },
-  { name: 'CLARA', scenes: [2,3,5,6,8,9,10], lineCount: 64 },
-  { name: 'TOMÁS', scenes: [4,7,8], lineCount: 31 },
-  { name: 'ROSA', scenes: [3,6,9], lineCount: 22 },
-  { name: 'DETECTIVE SOUSA', scenes: [7,10], lineCount: 15 },
-  { name: 'PADRE SILVA', scenes: [6], lineCount: 8 },
+  // EP01 cast
+  { name: 'JOÃO', scenes: [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,21,22,24], lineCount: 176 },
+  { name: 'LU', scenes: [3,4,5,6,7,8,10,11,14,15,16,20,21,22], lineCount: 112 },
+  { name: 'MÃE', scenes: [1,2,18], lineCount: 24 },
+  { name: 'RUBEN', scenes: [17,19,20], lineCount: 24 },
+  { name: 'JÚLIO', scenes: [5,10], lineCount: 16 },
+  { name: 'PROF', scenes: [6,9], lineCount: 16 },
+  { name: 'SR ANTÓNIO', scenes: [4], lineCount: 8 },
+  { name: 'FÁBIO', scenes: [7], lineCount: 8 },
+  { name: 'ALUNO', scenes: [10], lineCount: 8 },
+  // EP02 cast (adicionais)
+  { name: 'CAS', scenes: [6,7,10,11,12,13,14,15,16,20,21,23,24], lineCount: 104 },
+  { name: 'MATI', scenes: [5,6,10,11,12,14,15,16,19,20,21,23], lineCount: 96 },
+  { name: 'PEQUENO', scenes: [11,12,14,15,18,20,21,23,24], lineCount: 72 },
+  { name: 'JU', scenes: [6,11,12,15,21,23,24], lineCount: 56 },
+  { name: 'JOÃO PEQUENO', scenes: [6,9,12], lineCount: 24 },
+  { name: 'PROF GINÁSTICA', scenes: [14], lineCount: 8 },
+  { name: 'MAE LU', scenes: [16], lineCount: 8 },
 ]
 
 const PARSED_LOCATIONS = [
-  'Miradouro Graça', 'Apartamento Miguel', 'Café Tertúlia', 'Escritório Advocacia',
-  'Praia do Guincho', 'Igreja São Roque', 'Armazém Alcântara', 'Casa Avó Rosa', 'Palácio Sintra',
+  // EP01 locations
+  'Cozinha João', 'Hall Prédio', 'Rua', 'Portão Escola', 'Pátio Da Escola',
+  'Sala Aula', 'Escola', 'Biblioteca Escola', 'Sala De Aula', 'Pátio Escola',
+  'Mercearia', 'Porta Prédio', 'Fim De Dia', 'Jardim Banco De Jardim',
+  'Casa Do Rúben Sala', 'Cozinha', 'Sala',
+  // EP02 locations (adicionais)
+  'Porta Da Rua', 'Prédio', 'Jardim', 'Corredor Escola', 'Wc Escola',
+  'Balneário', 'Ginásio', 'Esquina Por Do Sol', 'Quarto João', 'Sala De Estar',
+  'Cozinha João', 'Madrugada',
 ]
 
 // ═══════════════════════════════════════════════════════════════════════

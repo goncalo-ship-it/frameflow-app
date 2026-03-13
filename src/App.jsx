@@ -3,11 +3,12 @@ import { useStore } from './core/store.js'
 import { useShallow } from 'zustand/react/shallow'
 import { resolvePanel } from './core/roles.js'
 import { initReactiveCore } from './core/reactive.js'
-import { Sidebar } from './components/shared/Sidebar.jsx'
-import { TopBar } from './components/shared/TopBar.jsx'
+import { SidebarNew } from './app/components/SidebarNew.tsx'
+import { Topbar } from './app/components/Topbar.tsx'
 import { PreviewBanner } from './components/shared/PreviewBanner.jsx'
 import { ReactiveToast } from './components/shared/ReactiveToast.jsx'
-import { MobileBottomNav } from './components/shared/MobileBottomNav.jsx'
+import { MobileBottomNav } from './app/components/MobileBottomNav.tsx'
+import { PWAInstallPrompt } from './components/shared/PWAInstallPrompt.jsx'
 import { UniversalUpload } from './components/shared/UniversalUpload.jsx'
 import { LoginScreen } from './roles/LoginScreen.jsx'
 import { JoinScreen } from './roles/JoinScreen.jsx'
@@ -118,16 +119,22 @@ export default function App() {
 
   const offlineBanner = offline ? (
     <div style={{
-      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 9999,
-      background: '#d97706', color: '#fff', textAlign: 'center',
-      padding: '6px 12px', fontSize: 13, fontWeight: 600,
-      letterSpacing: '0.02em',
+      position: 'fixed', top: 16, left: '50%', transform: 'translateX(-50%)',
+      zIndex: 9999, display: 'flex', alignItems: 'center', gap: 8,
+      background: 'rgba(20, 24, 32, 0.92)',
+      backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
+      border: '0.5px solid rgba(217,119,6,0.5)',
+      borderRadius: 999, padding: '7px 16px',
+      color: '#FBBF24', fontSize: 12, fontWeight: 600,
+      whiteSpace: 'nowrap',
+      boxShadow: '0 4px 20px rgba(0,0,0,0.4), 0 0 0 1px rgba(217,119,6,0.15)',
     }}>
-      Offline — as alterações ser\u00e3o sincronizadas quando a liga\u00e7\u00e3o voltar
+      <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#FBBF24', flexShrink: 0 }} />
+      Offline — alterações guardadas localmente
     </div>
   ) : null
 
-  const offlineHeight = offline ? 32 : 0
+  const offlineHeight = offline ? 0 : 0
 
   // Painel 2 (management) e Painel 3 (roleview) partilham Sidebar + AppShell
   // A diferença está nos módulos visíveis (filtrados pelo canAccess) e no dashboard
@@ -163,14 +170,26 @@ export default function App() {
           position: 'relative',
           zIndex: 1,
         }}>
-          <Sidebar panelMode={panel} />
-          <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
-            <TopBar />
+          <SidebarNew />
+          {/* MAIN AREA — stacking context z-10, topbar at z-30, scroll <main> sem z-index */}
+          <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0, position: 'relative', zIndex: 10 }}>
+            {/* TOPBAR WRAPPER — z-30 garante que fica acima do conteúdo scrollado */}
+            <div style={{ position: 'relative', zIndex: 30, flexShrink: 0 }}>
+              <Topbar />
+              {/* Fade gradient — transição suave entre topbar e scroll */}
+              <div style={{
+                position: 'absolute', bottom: 0, left: 0, right: 0,
+                height: 16, transform: 'translateY(100%)',
+                background: 'linear-gradient(to bottom, rgba(23,29,44,0.5), transparent)',
+                pointerEvents: 'none', zIndex: 1,
+              }} />
+            </div>
             <AppShell />
-          </div>
+          </div>{/* /MAIN AREA */}
           <CaptureButton />
           <ReactiveToast />
           <MobileBottomNav />
+          <PWAInstallPrompt />
         </div>
       </UniversalUpload>
     </>

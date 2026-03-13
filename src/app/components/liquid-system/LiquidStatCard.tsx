@@ -11,7 +11,7 @@
  * Based on Apple WWDC25 Liquid Glass widget patterns.
  */
 
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { motion } from 'motion/react';
 import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { glassCard, lensingOverlay, springConfigs, type GlassVariant } from '../../utils/liquidGlassStyles';
@@ -75,7 +75,6 @@ export function LiquidStatCard({
   animationDelay = 0,
   subtitle,
 }: LiquidStatCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
   const accentHex = ACCENT_HEX[variant] || ACCENT_HEX.default;
   const cardStyles = glassCard({ intensity: 'subtle', variant, radius: 'xl', interactive: !!onClick });
   const lensingStyles = lensingOverlay({ radius: 'xl' });
@@ -91,10 +90,7 @@ export function LiquidStatCard({
         ...springConfigs.gentle,
         delay: animationDelay / 1000,
       }}
-      whileHover={onClick ? { scale: 1.03, boxShadow: `0 8px 32px ${accentHex}25` } : undefined}
       whileTap={onClick ? { scale: 0.97 } : undefined}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
       onClick={onClick}
       style={{
         ...cardStyles,
@@ -104,23 +100,6 @@ export function LiquidStatCard({
     >
       {/* Lensing */}
       <div style={lensingStyles} />
-
-      {/* Hover glow intensification */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        style={{ borderRadius: 'inherit' }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            borderRadius: 'inherit',
-            boxShadow: `inset 0 0 30px ${accentHex}10, 0 0 40px ${accentHex}08`,
-          }}
-        />
-      </motion.div>
 
       {/* Content */}
       <div className="relative z-10">

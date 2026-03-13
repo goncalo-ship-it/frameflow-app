@@ -1,0 +1,44 @@
+/**
+ * FRAMEFLOW — BACKGROUND THEME
+ *
+ * Gradiente escuro azul-cinza cinematográfico.
+ * background-attachment: fixed garante que o fundo não rola —
+ * os widgets glass deslizam sobre ele com efeito de lensing real.
+ *
+ * Não é preto puro → o backdrop-filter: blur() tem cor para refracctar.
+ * Direcção 135° → alinha com o lensing highlight dos cards (luz de cima).
+ */
+
+/* ── DARK (default) ──────────────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --app-background: linear-gradient(
+    135deg,
+    #464b55  0%,   /* cinzento azulado médio  */
+    #363b47  38%,  /* cinzento azul escuro    */
+    #252b38  65%,  /* azul-cinza muito escuro */
+    #171d2c  100%  /* azul marinho profundo   */
+  );
+}
+
+/* ── BRIGHT (~15% mais claro) ────────────────────────────────────────── */
+[data-theme="bright"] {
+  --app-background: linear-gradient(
+    135deg,
+    #4e5360  0%,
+    #3e4351  38%,
+    #2d3342  65%,
+    #1e2435  100%
+  );
+}
+
+/* ── LIGHT usa bright ────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --app-background: linear-gradient(
+    135deg,
+    #4e5360  0%,
+    #3e4351  38%,
+    #2d3342  65%,
+    #1e2435  100%
+  );
+}

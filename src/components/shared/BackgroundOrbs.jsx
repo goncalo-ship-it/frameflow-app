@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
 
+// Orbs calibrados para fundo escuro (#1c1d24 → #4e4c57)
+// Mais luminosos que no fundo claro — o negro absorve mais luz
 const orbs = [
-  { color: 'rgba(16, 185, 129, 0.25)', size: 600, x: '10%', y: '15%', duration: 22 },
-  { color: 'rgba(245, 158, 11, 0.18)', size: 700, x: '70%', y: '20%', duration: 28 },
-  { color: 'rgba(59, 130, 246, 0.15)', size: 550, x: '80%', y: '70%', duration: 32 },
-  { color: 'rgba(168, 85, 247, 0.12)', size: 500, x: '30%', y: '75%', duration: 26 },
-  { color: 'rgba(239, 68, 68, 0.10)', size: 450, x: '55%', y: '40%', duration: 35 },
+  { color: 'rgba(16, 185, 129, 0.14)', blur: 90,  size: 650, x: '5%',  y: '10%', duration: 22 },
+  { color: 'rgba(168, 85, 247, 0.09)', blur: 110, size: 720, x: '65%', y: '15%', duration: 28 },
+  { color: 'rgba(59, 130, 246, 0.08)', blur: 95,  size: 580, x: '75%', y: '60%', duration: 32 },
 ]
 
 export function BackgroundOrbs() {
@@ -31,7 +31,7 @@ export function BackgroundOrbs() {
             height: orb.size,
             borderRadius: '50%',
             background: `radial-gradient(circle, ${orb.color} 0%, transparent 70%)`,
-            filter: 'blur(80px)',
+            filter: `blur(${orb.blur}px)`,
             willChange: 'transform',
           }}
           animate={{

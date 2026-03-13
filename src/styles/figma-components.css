@@ -2,20 +2,9 @@
 
 /* === biblia/14-FIGMA-SYNC.md (1 blocos) === */
 /* block 1 */
-/* Auto-generated from Figma exports */
+/* FrameFlow — Design Tokens (spec canónico) */
 :root {
-  /* Colors */
   --fb-primary: #10b981;
-  --fb-background-dark: #2A3040;
-  
-  /* Typography */
-  --fb-font-heading-1-size: 32px;
-  --fb-font-heading-1-weight: 700;
-  --fb-font-heading-1-height: 1.2;
-  
-  /* Effects */
-  --fb-effect-shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
-  --fb-effect-blur-glass: 20px;
 }
 
 /* === biblia/MOBILE_COMPLETE_GUIDE.md (5 blocos) === */
@@ -74,9 +63,9 @@ box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 /* === biblia/VARIABLES.md (7 blocos) === */
 /* block 1 */
 :root {
-  --fb-bg-base: #2A3040;        /* Base escura */
-  --fb-bg-elevated: #343A46;    /* Elementos elevados */
-  --fb-bg-overlay: #3E4450;     /* Overlays/modals */
+  --fb-bg-base: #0d0d0d;        /* Base escura */
+  --fb-bg-elevated: #1a1a1a;    /* Elementos elevados */
+  --fb-bg-overlay: #262626;     /* Overlays/modals */
 }
 /* block 2 */
 :root {
@@ -92,22 +81,66 @@ box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 /* block 4 */
 :root {
-  /* Emerald (primária) */
-  --fb-emerald: #10b981;
+  /* ── Acentos — os 6 canónicos ── */
+  --fb-emerald: #10b981;       /* EXT, activo, sucesso */
   --fb-emerald-dim: rgba(16, 185, 129, 0.15);
 
-  /* Estados */
-  --fb-error: #ef4444;
+  --fb-error: #ef4444;         /* crítico, atraso, stunts */
   --fb-error-dim: rgba(239, 68, 68, 0.15);
 
-  --fb-warning: #f59e0b;
+  --fb-warning: #f59e0b;       /* avisos, arte, chamadas */
   --fb-warning-dim: rgba(245, 158, 11, 0.15);
 
-  --fb-info: #3b82f6;
+  --fb-info: #3b82f6;          /* INT (interior), câmara, links */
   --fb-info-dim: rgba(59, 130, 246, 0.15);
 
-  --fb-purple: #a855f7;
+  --fb-purple: #a855f7;        /* personagens, casting, universo */
   --fb-purple-dim: rgba(168, 85, 247, 0.15);
+
+  --fb-pink: #ec4899;          /* guarda-roupa, produção */
+  --fb-pink-dim: rgba(236, 72, 153, 0.15);
+
+  /* ── Acentos adicionais contextuais ── */
+  --fb-violet: #8b5cf6;        /* makeup */
+  --fb-violet-dim: rgba(139, 92, 246, 0.15);
+
+  --fb-orange: #fb923c;        /* refeições, timers a expirar */
+  --fb-orange-dim: rgba(251, 146, 60, 0.15);
+
+  --fb-cyan: #22d3ee;          /* crew/equipa */
+  --fb-cyan-dim: rgba(34, 211, 238, 0.15);
+
+  --fb-yellow: #fbbf24;        /* sunrise, sunshine */
+  --fb-yellow-dim: rgba(251, 191, 36, 0.15);
+
+  /* ── Cores por departamento ── */
+  --fb-dept-camera:    #3b82f6;
+  --fb-dept-art:       #a855f7;
+  --fb-dept-sound:     #f59e0b;
+  --fb-dept-wardrobe:  #ec4899;
+  --fb-dept-makeup:    #8b5cf6;
+  --fb-dept-stunts:    #ef4444;
+  --fb-dept-transport: #10b981;
+  --fb-dept-casting:   #a855f7;
+  --fb-dept-producao:  #ec4899;
+  --fb-dept-direcao:   #3b82f6;
+
+  /* ── Shadow presets ── */
+  --fb-shadow-soft:   0 2px 8px rgba(0,0,0,0.05);
+  --fb-shadow-medium: 0 4px 16px rgba(0,0,0,0.10);
+  --fb-shadow-strong: 0 8px 32px rgba(0,0,0,0.15);
+  --fb-shadow-emerald: 0 0 24px rgba(16,185,129,0.40);
+  --fb-shadow-blue:    0 0 24px rgba(59,130,246,0.40);
+  --fb-shadow-purple:  0 0 24px rgba(168,85,247,0.40);
+  --fb-shadow-red:     0 0 24px rgba(239,68,68,0.40);
+
+  /* ── Glass receitas (referência canónica) ── */
+  --fb-glass-card:     rgba(255, 255, 255, 0.06);
+  --fb-glass-topbar:   rgba(255, 255, 255, 0.08);
+  --fb-glass-dropdown: rgba(30, 32, 38, 0.92);
+  --fb-glass-drawer:   rgba(22, 24, 30, 0.95);
+  --fb-glass-toast:    rgba(12, 12, 16, 0.88);
+  --fb-glass-modal:    rgba(12, 12, 18, 0.94);
 }
 /* block 5 */
 :root {
@@ -123,17 +156,23 @@ box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   --fb-text-primary: #1a1a1f;
   --fb-text-secondary: #4a4a55;
   --fb-text-tertiary: #7a7a85;
+  --fb-border-hover: rgba(0, 0, 0, 0.18);
 
   --fb-border-subtle: rgba(0, 0, 0, 0.08);
   --fb-border-normal: rgba(0, 0, 0, 0.12);
   --fb-border-hover: rgba(0, 0, 0, 0.18);
 
-  /* Accent dims ajustados */
-  --fb-emerald-dim: rgba(16, 185, 129, 0.1);
-  --fb-error-dim: rgba(239, 68, 68, 0.1);
-  --fb-warning-dim: rgba(245, 158, 11, 0.1);
-  --fb-info-dim: rgba(59, 130, 246, 0.1);
-  --fb-purple-dim: rgba(168, 85, 247, 0.1);
+  /* Accent dims light (mais suaves) */
+  --fb-emerald-dim: rgba(16, 185, 129, 0.10);
+  --fb-error-dim:   rgba(239, 68, 68, 0.10);
+  --fb-warning-dim: rgba(245, 158, 11, 0.10);
+  --fb-info-dim:    rgba(59, 130, 246, 0.10);
+  --fb-purple-dim:  rgba(168, 85, 247, 0.10);
+  --fb-pink-dim:    rgba(236, 72, 153, 0.10);
+  --fb-violet-dim:  rgba(139, 92, 246, 0.10);
+  --fb-orange-dim:  rgba(251, 146, 60, 0.10);
+  --fb-cyan-dim:    rgba(34, 211, 238, 0.10);
+  --fb-yellow-dim:  rgba(251, 191, 36, 0.10);
 }
 /* block 7 */
 /* Firefox */

@@ -3,9 +3,21 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { initCapacitor } from './core/capacitor.js'
+import { useStore } from './core/store.js'
+import { seedDummyData } from './dev/seedDummyData.js'
 
 // Initialize Capacitor native plugins (no-op on web)
 initCapacitor()
+
+// Auto-seed com dados reais FDX — força reset uma vez para carregar EP01+EP02
+;(function autoSeed() {
+  const s = useStore.getState()
+  const hasNewData = s.parsedScripts?.EP01?.scenes?.length >= 24
+  if (!hasNewData) {
+    localStorage.removeItem('frame-v1')
+    seedDummyData(useStore)
+  }
+})()
 
 class ErrorBoundary extends Component {
   constructor(props) { super(props); this.state = { error: null } }
