@@ -474,6 +474,31 @@ export function parseScriptFdx(xmlContent, options = {}) {
     errors.push({ type: 'info', msg: `${noTime.length} cena(s) sem período do dia explícito (assumido DIA): ${noTime.slice(0, 5).map(s => s.id).join(', ')}${noTime.length > 5 ? '…' : ''}` })
   }
 
+  // ── Mirror scene linking ──────────────────────────────────────
+  // Ligar pares de cenas espelho: mesma localização OU personagens partilhados,
+  // dentro de 10 posições no guião, bidireccional
+  const mirrorIdxs = scenes.reduce((acc, s, i) => (s.isMirror ? [...acc, i] : acc), [])
+  mirrorIdxs.forEach(i => {
+    if (scenes[i].mirrorOf) return
+    let bestJ = -1, bestDist = Infinity
+    mirrorIdxs.forEach(j => {
+      if (i === j || scenes[j].mirrorOf) return
+      const dist = Math.abs(i - j)
+      if (dist > 10 || dist >= bestDist) return
+      const sc = scenes[i], other = scenes[j]
+      const sameLocation = sc.location && other.location &&
+        sc.location.toLowerCase() === other.location.toLowerCase()
+      const sharedChar = (sc.characters || []).some(c => (other.characters || []).includes(c))
+      if (sameLocation || sharedChar) { bestJ = j; bestDist = dist }
+    })
+    if (bestJ >= 0) {
+      const mkI = `${episodeId}-${scenes[i].sceneNumber || scenes[i].id}`
+      const mkJ = `${episodeId}-${scenes[bestJ].sceneNumber || scenes[bestJ].id}`
+      scenes[i].mirrorOf = mkJ
+      scenes[bestJ].mirrorOf = mkI
+    }
+  })
+
   const allCharacters = extractAllCharacters(scenes)
 
   return {

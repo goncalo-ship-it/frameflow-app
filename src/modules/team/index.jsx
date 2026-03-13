@@ -133,7 +133,9 @@ function AddMemberForm({ onAdd, onCancel, parsedCharacters }) {
   const [form, setForm] = useState({
     name: '', role: '', group: 'Produção', company: '',
     phone: '', email: '', photo: '', notes: '',
-    characterName: '', agent: '', availability: '',
+    characterName: '', agent: '',
+    availability: { notes: '', unavailable: [] },
+    isMinor: false, birthDate: '',
     driveLinks: [],
   })
   const f = (k, v) => setForm(prev => ({ ...prev, [k]: v }))
@@ -499,10 +501,7 @@ function MemberDrawer({ member, onClose, onUpdate, onDelete, parsedCharacters, p
           </Section>
 
           <Section title="Disponibilidade">
-            <SmartInput value={member.availability || ''}
-              onChange={e => handleUpdate('availability', e.target.value)}
-              placeholder="Datas de indisponibilidade, restrições…" rows={3}
-              context={`Disponibilidade de ${member.name} (${member.role || member.group})`} />
+            <AvailabilitySection member={member} onUpdate={handleUpdate} />
           </Section>
 
           <Section title="Notas">
@@ -536,6 +535,79 @@ function Field({ label, children }) {
     <div className={styles.field}>
       <label className={styles.fieldLabel}>{label}</label>
       {children}
+    </div>
+  )
+}
+
+// ── Disponibilidade estruturada + isMinor/birthDate ──────────────
+function AvailabilitySection({ member, onUpdate }) {
+  const { shootingDays } = useStore(useShallow(s => ({ shootingDays: s.shootingDays })))
+
+  // Normalizar — suporta legacy string e novo objecto
+  const avail = typeof member.availability === 'object' && member.availability !== null
+    ? member.availability
+    : { notes: member.availability || '', unavailable: [] }
+
+  const setAvail = (patch) => onUpdate('availability', { ...avail, ...patch })
+
+  const toggleUnavailable = (date) => {
+    const next = avail.unavailable.includes(date)
+      ? avail.unavailable.filter(d => d !== date)
+      : [...avail.unavailable, date]
+    setAvail({ unavailable: next })
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      {/* Menor de idade */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <input type="checkbox" id={`minor-${member.id}`}
+          checked={!!member.isMinor}
+          onChange={e => onUpdate('isMinor', e.target.checked)}
+          style={{ width: 16, height: 16, accentColor: 'var(--accent)', cursor: 'pointer' }} />
+        <label htmlFor={`minor-${member.id}`} style={{ fontSize: 13, color: 'var(--text-secondary)', cursor: 'pointer' }}>
+          Menor de idade (regras legais de presença aplicadas)
+        </label>
+      </div>
+      {(member.isMinor || member.birthDate) && (
+        <Field label="Data de nascimento">
+          <input type="date" className={styles.input}
+            value={member.birthDate || ''}
+            onChange={e => onUpdate('birthDate', e.target.value)} />
+        </Field>
+      )}
+
+      {/* Dias de indisponibilidade */}
+      {shootingDays.length > 0 && (
+        <div>
+          <label style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'block', marginBottom: 8 }}>
+            Dias indisponível
+          </label>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+            {shootingDays.map(d => {
+              const isUnavail = avail.unavailable.includes(d.date)
+              return (
+                <button key={d.id}
+                  onClick={() => toggleUnavailable(d.date)}
+                  style={{
+                    padding: '4px 10px', borderRadius: 20, fontSize: 12, cursor: 'pointer', border: 'none',
+                    background: isUnavail ? 'rgba(239,68,68,0.25)' : 'rgba(255,255,255,0.06)',
+                    color: isUnavail ? '#f87171' : 'var(--text-muted)',
+                    outline: isUnavail ? '1px solid rgba(239,68,68,0.4)' : '1px solid rgba(255,255,255,0.1)',
+                  }}>
+                  {d.label || d.date || `Dia ${d.dayNumber || ''}`}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Notas livres */}
+      <SmartInput value={avail.notes}
+        onChange={e => setAvail({ notes: e.target.value })}
+        placeholder="Restrições, condicionantes, notas de disponibilidade…" rows={2}
+        context={`Disponibilidade de ${member.name}`} />
     </div>
   )
 }
@@ -845,7 +917,9 @@ export function TeamModule({ initialSection = 'equipa' }) {
         notes: `Personagem do guião · ${c.scenes?.length || 0} cenas, ${c.lineCount || 0} falas`,
         company: '',
         agent: '',
-        availability: '',
+        availability: { notes: '', unavailable: [] },
+        isMinor: false,
+        birthDate: '',
         driveLinks: [],
         cacheDiario: 0,
         cacheTotal: 0,

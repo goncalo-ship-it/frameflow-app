@@ -233,7 +233,10 @@ export function actoresDisponiveis(day, scenes, team) {
       )
       if (!actor) return
 
-      const avail = actor.availability || {}
+      // Normalizar availability — suporta string legacy e novo objecto estruturado
+      const avail = typeof actor.availability === 'object' && actor.availability !== null
+        ? actor.availability
+        : {}
 
       // Se tem lista de datas disponíveis e o dia não está na lista
       if (avail.dates && avail.dates.length > 0 && dayDate) {
