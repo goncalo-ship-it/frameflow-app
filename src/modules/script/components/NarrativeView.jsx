@@ -97,7 +97,7 @@ export function NarrativeView({ scriptData }) {
                   {scene.estado !== 'por_filmar' && (
                     <span
                       className={styles.narrStatusBadge}
-                      style={{ background: status.bg, color: status.color }}
+                      style={{ background: status?.bg || 'transparent', color: status?.color || 'inherit' }}
                     >
                       {status.label}
                     </span>

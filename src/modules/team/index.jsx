@@ -770,7 +770,7 @@ const MemberCard = memo(function MemberCard({ member, onClick, isOnCallsheet, bu
 
   return (
     <motion.div className={`${styles.memberCard} ${member.isPlaceholder ? styles.placeholderCard : ''}`}
-      style={{ background: g.bg, borderColor: g.color + '33' }}
+      style={{ background: g.bg || 'transparent', borderColor: (g.color || 'var(--accent)') + '33' }}
       onClick={onClick}
       whileHover={{ y: -2, borderColor: g.color + '77', boxShadow: `0 6px 24px ${g.color}22` }}
       whileTap={{ scale: 0.98 }}

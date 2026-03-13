@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: { port: 5099 },
   plugins: [tailwindcss(), react(), visualizer({ open: false, filename: 'dist/bundle-report.html', gzipSize: true })],
   resolve: {
     alias: {

@@ -135,18 +135,18 @@ export function ActorView({ engineResult, onSceneClick }) {
               <div className={styles.actorDayCells}>
                 {days.map(day => {
                   const status = dayStatus[day.id] || 'absent'
-                  const cell = cellStatus[status]
+                  const cell = cellStatus[status] || cellStatus.absent
                   return (
                     <div
                       key={day.id}
                       className={styles.actorCell}
-                      style={{ background: cell.bg + (status === 'absent' ? '' : '33') }}
+                      style={{ background: (cell.bg || 'transparent') + (status === 'absent' ? '' : '33') }}
                       title={cell.title}
                     >
                       {status !== 'absent' && (
                         <div
                           className={styles.actorCellDot}
-                          style={{ background: cell.bg }}
+                          style={{ background: cell.bg || 'transparent' }}
                         />
                       )}
                     </div>

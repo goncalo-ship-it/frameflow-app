@@ -286,10 +286,10 @@ const SUGG_MODULE_MAP = {
 // ── Card de risco ─────────────────────────────────────────────────
 function RiskCard({ risk, navigate }) {
   const [open, setOpen] = useState(false)
-  const rl = RISK_LEVELS[risk.level]
+  const rl = RISK_LEVELS[risk.level] || RISK_LEVELS.low
   const targetModule = RISK_MODULE_MAP[risk.category]
   return (
-    <motion.div className={styles.riskCard} style={{ background: rl.bg, borderColor: rl.color + '33' }}
+    <motion.div className={styles.riskCard} style={{ background: rl.bg || 'transparent', borderColor: (rl.color || '#888') + '33' }}
       initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }}>
       <div className={styles.riskTop} onClick={() => setOpen(!open)}>
         <div className={styles.riskLeft}>
