@@ -92,7 +92,7 @@ export function exterioresManha(day, scenes) {
 export function goldenHourSagrado(day, scenes, goldenHourInfo) {
   if (!scenes || scenes.length === 0) return { valid: true }
 
-  const goldenScenes = scenes.filter(s => s.isGoldenHour)
+  const goldenScenes = scenes.filter(s => s.goldenHour || s.solarDependent || s.isGoldenHour)
   const windowType = day.windowType || 'completo'
 
   // Se há cenas golden hour mas o dia não tem janela golden

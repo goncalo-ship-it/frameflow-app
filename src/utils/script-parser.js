@@ -724,6 +724,7 @@ function finalizeScene(scene) {
     synopsis:      scene.synopsis.trim(),
     goldenHour:    /golden/i.test(scene.timeOfDay || ''),
     solarDependent:scene.intExt === 'EXT' && /golden|amanhecer|crepúsculo/i.test(scene.timeOfDay || ''),
+    isMirror:      /\bespelho\b|\bmirror\b|\bcena.{0,10}inversa\b|\bcontra.?campo\b/i.test(scene.description || '') || /\bespelho\b|\bmirror\b/i.test(scene.action?.join(' ') || ''),
     mirrorScenes:  [],
   }
 }
