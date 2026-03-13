@@ -294,7 +294,7 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
             ...(active ? ACT : INACT),
           }}
         >
-          <Icon style={{ width: 20, height: 20, flexShrink: 0, color: active ? C_ACTIVE : C_INACTIVE }} />
+          <Icon style={{ width: isExpanded ? 20 : 18, height: isExpanded ? 20 : 18, flexShrink: 0, color: active ? C_ACTIVE : C_INACTIVE }} />
 
           {isExpanded && (
             <motion.span
@@ -317,11 +317,13 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
             }} />
           )}
 
-          {/* Chevron collapsed */}
+          {/* Dot indicator collapsed (instead of ChevronRight) */}
           {!isExpanded && item.submenu && (
-            <ChevronRight style={{
-              width: 12, height: 12, position: 'absolute', right: 2, bottom: 2,
-              opacity: 0.5, color: active ? C_ACTIVE : C_INACTIVE,
+            <div style={{
+              position: 'absolute', bottom: 4,
+              left: '50%', transform: 'translateX(-50%)',
+              width: 4, height: 4, borderRadius: 9999,
+              background: active ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.25)',
             }} />
           )}
 
@@ -454,12 +456,12 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
         style={{
           height: '100vh',
           display: 'flex',
-          padding: 12,
+          padding: isExpanded ? 12 : 0,
           background: 'transparent',
           flexShrink: 0,
           boxSizing: 'border-box',
         }}
-        animate={{ width: isExpanded ? 260 : 64 }}
+        animate={{ width: isExpanded ? 260 : 56 }}
         transition={{ type: 'spring', damping: 30, stiffness: 300 }}
       >
         {/* Glass panel */}
@@ -467,19 +469,30 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
           height: '100%', width: '100%',
           display: 'flex', flexDirection: 'column',
           overflow: 'hidden', position: 'relative',
-          borderRadius: isExpanded ? 20 : 9999,
+          borderRadius: isExpanded ? 20 : 0,
           transition: 'border-radius 0.3s cubic-bezier(0.4,0,0.2,1)',
         }}>
-          {/* Layer 1 — Base glass */}
-          <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(20px) saturate(120%)', WebkitBackdropFilter: 'blur(20px) saturate(120%)' }} />
-          {/* Layer 2 — Lensing */}
-          <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: 20, background: 'radial-gradient(ellipse 120% 60% at 50% -10%, rgba(255,255,255,0.10) 0%, transparent 50%)', mixBlendMode: 'overlay' as any }} />
-          {/* Layer 3 — Inner highlight */}
-          <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: 20, boxShadow: 'inset 0 0.5px 0.5px rgba(255,255,255,0.25)' }} />
-          {/* Layer 4 — Border */}
-          <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: 20, border: '0.5px solid rgba(255,255,255,0.18)' }} />
-          {/* Layer 5 — Outer shadow */}
-          <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: 20, boxShadow: '0 2px 20px rgba(0,0,0,0.08), 0 0 0 0.5px rgba(255,255,255,0.08)' }} />
+          {/* Layer 1 — Base glass (lighter when collapsed) */}
+          <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: isExpanded ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.03)', backdropFilter: 'blur(20px) saturate(120%)', WebkitBackdropFilter: 'blur(20px) saturate(120%)' }} />
+          {/* Layer 2 — Lensing (expanded only) */}
+          {isExpanded && (
+            <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: 20, background: 'radial-gradient(ellipse 120% 60% at 50% -10%, rgba(255,255,255,0.10) 0%, transparent 50%)', mixBlendMode: 'overlay' as any }} />
+          )}
+          {/* Layer 3 — Inner highlight (expanded only) */}
+          {isExpanded && (
+            <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: 20, boxShadow: 'inset 0 0.5px 0.5px rgba(255,255,255,0.25)' }} />
+          )}
+          {/* Layer 4 — Border (collapsed: right-only; expanded: full) */}
+          <div style={{
+            position: 'absolute', inset: 0, pointerEvents: 'none',
+            borderRadius: isExpanded ? 20 : 0,
+            border: isExpanded ? '0.5px solid rgba(255,255,255,0.18)' : 'none',
+            borderRight: isExpanded ? undefined : '0.5px solid rgba(255,255,255,0.10)',
+          }} />
+          {/* Layer 5 — Outer shadow (expanded only) */}
+          {isExpanded && (
+            <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: 20, boxShadow: '0 2px 20px rgba(0,0,0,0.08), 0 0 0 0.5px rgba(255,255,255,0.08)' }} />
+          )}
 
           {/* Content above glass layers */}
           <div style={{ position: 'relative', zIndex: 1, height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -509,18 +522,14 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
                       <PanelLeftClose style={{ width: 16, height: 16, marginLeft: 'auto', color: C_TERTIARY }} />
                     </div>
                   ) : (
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
-                      <div style={{ width: 20, height: 2, borderRadius: 9999, background: C_INACTIVE }} />
-                      <div style={{ width: 20, height: 2, borderRadius: 9999, background: C_INACTIVE }} />
-                      <div style={{ width: 20, height: 2, borderRadius: 9999, background: C_INACTIVE }} />
-                    </div>
+                    <FrameFlowLogo size={24} variant="icon" />
                   )}
                 </button>
               )}
             </div>
 
             {/* ── MAIN MENU ── */}
-            <div style={{ flex: 1, overflowY: 'auto', padding: isExpanded ? 12 : '8px 4px' }}>
+            <div style={{ flex: 1, overflowY: 'auto', padding: isExpanded ? 12 : '6px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                 {menuItems.map(renderItem)}
               </div>
@@ -528,7 +537,7 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
 
             {/* ── BOTTOM MENU ── */}
             {!isDeptMode && (
-              <div style={{ flexShrink: 0, borderTop: '0.5px solid rgba(255,255,255,0.08)', padding: isExpanded ? 12 : '8px 4px' }}>
+              <div style={{ flexShrink: 0, borderTop: '0.5px solid rgba(255,255,255,0.08)', padding: isExpanded ? 12 : '6px' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                   {BOTTOM_ITEMS.map((item) => {
                     const active = isActive(item.moduleId)
@@ -549,7 +558,7 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
                           ...(active ? ACT : INACT),
                         }}
                       >
-                        <Icon style={{ width: 20, height: 20, flexShrink: 0, color: active ? C_ACTIVE : C_INACTIVE }} />
+                        <Icon style={{ width: isExpanded ? 20 : 18, height: isExpanded ? 20 : 18, flexShrink: 0, color: active ? C_ACTIVE : C_INACTIVE }} />
                         {isExpanded && (
                           <motion.span
                             initial={{ opacity: 0, x: -10 }}

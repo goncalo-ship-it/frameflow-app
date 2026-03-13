@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   MapPin, 
   Shirt, 
@@ -159,7 +159,7 @@ export function SceneCardWithHover({
 
   return (
     <motion.div
-      style={{ position: 'relative' }}
+      className="relative"
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={springConfigs.gentle}
@@ -315,7 +315,7 @@ export function SceneCardWithHover({
                     background: `${color}20`,
                     border: `0.5px solid ${color}40`,
                   }}
-                  whileHover={{ scale: 1.15, background: `${color}35` }}
+                  whileHover={{ scale: 1.15, backgroundColor: `${color}35` }}
                   whileTap={{ scale: 0.9 }}
                   transition={springConfigs.snappy}
                 >
@@ -424,16 +424,17 @@ export function SceneCardWithHover({
         </div>
       </motion.div>
 
-      {/* HOVER DETAIL PANEL — absolute inside relative wrapper */}
+      {/* HOVER DETAIL PANEL — Rich Overlay via LiquidOverlayCard */}
       <LiquidOverlayCard
         isVisible={isHovered && overlaySections.length > 0}
         accentColor={color}
         title="Detalhes da Cena"
-        subtitle={location}
+        subtitle={`${location}`}
         sections={overlaySections}
         position="auto"
-        maxWidth={400}
-        interactive
+        alignX="auto"
+        maxWidth={520}
+        showArrow
       />
     </motion.div>
   );
