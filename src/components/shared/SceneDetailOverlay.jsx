@@ -328,15 +328,36 @@ export function SceneDetailOverlay({ open, onClose, scene, dayLabel }) {
         </>
       )}
 
-      {/* ── 9. EQUIPAMENTO ── */}
+      {/* ── 9. ARTE & TÉCNICA ── */}
       {techItems.length > 0 && (
         <>
-          <div style={sectionTitle}><Camera size={12} /> EQUIPAMENTO</div>
-          <div style={{ ...glassInner, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <div style={sectionTitle}><Camera size={12} /> ARTE & TÉCNICA</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {techItems.map(item => (
-              <span key={item.id} style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', lineHeight: 1.5 }}>
-                • {item.name}
-              </span>
+              <div key={item.id} style={{ ...glassInner, display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                {item.photos?.[0] && (
+                  <img
+                    src={item.photos[0]}
+                    alt={item.name}
+                    style={{
+                      width: 64, height: 64, borderRadius: 8,
+                      objectFit: 'cover', flexShrink: 0,
+                      border: '0.5px solid rgba(255,255,255,0.1)',
+                    }}
+                  />
+                )}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: '#fff' }}>{item.name}</div>
+                  {item.description && (
+                    <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 2 }}>{item.description}</div>
+                  )}
+                  {item.notes && (
+                    <div style={{ fontSize: 11, color: '#f59e0b', marginTop: 4, fontStyle: 'italic' }}>
+                      ↳ {item.notes}
+                    </div>
+                  )}
+                </div>
+              </div>
             ))}
           </div>
         </>
@@ -345,12 +366,43 @@ export function SceneDetailOverlay({ open, onClose, scene, dayLabel }) {
       {/* ── 10. GUARDA-ROUPA ── */}
       {wardrobeItems.length > 0 && (
         <>
-          <div style={sectionTitle}><Shirt size={12} /> GUARDA-ROUPA</div>
-          <div style={{ ...glassInner, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <div style={sectionTitle}><Shirt size={12} /> GUARDA-ROUPA & CONTINUIDADE</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {wardrobeItems.map(item => (
-              <span key={item.id} style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', lineHeight: 1.5 }}>
-                • {item.name}
-              </span>
+              <div key={item.id} style={{ ...glassInner, display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                {item.photos?.[0] && (
+                  <img
+                    src={item.photos[0]}
+                    alt={item.name}
+                    style={{
+                      width: 64, height: 64, borderRadius: 8,
+                      objectFit: 'cover', flexShrink: 0,
+                      border: '0.5px solid rgba(255,255,255,0.1)',
+                    }}
+                  />
+                )}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: '#fff' }}>{item.name}</div>
+                  {item.description && (
+                    <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 2 }}>{item.description}</div>
+                  )}
+                  {item.notes && (
+                    <div style={{ fontSize: 11, color: '#f59e0b', marginTop: 4, fontStyle: 'italic' }}>
+                      ↳ {item.notes}
+                    </div>
+                  )}
+                  {item.photos?.length > 1 && (
+                    <div style={{ display: 'flex', gap: 4, marginTop: 6, flexWrap: 'wrap' }}>
+                      {item.photos.slice(1).map((p, i) => (
+                        <img key={i} src={p} alt="" style={{
+                          width: 40, height: 40, borderRadius: 6, objectFit: 'cover',
+                          border: '0.5px solid rgba(255,255,255,0.1)',
+                        }} />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
             ))}
           </div>
         </>

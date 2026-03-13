@@ -22,6 +22,7 @@ import { SunlightCalculator } from '../../components/embeds/SunlightCalculator.j
 import { generateFCPXML, generateEDL, generateALE, generateCameraReportText, downloadFile } from './exporters.js'
 import { resolveLocation } from '../../utils/locationResolver.js'
 import { buildCallMessage, buildActorCallMessage, openWhatsApp } from '../../utils/whatsapp.js'
+import { SceneDetailOverlay } from '../../components/shared/SceneDetailOverlay.jsx'
 import styles from './CallSheet.module.css'
 
 // Minutes since midnight → "HH:MM" string
@@ -710,6 +711,7 @@ export function CallSheetModule({ embedded = false, initialDayId = '', onBack: o
   const [walkieChannels, setWalkieChannels] = useState(DEFAULT_WALKIE)
   const [showExport, setShowExport] = useState(false)
   const [expandedScene, setExpandedScene] = useState(null)
+  const [sceneOverlay, setSceneOverlay] = useState(null)
   const [sceneNotes, setSceneNotes] = useState({})
   const [filter, setFilter] = useState('todos')
 
@@ -1594,6 +1596,38 @@ export function CallSheetModule({ embedded = false, initialDayId = '', onBack: o
                           </div>
                         )}
                       </div>
+
+                      {/* Botão overlay completo */}
+                      <button
+                        onClick={e => {
+                          e.stopPropagation()
+                          const ep = parsedScripts?.[scene.episodeId]
+                          const full = ep?.scenes?.find(s => String(s.sceneNumber) === String(scene.sceneNumber))
+                          setSceneOverlay({
+                            ...scene,
+                            sceneKey: scene.id,
+                            name: full?.heading?.full || scene.description,
+                            timeOfDay: scene.dayNight,
+                            pageCount: scene.pages,
+                            action: full?.action,
+                            dialogue: full?.dialogue || [],
+                            shots: full?.shots || full?.storyboard || [],
+                            continuidade: full?.continuidade || null,
+                            directorNotes: full?.notas_realizador || full?.directorNotes,
+                          })
+                        }}
+                        style={{
+                          width: '100%', marginTop: 8,
+                          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                          padding: '10px 16px', borderRadius: 12,
+                          background: 'rgba(139,92,246,0.1)',
+                          border: '0.5px solid rgba(139,92,246,0.25)',
+                          color: '#a78bfa', fontSize: 12, fontWeight: 700,
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <FileText size={13} /> Ver detalhes completos (guião, continuidade, fotos)
+                      </button>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -1741,6 +1775,14 @@ export function CallSheetModule({ embedded = false, initialDayId = '', onBack: o
           />
         )}
       </div>
+
+      {/* Scene Detail Overlay */}
+      <SceneDetailOverlay
+        open={!!sceneOverlay}
+        onClose={() => setSceneOverlay(null)}
+        scene={sceneOverlay}
+        dayLabel={selectedDay}
+      />
     </div>
   )
 }
