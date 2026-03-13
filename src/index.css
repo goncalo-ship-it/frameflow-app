@@ -1,0 +1,695 @@
+/* ================================================================
+   FRAME — Design System
+   Tipografia: Syne (títulos) + DM Sans (corpo)
+   Tema: dark, minimalista tridimensional
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import './styles/design-system.css';
+
+/* ── iOS SAFE AREAS (Capacitor) ──────────────────────────────── */
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+body {
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+}
+
+/* ── TOKENS DE COR ─────────────────────────────────────────────── */
+:root {
+  /* Superfícies — Dark (Figma ref: slate→deep-blue-teal) */
+  --bg-base:        #3C424C;
+  --bg-surface:     rgba(255, 255, 255, 0.07);
+  --bg-elevated:    rgba(255, 255, 255, 0.10);
+  --bg-overlay:     rgba(255, 255, 255, 0.14);
+
+  /* Bordas — ligeiramente mais fortes para o fundo mais claro */
+  --border-subtle:  rgba(255, 255, 255, 0.10);
+  --border-default: rgba(255, 255, 255, 0.15);
+  --border-hover:   rgba(255, 255, 255, 0.22);
+  --border-active:  rgba(255, 255, 255, 0.30);
+
+  /* Texto (Figma FF07 tokens) */
+  --text-primary:   #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted:     rgba(255, 255, 255, 0.5);
+  --text-inverse:   #1E2830;
+
+  /* Acento global (Figma: emerald) */
+  --accent:         #10B981;
+  --accent-light:   #34D399;
+  --accent-glow:    rgba(16, 185, 129, 0.25);
+
+  /* Cor por módulo */
+  --mod-universe:      #7B4FBF;
+  --mod-pre-prod:      #BF6A2E;
+  --mod-production:    #2E6FA0;
+  --mod-script:        #2EA080;
+  --mod-optimization:  #A02E6F;
+  --mod-locations:     #4F7F3F;
+  --mod-team:          #2E5FA0;
+  --mod-continuity:    #A07B2E;
+  --mod-mirror:        #6F2EA0;
+  --mod-budget:        #1E7A6E;
+  --mod-departments:   #A02E6F;
+
+  /* Status */
+  --status-ok:     #2A7A50;
+  --status-warn:   #E8A838;
+  --status-danger: #8B2030;
+  --status-info:   #2E6FA0;
+
+  /* Saúde da produção */
+  --health-green:  #34D399;
+  --health-yellow: #FBBF24;
+  --health-red:    #F87171;
+
+  /* Space aliases */
+  --space-xs: 0.25rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-xl: 2rem;
+
+  /* Numeric space scale (used by module CSS) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Text scale */
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+
+  /* Accent colors */
+  --accent-orange: #fb923c;
+  --accent-gold: #fbbf24;
+  --button-green: #15803d;
+  --button-green-dark: #166534;
+  --button-green-light: #16a34a;
+  --alert-red-dark: #991b1b;
+
+  /* Dim variants */
+  --accent-dim: rgba(16, 185, 129, 0.15);
+  --error-dim: rgba(239, 68, 68, 0.15);
+  --warning-dim: rgba(245, 158, 11, 0.15);
+  --info-dim: rgba(59, 130, 246, 0.15);
+  --purple-dim: rgba(168, 85, 247, 0.15);
+  --health-red-dim: rgba(248, 113, 113, 0.15);
+  --health-yellow-dim: rgba(245, 196, 35, 0.15);
+  --health-green-dim: rgba(46, 160, 128, 0.15);
+
+  /* ── TIPOGRAFIA (FF06: Inter) ───────────────────────────────── */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+
+  --text-xs:   0.70rem;
+  --text-sm:   0.80rem;
+  --text-base: 0.875rem;
+  --text-md:   1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  2rem;
+  --text-4xl:  2.5rem;
+
+  /* ── ESPAÇAMENTO ────────────────────────────────────────────── */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* ── LAYOUT ─────────────────────────────────────────────────── */
+  --sidebar-width:      72px;
+  --sidebar-width-open: 240px;
+  --header-height:      64px;
+
+  /* ── SOMBRAS (calibradas para fundo slate médio) ────────────── */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.20), 0 1px 2px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.22), 0 2px 4px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.06);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.28), 0 4px 8px rgba(0,0,0,0.16), inset 0 1px 0 rgba(255,255,255,0.08);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.35), 0 8px 16px rgba(0,0,0,0.20);
+
+  /* ── RAIOS ──────────────────────────────────────────────────── */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-2xl:  28px;
+  --radius-full: 9999px;
+
+  /* ── TRANSIÇÕES ─────────────────────────────────────────────── */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── GLASSMORPHISM (calibrado para fundo slate ~#3C424C) ──── */
+  --glass-tray: rgba(30, 34, 42, 0.50);
+  --glass-nested: rgba(30, 34, 42, 0.30);
+  --glass-elevated: rgba(30, 34, 42, 0.60);
+  --glass-strong: rgba(30, 34, 42, 0.75);
+  --glass-chart: rgba(0, 0, 0, 0.20);
+  --glass-input: rgba(0, 0, 0, 0.22);
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-bg-elevated: rgba(255, 255, 255, 0.10);
+  --glass-bg-strong: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-border-hover: rgba(255, 255, 255, 0.22);
+  --glass-border-strong: rgba(255, 255, 255, 0.30);
+  --glass-blur: 32px;
+  --glass-saturate: saturate(180%);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1), var(--glass-highlight);
+  --glass-shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.15), var(--glass-highlight);
+
+  /* ── FIGMA FF06 LIQUID GLASS TOKENS ─────────────────────── */
+  --fb-emerald: #10b981;
+  --fb-emerald-light: #34d399;
+  --fb-emerald-dark: #059669;
+  --fb-emerald-glow: rgba(16, 185, 129, 0.4);
+
+  --fb-bg-primary: #2A3040;
+  --fb-bg-secondary: #343A46;
+  --fb-bg-tertiary: #3E4450;
+  --fb-bg-elevated: #4A5060;
+
+  --fb-glass-subtle: rgba(255, 255, 255, 0.05);
+  --fb-glass-default: rgba(255, 255, 255, 0.07);
+  --fb-glass-elevated: rgba(255, 255, 255, 0.10);
+  --fb-glass-strong: rgba(255, 255, 255, 0.15);
+
+  --fb-border-subtle: rgba(255, 255, 255, 0.10);
+  --fb-border-default: rgba(255, 255, 255, 0.15);
+  --fb-border-strong: rgba(255, 255, 255, 0.22);
+  --fb-border-accent: rgba(16, 185, 129, 0.3);
+
+  --fb-shadow-inner: inset 0 0.5px 0.5px rgba(255, 255, 255, 0.1);
+  --fb-shadow-glow-emerald: 0 0 20px rgba(16, 185, 129, 0.2);
+
+  --fb-radius-parent: 20px;
+  --fb-radius-child: 14px;
+  --fb-radius-nested: 12px;
+  --fb-radius-button: 10px;
+  --fb-radius-pill: 9999px;
+}
+
+/* ── LIGHT THEME (Figma ref: lavanda atmosférico) ───────────────── */
+[data-theme="light"] {
+  /* Superfícies — sobre fundo cinza médio, cards são glass branco */
+  --bg-base:        #A4A8B2;
+  --bg-surface:     rgba(255, 255, 255, 0.35);
+  --bg-elevated:    rgba(255, 255, 255, 0.50);
+  --bg-overlay:     rgba(255, 255, 255, 0.65);
+
+  /* Bordas — mix de branco (glass edge) sobre cinza */
+  --border-subtle:  rgba(255, 255, 255, 0.25);
+  --border-default: rgba(255, 255, 255, 0.35);
+  --border-hover:   rgba(255, 255, 255, 0.45);
+  --border-active:  rgba(255, 255, 255, 0.55);
+
+  /* Texto — escuro sobre cinza médio */
+  --text-primary:   #1a1a22;
+  --text-secondary: #3a3a48;
+  --text-muted:     #5a5a68;
+  --text-inverse:   #FFFFFF;
+
+  /* Dim variants light */
+  --accent-dim: rgba(16, 185, 129, 0.15);
+  --error-dim: rgba(239, 68, 68, 0.15);
+  --warning-dim: rgba(245, 158, 11, 0.15);
+  --info-dim: rgba(59, 130, 246, 0.15);
+  --purple-dim: rgba(168, 85, 247, 0.15);
+
+  /* Acento global */
+  --accent:         #0D9668;
+  --accent-light:   #059669;
+  --accent-glow:    rgba(16, 185, 129, 0.18);
+
+  /* Sombras — mais profundas para definir cards sobre fundo cinza */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.08);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.15), 0 8px 16px rgba(0,0,0,0.10);
+
+  /* Glassmorphism light — frosted white sobre cinza */
+  --glass-bg: rgba(255, 255, 255, 0.40);
+  --glass-border: rgba(255, 255, 255, 0.30);
+  --glass-bg-elevated: rgba(255, 255, 255, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.70);
+
+  /* Glass tokens */
+  --glass-tray: rgba(255, 255, 255, 0.30);
+  --glass-nested: rgba(255, 255, 255, 0.20);
+  --glass-elevated: rgba(255, 255, 255, 0.45);
+  --glass-strong: rgba(255, 255, 255, 0.60);
+  --glass-chart: rgba(255, 255, 255, 0.15);
+  --glass-input: rgba(255, 255, 255, 0.25);
+
+  /* fb-tokens light */
+  --fb-bg-primary: #A0A4AE;
+  --fb-bg-secondary: #B0B4BE;
+  --fb-bg-tertiary: #C0C4CE;
+  --fb-bg-elevated: #D0D4DE;
+  --fb-glass-subtle: rgba(255, 255, 255, 0.15);
+  --fb-glass-default: rgba(255, 255, 255, 0.25);
+  --fb-glass-elevated: rgba(255, 255, 255, 0.40);
+  --fb-glass-strong: rgba(255, 255, 255, 0.55);
+  --fb-border-subtle: rgba(255, 255, 255, 0.20);
+  --fb-border-default: rgba(255, 255, 255, 0.30);
+  --fb-border-strong: rgba(255, 255, 255, 0.40);
+
+  color-scheme: light;
+}
+
+/* Light body gradient — lavanda atmosférico (Figma ref) */
+[data-theme="light"] body {
+  background:
+    radial-gradient(ellipse at 5% 5%, rgba(190, 195, 210, 0.4) 0%, transparent 50%),
+    linear-gradient(155deg, #B0B4BE 0%, #A4A8B2 35%, #989CA8 65%, #8C909C 100%);
+}
+
+/* ── SCROLL EDGE DISSOLVE (Apple Liquid Glass) ───────────── */
+.scroll-edge {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0px,
+    black 32px,
+    black calc(100% - 16px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0px,
+    black 32px,
+    black calc(100% - 16px),
+    transparent 100%
+  );
+}
+
+.scroll-edge-top {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0px,
+    black 32px
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0px,
+    black 32px
+  );
+}
+
+/* ── GLASS HOVER GLOW ────────────────────────────────────── */
+[data-glass] {
+  transition: box-shadow 0.3s ease;
+}
+
+[data-glass]:hover {
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.1),
+    inset 0 0.5px 0.5px rgba(255, 255, 255, 0.3),
+    inset 0 0 40px rgba(255, 255, 255, 0.03);
+}
+
+[data-glass]:active {
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.15),
+    inset 0 0.5px 0.5px rgba(255, 255, 255, 0.3),
+    inset 0 0 60px rgba(255, 255, 255, 0.05);
+}
+
+@media (hover: none) {
+  [data-glass]:hover {
+    box-shadow: none;
+  }
+  [data-glass]:active {
+    box-shadow:
+      0 2px 12px rgba(0, 0, 0, 0.15),
+      inset 0 0.5px 0.5px rgba(255, 255, 255, 0.3),
+      inset 0 0 60px rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* ── GLASS NOISE TEXTURE (Apple Liquid Glass grain) ────────────── */
+.glass-noise::before,
+[data-glass]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+}
+
+/* ── RESET ──────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  height: 100%;
+  /* Dark: slate atmosférico → deep blue-teal (Figma ref) */
+  background:
+    radial-gradient(ellipse at 95% 95%, rgba(30, 60, 56, 0.3) 0%, transparent 50%),
+    linear-gradient(155deg, #50565F 0%, #3A4048 35%, #2C3340 65%, #1E2830 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+}
+
+/* ── SCROLLBAR (Emerald — FF05) ────────────────────────────────── */
+* {
+  scrollbar-color: rgba(16, 185, 129, 0.35) rgba(0, 0, 0, 0.10);
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.5), rgba(5, 150, 105, 0.6));
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.7), rgba(5, 150, 105, 0.8));
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ── TIPOGRAFIA ─────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 { font-size: var(--text-3xl); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl); }
+h4 { font-size: var(--text-lg); }
+
+p { color: var(--text-secondary); line-height: 1.7; }
+
+a { color: var(--accent-light); text-decoration: none; }
+a:hover { color: var(--text-primary); }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+/* ── UTILITÁRIOS ────────────────────────────────────────────────── */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── GLASS TINTING ───────────────────────────────────────── */
+[data-glass-tint="emerald"] {
+  background: rgba(16, 185, 129, 0.08) !important;
+  border-color: rgba(16, 185, 129, 0.2) !important;
+}
+[data-glass-tint="emerald"]:hover {
+  background: rgba(16, 185, 129, 0.12) !important;
+}
+
+[data-glass-tint="blue"] {
+  background: rgba(59, 130, 246, 0.08) !important;
+  border-color: rgba(59, 130, 246, 0.2) !important;
+}
+[data-glass-tint="blue"]:hover {
+  background: rgba(59, 130, 246, 0.12) !important;
+}
+
+[data-glass-tint="red"] {
+  background: rgba(239, 68, 68, 0.08) !important;
+  border-color: rgba(239, 68, 68, 0.2) !important;
+}
+[data-glass-tint="red"]:hover {
+  background: rgba(239, 68, 68, 0.12) !important;
+}
+
+[data-glass-tint="purple"] {
+  background: rgba(168, 85, 247, 0.08) !important;
+  border-color: rgba(168, 85, 247, 0.2) !important;
+}
+[data-glass-tint="purple"]:hover {
+  background: rgba(168, 85, 247, 0.12) !important;
+}
+
+[data-glass-tint="amber"] {
+  background: rgba(245, 158, 11, 0.08) !important;
+  border-color: rgba(245, 158, 11, 0.2) !important;
+}
+[data-glass-tint="amber"]:hover {
+  background: rgba(245, 158, 11, 0.12) !important;
+}
+
+/* ── GLASS CONTENT CONTRAST ──────────────────────────────── */
+[data-theme="dark"] [data-glass] {
+  color: rgba(255, 255, 255, 0.9);
+}
+[data-theme="light"] [data-glass] {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+/* Icons/symbols on glass inherit and adjust */
+[data-glass] svg {
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+[data-glass]:hover svg {
+  opacity: 1;
+}
+
+/* ── RESPONSIVE: VIEWPORT META ──────────────────────────────────── */
+/* Add <meta name="viewport" content="width=device-width, initial-scale=1"> in index.html */
+
+/* ── RESPONSIVE: TABLET (≤768px) ────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 0px;
+    --sidebar-width-open: 0px;
+
+    /* Glass: reduce blur for mobile performance */
+    --glass-blur: 10px;
+
+    /* Shadows: lighter on mobile */
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md: 0 2px 8px rgba(0,0,0,0.3), inset 0 0.5px 0 rgba(255,255,255,0.04);
+    --shadow-lg: 0 4px 16px rgba(0,0,0,0.4), inset 0 0.5px 0 rgba(255,255,255,0.06);
+
+    /* Radius: slightly smaller on mobile */
+    --radius-xl: 16px;
+    --radius-lg: 12px;
+
+    /* Typography: smaller on mobile */
+    --text-3xl: 1.75rem;
+    --text-2xl: 1.25rem;
+    --text-xl: 1.125rem;
+  }
+
+  body {
+    overflow: auto;
+  }
+
+  #root {
+    flex-direction: column;
+  }
+
+  /* App layout: bottom bar padding */
+  .app-layout {
+    padding-bottom: 60px !important;
+    flex-direction: column !important;
+  }
+
+  /* Global touch targets */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Global drawer override */
+  [class*="drawer"][style*="position: fixed"],
+  [class*="Drawer"][style*="position: fixed"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Tables scroll horizontally */
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ── RESPONSIVE: PHONE (≤480px) ─────────────────────────────────── */
+@media (max-width: 480px) {
+  :root {
+    --space-6: 1rem;
+    --space-8: 1.25rem;
+    --space-10: 1.5rem;
+    --space-12: 2rem;
+    --space-16: 2.5rem;
+  }
+
+  h1 { font-size: var(--text-2xl); }
+  h2 { font-size: var(--text-xl); }
+  h3 { font-size: var(--text-lg); }
+}
+
+/* ── SMOOTH SCROLL + OVERSCROLL (Apple-feel) ──────────────── */
+* {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── GLOBAL PRESS FEEDBACK (Liquid Glass interaction) ─────── */
+button:not(:disabled):active,
+[role="button"]:not(:disabled):active,
+a:active {
+  transform: scale(0.97);
+  transition: transform 80ms ease-out;
+}
+
+/* Cards — glass press effect */
+[class*="Card"]:active,
+[class*="card"]:active,
+[class*="Item"]:active,
+[class*="item"]:active,
+[class*="Chip"]:active,
+[class*="chip"]:active,
+[class*="Pill"]:active,
+[class*="pill"]:active {
+  transform: scale(0.98);
+  transition: transform 80ms ease-out;
+}
+
+/* Bigger elements scale less */
+[class*="Section"]:active,
+[class*="section"]:active,
+[class*="heroCard"]:active {
+  transform: scale(0.99);
+  transition: transform 80ms ease-out;
+}
+
+/* ── GLASS CARD UTILITY ──────────────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 0.5px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--shadow-lg);
+}
+.glass-card:active {
+  transform: scale(0.98);
+  transition: transform 80ms ease-out;
+}
+
+/* ── GLASS ELEVATED (stronger) ───────────────────────────── */
+.glass-elevated {
+  background: var(--glass-bg-elevated);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  border: 0.5px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── GLASS BUTTON (pill-shaped interactive) ──────────────── */
+.glass-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 0.5px solid var(--glass-border);
+  border-radius: 999px;
+  color: var(--text-primary);
+  font-family: 'Inter', var(--font-body, system-ui);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.glass-btn:hover {
+  background: var(--glass-bg-elevated);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-1px);
+}
+.glass-btn:active {
+  transform: scale(0.96) !important;
+}
+
+/* ── SPIN KEYFRAME (LoadingButton) ─────────────────────────── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ff-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* ── TOUCH TARGETS (Mobile-first) ────────────────────────── */
+@media (max-width: 768px) {
+  button, [role="button"], a, input[type="checkbox"], input[type="radio"], select {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Reduce glass noise opacity on mobile for performance */
+  [data-glass]::before,
+  .glass-noise::before {
+    opacity: 0.02;
+  }
+}

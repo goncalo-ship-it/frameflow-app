@@ -1,0 +1,421 @@
+/* ── Dailies View ─────────────────────────────────────────────────── */
+
+/* Container */
+.container { display: flex; flex-direction: column; height: 100%; }
+
+/* Empty state */
+.emptyState {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; padding: 60px 20px; text-align: center;
+}
+.emptyTitle {
+  font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl);
+  color: var(--text-primary); margin: 0;
+}
+.emptySub { font-size: var(--text-sm); color: var(--text-muted); margin: 0; max-width: 400px; line-height: 1.5; }
+.emptyHint { font-size: var(--text-xs); color: var(--text-muted); opacity: 0.7; max-width: 400px; line-height: 1.5; margin-top: 8px; }
+.errorText { font-size: var(--text-sm); color: var(--health-red); margin-top: 8px; }
+.errorBanner {
+  padding: 8px 16px; margin-bottom: 8px;
+  background: color-mix(in srgb, var(--health-red) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--health-red) 30%, transparent);
+  border-radius: var(--radius-md); font-size: var(--text-xs); color: var(--health-red);
+}
+
+.importBtn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 24px; margin-top: 12px;
+  background: var(--accent); border: none; border-radius: var(--radius-md);
+  color: #fff; font-family: var(--font-display); font-weight: 600; font-size: var(--text-sm);
+  cursor: pointer; box-shadow: 0 0 12px var(--accent-glow);
+  transition: background 0.15s, transform 0.1s;
+}
+.importBtn:hover { background: var(--accent-light); transform: translateY(-1px); }
+.importBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Toolbar ──────────────────────────────────────────────────────── */
+.toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 0 12px; margin-bottom: 8px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.15); flex-shrink: 0;
+}
+.toolbarLeft { display: flex; align-items: center; gap: 12px; }
+.toolbarRight { display: flex; align-items: center; gap: 6px; }
+.toolbarTitle {
+  font-family: var(--font-display); font-weight: 700; font-size: var(--text-md);
+  margin: 0; display: flex; align-items: baseline; gap: 8px;
+}
+.toolbarCount { font-size: var(--text-xs); font-weight: 400; color: var(--text-muted); }
+
+.selectedBadge {
+  display: flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  border: 1px solid var(--accent); color: var(--accent-light);
+  font-size: 10px; font-weight: 600;
+}
+
+.filterSelect {
+  padding: 6px 10px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md); color: #ffffff;
+  font-size: var(--text-xs); outline: none; cursor: pointer;
+}
+.filterSelect:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1); }
+
+.toolbarBtn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 5px 10px; background: var(--bg-elevated); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm); color: var(--text-secondary);
+  font-size: var(--text-xs); font-weight: 600; cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.toolbarBtn:hover { border-color: var(--accent); color: var(--accent-light); }
+.toolbarBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+.toolbarBtnActive { border-color: var(--accent); color: var(--accent-light); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+
+.exportGroup { display: flex; gap: 2px; }
+
+/* ── Camera grid ──────────────────────────────────────────────────── */
+.cameraGrid {
+  display: grid; gap: 1px; flex: 1; overflow: hidden;
+  background: var(--border-subtle);
+}
+
+.cameraCol {
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--bg-base);
+}
+
+.cameraHeader {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+.cameraName {
+  font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm);
+  color: var(--text-primary);
+}
+.cameraMeta { font-size: var(--text-xs); color: var(--text-muted); }
+
+.clipList {
+  flex: 1; overflow-y: auto; padding: 8px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+
+/* ── Clip card ────────────────────────────────────────────────────── */
+.clipCard {
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-md); overflow: hidden;
+  transition: border-color 0.15s;
+  position: relative;
+}
+.clipCard:hover { border-color: var(--border-default); }
+.clipCardSelected { border-color: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+.clipCardCompare { border-color: var(--health-yellow); box-shadow: 0 0 6px color-mix(in srgb, var(--health-yellow) 30%, transparent); }
+
+/* Thumbnail */
+.clipThumbWrap {
+  position: relative; cursor: pointer;
+  aspect-ratio: 16/9; overflow: hidden;
+  background: var(--bg-elevated);
+}
+.clipThumb { width: 100%; height: 100%; object-fit: cover; display: block; }
+.clipThumbPlaceholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted);
+}
+
+.clipDurBadge {
+  position: absolute; bottom: 4px; right: 4px;
+  padding: 1px 6px; background: rgba(0,0,0,0.75);
+  border-radius: 3px; font-size: 10px; font-weight: 600;
+  color: #fff; font-variant-numeric: tabular-nums;
+}
+.clipRatingBadge {
+  position: absolute; top: 4px; left: 4px;
+  padding: 1px 6px; border-radius: 3px;
+  font-size: 9px; font-weight: 700; color: #fff;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.clipStarBadge {
+  position: absolute; top: 4px; right: 4px;
+  color: var(--accent-light);
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+}
+
+/* Info */
+.clipInfo { padding: 6px 8px; }
+.clipFilename {
+  font-size: var(--text-xs); font-weight: 600; color: var(--text-primary);
+  display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.clipMeta { font-size: 10px; color: var(--text-muted); display: block; margin-top: 1px; }
+.clipLinkedScene {
+  font-size: 10px; color: var(--accent-light);
+  display: flex; align-items: center; gap: 3px; margin-top: 2px;
+}
+
+/* Compare checkbox */
+.compareCheck {
+  position: absolute; top: 4px; left: 4px;
+  width: 20px; height: 20px; border-radius: 4px;
+  background: rgba(0,0,0,0.6); border: 0.5px solid rgba(255,255,255,0.4);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: #fff; z-index: 2;
+}
+.compareCheckActive {
+  background: var(--health-yellow); border-color: var(--health-yellow);
+}
+.compareCheckEmpty { width: 8px; height: 8px; }
+
+/* ── Expanded clip details ────────────────────────────────────────── */
+.clipExpanded {
+  padding: 8px; border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+  display: flex; flex-direction: column; gap: 8px;
+  overflow: hidden;
+}
+
+.ratingRow { display: flex; gap: 4px; }
+.ratingBtn {
+  flex: 1; padding: 4px 6px;
+  background: var(--bg-elevated); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm); color: var(--text-muted);
+  font-size: 10px; font-weight: 700; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 3px;
+  transition: border-color 0.15s, color 0.15s;
+}
+.ratingBtn:hover { border-color: var(--text-secondary); color: var(--text-secondary); }
+.ratingBtnActive { background: color-mix(in srgb, currentColor 10%, transparent); }
+
+/* Scene link */
+.sceneLinkRow {
+  display: flex; align-items: center; gap: 6px;
+  color: var(--text-muted);
+}
+.sceneSelect {
+  flex: 1; padding: 4px 6px;
+  background: var(--bg-elevated); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm); color: var(--text-secondary);
+  font-size: 10px; outline: none;
+}
+.sceneSelect:focus { border-color: var(--accent); }
+.unlinkBtn {
+  background: none; border: none; color: var(--text-muted);
+  cursor: pointer; padding: 2px; display: flex;
+}
+.unlinkBtn:hover { color: var(--health-red); }
+
+/* Notes */
+.notesRow {
+  display: flex; align-items: center; gap: 6px;
+  color: var(--text-muted);
+}
+.notesInput {
+  flex: 1; padding: 4px 6px;
+  background: var(--bg-elevated); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm); color: var(--text-primary);
+  font-size: var(--text-xs); outline: none;
+  font-family: var(--font-body);
+}
+.notesInput:focus { border-color: var(--accent); }
+.notesInput::placeholder { color: var(--text-muted); }
+
+/* Tech info */
+.techInfo {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  font-size: 9px; color: var(--text-muted); opacity: 0.7;
+}
+
+/* ── Compare view ─────────────────────────────────────────────────── */
+.compareContainer { display: flex; flex-direction: column; height: 100%; }
+.compareHeader {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 12px; border-bottom: 0.5px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 12px;
+}
+.compareTitle {
+  font-family: var(--font-display); font-weight: 700; font-size: var(--text-md);
+  margin: 0;
+}
+.compareExit {
+  display: flex; align-items: center; gap: 4px;
+  padding: 4px 10px; background: var(--bg-elevated); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm); color: var(--text-secondary);
+  font-size: var(--text-xs); font-weight: 600; cursor: pointer;
+}
+.compareExit:hover { border-color: var(--accent); color: var(--text-primary); }
+
+.compareGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex: 1; }
+.comparePane {
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.compareCamLabel {
+  padding: 6px 12px; background: var(--bg-elevated);
+  font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.15);
+}
+.compareThumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+.compareInfo { padding: 8px 12px; }
+.compareFilename { font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); display: block; }
+.compareDur { font-size: var(--text-xs); color: var(--text-muted); }
+
+/* Compare footer */
+.compareFooter {
+  padding: 10px 16px; margin-top: 8px;
+  background: color-mix(in srgb, var(--health-yellow) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--health-yellow) 30%, transparent);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm); color: var(--health-yellow); text-align: center;
+}
+
+/* ── Clip cut point badge ─────────────────────────────────────────── */
+.clipCutBadge {
+  position: absolute; bottom: 4px; left: 4px;
+  padding: 1px 5px; background: rgba(0,0,0,0.75);
+  border-radius: 3px; color: var(--health-green);
+  display: flex; align-items: center;
+}
+.clipCutInfo {
+  font-size: 9px; color: var(--health-green);
+  display: flex; align-items: center; gap: 3px; margin-top: 2px;
+}
+
+/* Cut points detail (expanded) */
+.cutPointsDetail {
+  background: color-mix(in srgb, var(--health-green) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--health-green) 20%, transparent);
+  border-radius: var(--radius-sm); padding: 6px 8px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.cutPointsRow { display: flex; align-items: center; justify-content: space-between; font-size: 10px; }
+.cutPointLabel { color: var(--text-muted); font-weight: 600; }
+.cutPointInput {
+  width: 60px; padding: 2px 4px;
+  background: var(--bg-elevated); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm); color: var(--health-green);
+  font-size: 10px; text-align: right; outline: none;
+  font-variant-numeric: tabular-nums;
+}
+.cutPointInput:focus { border-color: var(--health-green); }
+.cutPointValue { color: var(--health-green); font-variant-numeric: tabular-nums; }
+.cutPointBadge {
+  display: flex; align-items: center; gap: 3px;
+  font-size: 10px; color: var(--health-green); margin-top: 4px;
+}
+
+/* ── Audio panel ─────────────────────────────────────────────────── */
+.audioPanel {
+  margin-bottom: 8px; overflow: hidden;
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-md); padding: 10px 12px;
+}
+.audioPanelHeader {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 8px;
+}
+.audioPanelTitle {
+  font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm);
+  margin: 0; display: flex; align-items: center; gap: 6px; color: var(--text-primary);
+}
+.audioEmptyHint {
+  font-size: var(--text-xs); color: var(--text-muted); line-height: 1.5;
+  max-width: 500px; margin: 0;
+}
+.audioTrackList { display: flex; flex-direction: column; gap: 6px; }
+.audioTrackCard {
+  padding: 8px 10px; background: var(--bg-elevated);
+  border: 0.5px solid rgba(255, 255, 255, 0.15); border-radius: var(--radius-sm);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.audioTrackInfo { display: flex; flex-direction: column; gap: 2px; }
+.audioTrackName {
+  font-size: var(--text-xs); font-weight: 600; color: var(--text-primary);
+  display: flex; align-items: center; gap: 4px;
+}
+.audioTrackMeta { font-size: 10px; color: var(--text-muted); }
+.audioClap { display: flex; flex-direction: column; gap: 3px; }
+.audioClapFound {
+  font-size: var(--text-xs); color: var(--health-green); font-weight: 600;
+  display: flex; align-items: center; gap: 4px;
+}
+.audioClapConf { font-weight: 400; font-size: 10px; opacity: 0.8; }
+.audioCutPoints {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  font-size: 10px; color: var(--text-secondary);
+  padding-left: 16px;
+}
+.audioCutPoints span { display: flex; align-items: center; gap: 3px; }
+.audioLinked {
+  font-size: 10px; color: var(--accent-light);
+  display: flex; align-items: center; gap: 3px; padding-left: 16px;
+}
+.audioClapNone { font-size: var(--text-xs); color: var(--text-muted); font-style: italic; }
+.audioScene {
+  font-size: 9px; font-weight: 700; color: var(--accent-light);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  padding: 0 5px; border-radius: 3px; margin-left: 4px;
+}
+.audioCircled {
+  font-size: 8px; font-weight: 700; color: var(--health-green);
+  background: color-mix(in srgb, var(--health-green) 15%, transparent);
+  padding: 0 4px; border-radius: 3px; margin-left: 3px;
+}
+
+/* ── RTMD Metadata ────────────────────────────────────────────────── */
+.rtmdBadge {
+  position: absolute; bottom: 4px; left: 30px;
+  padding: 1px 5px; background: rgba(0,0,0,0.75);
+  border-radius: 3px; color: var(--accent-light);
+  font-size: 8px; font-weight: 700; letter-spacing: 0.03em;
+  display: flex; align-items: center; gap: 3px;
+}
+.rtmdPanel {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  border-radius: var(--radius-sm); padding: 6px 8px;
+  display: flex; flex-wrap: wrap; gap: 4px;
+}
+.rtmdTag {
+  display: flex; align-items: center; gap: 3px;
+  padding: 2px 6px; background: rgba(0,0,0,0.25);
+  border-radius: 3px; font-size: 9px; font-variant-numeric: tabular-nums;
+}
+.rtmdTagLabel { color: var(--text-muted); font-weight: 600; }
+.rtmdTagValue { color: var(--accent-light); font-weight: 500; }
+.rtmdImportBtn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 4px 8px; background: var(--bg-elevated);
+  border: 1px dashed color-mix(in srgb, var(--accent) 40%, transparent);
+  border-radius: var(--radius-sm);
+  color: var(--accent-light); font-size: 10px; cursor: pointer; font-weight: 600;
+}
+.rtmdImportBtn:hover { border-style: solid; background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.rtmdGps {
+  font-size: 9px; color: var(--text-muted); display: flex; align-items: center; gap: 3px;
+  padding: 2px 6px; background: rgba(0,0,0,0.2); border-radius: 3px;
+  cursor: pointer;
+}
+.rtmdGps:hover { color: var(--accent-light); }
+
+/* Scrollbar */
+.clipList::-webkit-scrollbar { width: 4px; }
+.clipList::-webkit-scrollbar-track { background: transparent; }
+.clipList::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 2px; }
+
+/* ═══ RESPONSIVE ═══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .emptyState { padding: 30px 16px; }
+  .container { overflow-y: auto; }
+}

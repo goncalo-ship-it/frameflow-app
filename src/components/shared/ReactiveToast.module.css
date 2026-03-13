@@ -1,0 +1,31 @@
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(30, 34, 42, 0.70);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 0.5px solid rgba(255, 255, 255, 0.18);
+  border-left: 3px solid #22c55e;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  max-width: 360px;
+}
+
+.check {
+  color: #22c55e;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.text {
+  color: #e0e0e0;
+  font-size: 13px;
+  line-height: 1.3;
+}

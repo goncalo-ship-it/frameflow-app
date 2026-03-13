@@ -1,0 +1,243 @@
+/* ── GPS Navigation Module ── */
+.root { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+
+.header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-4) var(--space-8);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.15); flex-shrink: 0;
+  gap: var(--space-4); flex-wrap: wrap;
+}
+.title { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 800; }
+.sub   { font-size: var(--text-xs); color: var(--text-muted); margin-top: 1px; }
+
+/* ── Privacy Banner ── */
+.privacyBanner {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-3) var(--space-8);
+  background: rgba(46, 111, 160, 0.1); border-bottom: 0.5px solid rgba(255, 255, 255, 0.15);
+  font-size: var(--text-xs); color: var(--accent-light); flex-shrink: 0;
+}
+.privacyIcon { flex-shrink: 0; }
+
+/* ── Content ── */
+.content { flex: 1; overflow-y: auto; padding: var(--space-6) var(--space-8); }
+
+/* ── Weather Widget ── */
+.weatherWidget {
+  display: flex; align-items: center; gap: var(--space-2);
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-full); padding: 6px 14px;
+  font-size: var(--text-sm); color: var(--text-secondary);
+}
+.weatherTemp { font-weight: 700; color: var(--text-primary); }
+.weatherDetail { font-size: var(--text-xs); color: var(--text-muted); }
+.weatherLoc { font-size: var(--text-xs); color: var(--text-muted); max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ── Emergency Card (Large, prominent) ── */
+.emergencyCardLarge {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.15), rgba(220, 38, 38, 0.05));
+  border: 2px solid rgba(248, 113, 113, 0.5);
+  border-radius: var(--radius-lg); padding: var(--space-5) var(--space-6);
+  margin-bottom: var(--space-6); display: flex; align-items: center;
+  gap: var(--space-4); flex-wrap: wrap;
+}
+.emergencyIconCircle {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(220, 38, 38, 0.2); border: 2px solid #dc2626;
+  display: flex; align-items: center; justify-content: center;
+  color: #F87171; flex-shrink: 0;
+}
+.emergencyInfo { display: flex; flex-direction: column; gap: var(--space-1); flex: 1; }
+.emergencyTitleLarge {
+  font-family: var(--font-display); font-size: var(--text-lg);
+  font-weight: 800; color: #F87171;
+}
+.emergencyHint { font-size: var(--text-sm); color: var(--text-secondary); }
+.emergencyBtnLarge {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 32px; border-radius: var(--radius-lg);
+  border: none; background: #dc2626; color: #fff;
+  font-size: var(--text-xl); font-weight: 800; cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none; letter-spacing: 0.02em;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+.emergencyBtnLarge:hover { background: #ef4444; box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4); transform: translateY(-1px); }
+
+/* Legacy emergency card (keep for compat) */
+.emergencyCard {
+  background: linear-gradient(135deg, rgba(139, 32, 48, 0.2), rgba(139, 32, 48, 0.05));
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+  margin-bottom: var(--space-6); display: flex; align-items: center;
+  justify-content: space-between; gap: var(--space-4); flex-wrap: wrap;
+}
+.emergencyTitle {
+  font-family: var(--font-display); font-size: var(--text-md);
+  font-weight: 700; color: #F87171;
+}
+.emergencyBtn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 24px; border-radius: var(--radius-md);
+  border: none; background: #dc2626; color: #fff;
+  font-size: var(--text-md); font-weight: 700; cursor: pointer;
+  transition: background var(--transition-fast);
+  text-decoration: none;
+}
+.emergencyBtn:hover { background: #ef4444; }
+
+/* ── Route Section ── */
+.routeSection {
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+.routeOpenBtn {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: var(--text-xs); color: var(--accent-light);
+  text-decoration: none; font-weight: 600;
+  padding: 4px 10px; border-radius: var(--radius-full);
+  background: var(--accent-dim); border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+.routeOpenBtn:hover { border-color: var(--accent); }
+.routeTimeline { display: flex; flex-direction: column; }
+.routeStop {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: 8px 4px; border-radius: var(--radius-md);
+  transition: background var(--transition-fast);
+}
+.routeStop:hover { background: var(--bg-elevated); }
+.routeStopNumber {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--accent-dim); border: 1px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: var(--accent-light); flex-shrink: 0;
+}
+.routeStopInfo { flex: 1; min-width: 0; }
+.routeStopName { font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); display: block; }
+.routeStopAddr { font-size: 10px; color: var(--text-muted); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.routeStopLink {
+  font-size: 10px; color: var(--accent-light); text-decoration: none;
+  font-weight: 600; padding: 2px 8px; border-radius: var(--radius-full);
+  background: var(--accent-dim); flex-shrink: 0;
+}
+.routeStopLink:hover { text-decoration: underline; }
+.routeConnector {
+  display: flex; align-items: center; gap: var(--space-2);
+  padding: 2px 0 2px 11px;
+}
+.routeConnectorLine {
+  width: 2px; height: 16px; background: var(--border-subtle); flex-shrink: 0;
+}
+.routeConnectorLabel {
+  font-size: 10px; color: var(--text-muted); font-style: italic;
+}
+
+/* ── Section ── */
+.section {
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+.sectionTitle {
+  font-family: var(--font-display); font-size: var(--text-md);
+  font-weight: 700; margin-bottom: var(--space-4);
+  display: flex; align-items: center; gap: var(--space-2);
+}
+
+/* ── Location Cards ── */
+.locationList { display: flex; flex-direction: column; gap: var(--space-3); }
+.locationCard {
+  background: var(--bg-elevated); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md); padding: var(--space-4);
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: var(--space-4); flex-wrap: wrap;
+}
+.locationInfo { flex: 1; min-width: 200px; }
+.locationCardSelected { outline: 2px solid var(--accent); outline-offset: -1px; }
+.locationName { font-size: var(--text-base); font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+.locationAddress { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-2); }
+.locationMeta { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.locationTag {
+  font-size: var(--text-xs); color: var(--text-muted);
+  background: var(--bg-overlay); padding: 2px 8px; border-radius: var(--radius-full);
+}
+
+.mapsBtn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: var(--radius-md);
+  border: 1px solid var(--mod-locations); background: rgba(79, 127, 63, 0.1);
+  color: var(--mod-locations); font-size: var(--text-sm); font-weight: 600;
+  cursor: pointer; transition: all var(--transition-fast); white-space: nowrap;
+  text-decoration: none;
+}
+.mapsBtn:hover { background: rgba(79, 127, 63, 0.2); color: var(--text-primary); }
+
+/* ── POI Grid ── */
+.poiGrid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-3);
+}
+.poiCard {
+  background: var(--bg-elevated); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md); padding: var(--space-3);
+  display: flex; align-items: center; gap: var(--space-3);
+}
+.poiIcon {
+  width: 36px; height: 36px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg-overlay); flex-shrink: 0;
+}
+.poiInfo { flex: 1; min-width: 0; }
+.poiName { font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.poiType { font-size: var(--text-xs); color: var(--text-muted); }
+.poiCardHospital { border-color: rgba(248, 113, 113, 0.3); }
+.poiNav {
+  display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: var(--radius-full);
+  background: var(--bg-overlay); color: var(--accent-light);
+  flex-shrink: 0; text-decoration: none;
+  transition: background var(--transition-fast);
+}
+.poiNav:hover { background: var(--accent-dim); }
+
+/* ── Catering Card ── */
+.cateringCard {
+  background: var(--bg-elevated); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md); padding: var(--space-4);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-4); flex-wrap: wrap;
+}
+.cateringInfo { display: flex; flex-direction: column; gap: 2px; }
+.cateringName { font-size: var(--text-base); font-weight: 600; color: var(--text-primary); }
+.cateringTime { font-size: var(--text-sm); color: var(--text-secondary); }
+
+/* ── Empty ── */
+.empty {
+  text-align: center; padding: var(--space-16) var(--space-8);
+  color: var(--text-muted);
+}
+.emptyIcon { margin-bottom: var(--space-4); opacity: 0.4; }
+.emptyText { font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-2); color: var(--text-secondary); }
+.emptyHint { font-size: var(--text-sm); }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .header { padding: var(--space-3) var(--space-4); flex-direction: column; align-items: flex-start; }
+  .weatherWidget { align-self: flex-start; }
+  .privacyBanner { padding: var(--space-2) var(--space-4); }
+  .content { padding: var(--space-4); }
+  .poiGrid { grid-template-columns: 1fr; }
+  .locationCard { flex-direction: column; }
+  .emergencyCardLarge { flex-direction: column; text-align: center; }
+  .emergencyIconCircle { margin: 0 auto; }
+  .emergencyInfo { align-items: center; }
+  .emergencyBtnLarge { width: 100%; justify-content: center; }
+}

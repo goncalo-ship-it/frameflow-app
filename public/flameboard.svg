@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Flame shape -->
+  <path d="M24 4C24 4 14 16 14 26C14 31.5 18.5 36 24 36C29.5 36 34 31.5 34 26C34 16 24 4 24 4Z" fill="url(#flame)" />
+  <path d="M24 18C24 18 20 24 20 28C20 30.2 21.8 32 24 32C26.2 32 28 30.2 28 28C28 24 24 18 24 18Z" fill="url(#inner)" />
+  <!-- FB text -->
+  <text x="24" y="44" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="9" fill="#2E6FA0" letter-spacing="0.5">FB</text>
+  <defs>
+    <linearGradient id="flame" x1="24" y1="4" x2="24" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF8C42"/>
+      <stop offset="0.5" stop-color="#E85D26"/>
+      <stop offset="1" stop-color="#2E6FA0"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="24" y1="18" x2="24" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFD166"/>
+      <stop offset="1" stop-color="#FF8C42"/>
+    </linearGradient>
+  </defs>
+</svg>

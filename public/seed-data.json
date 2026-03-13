@@ -1,0 +1,2600 @@
+{
+  "parsedScripts": {
+    "EP01": {
+      "episode": "EP01",
+      "scenes": [
+        {
+          "id": "SC001",
+          "sceneNumber": "SC001",
+          "episode": "EP01",
+          "intExt": "INT",
+          "location": "COZINHA JOÃO",
+          "timeOfDay": "MANHÃ",
+          "characters": [
+            "JOÃO",
+            "MÃE"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "Int. MANHÃ. COZINHA JOÃO.",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC002",
+          "sceneNumber": "SC002",
+          "episode": "EP01",
+          "intExt": "INT",
+          "location": "Hall prédio",
+          "timeOfDay": "DIA",
+          "characters": [
+            "MÃE",
+            "JOÃO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "Int. Hall prédio",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC003",
+          "sceneNumber": "SC003",
+          "episode": "EP01",
+          "intExt": "EXT",
+          "location": "Rua.",
+          "timeOfDay": "MANHÃ",
+          "characters": [
+            "JOÃO",
+            "LU"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "Ext. Rua. MANHÃ.",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC004",
+          "sceneNumber": "SC004",
+          "episode": "EP01",
+          "intExt": "EXT",
+          "location": "PORTÃO ESCOLA.",
+          "timeOfDay": "MANHÃ",
+          "characters": [
+            "LU",
+            "JOÃO",
+            "SR ANTÓNIO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "EXT. PORTÃO ESCOLA. MANHÃ",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC005",
+          "sceneNumber": "SC005",
+          "episode": "EP01",
+          "intExt": "EXT",
+          "location": "PÁTIO DA ESCOLA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "JÚLIO",
+            "JOÃO",
+            "LU"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "EXT. PÁTIO DA ESCOLA.",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC006",
+          "sceneNumber": "SC006",
+          "episode": "EP01",
+          "intExt": "INT",
+          "location": "SALA AULA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "LU",
+            "JOÃO",
+            "PROF"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. SALA AULA",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC007",
+          "sceneNumber": "SC007",
+          "episode": "EP01",
+          "intExt": "EXT",
+          "location": "ESCOLA. ALMOÇO",
+          "timeOfDay": "DIA",
+          "characters": [
+            "JOÃO",
+            "FÁBIO",
+            "LU"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "EXT. ESCOLA. ALMOÇO",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC008",
+          "sceneNumber": "SC008",
+          "episode": "EP01",
+          "intExt": "INT",
+          "location": "BIBLIOTECA ESCOLA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "LU",
+            "JOÃO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. BIBLIOTECA ESCOLA",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC009",
+          "sceneNumber": "SC009",
+          "episode": "EP01",
+          "intExt": "INT",
+          "location": "SALA DE AULA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "PROF",
+            "JOÃO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. SALA DE AULA",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC010",
+          "sceneNumber": "SC010",
+          "episode": "EP01",
+          "intExt": "EXT",
+          "location": "PÁTIO ESCOLA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "ALUNO",
+            "JOÃO",
+            "JÚLIO",
+            "LU"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "Ext.PÁTIO ESCOLA",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC011",
+          "sceneNumber": "SC011",
+          "episode": "EP01",
+          "intExt": "EXT",
+          "location": "PÁTIO ESCOLA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "LU",
+            "JOÃO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "EXT. PÁTIO ESCOLA",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC012",
+          "sceneNumber": "SC012",
+          "episode": "EP01",
+          "intExt": "INT",
+          "location": "MERCEARIA.",
+          "timeOfDay": "TARDE",
+          "characters": [
+            "JOÃO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. MERCEARIA. TARDE",
+          "type": "solo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC013",
+          "sceneNumber": "SC013",
+          "episode": "EP01",
+          "intExt": "EXT",
+          "location": "RUA.",
+          "timeOfDay": "TARDE",
+          "characters": [],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "EXT. RUA. TARDE.",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC014",
+          "sceneNumber": "SC014",
+          "episode": "EP01",
+          "intExt": "EXT",
+          "location": "PORTA PRÉDIO",
+          "timeOfDay": "DIA",
+          "characters": [
+            "JOÃO",
+            "LU"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "EXT. PORTA PRÉDIO",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC015",
+          "sceneNumber": "SC015",
+          "episode": "EP01",
+          "intExt": "EXT",
+          "location": "Rua. PORTA LOJA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "LU",
+            "JOÃO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "EXT. Rua. PORTA LOJA",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC016",
+          "sceneNumber": "SC016",
+          "episode": "EP01",
+          "intExt": "EXT",
+          "location": "RUA.",
+          "timeOfDay": "TARDE",
+          "characters": [
+            "JOÃO",
+            "LU"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "EXT. RUA. TARDE",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC017",
+          "sceneNumber": "SC017",
+          "episode": "EP01",
+          "intExt": "INT",
+          "location": "fim de . QUARTO JoãO",
+          "timeOfDay": "DIA",
+          "characters": [
+            "JOÃO",
+            "RUBEN"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INt. fim de dia. QUARTO JoãO",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC018",
+          "sceneNumber": "SC018",
+          "episode": "EP01",
+          "intExt": "INT",
+          "location": "COZINHA",
+          "timeOfDay": "NOITE",
+          "characters": [
+            "MÃE",
+            "JOÃO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. NOITE. COZINHA",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC019",
+          "sceneNumber": "SC019",
+          "episode": "EP01",
+          "intExt": "INT",
+          "location": "CASA DO RÚBEN PORTA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "RUBEN",
+            "JOÃO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. CASA DO RÚBEN PORTA",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC020",
+          "sceneNumber": "SC020",
+          "episode": "EP01",
+          "intExt": "INT",
+          "location": "CASA DO RÚBEN SALA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "RUBEN",
+            "JOÃO",
+            "LU"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. CASA DO RÚBEN SALA",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC021",
+          "sceneNumber": "SC021",
+          "episode": "EP01",
+          "intExt": "EXT",
+          "location": "RUA",
+          "timeOfDay": "NOITE",
+          "characters": [
+            "JOÃO",
+            "LU"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "EXT. RUA NOITE",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC022",
+          "sceneNumber": "SC022",
+          "episode": "EP01",
+          "intExt": "EXT",
+          "location": "JARDIM BANCO DE JARDIM",
+          "timeOfDay": "DIA",
+          "characters": [
+            "JOÃO",
+            "LU"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "EXT. JARDIM BANCO DE JARDIM",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC023",
+          "sceneNumber": "SC023",
+          "episode": "EP01",
+          "intExt": "INT",
+          "location": "Cozinha",
+          "timeOfDay": "MANHÃ",
+          "characters": [],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "Int. Cozinha Manhã.",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC024",
+          "sceneNumber": "SC024",
+          "episode": "EP01",
+          "intExt": "INT",
+          "location": "SALA",
+          "timeOfDay": "MANHÃ",
+          "characters": [
+            "JOÃO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "Int. SALA Manhã.",
+          "type": "solo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC025",
+          "sceneNumber": "SC025",
+          "episode": "EP01",
+          "intExt": "",
+          "location": "",
+          "timeOfDay": "DIA",
+          "characters": [],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        }
+      ],
+      "metadata": {
+        "totalScenes": 25,
+        "totalDialogues": 192,
+        "characters": [
+          {
+            "name": "JOÃO",
+            "scenes": [
+              "SC001",
+              "SC002",
+              "SC003",
+              "SC004",
+              "SC005",
+              "SC006",
+              "SC007",
+              "SC008",
+              "SC009",
+              "SC010",
+              "SC011",
+              "SC012",
+              "SC014",
+              "SC015",
+              "SC016",
+              "SC017",
+              "SC018",
+              "SC019",
+              "SC020",
+              "SC021",
+              "SC022",
+              "SC024"
+            ],
+            "lineCount": 92
+          },
+          {
+            "name": "LU",
+            "scenes": [
+              "SC003",
+              "SC004",
+              "SC005",
+              "SC006",
+              "SC007",
+              "SC008",
+              "SC010",
+              "SC011",
+              "SC014",
+              "SC015",
+              "SC016",
+              "SC020",
+              "SC021",
+              "SC022"
+            ],
+            "lineCount": 59
+          },
+          {
+            "name": "MÃE",
+            "scenes": [
+              "SC001",
+              "SC002",
+              "SC018"
+            ],
+            "lineCount": 10
+          },
+          {
+            "name": "PROF",
+            "scenes": [
+              "SC006",
+              "SC009"
+            ],
+            "lineCount": 9
+          },
+          {
+            "name": "RUBEN",
+            "scenes": [
+              "SC017",
+              "SC019",
+              "SC020"
+            ],
+            "lineCount": 7
+          },
+          {
+            "name": "JÚLIO",
+            "scenes": [
+              "SC005",
+              "SC010"
+            ],
+            "lineCount": 6
+          },
+          {
+            "name": "ALUNO",
+            "scenes": [
+              "SC010"
+            ],
+            "lineCount": 5
+          },
+          {
+            "name": "FÁBIO",
+            "scenes": [
+              "SC007"
+            ],
+            "lineCount": 3
+          },
+          {
+            "name": "SR ANTÓNIO",
+            "scenes": [
+              "SC004"
+            ],
+            "lineCount": 1
+          }
+        ],
+        "parseErrors": [],
+        "confidence": "alta",
+        "format": "Final Draft FDX"
+      }
+    },
+    "EP02": {
+      "episode": "EP02",
+      "scenes": [
+        {
+          "id": "SC001",
+          "sceneNumber": "SC001",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "Quarto JOÃO",
+          "timeOfDay": "MADRUGADA",
+          "characters": [],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "Int. Madrugada. Quarto JOÃO.",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC002",
+          "sceneNumber": "SC002",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "WC JOÃO",
+          "timeOfDay": "MADRUGADA",
+          "characters": [],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. Madrugada. WC JOÃO.",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC003",
+          "sceneNumber": "SC003",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "Cozinha",
+          "timeOfDay": "MANHÃ",
+          "characters": [],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "Int. Cozinha Manhã.",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC004",
+          "sceneNumber": "SC004",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "SALA",
+          "timeOfDay": "MANHÃ",
+          "characters": [
+            "JOÃO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "Int. SALA Manhã.",
+          "type": "solo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC005",
+          "sceneNumber": "SC005",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "PORTA DA RUA",
+          "timeOfDay": "MANHÃ",
+          "characters": [
+            "MATI",
+            "JOÃO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "Int. PORTA DA RUA Manhã.",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC006",
+          "sceneNumber": "SC006",
+          "episode": "EP02",
+          "intExt": "",
+          "location": "",
+          "timeOfDay": "DIA",
+          "characters": [],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC007",
+          "sceneNumber": "SC007",
+          "episode": "EP02",
+          "intExt": "EXT",
+          "location": "PRÉDIO",
+          "timeOfDay": "MANHÃ",
+          "characters": [
+            "JOÃO PEQUENO",
+            "JU",
+            "CAS",
+            "JOÃO",
+            "SÃO TODOS IGUAIS..."
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "EXT. PRÉDIO Manhã.",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC008",
+          "sceneNumber": "SC008",
+          "episode": "EP02",
+          "intExt": "",
+          "location": "",
+          "timeOfDay": "DIA",
+          "characters": [],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC009",
+          "sceneNumber": "SC009",
+          "episode": "EP02",
+          "intExt": "EXT",
+          "location": "JARDIM",
+          "timeOfDay": "MANHÃ",
+          "characters": [
+            "JOÃO",
+            "CAS"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "EXT. JARDIM Manhã.",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC010",
+          "sceneNumber": "SC010",
+          "episode": "EP02",
+          "intExt": "EXT",
+          "location": "PORTÃO ESCOLA.",
+          "timeOfDay": "MANHÃ",
+          "characters": [
+            "SR. ANTÓNIO",
+            "JOÃO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "EXT. PORTÃO ESCOLA. MANHÃ",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC011",
+          "sceneNumber": "SC011",
+          "episode": "EP02",
+          "intExt": "",
+          "location": "",
+          "timeOfDay": "DIA",
+          "characters": [],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC012",
+          "sceneNumber": "SC012",
+          "episode": "EP02",
+          "intExt": "",
+          "location": "",
+          "timeOfDay": "DIA",
+          "characters": [],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC013",
+          "sceneNumber": "SC013",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "CORREDOR ESCOLA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "JOÃO",
+            "JOÃO PEQUENO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. CORREDOR ESCOLA",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC014",
+          "sceneNumber": "SC014",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "SALA AULA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "JOÃO",
+            "PROF",
+            "EPÁ TAMBÉM NÃO É PRECISO ISSO TUDO.",
+            "CAS",
+            "NÓS? LÁ ATRÁS? TODOS JUNTOS? LOL",
+            "RUBEN"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. SALA AULA",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC015",
+          "sceneNumber": "SC015",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "CORREDOR ESCOLA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "JOÃO",
+            "CAS",
+            "JÚLIO",
+            "RANDOM",
+            "PEQUENO",
+            "NAH. É SÓ PARA PESSOAS QUE NUNCA VIU... LOL",
+            "JU"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. CORREDOR ESCOLA",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC016",
+          "sceneNumber": "SC016",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "WC ESCOLA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "JOÃO",
+            "LU",
+            "JU",
+            "CAS",
+            "JOÃO PEQUENO",
+            "A PROFESSORA TAMBÉM.",
+            "PEQUENO",
+            "E O JOÃO?",
+            "...MAIS OU MENOS"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. WC ESCOLA",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC017",
+          "sceneNumber": "SC017",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "BALNEÁRIO",
+          "timeOfDay": "DIA",
+          "characters": [
+            "JOÃO",
+            "CAS"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. BALNEÁRIO",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC018",
+          "sceneNumber": "SC018",
+          "episode": "EP02",
+          "intExt": "",
+          "location": "",
+          "timeOfDay": "DIA",
+          "characters": [],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC019",
+          "sceneNumber": "SC019",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "GINÁSIO",
+          "timeOfDay": "DIA",
+          "characters": [
+            "PROF GINÁSTICA",
+            "JOÃO",
+            "PEQUENO",
+            "CAS",
+            "EPÁ JÁ NÃO CONSIGO O OUVIR... TENHO O CÉREBRO A APITAR..."
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. GINÁSIO",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC020",
+          "sceneNumber": "SC020",
+          "episode": "EP02",
+          "intExt": "EXT",
+          "location": "Rua. Por do sol",
+          "timeOfDay": "DIA",
+          "characters": [
+            "JOÃO",
+            "CAS",
+            "PEQUENO",
+            "ESTÁS SUPER COLORIDO! LOL",
+            "JU",
+            "JUSTO!"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "Ext. Rua. Por do sol",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC021",
+          "sceneNumber": "SC021",
+          "episode": "EP02",
+          "intExt": "EXT",
+          "location": "ESQUINA POR DO SOL",
+          "timeOfDay": "DIA",
+          "characters": [
+            "LU",
+            "JOÃO",
+            "MAE LU",
+            "CAS",
+            "CHEGA O QUE CHEGA?"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "EXT. ESQUINA POR DO SOL",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC022",
+          "sceneNumber": "SC022",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "PORTA DE CASA JOÃO",
+          "timeOfDay": "DIA",
+          "characters": [],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. PORTA DE CASA JOÃO",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC023",
+          "sceneNumber": "SC023",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "COZINHA JOÃO",
+          "timeOfDay": "DIA",
+          "characters": [
+            "MÃE",
+            "JOÃO",
+            "PEQUENO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. COZINHA JOÃO",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC024",
+          "sceneNumber": "SC024",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "COZINHA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "JOÃO"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. COZINHA",
+          "type": "solo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC025",
+          "sceneNumber": "SC025",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "COZINHA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "JOÃO",
+            "MÃE",
+            "CAS",
+            "ATÉ PARECE QUE NÃO GOSTASTE DE  AJUDAR A MIÚDA..."
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. COZINHA",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC026",
+          "sceneNumber": "SC026",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "COZINHA",
+          "timeOfDay": "DIA",
+          "characters": [
+            "JOÃO",
+            "MÃE",
+            "CAS",
+            "PEQUENO",
+            "ESTÁS SEMPRE A COMER.",
+            "JU",
+            "TENS RAZÃO..."
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. COZINHA",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC027",
+          "sceneNumber": "SC027",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "SALA DE ESTAR",
+          "timeOfDay": "DIA",
+          "characters": [],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. SALA DE ESTAR",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC028",
+          "sceneNumber": "SC028",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "QUARTO JOÃO",
+          "timeOfDay": "DIA",
+          "characters": [
+            "CAS",
+            "PEQUENO",
+            "NÃO FOI MAU...",
+            "JOÃO",
+            "JU",
+            "DORME BEM. ACHO QUE ESTÁ A PRECISAR."
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "INT. QUARTO JOÃO",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC029",
+          "sceneNumber": "SC029",
+          "episode": "EP02",
+          "intExt": "INT",
+          "location": "Quarto do joão",
+          "timeOfDay": "AMANHECER",
+          "characters": [
+            "CAS",
+            "JOÃO",
+            "PEQUENO",
+            "JU"
+          ],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "Int Quarto do joão Amanhecer",
+          "type": "grupo",
+          "autoTags": [],
+          "durationMin": 2
+        },
+        {
+          "id": "SC030",
+          "sceneNumber": "SC030",
+          "episode": "EP02",
+          "intExt": "",
+          "location": "",
+          "timeOfDay": "DIA",
+          "characters": [],
+          "dialogue": [],
+          "action": [],
+          "synopsis": "",
+          "type": "diálogo",
+          "autoTags": [],
+          "durationMin": 2
+        }
+      ],
+      "metadata": {
+        "totalScenes": 30,
+        "totalDialogues": 164,
+        "characters": [
+          {
+            "name": "JOÃO",
+            "scenes": [
+              "SC004",
+              "SC005",
+              "SC007",
+              "SC009",
+              "SC010",
+              "SC013",
+              "SC014",
+              "SC015",
+              "SC016",
+              "SC017",
+              "SC019",
+              "SC020",
+              "SC021",
+              "SC023",
+              "SC024",
+              "SC025",
+              "SC026",
+              "SC028",
+              "SC029"
+            ],
+            "lineCount": 58
+          },
+          {
+            "name": "CAS",
+            "scenes": [
+              "SC007",
+              "SC009",
+              "SC014",
+              "SC015",
+              "SC016",
+              "SC017",
+              "SC019",
+              "SC020",
+              "SC021",
+              "SC025",
+              "SC026",
+              "SC028",
+              "SC029"
+            ],
+            "lineCount": 21
+          },
+          {
+            "name": "PEQUENO",
+            "scenes": [
+              "SC015",
+              "SC016",
+              "SC019",
+              "SC020",
+              "SC023",
+              "SC026",
+              "SC028",
+              "SC029"
+            ],
+            "lineCount": 15
+          },
+          {
+            "name": "MÃE",
+            "scenes": [
+              "SC023",
+              "SC025",
+              "SC026"
+            ],
+            "lineCount": 12
+          },
+          {
+            "name": "JU",
+            "scenes": [
+              "SC007",
+              "SC015",
+              "SC016",
+              "SC020",
+              "SC026",
+              "SC028",
+              "SC029"
+            ],
+            "lineCount": 11
+          },
+          {
+            "name": "PROF",
+            "scenes": [
+              "SC014"
+            ],
+            "lineCount": 7
+          },
+          {
+            "name": "LU",
+            "scenes": [
+              "SC016",
+              "SC021"
+            ],
+            "lineCount": 5
+          },
+          {
+            "name": "SR. ANTÓNIO",
+            "scenes": [
+              "SC010"
+            ],
+            "lineCount": 4
+          },
+          {
+            "name": "PROF GINÁSTICA",
+            "scenes": [
+              "SC019"
+            ],
+            "lineCount": 4
+          },
+          {
+            "name": "JOÃO PEQUENO",
+            "scenes": [
+              "SC007",
+              "SC013",
+              "SC016"
+            ],
+            "lineCount": 3
+          },
+          {
+            "name": "JÚLIO",
+            "scenes": [
+              "SC015"
+            ],
+            "lineCount": 3
+          },
+          {
+            "name": "RUBEN",
+            "scenes": [
+              "SC014"
+            ],
+            "lineCount": 2
+          },
+          {
+            "name": "MATI",
+            "scenes": [
+              "SC005"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "SÃO TODOS IGUAIS...",
+            "scenes": [
+              "SC007"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "EPÁ TAMBÉM NÃO É PRECISO ISSO TUDO.",
+            "scenes": [
+              "SC014"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "NÓS? LÁ ATRÁS? TODOS JUNTOS? LOL",
+            "scenes": [
+              "SC014"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "RANDOM",
+            "scenes": [
+              "SC015"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "NAH. É SÓ PARA PESSOAS QUE NUNCA VIU... LOL",
+            "scenes": [
+              "SC015"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "A PROFESSORA TAMBÉM.",
+            "scenes": [
+              "SC016"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "E O JOÃO?",
+            "scenes": [
+              "SC016"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "...MAIS OU MENOS",
+            "scenes": [
+              "SC016"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "EPÁ JÁ NÃO CONSIGO O OUVIR... TENHO O CÉREBRO A APITAR...",
+            "scenes": [
+              "SC019"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "ESTÁS SUPER COLORIDO! LOL",
+            "scenes": [
+              "SC020"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "JUSTO!",
+            "scenes": [
+              "SC020"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "MAE LU",
+            "scenes": [
+              "SC021"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "CHEGA O QUE CHEGA?",
+            "scenes": [
+              "SC021"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "ATÉ PARECE QUE NÃO GOSTASTE DE  AJUDAR A MIÚDA...",
+            "scenes": [
+              "SC025"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "ESTÁS SEMPRE A COMER.",
+            "scenes": [
+              "SC026"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "TENS RAZÃO...",
+            "scenes": [
+              "SC026"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "NÃO FOI MAU...",
+            "scenes": [
+              "SC028"
+            ],
+            "lineCount": 1
+          },
+          {
+            "name": "DORME BEM. ACHO QUE ESTÁ A PRECISAR.",
+            "scenes": [
+              "SC028"
+            ],
+            "lineCount": 1
+          }
+        ],
+        "parseErrors": [],
+        "confidence": "alta",
+        "format": "Final Draft FDX"
+      }
+    }
+  },
+  "team": [
+    {
+      "id": "mem_0dabpyrh",
+      "name": "OTÍLIA PEREIRA",
+      "role": "PRODUÇÃO EXECUTIVA",
+      "group": "Produção",
+      "phone": "",
+      "email": "",
+      "photo": null,
+      "notes": "Importado da folha de serviço",
+      "availability": "available"
+    },
+    {
+      "id": "mem_1pflfva6",
+      "name": "GONÇALO PAIXÃO",
+      "role": "REALIZADOR",
+      "group": "Realização",
+      "phone": "",
+      "email": "",
+      "photo": null,
+      "notes": "Importado da folha de serviço",
+      "availability": "available"
+    },
+    {
+      "id": "mem_wk7z92e5",
+      "name": "CLÁUDIA CRUZ",
+      "role": "DIRECTOR DE PRODUÇÃO",
+      "group": "Produção",
+      "phone": "",
+      "email": "",
+      "photo": null,
+      "notes": "Importado da folha de serviço",
+      "availability": "available"
+    },
+    {
+      "id": "mem_39c8psof",
+      "name": "RICARDO MAGALHÃES",
+      "role": "DIRECTOR DE FOTOGRAFIA",
+      "group": "Câmara",
+      "phone": "",
+      "email": "",
+      "photo": null,
+      "notes": "Importado da folha de serviço",
+      "availability": "available"
+    },
+    {
+      "id": "mem_xkbkv0kn",
+      "name": "DIOGO ALBARRAN",
+      "role": "1º ASS. DE REALIZAÇÃO",
+      "group": "Realização",
+      "phone": "",
+      "email": "",
+      "photo": null,
+      "notes": "Importado da folha de serviço",
+      "availability": "available"
+    },
+    {
+      "id": "mem_v1w7orc2",
+      "name": "ALEXANDRE DINIS",
+      "role": "CHEFE DE PRODUÇÃO",
+      "group": "Produção",
+      "phone": "",
+      "email": "",
+      "photo": null,
+      "notes": "Importado da folha de serviço",
+      "availability": "available"
+    },
+    {
+      "id": "mem_dfechdc1",
+      "name": "PEDRO NAVALHA",
+      "role": "ASS. PLATEAU",
+      "group": "Equipa",
+      "phone": "",
+      "email": "",
+      "photo": null,
+      "notes": "Importado da folha de serviço",
+      "availability": "available"
+    },
+    {
+      "id": "mem_ctul9ngc",
+      "name": "NUNO FAZENDA",
+      "role": "1ª ASS. DE IMAGEM",
+      "group": "Câmara",
+      "phone": "",
+      "email": "",
+      "photo": null,
+      "notes": "Importado da folha de serviço",
+      "availability": "available"
+    },
+    {
+      "id": "mem_itagwzq9",
+      "name": "RAMIRO MARQUES",
+      "role": "CHEFE ELETRICISTA",
+      "group": "Equipa",
+      "phone": "",
+      "email": "",
+      "photo": null,
+      "notes": "Importado da folha de serviço",
+      "availability": "available"
+    },
+    {
+      "id": "mem_yguf7nri",
+      "name": "RUBEN SANTIAGO",
+      "role": "DIRECTOR DE SOM",
+      "group": "Som",
+      "phone": "",
+      "email": "",
+      "photo": null,
+      "notes": "Importado da folha de serviço",
+      "availability": "available"
+    },
+    {
+      "id": "mem_x2rm3lck",
+      "name": "TÂNIA RODRIGUES",
+      "role": "GUARDA ROUPA",
+      "group": "Guarda-Roupa",
+      "phone": "",
+      "email": "",
+      "photo": null,
+      "notes": "Importado da folha de serviço",
+      "availability": "available"
+    },
+    {
+      "id": "mem_2qr9d7jg",
+      "name": "ANA FILIPA PEREIRA",
+      "role": "MAKEUP",
+      "group": "Maquilhagem",
+      "phone": "",
+      "email": "",
+      "photo": null,
+      "notes": "Importado da folha de serviço",
+      "availability": "available"
+    }
+  ],
+  "locations": [
+    {
+      "id": "loc_6nq1z9p4",
+      "name": "ESTÁDIO DO JAMOR",
+      "address": "Av. Pierre de Coubertin\r, Cruz Quebrada, Lisboa",
+      "status": "pendente",
+      "notes": "KIKA\r\nBALNEÁRIO 1",
+      "mapsLink": "",
+      "photos": []
+    },
+    {
+      "id": "loc_zeb91ysq",
+      "name": "CENTRO ALTO RENDIMENTO (CAR)",
+      "address": "Av. Pierre de Coubertin\r, Cruz Quebrada, Lisboa",
+      "status": "pendente",
+      "notes": "KIKA\r\nTUNEL",
+      "mapsLink": "",
+      "photos": []
+    },
+    {
+      "id": "loc_g1tlckji",
+      "name": "COMPLEXO DE PISCINAS DO JAMOR",
+      "address": "Av. Pierre de Coubertin\r, Cruz Quebrada, Lisboa",
+      "status": "pendente",
+      "notes": "TELMA\r\nTATAMI",
+      "mapsLink": "",
+      "photos": []
+    }
+  ],
+  "budgets": [
+    {
+      "id": "bud_9xovf8pl",
+      "numero": "2026-001",
+      "mode": "fiction",
+      "status": "approved",
+      "createdAt": 1773257846422,
+      "header": {
+        "data": "2026-03-11",
+        "cliente": "",
+        "campanha": "DESDOBRADO — 6 Episódios",
+        "agencia": "",
+        "meiosEDireitos": "",
+        "tecnicaESuporte": "Vídeo",
+        "quantidade": 6,
+        "duracao": "6×30'",
+        "descricao": "Série ficção, 6 episódios",
+        "diasReperage": 3,
+        "diasRodagem": 18,
+        "local": "Lisboa / Jamor",
+        "notasGerais": ""
+      },
+      "ceiling": null,
+      "taxaIva": 0.23,
+      "taxaHonorarios": 0.15,
+      "lines": [
+        {
+          "id": "ln_5makhwkg",
+          "categoria": 2,
+          "descricao": "Elenco principal",
+          "valorUnitario": 150000,
+          "quantidade": 1,
+          "dias": 5,
+          "custoReal": 750000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_uao8nsrg",
+          "categoria": 2,
+          "descricao": "Elenco secundário juvenil",
+          "valorUnitario": 95000,
+          "quantidade": 4,
+          "dias": 5,
+          "custoReal": 1900000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_1sccuksk",
+          "categoria": 2,
+          "descricao": "Elenco secundário adulto",
+          "valorUnitario": 40000,
+          "quantidade": 3,
+          "dias": 3,
+          "custoReal": 360000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_fxa6x1g1",
+          "categoria": 2,
+          "descricao": "Figuração",
+          "valorUnitario": 3500,
+          "quantidade": 10,
+          "dias": 3,
+          "custoReal": 105000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_ykg15ba8",
+          "categoria": 3,
+          "descricao": "Guionista",
+          "valorUnitario": 50000,
+          "quantidade": 6,
+          "dias": 1,
+          "custoReal": 300000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_ecewu1o2",
+          "categoria": 3,
+          "descricao": "Location manager",
+          "valorUnitario": 45000,
+          "quantidade": 1,
+          "dias": 1.5,
+          "custoReal": 67500,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_dywq3r76",
+          "categoria": 3,
+          "descricao": "Coordenador de casting",
+          "valorUnitario": 45000,
+          "quantidade": 1,
+          "dias": 5,
+          "custoReal": 225000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_yz1arm84",
+          "categoria": 3,
+          "descricao": "Chefe de produção",
+          "valorUnitario": 87000,
+          "quantidade": 1,
+          "dias": 10,
+          "custoReal": 870000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_m97g5g34",
+          "categoria": 3,
+          "descricao": "Secretária de produção",
+          "valorUnitario": 275000,
+          "quantidade": 1,
+          "dias": 2,
+          "custoReal": 550000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_6ypbbtgm",
+          "categoria": 3,
+          "descricao": "Assistente de produção",
+          "valorUnitario": 35000,
+          "quantidade": 2,
+          "dias": 5,
+          "custoReal": 350000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_8smjc1vc",
+          "categoria": 3,
+          "descricao": "Realizador",
+          "valorUnitario": 1750000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 1750000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_h0306yrc",
+          "categoria": 3,
+          "descricao": "Assistente Realização",
+          "valorUnitario": 85000,
+          "quantidade": 1,
+          "dias": 6,
+          "custoReal": 510000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_q6vi0vim",
+          "categoria": 3,
+          "descricao": "Diretor de fotografia",
+          "valorUnitario": 150000,
+          "quantidade": 1,
+          "dias": 6,
+          "custoReal": 900000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_z86o6pqr",
+          "categoria": 3,
+          "descricao": "Operador de câmara",
+          "valorUnitario": 90000,
+          "quantidade": 1,
+          "dias": 5,
+          "custoReal": 450000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_mff075s7",
+          "categoria": 3,
+          "descricao": "Chefe iluminador",
+          "valorUnitario": 90000,
+          "quantidade": 1,
+          "dias": 6,
+          "custoReal": 540000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_xvz56uno",
+          "categoria": 3,
+          "descricao": "Operador de Som",
+          "valorUnitario": 90000,
+          "quantidade": 1,
+          "dias": 5,
+          "custoReal": 450000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_j1nr8asg",
+          "categoria": 3,
+          "descricao": "Figurinista",
+          "valorUnitario": 125000,
+          "quantidade": 1,
+          "dias": 4,
+          "custoReal": 500000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_dbv2v18w",
+          "categoria": 3,
+          "descricao": "Direcção de arte",
+          "valorUnitario": 85000,
+          "quantidade": 1,
+          "dias": 8,
+          "custoReal": 680000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_dwumnjv3",
+          "categoria": 3,
+          "descricao": "Makeup e cabelos",
+          "valorUnitario": 65000,
+          "quantidade": 1,
+          "dias": 5,
+          "custoReal": 325000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_dzpx6cwe",
+          "categoria": 3,
+          "descricao": "Driver",
+          "valorUnitario": 30000,
+          "quantidade": 1,
+          "dias": 7,
+          "custoReal": 210000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_mjs14j3j",
+          "categoria": 3,
+          "descricao": "Câmara e acessórios",
+          "valorUnitario": 1350000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 1350000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_6qjl491b",
+          "categoria": 3,
+          "descricao": "Maquinaria",
+          "valorUnitario": 1500000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 1500000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_zup4jdny",
+          "categoria": 3,
+          "descricao": "Equipamento de Som",
+          "valorUnitario": 260000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 260000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_0dmgvoog",
+          "categoria": 3,
+          "descricao": "Luz e acessórios",
+          "valorUnitario": 850000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 850000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_26bjvgkh",
+          "categoria": 5,
+          "descricao": "Aluguer/compra de adereços",
+          "valorUnitario": 58000,
+          "quantidade": 6,
+          "dias": 1,
+          "custoReal": 348000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_k2mcdlok",
+          "categoria": 5,
+          "descricao": "Aluguer/compra guarda-roupa e acessórios",
+          "valorUnitario": 20000,
+          "quantidade": 6,
+          "dias": 5,
+          "custoReal": 600000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_o9e7atzy",
+          "categoria": 6,
+          "descricao": "Aluguer de décors",
+          "valorUnitario": 250000,
+          "quantidade": 1,
+          "dias": 3,
+          "custoReal": 750000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_8a8nd5uz",
+          "categoria": 6,
+          "descricao": "Autorizações e licenças camarárias",
+          "valorUnitario": 230000,
+          "quantidade": 1,
+          "dias": 3,
+          "custoReal": 690000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_gnti5c9h",
+          "categoria": 6,
+          "descricao": "Consumíveis de produção / imprevistos",
+          "valorUnitario": 25000,
+          "quantidade": 1,
+          "dias": 6,
+          "custoReal": 150000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_jbyp2bsd",
+          "categoria": 6,
+          "descricao": "Storage",
+          "valorUnitario": 29000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 29000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_kgl46bu9",
+          "categoria": 7,
+          "descricao": "Veículos de produção",
+          "valorUnitario": 5000,
+          "quantidade": 5,
+          "dias": 21,
+          "custoReal": 525000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_0ezlbw8s",
+          "categoria": 7,
+          "descricao": "Kms, portagens e estacionamentos",
+          "valorUnitario": 380000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 380000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_jns90ad2",
+          "categoria": 7,
+          "descricao": "Catering / Refeições",
+          "valorUnitario": 3000,
+          "quantidade": 20,
+          "dias": 21,
+          "custoReal": 1260000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_minjzl5e",
+          "categoria": 7,
+          "descricao": "Outras refeições durante pré e pós-produção",
+          "valorUnitario": 2800,
+          "quantidade": 1,
+          "dias": 15,
+          "custoReal": 42000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_vhd8nzv2",
+          "categoria": 10,
+          "descricao": "Coordenação de pós-produção",
+          "valorUnitario": 195000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 195000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_r8vcbc2l",
+          "categoria": 10,
+          "descricao": "Edição",
+          "valorUnitario": 325000,
+          "quantidade": 1,
+          "dias": 2,
+          "custoReal": 650000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_yl7kqrv6",
+          "categoria": 10,
+          "descricao": "Assistente de edição",
+          "valorUnitario": 160000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 160000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_quwhnnua",
+          "categoria": 10,
+          "descricao": "Animação de grafismos, genérico, ficha técnica, outros",
+          "valorUnitario": 69000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 69000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_le3qg3ur",
+          "categoria": 10,
+          "descricao": "VFX, limpeza de planos",
+          "valorUnitario": 414000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 414000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_pw9jfx6d",
+          "categoria": 10,
+          "descricao": "Desenvolvimento de design e linha gráfica",
+          "valorUnitario": 350000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 350000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_q6yvhge4",
+          "categoria": 10,
+          "descricao": "Grading e masterização",
+          "valorUnitario": 195000,
+          "quantidade": 6,
+          "dias": 1,
+          "custoReal": 1170000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_ozbnwole",
+          "categoria": 10,
+          "descricao": "Compressões, adaptações e finalizações",
+          "valorUnitario": 57500,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 57500,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_hqajaw99",
+          "categoria": 9,
+          "descricao": "Aluguer de estúdio de som",
+          "valorUnitario": 18000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 18000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_x30uky3y",
+          "categoria": 9,
+          "descricao": "Locução",
+          "valorUnitario": 85000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 85000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_arn3sp5i",
+          "categoria": 9,
+          "descricao": "Sonoplastia",
+          "valorUnitario": 45000,
+          "quantidade": 6,
+          "dias": 1,
+          "custoReal": 270000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        },
+        {
+          "id": "ln_x69e57fw",
+          "categoria": 9,
+          "descricao": "Músicas de livraria",
+          "valorUnitario": 29000,
+          "quantidade": 1,
+          "dias": 1,
+          "custoReal": 29000,
+          "markup": 1.3,
+          "taxaIva": 0.23,
+          "fornecedor": "",
+          "isFixed": false,
+          "fixedField": null,
+          "origem": "import",
+          "executado": 0
+        }
+      ],
+      "financing": [
+        {
+          "id": "fin_8cbcanyu",
+          "nome": "RTP",
+          "tipo": "cash",
+          "valor": 23994000,
+          "descricao": "Importado de RTP_FINANC.xlsx",
+          "confirmado": true,
+          "dataPrevista": ""
+        }
+      ],
+      "expenses": [],
+      "constraints": [],
+      "notes": ""
+    }
+  ],
+  "shootingDays": [
+    {
+      "id": "day_fwmumpax",
+      "date": "2026-03-18",
+      "dayNumber": 1,
+      "episodeNumber": 1,
+      "dayInEpisode": 1,
+      "location": "COZINHA JOÃO",
+      "callTime": "07:30",
+      "status": "planned",
+      "notes": "Dia 1 — EP01"
+    },
+    {
+      "id": "day_fw3mgrvv",
+      "date": "2026-03-19",
+      "dayNumber": 2,
+      "episodeNumber": 1,
+      "dayInEpisode": 2,
+      "location": "PÁTIO ESCOLA",
+      "callTime": "07:30",
+      "status": "planned",
+      "notes": "Dia 2 — EP01"
+    },
+    {
+      "id": "day_s6ji59w2",
+      "date": "2026-03-20",
+      "dayNumber": 3,
+      "episodeNumber": 1,
+      "dayInEpisode": 3,
+      "location": "CASA DO RÚBEN PORTA",
+      "callTime": "07:30",
+      "status": "planned",
+      "notes": "Dia 3 — EP01"
+    },
+    {
+      "id": "day_u0mxa5d2",
+      "date": "2026-03-23",
+      "dayNumber": 4,
+      "episodeNumber": 2,
+      "dayInEpisode": 1,
+      "location": "Quarto JOÃO",
+      "callTime": "07:30",
+      "status": "planned",
+      "notes": "Dia 4 — EP02"
+    },
+    {
+      "id": "day_zhzlnctt",
+      "date": "2026-03-23",
+      "dayNumber": 5,
+      "episodeNumber": 2,
+      "dayInEpisode": 2,
+      "location": "",
+      "callTime": "07:30",
+      "status": "planned",
+      "notes": "Dia 5 — EP02"
+    },
+    {
+      "id": "day_i5sq082h",
+      "date": "2026-03-23",
+      "dayNumber": 6,
+      "episodeNumber": 2,
+      "dayInEpisode": 3,
+      "location": "ESQUINA POR DO SOL",
+      "callTime": "07:30",
+      "status": "planned",
+      "notes": "Dia 6 — EP02"
+    }
+  ],
+  "sceneAssignments": {
+    "EP01-SC001": "day_fwmumpax",
+    "EP01-SC002": "day_fwmumpax",
+    "EP01-SC003": "day_fwmumpax",
+    "EP01-SC004": "day_fwmumpax",
+    "EP01-SC005": "day_fwmumpax",
+    "EP01-SC006": "day_fwmumpax",
+    "EP01-SC007": "day_fwmumpax",
+    "EP01-SC008": "day_fwmumpax",
+    "EP01-SC009": "day_fwmumpax",
+    "EP01-SC010": "day_fw3mgrvv",
+    "EP01-SC011": "day_fw3mgrvv",
+    "EP01-SC012": "day_fw3mgrvv",
+    "EP01-SC013": "day_fw3mgrvv",
+    "EP01-SC014": "day_fw3mgrvv",
+    "EP01-SC015": "day_fw3mgrvv",
+    "EP01-SC016": "day_fw3mgrvv",
+    "EP01-SC017": "day_fw3mgrvv",
+    "EP01-SC018": "day_fw3mgrvv",
+    "EP01-SC019": "day_s6ji59w2",
+    "EP01-SC020": "day_s6ji59w2",
+    "EP01-SC021": "day_s6ji59w2",
+    "EP01-SC022": "day_s6ji59w2",
+    "EP01-SC023": "day_s6ji59w2",
+    "EP01-SC024": "day_s6ji59w2",
+    "EP01-SC025": "day_s6ji59w2",
+    "EP02-SC001": "day_u0mxa5d2",
+    "EP02-SC002": "day_u0mxa5d2",
+    "EP02-SC003": "day_u0mxa5d2",
+    "EP02-SC004": "day_u0mxa5d2",
+    "EP02-SC005": "day_u0mxa5d2",
+    "EP02-SC006": "day_u0mxa5d2",
+    "EP02-SC007": "day_u0mxa5d2",
+    "EP02-SC008": "day_u0mxa5d2",
+    "EP02-SC009": "day_u0mxa5d2",
+    "EP02-SC010": "day_u0mxa5d2",
+    "EP02-SC011": "day_zhzlnctt",
+    "EP02-SC012": "day_zhzlnctt",
+    "EP02-SC013": "day_zhzlnctt",
+    "EP02-SC014": "day_zhzlnctt",
+    "EP02-SC015": "day_zhzlnctt",
+    "EP02-SC016": "day_zhzlnctt",
+    "EP02-SC017": "day_zhzlnctt",
+    "EP02-SC018": "day_zhzlnctt",
+    "EP02-SC019": "day_zhzlnctt",
+    "EP02-SC020": "day_zhzlnctt",
+    "EP02-SC021": "day_i5sq082h",
+    "EP02-SC022": "day_i5sq082h",
+    "EP02-SC023": "day_i5sq082h",
+    "EP02-SC024": "day_i5sq082h",
+    "EP02-SC025": "day_i5sq082h",
+    "EP02-SC026": "day_i5sq082h",
+    "EP02-SC027": "day_i5sq082h",
+    "EP02-SC028": "day_i5sq082h",
+    "EP02-SC029": "day_i5sq082h",
+    "EP02-SC030": "day_i5sq082h"
+  },
+  "departmentItems": [
+    {
+      "id": "di1",
+      "department": "wardrobe",
+      "name": "Fato JOÃO",
+      "scenes": [
+        "EP01-SC001",
+        "EP01-SC002"
+      ],
+      "notes": "Fato cinzento, gravata azul",
+      "photos": [],
+      "status": "pendente",
+      "capturedBy": "seed",
+      "createdAt": "2026-03-11T19:37:26.442Z"
+    },
+    {
+      "id": "di2",
+      "department": "wardrobe",
+      "name": "Vestido LU",
+      "scenes": [
+        "EP01-SC003"
+      ],
+      "notes": "Vestido vermelho, longo",
+      "photos": [],
+      "status": "pendente",
+      "capturedBy": "seed",
+      "createdAt": "2026-03-11T19:37:26.442Z"
+    },
+    {
+      "id": "di3",
+      "department": "props",
+      "name": "Carta misteriosa",
+      "scenes": [
+        "EP01-SC002",
+        "EP01-SC003"
+      ],
+      "notes": "Envelope amarelado",
+      "photos": [],
+      "status": "pendente",
+      "capturedBy": "seed",
+      "createdAt": "2026-03-11T19:37:26.442Z"
+    },
+    {
+      "id": "di4",
+      "department": "props",
+      "name": "Telemóvel JOÃO",
+      "scenes": [
+        "EP01-SC001",
+        "EP01-SC002"
+      ],
+      "notes": "iPhone preto",
+      "photos": [],
+      "status": "pendente",
+      "capturedBy": "seed",
+      "createdAt": "2026-03-11T19:37:26.442Z"
+    },
+    {
+      "id": "di5",
+      "department": "art",
+      "name": "Decoração sala",
+      "scenes": [
+        "EP01-SC001",
+        "EP01-SC002"
+      ],
+      "notes": "Estante livros, molduras",
+      "photos": [],
+      "status": "pendente",
+      "capturedBy": "seed",
+      "createdAt": "2026-03-11T19:37:26.442Z"
+    },
+    {
+      "id": "di6",
+      "department": "makeup",
+      "name": "Cicatriz JOÃO",
+      "scenes": [
+        "EP01-SC004",
+        "EP01-SC005"
+      ],
+      "notes": "Silicone + pintura",
+      "photos": [],
+      "status": "pendente",
+      "capturedBy": "seed",
+      "createdAt": "2026-03-11T19:37:26.442Z"
+    },
+    {
+      "id": "di7",
+      "department": "sfx",
+      "name": "Fumo exterior",
+      "scenes": [
+        "EP01-SC006"
+      ],
+      "notes": "Máquina de fumo baixo",
+      "photos": [],
+      "status": "pendente",
+      "capturedBy": "seed",
+      "createdAt": "2026-03-11T19:37:26.442Z"
+    },
+    {
+      "id": "di8",
+      "department": "vehicles",
+      "name": "Carro JOÃO",
+      "scenes": [
+        "EP01-SC005",
+        "EP01-SC006"
+      ],
+      "notes": "BMW preto",
+      "photos": [],
+      "status": "pendente",
+      "capturedBy": "seed",
+      "createdAt": "2026-03-11T19:37:26.442Z"
+    },
+    {
+      "id": "di9",
+      "department": "camera",
+      "name": "Drone abertura",
+      "scenes": [
+        "EP01-SC001"
+      ],
+      "notes": "DJI Inspire 3",
+      "photos": [],
+      "status": "pendente",
+      "capturedBy": "seed",
+      "createdAt": "2026-03-11T19:37:26.442Z"
+    },
+    {
+      "id": "di10",
+      "department": "lighting",
+      "name": "Setup noite ext",
+      "scenes": [
+        "EP01-SC006",
+        "EP01-SC007"
+      ],
+      "notes": "HMI 4kW + LED",
+      "photos": [],
+      "status": "pendente",
+      "capturedBy": "seed",
+      "createdAt": "2026-03-11T19:37:26.442Z"
+    }
+  ]
+}

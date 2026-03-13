@@ -1,0 +1,189 @@
+/* Universal Upload — overlay de drag & drop full-screen */
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Overlay de drag ───────────────────────────────────────────── */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  pointer-events: all;
+}
+
+.overlayContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 48px 64px;
+  border-radius: 28px;
+  border: 2px dashed #10b981;
+  background: rgba(30, 34, 42, 0.70);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.3);
+  animation: overlayPulse 2s ease-in-out infinite;
+}
+
+@keyframes overlayPulse {
+  0%, 100% { border-color: #10b981; box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.3); }
+  50% { border-color: #34d399; box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2), 0 0 24px 4px rgba(16, 185, 129, 0.12), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.3); }
+}
+
+.overlayIcon {
+  color: var(--accent, #F5A623);
+  opacity: 0.9;
+}
+
+.overlayTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.overlaySubtitle {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+/* ── Toast de resultado ────────────────────────────────────────── */
+
+.toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 10000;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 380px;
+  padding: 14px 18px;
+  border-radius: 20px;
+  background: rgba(30, 34, 42, 0.70);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 0.5px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.3);
+}
+
+.toastSuccess {
+  border-left: 3px solid var(--health-green, #22C55E);
+}
+
+.toastError {
+  border-left: 3px solid #EF4444;
+}
+
+.toastInfo {
+  border-left: 3px solid var(--accent, #F5A623);
+}
+
+.toastIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.toastBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.toastTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary, #fff);
+  margin-bottom: 4px;
+}
+
+.toastDesc {
+  font-size: 0.75rem;
+  color: var(--text-secondary, rgba(255,255,255,0.6));
+  line-height: 1.4;
+}
+
+.toastAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: none;
+  background: var(--accent, #F5A623);
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.toastAction:hover {
+  opacity: 0.85;
+}
+
+.toastClose {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: none;
+  color: var(--text-muted, rgba(255,255,255,0.3));
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0;
+}
+
+.toastClose:hover {
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Processing indicator ──────────────────────────────────────── */
+
+.processing {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-radius: 20px;
+  background: rgba(30, 34, 42, 0.70);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 0.5px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.3);
+  border-left: 3px solid #10b981;
+}
+
+.processingText {
+  font-size: 0.8rem;
+  color: var(--text-primary, #fff);
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

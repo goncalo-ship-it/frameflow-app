@@ -1,0 +1,89 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // User só acede ao seu próprio perfil
+    match /projects/{projectId}/users/{userId} {
+      allow read: if request.auth.uid == userId
+                  || isProjectAdmin(projectId);
+      allow write: if isProjectAdmin(projectId);
+    }
+
+    // Call sheets: equipa lê, produção escreve
+    match /projects/{projectId}/callsheets/{date} {
+      allow read: if isProjectMember(projectId);
+      allow write: if isProjectAdmin(projectId) || isChefia(projectId);
+    }
+
+    // Cenas: equipa lê, admin escreve
+    match /projects/{projectId}/scenes/{sceneId} {
+      allow read: if isProjectMember(projectId);
+      allow write: if isProjectAdmin(projectId);
+    }
+
+    // Episódios: equipa lê, admin escreve
+    match /projects/{projectId}/episodes/{episodeId} {
+      allow read: if isProjectMember(projectId);
+      allow write: if isProjectAdmin(projectId);
+    }
+
+    // Projectos: só admin cria/edita, membros lêem
+    match /projects/{projectId} {
+      allow read: if isProjectMember(projectId);
+      allow write: if isProjectAdmin(projectId);
+    }
+
+    // ── LIVE BOARD — Shooting Day ──────────────────────────
+    // Estado do dia de rodagem
+    match /projects/{projectId}/shooting/{date} {
+      allow read: if isProjectMember(projectId);
+      // Chefia pode mudar estado geral do dia
+      allow write: if isChefia(projectId);
+    }
+
+    // Estado de cada cena no dia
+    match /projects/{projectId}/shooting/{date}/scenes/{sceneId} {
+      allow read: if isProjectMember(projectId);
+      // Chefia muda estado da cena (waiting→rolling→done)
+      // HODs podem actualizar o seu campo readyDepts
+      allow write: if isChefia(projectId) || isHOD(projectId);
+    }
+
+    // Log de takes
+    match /projects/{projectId}/shooting/{date}/takes/{takeId} {
+      allow read: if isProjectMember(projectId);
+      // Chefia + anotadora podem registar takes
+      allow create: if isChefia(projectId) || isAnotadora(projectId);
+      allow update: if isChefia(projectId) || isAnotadora(projectId);
+    }
+
+    // ── Funções auxiliares ──
+    function isProjectAdmin(projectId) {
+      return request.auth != null &&
+        get(/databases/$(database)/documents/projects/$(projectId)/users/$(request.auth.uid)).data.role
+        in ['director_producao', 'produtor_executivo'];
+    }
+
+    function isChefia(projectId) {
+      return request.auth != null &&
+        get(/databases/$(database)/documents/projects/$(projectId)/users/$(request.auth.uid)).data.role
+        in ['director_producao', 'produtor_executivo', 'chefe_producao', 'primeiro_ad', 'segundo_ad', 'realizador'];
+    }
+
+    function isHOD(projectId) {
+      return request.auth != null &&
+        get(/databases/$(database)/documents/projects/$(projectId)/users/$(request.auth.uid)).data.role
+        in ['dir_fotografia', 'gaffer', 'chefe_maquinaria', 'dir_som', 'dir_arte', 'figurinista', 'chefe_maquilhagem'];
+    }
+
+    function isAnotadora(projectId) {
+      return request.auth != null &&
+        get(/databases/$(database)/documents/projects/$(projectId)/users/$(request.auth.uid)).data.role == 'anotadora';
+    }
+
+    function isProjectMember(projectId) {
+      return request.auth != null &&
+        exists(/databases/$(database)/documents/projects/$(projectId)/users/$(request.auth.uid));
+    }
+  }
+}

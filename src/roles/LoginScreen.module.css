@@ -1,0 +1,746 @@
+/* ══ LoginScreen — Liquid Glass (Figma FF04 exact tokens) ══════════ */
+
+/* ── Full-screen container ── */
+.screen {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  overflow-y: auto;
+  /* darkAuth from design.ts */
+  background: linear-gradient(135deg, #50565F 0%, #3C424C 100%);
+}
+
+/* ── Background orbs — blur(5.12px) from Figma ── */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.bg::before,
+.bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(5.12px);
+}
+.bg::before {
+  top: 25%;
+  left: 25%;
+  width: 384px;
+  height: 384px;
+  background: radial-gradient(circle, #10b981 0%, transparent 70%);
+  opacity: 0.2;
+}
+.bg::after {
+  bottom: 25%;
+  right: 25%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
+  opacity: 0.1;
+}
+
+/* ── Centered content wrapper ── */
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 448px;
+  padding: 40px 24px;
+}
+
+/* ── Glass card (main container) — 382px, rgba(255,255,255,0.04), radius 16px ── */
+.glassCard {
+  position: relative;
+  width: 382px;
+  max-width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 28px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow:
+    0 2px 20px rgba(0, 0, 0, 0.08),
+    inset 0 0.5px 0.5px rgba(255, 255, 255, 0.3);
+}
+
+/* ── Logo area (centered) ── */
+.logoArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+/* Logo icon — 49px, emerald glow, radius 14px */
+.logoIcon {
+  width: 49px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(16, 185, 129, 0.15);
+  border: 0.5px solid rgba(16, 185, 129, 0.4);
+  border-radius: 14px;
+  margin-bottom: 4px;
+  box-shadow: 0 2px 16px rgba(59, 130, 246, 0.4);
+}
+.logoIcon svg {
+  width: 18px;
+  height: 18px;
+  color: #34d399;
+}
+
+/* FrameFlow — Inter Black 32px, letter-spacing -0.8px */
+.logoName {
+  font-family: 'Inter', var(--font-display, system-ui);
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 48px;
+  color: #ffffff;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+/* Subtitle — Inter Medium 14px */
+.logoSub {
+  font-family: 'Inter', var(--font-body, system-ui);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Form fields ── */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Label — Inter Semi Bold 13px, letter-spacing 0.65px, uppercase */
+.label {
+  font-family: 'Inter', var(--font-body, system-ui);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 19.5px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.65px;
+}
+
+/* Input wrapper — 49px, radius 8px, 0.5px border */
+.inputWrap {
+  display: flex;
+  align-items: center;
+  height: 49px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0 16px;
+  transition: all 0.2s;
+}
+.inputWrap:focus-within {
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
+}
+
+/* Input text — Inter Medium 15px */
+.input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 12px 0;
+  color: #ffffff;
+  font-family: 'Inter', var(--font-body, system-ui);
+  font-size: 15px;
+  font-weight: 500;
+}
+.input::placeholder { color: rgba(255, 255, 255, 0.5); }
+
+.eyeBtn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  transition: color 0.2s;
+}
+.eyeBtn:hover { color: rgba(255, 255, 255, 0.7); }
+.eyeBtn svg { width: 18px; height: 18px; }
+
+/* ── Remember me + forgot password ── */
+.optionsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkboxWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* Checkbox — 16px */
+.checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checkbox:checked {
+  background: #10B981;
+  border-color: #10B981;
+}
+.checkbox:checked::after {
+  content: '✓';
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* Lembrar-me — Inter Medium 13px */
+.checkLabel {
+  font-family: 'Inter', var(--font-body, system-ui);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 19.5px;
+  color: #ffffff;
+}
+
+/* Esqueceu password — Inter Medium 13px, emerald */
+.forgotLink {
+  font-family: 'Inter', var(--font-body, system-ui);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 19.5px;
+  color: #10B981;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.forgotLink:hover { color: #34D399; }
+
+/* ── Primary button — 51px, radius 8px, emerald glow ── */
+.primaryBtn {
+  width: 100%;
+  height: 51px;
+  padding: 8px;
+  background: #10B981;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Inter', var(--font-display, system-ui);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+}
+.primaryBtn:hover:not(:disabled) {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.5);
+}
+.primaryBtn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+/* ── OR divider — Inter Semi Bold 12px, letter-spacing 0.6px ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+.dividerText {
+  font-family: 'Inter', var(--font-body, system-ui);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.6px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+/* ── Google button — 44px, glass style ── */
+.googleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: 'Inter', var(--font-body, system-ui);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.googleBtn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.googleBtn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+.googleSpinner {
+  width: 18px; height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-top-color: #10B981;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ── Outline buttons (Super Admin, Dev) — emerald accent border ── */
+.outlineBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 44px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 0.5px solid rgba(16, 185, 129, 0.25);
+  border-radius: 8px;
+  color: #10B981;
+  font-family: 'Inter', var(--font-body, system-ui);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.outlineBtn:hover {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.1);
+}
+
+/* ── Error message ── */
+.error {
+  font-size: 13px;
+  color: #F87171;
+  text-align: center;
+  margin: 0;
+}
+
+/* ── Footer — below glass card ── */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* "Não tem conta? Criar conta" — 14px */
+.footerLink {
+  font-family: 'Inter', var(--font-body, system-ui);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+}
+.footerLink a,
+.footerLink button {
+  color: #10B981;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.footerLink a:hover,
+.footerLink button:hover { color: #34D399; }
+
+/* Copyright — Inter Medium 12px */
+.copyright {
+  font-family: 'Inter', var(--font-body, system-ui);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ── Dev picker modal overlay ── */
+.devOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.devPanel {
+  width: 100%;
+  max-width: 480px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: var(--glass-tray, rgba(30, 34, 42, 0.50));
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 0.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    inset 0 0.5px 0.5px rgba(255, 255, 255, 0.3);
+}
+
+.devTitle {
+  font-family: 'Inter', var(--font-display, system-ui);
+  font-size: 18px;
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+}
+
+.devSubtitle {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  margin: 0;
+}
+
+.devGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.devBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+.devBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.devRole {
+  font-size: 10px;
+  font-weight: 700;
+  color: #10B981;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.devName {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.devClose {
+  width: 100%;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.devClose:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Role select (post-Google auth) ── */
+.roleSelect {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.googleUserInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
+}
+
+.googleAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.googleUserName {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.googleUserEmail {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.roleLabel {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin: 0;
+}
+.roleLabel strong { color: #ffffff; }
+
+/* ── Department role picker ── */
+.deptList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.deptGroup {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.deptHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+.deptHeader:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.deptDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.deptName { flex: 1; }
+
+.deptCount {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.deptRoles {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 4px 0 4px 20px;
+  overflow: hidden;
+}
+
+.roleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: transparent;
+  border: 0.5px solid transparent;
+  border-radius: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+.roleBtn:hover {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #ffffff;
+}
+
+.hodBadge {
+  font-size: 9px;
+  font-weight: 700;
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.12);
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+}
+
+/* ══ SIGNUP MODE — Criar conta (Figma register) ══════════════════ */
+
+/* Lens icon — teal glowing circle */
+.lensIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, rgba(16, 185, 129, 0.25) 0%, rgba(16, 185, 129, 0.05) 60%, transparent 80%);
+  border: 2px solid rgba(16, 185, 129, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 20px rgba(16, 185, 129, 0.15),
+    inset 0 0 12px rgba(16, 185, 129, 0.1);
+}
+.lensInner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.6) 0%, rgba(16, 185, 129, 0.2) 60%, transparent 80%);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+/* Invite badge — "FOI CONVIDADO PARA" */
+.inviteBadge {
+  width: 382px;
+  max-width: 100%;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 0.5px solid rgba(16, 185, 129, 0.2);
+  border-radius: 14px;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 0.5px 0.5px rgba(255, 255, 255, 0.1);
+}
+.inviteBadgeLabel {
+  font-family: 'Inter', var(--font-body, system-ui);
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+.inviteBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.inviteBadgeIcon {
+  color: #10B981;
+  flex-shrink: 0;
+}
+.inviteProject {
+  font-family: 'Inter', var(--font-display, system-ui);
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+}
+.inviteEmail {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 1px;
+}
+
+/* Terms text */
+.terms {
+  font-family: 'Inter', var(--font-body, system-ui);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  line-height: 1.6;
+  margin: 0;
+}
+.terms button {
+  color: #10B981;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  transition: color 0.2s;
+}
+.terms button:hover { color: #34D399; }
+
+/* ═══ RESPONSIVE ═══════════════════════════════════════════════════ */
+@media (max-width: 520px) {
+  .content { max-width: 100%; padding: 24px 16px; }
+  .glassCard { width: 100%; padding: 24px 20px; border-radius: 20px; }
+  .devGrid { grid-template-columns: 1fr; }
+  .logoName { font-size: 26px; }
+}

@@ -1,0 +1,18 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.sm   { padding: 1px var(--space-2); font-size: var(--text-xs); }
+.md   { padding: 2px var(--space-3); font-size: var(--text-sm); }
+
+.default { background: var(--bg-elevated); color: var(--text-secondary); border: 0.5px solid rgba(255, 255, 255, 0.15); }
+.ok      { background: rgba(42,122,80,0.2);  color: #34D399; border: 1px solid rgba(42,122,80,0.5); }
+.warn    { background: rgba(232,168,56,0.2); color: #FBBF24; border: 1px solid rgba(232,168,56,0.5); }
+.danger  { background: rgba(139,32,48,0.2);  color: #F87171; border: 1px solid rgba(139,32,48,0.5); }
+.info    { background: rgba(46,111,160,0.2); color: #60A5FA; border: 1px solid rgba(46,111,160,0.5); }

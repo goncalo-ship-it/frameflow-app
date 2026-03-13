@@ -1,0 +1,214 @@
+/* ── Meals Module ── */
+.root { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+
+.header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-4) var(--space-8);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.15); flex-shrink: 0;
+  gap: var(--space-4); flex-wrap: wrap;
+}
+.title { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 800; }
+.sub   { font-size: var(--text-xs); color: var(--text-muted); margin-top: 1px; }
+
+.headerActions { display: flex; align-items: center; gap: var(--space-3); }
+
+/* ── Day Selector ── */
+.daySelector {
+  display: flex; gap: var(--space-2); overflow-x: auto;
+  padding: var(--space-3) var(--space-8); flex-shrink: 0;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.15);
+}
+.dayChip, .dayChipActive {
+  padding: 6px 14px; border-radius: var(--radius-full);
+  border: 0.5px solid rgba(255, 255, 255, 0.15); background: var(--bg-elevated);
+  color: var(--text-secondary); font-size: var(--text-sm); font-weight: 500;
+  cursor: pointer; white-space: nowrap; transition: all var(--transition-fast);
+}
+.dayChip:hover { border-color: var(--border-active); color: var(--text-primary); }
+.dayChipActive {
+  background: var(--accent); border-color: var(--accent);
+  color: #fff; font-weight: 600;
+}
+
+/* ── Content ── */
+.content { flex: 1; overflow-y: auto; padding: var(--space-6) var(--space-8); }
+
+/* ── Info Bar ── */
+.infoBar {
+  display: flex; gap: var(--space-4); margin-bottom: var(--space-6); flex-wrap: wrap;
+}
+.infoCard {
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5);
+  flex: 1; min-width: 180px;
+}
+.infoLabel { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: 4px; }
+.infoValue { font-size: var(--text-base); color: var(--text-primary); font-weight: 600; }
+
+/* ── Catering Details ── */
+.cateringSection {
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+.sectionTitle {
+  font-family: var(--font-display); font-size: var(--text-md);
+  font-weight: 700; margin-bottom: var(--space-4);
+  display: flex; align-items: center; gap: var(--space-2);
+}
+
+.editRow {
+  display: flex; gap: var(--space-3); margin-bottom: var(--space-3); flex-wrap: wrap;
+}
+.editInput {
+  background: var(--bg-elevated); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md); padding: 6px 12px;
+  font-family: var(--font-body); font-size: var(--text-sm); color: var(--text-primary);
+  outline: none; flex: 1; min-width: 120px; transition: border-color var(--transition-fast);
+}
+.editInput:focus { border-color: var(--accent); }
+
+/* ── Menu Grid ── */
+.menuGrid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-4); margin-bottom: var(--space-6);
+}
+.menuCard {
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); padding: var(--space-4);
+  position: relative; overflow: hidden;
+}
+.menuCard::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.menuCardCarne::before   { background: #ef4444; }
+.menuCardPeixe::before   { background: #3b82f6; }
+.menuCardVegetariano::before { background: #10b981; }
+.menuCardVegan::before   { background: #a855f7; }
+
+.menuCategory {
+  font-size: var(--text-xs); font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; margin-bottom: var(--space-2);
+}
+.menuName { font-size: var(--text-base); color: var(--text-primary); font-weight: 600; margin-bottom: var(--space-1); }
+.menuDesc { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-3); }
+.menuCount {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-sm); color: var(--text-muted);
+}
+.menuCountBadge {
+  background: var(--bg-elevated); border-radius: var(--radius-full);
+  padding: 2px 10px; font-weight: 700; color: var(--text-primary);
+}
+.menuActions { display: flex; gap: var(--space-2); margin-top: var(--space-3); }
+
+/* ── RSVP Section ── */
+.rsvpSection {
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+.rsvpGrid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3);
+}
+.rsvpCard {
+  background: var(--bg-elevated); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md); padding: var(--space-3);
+  display: flex; align-items: center; gap: var(--space-3);
+}
+.rsvpCardInner { display: flex; flex-direction: column; }
+.rsvpNumber { font-size: var(--text-lg); font-weight: 800; color: var(--text-primary); line-height: 1; }
+.rsvpLabel { font-size: var(--text-xs); color: var(--text-muted); }
+.rsvpBreakdown { margin-top: var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); }
+.rsvpBreakdownRow {
+  display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm);
+}
+.rsvpBreakdownDot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.rsvpBreakdownName { flex: 0 0 120px; color: var(--text-secondary); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rsvpBreakdownBar {
+  flex: 1; height: 6px; background: var(--bg-overlay); border-radius: var(--radius-full); overflow: hidden;
+}
+.rsvpBreakdownFill { height: 100%; border-radius: var(--radius-full); transition: width 0.3s ease; }
+.rsvpBreakdownCount { font-size: var(--text-xs); color: var(--text-muted); white-space: nowrap; min-width: 60px; text-align: right; }
+
+/* ── Dietary Summary ── */
+.dietarySummary {
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+}
+.dietaryGrid { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-3); }
+.dietaryChip {
+  display: flex; align-items: center; gap: var(--space-2);
+  background: var(--bg-elevated); border-radius: var(--radius-full);
+  padding: 4px 12px; font-size: var(--text-sm); color: var(--text-secondary);
+  cursor: default;
+}
+.dietaryChip:hover { border-color: var(--border-active); }
+.dietaryCount { font-weight: 700; color: var(--text-primary); }
+.dietaryTotal { font-size: var(--text-xs); color: var(--text-muted); margin-top: var(--space-3); }
+
+/* ── Empty ── */
+.empty {
+  text-align: center; padding: var(--space-16) var(--space-8);
+  color: var(--text-muted);
+}
+.emptyIcon { margin-bottom: var(--space-4); opacity: 0.4; }
+.emptyText { font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-2); color: var(--text-secondary); }
+.emptyHint { font-size: var(--text-sm); }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: var(--radius-md);
+  border: 0.5px solid rgba(255, 255, 255, 0.15); background: var(--bg-elevated);
+  color: var(--text-primary); font-size: var(--text-sm); font-weight: 500;
+  cursor: pointer; transition: all var(--transition-fast);
+}
+.btn:hover { border-color: var(--border-active); background: var(--bg-overlay); }
+.btnPrimary {
+  background: var(--accent); border-color: var(--accent); color: #fff;
+}
+.btnPrimary:hover { background: var(--accent-light); }
+.btnSmall { padding: 4px 10px; font-size: var(--text-xs); }
+.btnDanger { color: var(--status-danger); }
+.btnDanger:hover { background: rgba(139, 32, 48, 0.15); }
+
+/* ── Add Menu Form ── */
+.addForm {
+  background: var(--bg-elevated); border: 1px dashed var(--border-default);
+  border-radius: var(--radius-lg); padding: var(--space-4);
+  display: flex; flex-direction: column; gap: var(--space-3);
+}
+.selectInput {
+  background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-md); padding: 8px 14px;
+  font-family: var(--font-body); font-size: var(--text-sm); color: #ffffff;
+  outline: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .header { padding: var(--space-3) var(--space-4); }
+  .daySelector { padding: var(--space-2) var(--space-4); }
+  .content { padding: var(--space-4); }
+  .menuGrid { grid-template-columns: 1fr; }
+  .infoBar { flex-direction: column; }
+  .rsvpGrid { grid-template-columns: repeat(2, 1fr); }
+  .rsvpBreakdownName { flex: 0 0 80px; }
+}
+@media (max-width: 480px) {
+  .editRow { flex-direction: column; }
+}

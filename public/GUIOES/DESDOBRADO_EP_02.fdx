@@ -1,0 +1,2852 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<FinalDraft DocumentType="Script" Template="No" Version="6">
+
+  <DocumentRef DateTime="20240710T131854" id="db2b0469-07a9-452c-a933-7a33b6952de5">
+    <XRef DateTime="20240709T150824" id="5d3caabf-f6f2-4de7-87a1-025918143086"/>
+    <XRef DateTime="20240709T154741" id="ee7fa139-3d70-433f-aec9-e0e806d1cef6"/>
+  </DocumentRef>
+
+  <Content>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.49" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Character" id="3c5249a1-7d56-4345-98f4-afb9f453245f">
+      <Text>DESDOBRADO</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="2.50" RightIndent="6.24" SpaceBefore="0" Spacing="1" StartsNewPage="No" Type="Dialogue" id="a303dd34-cdf8-4447-b08a-d01458e1352e">
+      <Text>Episódio 02</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="01c7f457-bfb5-4fd8-91ae-a4e0cb7a240d">
+      <Text>“O Choque”</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="f82a1364-a54a-40bb-ae09-cbc3a7a1fc45">
+      <SceneProperties Length="2/8" Page="1" Title="">
+        <SceneArcBeats/>
+      </SceneProperties>
+      <Text>Int. Madrugada. Quarto JOÃO. </Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="b95bd09b-b989-42a0-b662-deda0e07db59">
+      <Text>POV</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="57ddbf30-860c-4a2c-95aa-afb303001d96">
+      <Text>Vemos o teto do quarto com um candeeiro colorido. A câmara mexe-se e o João senta-se na cama. Levanta-se a cambalear e vai até ao WC.</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="d656538b-b9c4-43c0-9730-2198f3d65547">
+      <SceneProperties Length="2/8" Page="1" Title="">
+        <SceneArcBeats/>
+      </SceneProperties>
+      <Text>INT. Madrugada. WC JOÃO.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="57ddbf30-860c-4a2c-95aa-afb303001d96">
+      <Text>Está sentado na sanita. Levanta o olhar.</Text>
+    </Paragraph>
+    <Paragraph Type="Shot" id="51c10b0b-a1df-4c1a-9cf4-cd5d7fde7d44">
+      <Text>Plano americano Over The </Text>
+      <Text AdornmentStyle="-1">Shoulder</Text>
+      <Text> (OTS)</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="02bfa2b2-a55d-43b8-8dc1-1455db006027">
+      <Text>Vemos agora o nosso personagem ao espelho a lavar a cara.
+Uma coluna Bluetooth anima o ambiente. Pendurada num cordel. Lava os dentes furiosamente. Já está vestido e de bom humor. </Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="08574e74-da65-4baf-94e2-59a2a0d153a6">
+      <SceneProperties Length="2/8" Page="1" Title="">
+        <SceneArcBeats/>
+      </SceneProperties>
+      <Text>Int. Cozinha Manhã.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="f9f3b165-bb5e-4685-aaa2-f4a71dd73c2b">
+      <Text>Vai para a cozinha, prepara uns cereais. Está de phones. A música anima-o e dança enquanto prepara os cereais. Guarda o leite no frigorífico, pega uma colher.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="2f48b01c-e4d1-40c0-8579-8c07e0818521">
+      <Text>Com a taça na mão a comer e a dançar avança pelo corredor até à sala. Vence a porta distraídamente.</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="b07b1362-3bef-441e-944f-1d57e93d68a4">
+      <SceneProperties Length="3/8" Page="1" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>Int. SALA Manhã.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="2f48b01c-e4d1-40c0-8579-8c07e0818521">
+      <Text>Quando levanta o olhar estão 4 pessoas que nunca tinha visto dentro da sala.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="5ada0861-a4d3-43fa-a050-e5ec52bf428b">
+      <Text>3 estão sentados no sofá e o quarto tenta perceber o que é o antiquado leitor de DVD que teima em permanecer no móvel da TV.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="3cf647cd-f65c-4d45-aa90-8bf0956c1d06">
+      <Text>Assim que os vê grita</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="3b31c573-a265-4902-8bc8-13c6c81fe4e9">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="8e69406d-9f7b-4bac-b90b-5e7a6a7793b9">
+      <Text>-	Ai foda-se!</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="b10cfed8-5364-4a88-bfa7-a51fcfd78507">
+      <Text>Atira com a taça, cereais, colher, leite e tudo para cima dos 3 que estão no sofá. Corre em direção à porta da rua a mexer furiosamente no telefone:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="deed8b79-19d3-4159-bf30-fd19f25878a3">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="4051a328-ffd3-4632-90a1-d73736979408">
+      <Text>WTF?! Quem são vocês?</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="80910884-0984-4626-a124-b1045671bb58">
+      <SceneProperties Length="7/8" Page="2" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MATI">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>Int. PORTA DA RUA Manhã.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="f9ff7064-e52b-40bd-9b6b-6d16370dd529">
+      <Text>Tenta em vão destrancar a porta trancada e com o </Text>
+      <Text AdornmentStyle="-1">stress</Text>
+      <Text> nem consegue.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="6ba19f99-b856-40a6-9c63-0cf834b505ba">
+      <Text>Olha por cima do ombro, até que quando volta a olhar para a porta está ao seu lado uma das pessoas, uma rapariga simples e muito calma, de cabelo moreno, que simplesmente roda a chave no sentido inverso e abre a porta com toda a calma.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="5eb595cf-fb02-470c-9f1f-7f54bffdeed9">
+      <Text>O João com o susto que apanhou está ainda aterrado a olhar para ela.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="96876b41-d05d-4e89-8fa1-36026fef3af7">
+      <Text>Quando olhou lá para fora já lá estavam os restantes 3.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="29a734ea-8442-4ced-9233-6a674ab52dc3">
+      <Text>Mati</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="1ee77e0d-4719-45a6-b89c-0a3876b8570b">
+      <Text>Anda lá pá! Não estás atrasado?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="c783b30f-3e6d-410c-8e6d-2fdcbce5997c"/>
+    <Paragraph Type="Dialogue" id="fa5672d3-c7b5-4959-ad15-75b68b486467">
+      <Text>POV</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="c783b30f-3e6d-410c-8e6d-2fdcbce5997c">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="0727b869-fbc0-4b6f-b94f-2804c9349d9c">
+      <Text>Tenho que limpar o leite primeiro....Mas porque estou a dizer isto a estas pessoas?</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="f13a1854-2fad-4520-8b94-1a416132eeea">
+      <Text>Fechou a porta e voltou a trancá-la.
+Assim que se voltou lá estavam eles outra vez.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="690261c5-e81b-46f8-93da-a7c3bc01438a">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="66b28830-cab2-4fea-bf47-2f5ce54aa06c">
+      <Text>Não. Não. Não. Não é com 16 anos que vou ter amigos imaginários. Há malta que ainda tem, ou que ainda anda com peluches. Mas eu não preciso disto. Especialmente hoje. </Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="e29415f4-6bc5-40dc-bf2d-6f544abb064b">
+      <Text>Passou por eles como se lá não estivessem, de pano da cozinha em riste numa mão e na outra o rolo de cozinha como se fosse um escudo. Aumentou o volume da música para o máximo e limpou rapidamente a sala.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="e77e70f9-e6c1-4b71-8cea-b38d618c91b8">
+      <Text>JOÃO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="945817eb-3526-4b7e-920d-28fcb220ee48">
+      <Text>Devo ter dormido pouco...</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="06635c54-b4e4-48ec-92c1-62d8c8cc353c">
+      <Text>Quando terminou já nem se lembrava dos 4 forasteiros bizarros.   Fez e comeu novos cereais.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="4edfa8a2-46eb-4890-98d2-1d9c18b9078f"/>
+    <Paragraph Type="Scene Heading" id="f9c497bb-5afe-41b4-9dce-070d9136f6e6">
+      <SceneProperties Length="1/8" Page="3" Title="">
+        <SceneArcBeats/>
+      </SceneProperties>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="f9c497bb-5afe-41b4-9dce-070d9136f6e6">
+      <SceneProperties Length="7/8" Page="3" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="CAS">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO PEQUENO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JU">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MATI">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>EXT. PRÉDIO Manhã.</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="06635c54-b4e4-48ec-92c1-62d8c8cc353c">
+      <Text>Saiu de casa para ir para a escola de mochila nas costas e assim que saiu do prédio voltou a dar um salto.</Text>
+    </Paragraph>
+    <Paragraph Type="Shot" id="c60f75a5-6576-42cb-9b9a-9d0caf92268b">
+      <Text>Plano aberto</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="d6d9d883-4d13-4989-95e9-ac335e126b83">
+      <Text>Estão os 4 à porta do prédio a jogar pedra, papel ou tesoura, Ju perde e está “desanimada”.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="c033fb14-ba19-4afc-bcf8-4dda2daa0a1e">
+      <Text>JOÃO PEQUENO</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="35e7f7d6-d12a-4d74-949d-125c3b432083">
+      <Text>(Para Ju)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="1199e683-ac7f-4069-a433-d131925a363c">
+      <Text>Boa! Vais lá tu!</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="9d58d8f7-8438-48c1-aba1-1af479247366">
+      <Text>JU</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="4340b832-3922-406d-9226-b9201f47bde5">
+      <Text>(desanimada)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="6cf06b92-6305-4fe3-940f-b8366a100076">
+      <Text>Sou sempre eu...</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="a170e1bb-5ac1-437d-a938-516333a140d6">
+      <Text>Cas</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="ae5e140b-4ab0-47ac-8f23-eb3e331df8c1">
+      <Text>(animado)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="43b08b40-1c38-4ed9-84ed-6cad12357bae">
+      <Text>Eu posso lá ir!</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="08d0c7ad-742c-4d1e-ae57-e85d11a6735d">
+      <Text>Ju</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="9aeadefc-c20d-4621-ae7a-d946a73446df">
+      <Text>Deixa...</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="63d93cef-498a-40f1-b592-c241511bb691">
+      <Text>Vemos um plano médio que acompanha o João enquanto fa o seu </Text>
+      <Text AdornmentStyle="-1">caminhbo</Text>
+      <Text> habitual mas muito irritado:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="b69efc2c-e0c3-400c-ad4d-def6d724b224">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="5d88b9a8-78ee-4d51-8b81-f562b4237bd8">
+      <Text>-	Não, nope, nem pensar! Não quero nem saber: quem são ou o que querem. Se fosse para me roubarem já o tinham feito.</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="ef27db28-3717-4c89-82ed-e1bdab9a29de">
+      <Text>Também não é para me venderem nada... e nenhuma igreja deixaria a sua mensagem ser espalhada por um grupo tão... tão... </Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="9f21b688-3a65-4440-a90d-42a8db7abe13">
+      <Text>Voltamos ao plano aberto.
+Uma rapariga (a </Text>
+      <Text AdornmentStyle="-1">Mati</Text>
+      <Text>) pergunta aos restantes, que vemos agora seguirem a mesma direção do João que se afasta:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="b51530dd-2e2b-41ad-800c-aaf3ccf4a80a">
+      <Text AdornmentStyle="-1">MATI</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="438dc568-1234-4a41-b170-dcec37fb27a4">
+      <Text>São todos iguais...</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="ea5ae74c-6000-4950-9323-e104097fbc6c">
+      <Text>O João vai a pé para a escola que não é longe de onde mora com a Mãe. Passa por um Jardim que tem que atravessar.</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="db3e98d2-23db-46b1-b4b3-1eddfe5247ac">
+      <SceneProperties Length="1/8" Page="3" Title="">
+        <SceneArcBeats/>
+      </SceneProperties>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="db3e98d2-23db-46b1-b4b3-1eddfe5247ac">
+      <SceneProperties Length="1" Page="4" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="CAS">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>EXT. JARDIM Manhã.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="7080eafa-83c9-483c-8645-8c7d1ce61add">
+      <Text>No meio do jardim vemos o João e os restantes a atravessar silenciosamente. O João, que já não aguenta, pára no caminho, volta-se para trás e diz o mais calmamente que consegue:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="56c0a8b3-4114-4bb4-b955-748b88fa37f6">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="086003e4-e259-4095-9aa7-391ffc76d9ac">
+      <Text>-	Epá, desculpem lá, mas isto é para os apanhados?</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="49e0ecbd-cdcd-4e30-a008-35097a101a94">
+      <Text>(olhando em volta à procura de alguém a filmar)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="086003e4-e259-4095-9aa7-391ffc76d9ac">
+      <Text>Uma cena p’ó clout?</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="57c2813e-3b99-4a77-87d9-58c54a01e252">
+      <Text>Um rapaz do grupo simpático e claramente motivado, cheio de energia (Cas) aproxima-se, estende-lhe a mão e diz:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="1bae19bb-b5a1-4bb6-a0fb-d57869f72551">
+      <Text>Cas</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="1892d3a6-adcb-47c7-b61e-008277f43a10">
+      <Text>Olá eu sou o Casimiro mas todos me tratam por Cas. Ela é a Ju e…</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="c1373ad3-bb7b-4c9f-bce7-91eeb7b0f4dd"/>
+    <Paragraph Type="Character" id="c1373ad3-bb7b-4c9f-bce7-91eeb7b0f4dd">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="b99f4e80-e00e-4382-9c24-4d9ea51efb45">
+      <Text>E?</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="b99f4e80-e00e-4382-9c24-4d9ea51efb45">
+      <Text>E nada!</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="b99f4e80-e00e-4382-9c24-4d9ea51efb45">
+      <Text>Mas... Não entendo nada. Vocês apareceram de onde? Isto é de loucos!</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="b99f4e80-e00e-4382-9c24-4d9ea51efb45">
+      <Text>Nah</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="b99f4e80-e00e-4382-9c24-4d9ea51efb45">
+      <Text>Deixem. Na verdade não quero saber...</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="b99f4e80-e00e-4382-9c24-4d9ea51efb45">
+      <Text>Quero é que me deixem em paz. Tenho um teste e já tenho chatices que me cheguem para ainda virem gozar comigo. </Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="b99f4e80-e00e-4382-9c24-4d9ea51efb45"/>
+    <Paragraph Type="Action" id="f5178713-762e-463c-b8ff-757043eb73e5">
+      <Text>O João olha em volta no parque com um ar irritadíssimo.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="499a984b-0281-44f4-be5d-e9a447a234b4">
+      <Text>JOÃO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="b99f4e80-e00e-4382-9c24-4d9ea51efb45">
+      <Text>Aposto que isto é coisa do Rúben...</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="acfb5076-b704-4541-8052-9b6bf43f1580">
+      <Text>(olha para o relógio)</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="4f8befc9-4f0f-4850-8690-14d4082a0ac1">
+      <Text>JOÃO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="b99f4e80-e00e-4382-9c24-4d9ea51efb45">
+      <Text>Ai que merda.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="c7ac8285-41ea-40a8-a793-10f82eac058d">
+      <Text>E era verdade. Ao olhar para o relógio já eram 8:28. Ainda tinha 5m de caminho pela frente e 2 minutos apenas para o fazer. Começou a correr.</Text>
+    </Paragraph>
+    <Paragraph Type="Shot" id="d239da7e-3e9c-45df-955a-443d326d44c3">
+      <Text>POV a correr</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="8cf4a80e-15c7-41f3-a809-fba12e5425be">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="eaf663ff-bfb2-4176-a932-c8f6ca8d9413">
+      <Text>Logo hoje, logo hoje, logo hoje... Aparecem estes idiotas para me distrair…</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="e3400fd8-8549-4df5-8ac1-41e6d0465d54">
+      <SceneProperties Length="7/8" Page="5" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="SR. ANTÓNIO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>EXT. PORTÃO ESCOLA. MANHÃ</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="b033b1e6-6168-4e21-8245-ccf1d4a82993">
+      <Text>Vemos um plano do João a correr em direção ao portão.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="e92938ac-3495-40fe-8f8e-a2ce3b3b3fa1">
+      <Text>Vemos o Sr. António espreitar pelas persianas e levantar-se.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="71cba83a-83f2-4e83-8812-4b0b1d448bc0">
+      <Text>Tem uma pequena guarita junto do portão e lá dentro está afixado o regulamento da escola com as regras mais importantes sublinhadas.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="888cb2f8-ff07-44cc-8663-d67fa3e3dac9">
+      <Text>Vemos o João a chegar ao portão com um ar triunfante.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="94ffcdd6-7f3e-40eb-ba1d-f4478d5bbfde">
+      <Text>Vemos o Sr. António a sair da guarita e atrás dele o relógio bate as 8:30. A campainha da escola soa.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="df4e292d-2442-4e97-90ea-e1c968bc88eb">
+      <Text>Vemos o João vencer o portão e esbarrar contra o Sr António quase derrubando os dois.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="55d6dfde-90f8-470d-89aa-39587f73db10">
+      <Text>Sr. António</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="df869105-9f83-4f63-83ff-890c3b5deec7">
+      <Text>Já nem vou falar de correr em terreno escolar Sr. João, mas pelo menos passe o cartão.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="598972bc-a985-40be-9943-3f621cf54017">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="9cff5df5-8cfe-4c88-838f-e81ce9c9687d">
+      <Text>(querendo passar o mais despercebido possível.)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="212a6fd5-371b-4ea8-a928-bd027ab5f6f0">
+      <Text>Hey! Obrigado por me lembrar Sr. António!</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="ccbd67ce-bb8b-4a3b-80e2-61317f4985f6">
+      <Text>Sr. ANTÓNIO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="414d8c20-223d-4993-9d91-5294cfbf44c1">
+      <Text>Hm Hm.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="36ca6976-b97e-42a1-96a2-93f8ce14e867">
+      <Text>Vemos o João a passar o cartão enquanto o Sr. António fala para os outros enquanto eles passam. </Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="a1f9fb53-188f-42a1-95cc-8eb28b7ba4ac">
+      <Text>Sr. António</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="d6fc4cca-539f-4ee0-b001-df01e37e770e">
+      <Text>Vocês não precisam do cartão...</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="486e9220-7b8e-4e75-b70e-70625ed80eed">
+      <Text>O João nem pode acreditar, mas com o atraso que tinha continuou apenas e correr escola dentro, com a benção do Sr. António.
+Atrás dele e com mais calma vemos o grupo que o segue.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="a1ca03ef-3c68-41c1-9541-980e9e96cbda">
+      <Text>Sr. António</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="d9e42b36-b2d5-47e2-8fe5-b3a8866585f7">
+      <Text>(murmurando) Logo em dia de teste... </Text>
+      <Text AdornmentStyle="-1">Humpf</Text>
+      <Text>. Ele vai sair-se bem. </Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="3518e529-45b7-4be0-9452-df93efed9bc2">
+      <SceneProperties Length="1/8" Page="6" Title="">
+        <SceneArcBeats/>
+      </SceneProperties>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="3518e529-45b7-4be0-9452-df93efed9bc2">
+      <SceneProperties Length="1/8" Page="6" Title="">
+        <SceneArcBeats/>
+      </SceneProperties>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="3518e529-45b7-4be0-9452-df93efed9bc2">
+      <SceneProperties Length="4/8" Page="6" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO PEQUENO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>INT. CORREDOR ESCOLA</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="c0eabbb0-4ecb-4b0f-b5a5-7d3c140c4230">
+      <Text>O João está à porta da sala para entrar. Antes de abrir volta-se para trás e diz para os forasteiros:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="73e49034-7ad6-46f2-868b-0f5564bd0ddd">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="50756dfd-3517-4f01-84fa-bb40391849d1">
+      <Text>Olhem, okay, eu não sei quem vocês são mas... 
+Estou nesta escola há pouco tempo, tenho poucos amigos e agora tenho teste.
+Posso ao menos fazer este teste em paz? Por favor?
+É importante para mim.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="9fcab9a7-30a8-405a-b351-fb9efd17a706">
+      <Text>JoÃO Pequeno</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="1da2a550-3037-44dc-ae40-327081dca937">
+      <Text>Eu não prometo nada.</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="3bcf5fa5-8cf4-4792-ab94-d38a1f300dcb">
+      <Text>O João olhou para trás e todos permaneceram imóveis. Lançou-lhes “aquele” olhar, voltou-se para a porta, respirou fundo e entrou. </Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="c936c903-5c86-4721-84db-a76760c39c99">
+      <SceneProperties Length="2" Page="6" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="CAS">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MATI">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="PROF">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="RUBEN">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>INT. SALA AULA</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="3bcf5fa5-8cf4-4792-ab94-d38a1f300dcb">
+      <Text>Por sorte ainda se estavam todos a sentar. A sala silênciou-se e quando olhou em volta estavam todos a olhar para ele. Volta-se para trás onde estão os desconhecidos.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="ffffa130-ee8e-4846-82f3-fbf6a4269eaf">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="95e8f1c1-3003-449a-9dd5-c81ca19b9564">
+      <Text>Nah…</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="1f70224d-ac6e-49f0-8553-9168c3df1eb5">
+      <Text>A professora com um ar muito sereno e baixando os óculos disse:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="8adba8fa-869b-43a6-a263-46c61b92025c">
+      <Text>Prof </Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="927bfa03-d400-4944-bee7-2003be538185">
+      <Text>Olá Sr. João. Quer apresentar-nos os seus amigos?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="a2a13c80-080b-4f9f-af7e-8504fa693355">
+      <Text>João </Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="971ebe5c-0f15-4097-87e7-4259c0276683">
+      <Text>Professora, não acha que teria escolhido um conjunto de amigos mais fixe? Olhe bem para eles. </Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="cff736d7-8464-4ff1-a1aa-bc8b345456cf">
+      <Text AdornmentStyle="-1">MATI</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="76a26a85-c385-4097-ac3f-5d78fb360d67">
+      <Text>Epá também não é preciso isso tudo.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="4c348061-ea72-427d-870b-adfd0869e158">
+      <Text>CAS</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="42d11e58-9ce5-44f7-a462-1865c72d7a6a">
+      <Text>Eu acho que estou apresentável.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="30b03478-3e80-469f-a7ec-329d4fee52bf">
+      <Text>JOÃO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="352edc04-df36-48ab-8f00-e6501d548898">
+      <Text>Não sei quem são, não sei o que querem.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="e46c3762-fe81-4c03-8a18-a8318bdd2fd2">
+      <Text>Sem muita paciência, enquanto distribuía os testes, a professora diz:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="00c02979-d557-47df-a251-9e60ce18d58d">
+      <Text>Prof</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="73f2794f-5115-4d3f-99c9-d815014d9b14">
+      <Text>Bom! Não vamos perder mais tempo. Vocês, sentem-se lá atrás e… Não. Abram. A. Boca.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="362a8583-9aee-4589-98f5-7e9083c4e8a4">
+      <Text AdornmentStyle="-1">MATI</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="f93196ae-7f48-491d-8e09-4340b81d4551">
+      <Text>Nós? Lá atrás? Todos juntos? LOL</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="05f136c8-caa8-4a8d-98cc-32f5cb290fa9">
+      <Text>JOÃO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="a263b55a-7c1f-433c-88d3-64510569772d">
+      <Text>(suspira)  </Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="05f136c8-caa8-4a8d-98cc-32f5cb290fa9">
+      <Text>PROF</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="d987f819-fb7d-47cc-8f87-0d1c2f5d002b">
+      <Text>Já que é para ficarem...</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="04f04f30-44f2-4b46-9761-ddea2694f7d1">
+      <Text>O estouvado da turma não aguentou mais.
+Sentado na mesa à direita do João com o fosso do corredor a dividi-los diz enquanto lê com desdém o teste.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="e79a9aac-68b0-4b39-aba0-4c86e661a777">
+      <Text>Ruben</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="f1eefe89-5368-4ae1-8009-d15b5b831df1">
+      <Text>Então João, agora tens babysitters? </Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="bb976948-e335-4a23-ac7e-c04426f88508">
+      <Text>Um a um a turma rebentou de riso.
+Nem a professora conseguiu resistir a um sorriso.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="175367ab-21ec-4fba-8923-8a62984f3aa4">
+      <Text AdornmentStyle="-1">MATI</Text>
+      <Text> </Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="8b68f08d-4bf1-4abb-b038-7f9947aaeb54">
+      <Text>Falas muito para quem tem os paizinhos a trazer à escola como se isto fosse um colégio privado.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="1a269ebb-da9a-4139-93a3-56bcd02b74a2">
+      <Text>Ruben levanta-se.
+Pequeno levanta-se e olha para o Ruben ferozmente.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="dcc472eb-d40d-4408-bea9-bcdd67044931">
+      <Text>Prof</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="3e43847b-7292-492e-a377-271a601467e4">
+      <Text>AHHAAMMM</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="1a269ebb-da9a-4139-93a3-56bcd02b74a2">
+      <Text>
+Finalmente todos se sentaram e a turma não abriu mais a boca.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="5a1425ac-becd-4f2e-bf18-08598c954c05">
+      <Text>Ruben</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="6f60be52-4750-44c0-a423-2bef89361df4">
+      <Text>Este deve achar que ganhou a lotaria.</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="7c4898d6-8b94-4289-8356-250aa7962635">
+      <Text>A professora enquanto volta a passo largo para o seu lugar depois de ter distribuído os testes diz, militarmente:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="8403e35e-83c7-4b96-a2c5-d00b0b8551d9">
+      <Text>Prof</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="dee7dba9-d19b-4dd8-812e-2e432985a441">
+      <Text>Têm 45m a partir de… agora!</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="51e26a28-5482-4b40-8e62-a1b63a073773">
+      <Text>O tempo passa depressa e o João e os restantes escrevinham furiosamente. De repente vemos o Cas a levantar-se impulsivamente e a ir ter com o João:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="8cc32828-1738-4a95-aa2d-196fd4cce311">
+      <Text>Cas</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="6c5a36e6-8227-403f-ba7c-f4f30c6317e7">
+      <Text>Lembrei-me que não te apresentei os outros. Só te apresentei…</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="cc022c77-6fb8-49db-8fb0-5ee4f33d581d">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="2cc5f980-bccc-47b1-bbe6-21e8898eb61f">
+      <Text>Vai-te embora. A </Text>
+      <Text AdornmentStyle="-1">stora</Text>
+      <Text> não te mandou sentar? O teste é importante. Vai-te embora man.</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="482551cd-2e55-45eb-ac48-411aeb9f14b7">
+      <Text>Vemos o Cas a voltar para o lugar e a professora a levantar a cabeça:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="9a0da6db-4b10-4946-9ed0-1c8addd7128b">
+      <Text>prof</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="8d609858-e156-4b7a-8da3-62c9874b1048">
+      <Text>Está tudo bem?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="caa0b4de-7822-4093-be73-32974cd62577">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="8f5364af-42a9-44a7-9fbd-37167644ffa5">
+      <Text>(Apressadamente para se reconcentrar)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="04d27b56-666a-401e-9b85-070300c229ea">
+      <Text>Sim tudo bem.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="78429489-a67a-476d-8ea8-7c40955731a9">
+      <Text>Prof</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="a6130a0a-2795-4952-9028-f747adf27772">
+      <Text AdornmentStyle="-1">Con</Text>
+      <Text>. </Text>
+      <Text AdornmentStyle="-1">Cen</Text>
+      <Text>. Trem. -Se.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="273510ab-6e18-4a8f-8081-68b407c5f622">
+      <Text>A campainha toca, todos se levantam e saem da sala.
+O João é dos últimos. Ainda está a arrumar a mala porque não quer ser apanhado pela turma.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="a3903eba-fb57-4571-a1a4-292bef39d1bd">
+      <Text>Mas em vão. Assim que sai, com os desconhecidos atrás, tem à porta um pequeno público em semi circulo à espera dele.</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="07bc0fe2-3502-402c-9891-b92ee39e8f59">
+      <SceneProperties Length="1 1/8" Page="8" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="CAS">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JU">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JÚLIO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MATI">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="PEQUENO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="RANDOM">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>INT. CORREDOR ESCOLA</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="367a769b-0212-4254-8da6-9d3db5a8774a">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="8a0fc4c0-4182-4129-9ae5-dfaba06f2e81">
+      <Text AdornmentStyle="-1">Eish</Text>
+      <Text>… Isto não…</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="02796a79-2e5c-4e49-9507-d518938bd7b0">
+      <Text>Cas</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="74c3cb99-a769-4c69-b28a-cafb303b0ac9">
+      <Text>(para o grupo)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="ea76589c-5e6f-426c-bf01-db103b448a4c">
+      <Text>Olá, eu sou o Cas. Ela é a Ju, ele é o João Pequeno…</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="eaeba848-ff27-4fef-b061-e3102f82f3a5">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="f11d960d-d21b-48d7-865f-39fab35e69a1">
+      <Text>(bastante irritado)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="d78fd34c-4bb6-4e90-a895-62f72a75fcb6">
+      <Text>Podes estar calado?</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="681774df-8a9b-4d76-8b21-3aeb3da403c0">
+      <Text>Continuou a andar tentando atravessar a pequena multidão. Alguém esbarra o seu caminho e pergunta.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="070b48f7-4d29-44c3-b842-3e0afde58180">
+      <Text>Júlio</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="836c67b9-01ea-4534-b2d8-d92ddaae2ce2">
+      <Text>Olha lá, tu queres dizer que entras aqui com mais 4 pessoas e juras que não sabes quem são?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="6690add2-f87d-445e-8fb3-4713814272eb">
+      <Text>João </Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="66d4244c-9036-4031-b973-1a1e7a245400">
+      <Text>Opá Júlio, juro-te pela minha mãe que nunca os vi antes de há bocado. Deixa-me passar sff.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="8534e518-d376-4437-93ad-b5907d761acb">
+      <Text>Random</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="0bf92f86-d14b-45cc-aa9e-c0e17e6e75f9">
+      <Text>Quem mais jura...</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="c256a8dd-da49-43b7-ab1f-f2e368cf867a">
+      <Text>JÚLIO</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="5e356fd9-d82f-4f0f-bd03-5b0cddd48f68">
+      <Text>(Impedindo o João e olhando para a </Text>
+      <Text AdornmentStyle="-1">Mati</Text>
+      <Text> de soslaio)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="5d38c08a-3e02-4cfa-ad67-bba36a208923">
+      <Text>E nem os apresentas?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="8cf9eb54-3bc8-42e6-9190-b21bccd99274">
+      <Text>PEQUENO</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="b26cab64-067b-4306-a47a-cac052d4cf57">
+      <Text>(Chamando a atenção do Júlio)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="ec553673-4896-40cb-8280-1f13b669ace2">
+      <Text>Olha lá, tu és assim para toda a gente?</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="ec553673-4896-40cb-8280-1f13b669ace2"/>
+    <Paragraph Type="Character" id="748e36f3-e1f1-4b0c-80d6-c676f02a420d">
+      <Text AdornmentStyle="-1">MATI</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="ec553673-4896-40cb-8280-1f13b669ace2">
+      <Text>Nah. É só para pessoas que nunca viu... Lol</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="f3ca37e3-72cf-4a17-a862-db19425bc4e1">
+      <Text>JÚLIO</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="290f3bbe-f2d9-49fc-8e79-e2d30048a090">
+      <Text>(Para Pequeno)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="1db66e1f-1afa-4a3a-b762-5b2a7206a5a2">
+      <Text>E tu vens sempre com a mania que és grande?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="36e3c903-d109-4ebc-b87a-524b9ad016a2">
+      <Text>JU</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="d62fc59d-7f22-45ba-8f98-9292f6ada87e">
+      <Text>(gritando)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="af7b9143-e0e6-421c-aae1-190052aa6ca8">
+      <Text>JÁ CHEGA!!!</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="f3e876ea-2fdb-4d13-9fec-704b50419c7d">
+      <Text>Naquele momento tinha acabado de ficar uma espécie de bolsa sonora rara em que todos se calaram. Todos irromperam em riso.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="fc6ceeb6-e4a9-4c96-bb19-9829521fcf6a">
+      <Text>O João passou cabisbaixo até à casa de banho.</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="f29b706a-41a2-4038-a6db-20877199d906">
+      <SceneProperties Length="2 2/8" Page="9" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="CAS">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO PEQUENO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JU">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="LU">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MATI">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="PEQUENO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>INT. WC ESCOLA</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="a641f64c-236e-437d-95b1-4ba27ed582c9">
+      <Text>Está refugiado num cubículo.
+Respira rapidamente e claramente precisava de espaço.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="a785717d-ad6e-4047-9d21-cd72c458b730">
+      <Text>Ouve passos à porta do vestíbulo, olha por baixo da porta identificando os pés dos seus perseguidores.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="23d7e083-e341-4e65-a729-bc36f143a102">
+      <Text>Vemos um plano de fora onde estão todos encostados à espera. </Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="23d7e083-e341-4e65-a729-bc36f143a102">
+      <Text>Está sentado na sanita. Envia mensagens.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="9ee8a921-7a6c-4efc-b718-3b9c586ceb81">
+      <Text>JOÃO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="2c20b441-8bef-4027-b629-8cf9d0f7df41">
+      <Text>Estás boa? Não vens hoje?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="f2b27867-2070-4ccf-a7c6-4158c93b3ee9">
+      <Text>Lu</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="b4d03b13-8e14-41c6-bda1-94fa27fe50e4">
+      <Text>Hoje não vou.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="bc8d8bb6-756c-45b7-b20b-a85928bce165"/>
+    <Paragraph Type="Action" id="23d7e083-e341-4e65-a729-bc36f143a102">
+      <Text>Ouvimos a voz do João…</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="d41c6c43-1e27-44db-9695-d87315737a45">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="571f0943-a769-4049-b481-9a56f225b2dd">
+      <Text>	A sério que vão estar aí o tempo todo??</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="40a1e4a5-b7c2-4f4b-9ce2-4781202a4590">
+      <Text>Tenta abrir a porta mas os nervos não o deixam.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="327200cc-5bf0-4ae2-abe0-4459db8b2450">
+      <Text>JU</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="0358b094-08ee-4674-836e-1c707c45024f">
+      <Text>É para o outro lado...</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="40a1e4a5-b7c2-4f4b-9ce2-4781202a4590">
+      <Text>O João sai do cubículo. Lava a cara, olha-se no espelho e estão todos lá. Vira-se para o Cas e pergunta.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="3330b980-1cba-4305-a98a-7fa205d981ef">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="0a6d3e66-d772-43f3-89a6-e0216f7a802c">
+      <Text>(suspirando)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="56c5088a-74a4-4959-8357-6548144976a9">
+      <Text>Diz lá Cas, quem são vocês?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="22857ccc-b3fb-49d8-ade8-099f875b61c2">
+      <Text>Cas</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="0e590f46-1e5d-4dc6-ae3d-c34931f0e81c">
+      <Text>Ela é a </Text>
+      <Text AdornmentStyle="-1">Mati</Text>
+      <Text>. Ela a Ju. Eu sou o Cas e ele é o João Pequeno.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="16b91cc9-4ecc-4e1b-b636-8d29fcccf648">
+      <Text>De repente a porta da casa de banho abre-se e entrevemos o Ruben com um ar sacana. </Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="95120d2e-3cb3-4565-a8fc-1795dcbda54a">
+      <Text>JOÃO PEQUENO</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="4120503a-5d25-4f56-88f9-a3385d19a5f3">
+      <Text>(enquanto empurra a porta com um pontapé frontal sem hesitar)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="cc55aa4b-29ac-409d-9580-2d0fc9804aef">
+      <Text>Nope!</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="40eb59e8-c31c-4944-8593-7794d002ff81">
+      <Text>Segue-se um momento de silêncio estranho até que o João, irritadíssimo, dá voltas sobre si próprio e olha-se ao espelho. Pega na mochila. Volta a tirar… E pergunta:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="bd63dd31-46f2-425a-b00d-a54c6889685b">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="499cb794-006d-4691-ba34-0a29c887aac4">
+      <Text>Ok, isso são os vossos nomes. Não me consigo livrar de vocês *nem na casa de banho aparentemente*, metem-se na minha vida, falam com as pessoas...</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="499cb794-006d-4691-ba34-0a29c887aac4">
+      <Text>Mas QUEM são vocês?</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="499cb794-006d-4691-ba34-0a29c887aac4">
+      <Text>O que estão aqui a fazer, porque não me largam? O que é que vocês querem?</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="a6f0ce9a-799f-444b-a7c5-b416a512d1de">
+      <Text>Eles olham com um ar impávido uns para os outros e a Ju simplesmente repete calmamente o que o Cas disse:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="bad46b4f-7fb2-4074-be4d-b5599b913b0d">
+      <Text>Ju</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="60b08b72-2caa-46a9-966b-2b520b37d4d7">
+      <Text>Eu sou a Ju, ela é a </Text>
+      <Text AdornmentStyle="-1">Mati</Text>
+      <Text>, ele é o João Pequeno e ele é o Cas. Acho que não percebemos bem a tua pergunta.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="008a9728-070d-4565-96fd-08438f246d81">
+      <Text>A porta da casa de banho volta a abrir e o Pequeno volta a fechar sem cerimónias.</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="b0bb92e7-ac47-4fee-8023-42e32af65211"/>
+    <Paragraph Type="Character" id="796fe3ea-a656-462b-8ea4-75e084c545bd">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="e23b2368-12bf-4afc-b228-efafd1b5d202">
+      <Text>Já viram o caos que está lá fora? Aposto que estão todos à espera que eu saia.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="41b29719-49e8-4974-ba25-99272bfeb144">
+      <Text>cas</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="d01a7cbb-4f6c-44d5-8144-2ddad9ac0e86">
+      <Text>Parecem todos tão simpáticos!</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="acdb9296-713d-445e-87bd-c00c1e618bdc">
+      <Text AdornmentStyle="-1">Mati</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="93887e4f-4495-488b-8f66-8f77fdeabb19">
+      <Text>A professora também.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="0a11215c-ae4c-4693-8325-dea5b40178f4">
+      <Text>Pequeno</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="08fb15e8-2d05-4e81-841f-cf930b360aae">
+      <Text>Sim mas mandou-nos lá para trás...</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="22c48280-51ec-4b72-aa62-98e83e473e96">
+      <Text>Ju</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="93511327-d7ca-4203-ab87-7a16a84d71d1">
+      <Text>Ok mas não nos expulsaram.</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="5e3df0ed-9c3f-4aba-99ac-35d1dfd6aa39">
+      <Text>Eu gosto desta malta!</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="97ae056a-f9b8-418c-ab5e-0dfc1c49c17c">
+      <Text>Pequeno</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="a6515005-c82b-4dcf-9f83-77f9c16f7828">
+      <Text>Sim, mas ainda agora os conhecemos.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="4876df6d-c772-49b6-8ede-cfd2857535a1">
+      <Text AdornmentStyle="-1">Mati</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="3d2c3038-9a88-4e36-9f4e-8a80d8037da5">
+      <Text>E o João?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="3fed0720-4cc6-4aa4-a692-19fb8b6e2d74">
+      <Text>Cas</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="64eb8d2b-d543-497e-bd16-25b8270f1ccb">
+      <Text>O João é fixe.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="067743ef-ef47-4efa-a884-ab3f0d00df92">
+      <Text AdornmentStyle="-1">Mati</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="54cc45d4-435b-4937-a2d4-8389466518bb">
+      <Text>...mais ou menos</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="cdb8b792-0425-4d63-87e2-8dadbb9a0fc2">
+      <Text>Pequeno</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="cac81eae-7fc3-4f6c-aedc-d29c24b829f9">
+      <Text>Nah... é fixe mas precisa…</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="de7f826f-59b9-445d-8a1d-c5c6eef89452">
+      <Text>João interrompendo o caos que eles geraram.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="e6de18e5-a545-4ed4-8cea-c7290ef8448f">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="8dcb2115-85ee-43b9-92f6-2739f578c474">
+      <Text>Eu estou aqui!
+Estão a falar de mim!</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="a5418f2e-5905-41de-a1e8-be23ce46e6f6">
+      <Text>Já percebi que vocês não me vão dizer nada…
+Estou farto disto e tenho educação física. Pode ser que o exercício me faça bem. 
+Virem-se todos para lá! Nem que seja para me vestir!</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="c94d7303-6c8a-4c6f-a80a-988761fa5766">
+      <SceneProperties Length="3/8" Page="12" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="CAS">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>INT. BALNEÁRIO</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="ba4ce3ce-6eb1-4be3-81c6-7e1d537ec651">
+      <Text>O João está a terminar de se vestir virado contra uma parede enquanto os outros estão encostados com a cara contra a parede oposta.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="5f0a3b2b-4b09-4e99-9cdd-a7a401286c0b">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="567cb7e7-76f4-442e-811d-03c03f279281">
+      <Text>Já terminei. Não custou assim tanto pois não?</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="ae079a98-1ca2-48e2-bce7-fef61a8054bf">
+      <Text>O Cas ofegante e a retirar a cara esborrachada da parede diz:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="7d033af4-145f-4c2c-98b6-5e726f37aa29">
+      <Text>CAS</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="afb578ae-654c-4e85-891b-046d8411689a">
+      <Text>Acho que fui muito literal…</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="dbd7160d-203a-4fd4-ae6a-5d7df7960965"/>
+    <Paragraph Type="Scene Heading" id="2d97f5c9-1e60-4873-9704-4e59ce83d6be">
+      <SceneProperties Length="1/8" Page="12" Title="">
+        <SceneArcBeats/>
+      </SceneProperties>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="2d97f5c9-1e60-4873-9704-4e59ce83d6be">
+      <SceneProperties Length="1 3/8" Page="12" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="CAS">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MATI">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="PEQUENO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="PROF GINÁSTICA">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>INT. GINÁSIO</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="a185aff5-3f43-47b2-a958-4649e4fac6ad">
+      <Text>No ginásio está o professor a falar com a turma. No meio já lá estão os 4 desconhecidos.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="8d9a1b4b-0a4f-460a-9bb5-441f0398a9e2">
+      <Text>O João aproxima-se </Text>
+      <Text AdornmentStyle="-1">boqueaberto</Text>
+      <Text> e ouve o final da conversa. O prof está a falar para eles:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="1585baa5-a0f2-4e9f-a1f3-95703ac807c4">
+      <Text>Prof GinÁSTICA</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="7bf55e56-e030-41bd-891e-a7be1ad4ebe4">
+      <Text>Muito bem.</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="760160dc-5524-4710-a9b1-a6f3c3ab901f">
+      <Text>(apita)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="7bf55e56-e030-41bd-891e-a7be1ad4ebe4">
+      <Text>10 voltas</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="31ea58f8-42e7-4adf-86d4-c766c4b27c43">
+      <Text>(apita)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="7bf55e56-e030-41bd-891e-a7be1ad4ebe4">
+      <Text>em 10 minutos</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="e976cef1-260f-422d-a9e1-3baa062bd63d">
+      <Text>(apita)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="7bf55e56-e030-41bd-891e-a7be1ad4ebe4">
+      <Text>ou fazem flexões</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="e36c8686-9fe7-415d-a47b-053fb0143388">
+      <Text>(apita)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="7bf55e56-e030-41bd-891e-a7be1ad4ebe4">
+      <Text>Vamos! (apita)</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="2a97478c-2cbf-40e5-b331-0d058661c35d">
+      <Text>(apita)</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="c1b57b3e-67af-4609-8187-0076787778b5">
+      <Text>Todos correm. Como o grupo do João ocupa imenso espaço ele deixa-se ficar para trás.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="b33c5652-69dd-47bc-9efa-a8adaa7c8afa">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="842db1ae-661c-4d4f-9e7d-6a673c5f3167">
+      <Text>Opá a sério? Vocês não podem ir correr para longe de mim?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="b3c3585d-943a-4e67-8dce-34dec7e929a3">
+      <Text>Prof GinÁSTICA</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="cf2956f6-8d1f-4871-bacc-37a4bbc55c68">
+      <Text>(apita)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="a689ccea-02d9-42cd-8041-d8c1ea05ab32">
+      <Text AdornmentStyle="-1">Silêêncio</Text>
+      <Text>. E respirem.</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="3e8be4df-06b6-4c14-9e5e-01c389b6504e">
+      <Text>(apita)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="a689ccea-02d9-42cd-8041-d8c1ea05ab32">
+      <Text> Não quero ninguém</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="6cbdca35-7a89-40f0-99f7-3049603fa038">
+      <Text>(apita)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="a689ccea-02d9-42cd-8041-d8c1ea05ab32">
+      <Text> a parecer um cão com sede.</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="cb4c0dd4-13e1-4f0a-95d3-4c348a958232">
+      <Text>(apita)</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="c9bc3846-c065-47af-ba40-f1e8e656b53a">
+      <Text>Pequeno</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="ca8e6da6-f23d-4a61-af19-25528a165651">
+      <Text>Nah… Não queremos.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="92668d06-a431-4491-8282-568e22c55511">
+      <Text>Cas</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="355449a0-d8c2-417b-9295-28341e999266">
+      <Text>Aquele apito é </Text>
+      <Text AdornmentStyle="-1">suuuper</Text>
+      <Text> fixe!</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="7f4dcdaa-6175-4530-a135-ab369adf4226">
+      <Text AdornmentStyle="-1">MATI</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="492cdf60-b94c-4637-befe-9dc939c078ee">
+      <Text>Epá já não consigo o ouvir... Tenho o cérebro a apitar...</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="d0b3369f-f9c3-4ca4-b4b1-ccd32248aefb">
+      <Text>JOÃO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="8ef21798-5396-48df-adb9-5a05a26d82c8">
+      <Text>SHHHHHH Ainda me lixo à vossa conta. </Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="3953d0dd-4e20-42f7-9b77-b8c7a9fa5a63"/>
+    <Paragraph Type="Character" id="3953d0dd-4e20-42f7-9b77-b8c7a9fa5a63">
+      <Text>Prof GinÁSTICA</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="1f808b52-d35c-4ea7-beea-867aff811227">
+      <Text>João! </Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="ff65c240-e5f2-46e3-89c1-7dd71217969d">
+      <Text>(apita)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="1f808b52-d35c-4ea7-beea-867aff811227">
+      <Text>10 flexões</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="f5b5dbf2-7254-48fa-a558-ea0ced6da626">
+      <Text>(apita)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="1f808b52-d35c-4ea7-beea-867aff811227">
+      <Text>depois</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="0af20233-9b4a-4340-9e42-db735b10f8df">
+      <Text>(apita)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="1f808b52-d35c-4ea7-beea-867aff811227">
+      <Text>das 10 voltas.</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="fc6e05f8-0eb1-4196-b00f-3714a46a9045">
+      <Text>(apita)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="1f808b52-d35c-4ea7-beea-867aff811227"/>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="782fb0a6-ae08-4ec4-adb3-d3d32ddc3f4a">
+      <Text>Vemos o João a fazer as flexões enquanto os amigos jogam </Text>
+      <Text AdornmentStyle="-1">volley</Text>
+      <Text>. O professor vem ter com ele com uma bola e diz.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="2ae81021-d4af-4304-aeb8-261cd215cdb1">
+      <Text>Prof Ginástica</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="02feb112-5109-4387-a3bf-1461cbbbfcdb">
+      <Text>Olha até foi bom. Porque como ficaste sozinho treinamos os dois manchetes a aula toda que te parece?</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="9d529414-6f48-4914-a653-01f89f37c992">
+      <Text>(apita)</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="63601056-3726-4d60-8158-41eb8ea3806e">
+      <Text>CAS</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="6aa091a6-bd75-4e38-ae0d-60ae4902752a">
+      <Text>Também posso?</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="c5ad5c9c-34c1-46ac-8d77-1481dda1d8ee">
+      <Text>O olhar do João para o CAS foi fulminante. Eles ficam </Text>
+      <Text AdornmentStyle="-1">relaxadamente</Text>
+      <Text> sentados na bancada a olhar para ele.</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="747fde07-b269-4b25-8578-e4586b52aef2">
+      <SceneProperties Length="1 3/8" Page="14" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="CAS">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JU">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MATI">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="PEQUENO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>Ext. Rua. Por do sol</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="d36dcc72-944b-4524-9048-d55a2737bc41">
+      <Text>Vemos o João a caminho de casa no passeio. Claramente cansado, cabisbaixo e com a camisola toda suja de tinta. Atrás dele, com um ar sorridente, vêm os forasteiros.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="61c8f8b4-87ad-4eb7-923c-92a28e02d4ee">
+      <Text>O João </Text>
+      <Text AdornmentStyle="-1">súbitamente</Text>
+      <Text> pára, olha para trás e esticando a camisola que tinha vestida diz:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="18437ba0-9629-4827-8ef4-179bfd229d19">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="916d8c6c-c85d-4dc2-ba51-34de6cb734f1">
+      <Text>-	Olhem para isto! Nem consegui comer sossegado. Têm noção? Nem comer? Cheio de tinta...</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="6b49aaa1-b0df-4b59-8d73-b93644c3df10">
+      <Text>CAS</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="a1ecac1c-f46d-41f5-8050-21591243099a">
+      <Text>Por acaso foi incrível, tipo em </Text>
+      <Text AdornmentStyle="-1">slow</Text>
+      <Text> motion. Viste Pequeno?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="4a9acc91-93bb-416f-93fa-48495bfb37d8">
+      <Text>PEQUENO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="3795df5c-34f3-4125-bb5e-6248eced9d4b">
+      <Text>Claro que vi. Foi incrível.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="b4d7dcea-5eb4-456f-8936-5eb7cbeaa7c9">
+      <Text AdornmentStyle="-1">Mati</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="7f2fe26c-d12b-4638-b7e8-8f48d4adc53a">
+      <Text>Estás super colorido! Lol</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="131e9e57-3e74-4666-a334-0e5ff296239f">
+      <Text>JU</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="69707c1d-81fb-46c2-a080-80de38159aed">
+      <Text>Também quem é que deixa um tabuleiro com tintas no caminho?.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="39529317-33f6-432f-acec-411c507d2a31">
+      <Text>pequENO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="b108ea26-1041-48c4-9644-e4f4d167b39c">
+      <Text>É...Foi a gravidade...</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="36fcac2f-83bd-4d43-8c2f-77e6106c2d01">
+      <Text>(Vemos um </Text>
+      <Text AdornmentStyle="-1">flashback</Text>
+      <Text> da ação em </Text>
+      <Text AdornmentStyle="-1">slowmotion</Text>
+      <Text>)</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="35456dc5-9753-4ce0-863c-fedca9057e9c">
+      <Text>O </Text>
+      <Text AdornmentStyle="-1">joão</Text>
+      <Text> anda no corredor da escola </Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="f366e9d5-2c07-4b56-82c7-a7143667b9c1">
+      <Text>De uma porta sair um carrinho com tintas empurrado por uma aluna</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="f836c45e-0b59-4e84-8dec-6430d210e87c">
+      <Text>Chocam os dois e fica tudo pintado</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="a6c97dff-42e9-4839-928b-995311833ef7">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="a99c6cf7-183f-42c6-901a-b502b6742470">
+      <Text>Epá vocês têm noção do que fizeram ao meu dia?</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="a99c6cf7-183f-42c6-901a-b502b6742470">
+      <Text>DESAPAREÇAM!</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="02f9489c-a49b-49ca-aae1-b9b0dfaeedc9">
+      <Text>Têm noção?</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="02f9489c-a49b-49ca-aae1-b9b0dfaeedc9">
+      <Text>A tinta é só um detalhe.</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="02f9489c-a49b-49ca-aae1-b9b0dfaeedc9">
+      <Text>O que é que vocês querem?!?!</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="02f9489c-a49b-49ca-aae1-b9b0dfaeedc9">
+      <Text AdornmentStyle="-1">VAO-SE</Text>
+      <Text> EMBORA...</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="2c6d8c2f-ffe8-40a0-b04a-bf00739bbfa5">
+      <Text>Cas</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="c8e262e2-8a6b-491e-a35b-435751541e60">
+      <Text>Eu sou o Cas…</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="6065452b-aebe-44fa-9a0f-58d2ea39d077">
+      <Text>A Ju mandando calar o Cas, aproxima-se do João (todos a seguem com mistério e curiosidade)</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="2e4d202b-0732-44ce-aaec-8baea50ceee9">
+      <Text>Ju</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="689d512b-c94d-4fec-8db4-05b6860482c8">
+      <Text>(sorridente e confiante)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="9e00c742-b950-43fe-8c27-f681c6a1bf71">
+      <Text>Já percebemos que isto é uma grande chatice para ti. Mas não podemos fazer nada.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="44d8f10a-98d2-4e34-b614-8f8076afad51">
+      <Text>E serenamente volta para o seu lugar.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="422f61a6-451b-4f23-9caf-014a4274ff99">
+      <Text>Pequeno</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="1848dbd4-e075-4ceb-bbfe-7206a4631729">
+      <Text>Epá! Mic </Text>
+      <Text AdornmentStyle="-1">drop</Text>
+      <Text>!</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="061fc132-c270-4a10-acc1-6a7372c3cfc0">
+      <Text AdornmentStyle="-1">Mati</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="bb5f7079-ec65-4b53-8321-1d4807db259c">
+      <Text>Justo!</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="46e30da6-8b10-4e4d-b5f0-4d91536e9294">
+      <Text>O João enterra o chapéu na cabeça e sai a passo largo passeio fora. Vemos outro plano dele a andar até que pára subitamente e sorri. Acena a alguém.</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="af8309f6-fe5f-409b-99c2-8083cac7b025">
+      <SceneProperties Length="1 2/8" Page="15" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="CAS">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="LU">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MAE LU">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MATI">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>EXT. ESQUINA POR DO SOL</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="28501455-e6da-47ae-8574-40a01ef61808">
+      <Text>Vemos a Lu com a mãe a aproximarem-se.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="f0979062-34a2-4576-a96a-81f0f6221ce3">
+      <Text>Lu</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="17135722-219e-4d82-8761-099b7abac41a">
+      <Text>João! Estás todo sujo!</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="7d3f9f83-4740-4d0c-bfda-4db523fadc2d">
+      <Text>JOÃO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="8c5175f0-0603-4af0-a526-ff88cdacdef8">
+      <Text>Lu! Não foste hoje...</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="4a335662-5e72-4b49-abc9-27fe3dd1a2ba">
+      <Text>Mae Lu</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="085da402-0260-4ab5-a1c2-a59711322e87">
+      <Text>Que te aconteceu rapaz?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="86e0d1bf-e862-4736-b325-7ec8e38f0e6d">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="a7a188a1-7a74-4739-b752-5d2dd5d2a26e">
+      <Text>Nem sei por onde começar. Foi a gravidade que puxou a tinta para cima de mim.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="c6e6bd97-f2ca-42bd-a370-d07622e12197">
+      <Text>Lu</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="4030ae29-2d82-466f-b441-3f87749cd3a3">
+      <Text>AHAHAHAHA.
+Tive uma consulta.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="91048060-6622-4219-a3b1-333c0f52e6d2">
+      <Text>Cas</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="5a33bbfd-786f-4d25-a23d-3d220927dbb5">
+      <Text>(para Lu)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="f395735b-e88b-46fe-bc0d-3ff9ec7327f5">
+      <Text>Eu sou o Cas.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="351200a9-580d-43e6-9a3b-39dc9f81ec4f">
+      <Text AdornmentStyle="-1">Mati</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="db625a93-0ec6-4253-8519-1597d95ab0d5">
+      <Text>(para Lu)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="ffa67f9b-455b-4716-a33d-bd907bcb4b16">
+      <Text>Tu és bonita Lu.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="192147b6-7934-490b-8ae2-65b5fbb82db0">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="6e16b728-8eab-411b-adb8-d24291c1f9c1">
+      <Text>(Muito nervoso)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="4c667cb9-80f5-4cdd-b043-ca215ab925fd">
+      <Text>Mas vocês não se calam?</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="ea05d200-cb77-49ee-9a34-38189844bb60">
+      <Text>(Para Lu)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="09931a85-9923-4a04-aa53-96e36b0b7b78">
+      <Text>Não são meus amigos.
+Não sei quem são.
+Apareceram e não me consigo livrar deles.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="c81929fa-c839-42f0-89cc-6e8f8d6e599f">
+      <Text>Lu</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="1898060a-77b3-4078-b5cb-fcd01c797256">
+      <Text>(Um pouco constrangida pela impaciência do João)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="8a26dff4-a8ba-4860-9e18-5d2cc3254b5f">
+      <Text>Parecem divertidos...</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="697b88fa-018a-4a9c-b569-bf477f02f77e"/>
+    <Paragraph Type="Character" id="65a087e8-d104-4e2c-9023-c4773ed3bda0">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="331d3b99-d663-4548-9a99-1cc1b752711f">
+      <Text>(Afastando-se e acenando.)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="79ae8c50-ca60-4ac8-9d2a-21e9af524ff6">
+      <Text>Mais ou menos... Tenho de ir. Amanhã vais? Leva o livro!</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="98027394-79ab-4c26-9ca4-c74a1329d9f9">
+      <Text>Lu</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="b562fed3-2cfe-4351-8cf7-859011015dc5">
+      <Text>Amanhã vou. Levo!</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="cc02c839-fcbf-49a7-83ad-fc09a0ee9c1d"/>
+    <Paragraph Type="Character" id="1bcd6086-1dd5-4735-8b1b-f620aba2ee90">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="82c73896-9b57-4a9b-90b3-34b3acee2858">
+      <Text>(enquanto anda)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="bbad5d7e-d3de-42ec-8bce-b2d65aa0c32a">
+      <Text>Juro que assim que descobrir como me livrar de vocês nem vou hesitar.</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="227c061e-c075-4cba-88b5-f626852eb490">
+      <Text>Vocês não falam com ela perceberam? Não falam com ela, não falam dela, nem olham na direção dela. É o único amigo que tenho nesta terra. Já me chega o que chega. </Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="4bc8337e-f0ec-41b8-8525-7745c8451335">
+      <Text AdornmentStyle="-1">MATI</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="60c97d92-5a40-4f31-8572-0334ef66375c">
+      <Text>Chega o que chega?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="9bcfea25-d872-44e4-820f-4ff1a26bc295">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="8586c2b0-87b8-429c-b2b5-9e176da8825c">
+      <Text>(a bater com os pés no chão) </Text>
+      <Text AdornmentStyle="-1">AAAARGHHHHH</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="21b8d617-53ac-419c-b217-d196c242ab09">
+      <SceneProperties Length="1/8" Page="16" Title="">
+        <SceneArcBeats/>
+      </SceneProperties>
+      <Text>INT. PORTA DE CASA JOÃO</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="6d017aca-49df-488f-b9fc-400bceb68915">
+      <Text>Estamos de novo na porta de casa do João. Tira a chave da mochila e abre a porta.</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="775b9246-20fa-4980-8d80-4e4b208fd746">
+      <SceneProperties Length="6/8" Page="16" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MÃE">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="PEQUENO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>INT. COZINHA JOÃO</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="73ede00d-4d92-4e22-8f74-3572492b6c46">
+      <Text>O João entra pela cozinha, abraça a mãe que lhe arranca um beijo.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="5b1af320-cb7f-4176-bcf8-d37dd2c437b2">
+      <Text>MÃE</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="4c28545f-04fe-4eb1-b29a-66644633da77">
+      <Text>Olá! </Text>
+      <Text AdornmentStyle="-1">Jás</Text>
+      <Text> há tempo que não tinhas saudades minhas. Está tudo bem?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="b34b017f-013e-4196-b20f-27c3cea58f85">
+      <Text>JOÃO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="3ab00b5e-25c6-4094-8af0-cc6f62617dee">
+      <Text>Olá. </Text>
+      <Text AdornmentStyle="-1">SIm</Text>
+      <Text> está tudo!
+Cheira bem!</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="73ede00d-4d92-4e22-8f74-3572492b6c46">
+      <Text>A seguir vai à casa de banho, lava as mãos e volta para a cozinha onde está a mãe a cozinhar. Vai olhando em volta um pouco nervoso. Não há sinal dos invasores. </Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="200025f1-d2ff-45af-b248-b8f1df2b1708">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="293dd481-2ec9-46cf-8a7a-f4a0abdaaa66">
+      <Text>É </Text>
+      <Text AdornmentStyle="-1">lasagna</Text>
+      <Text>?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="39fa2aac-c680-48a8-b281-048088ba587b">
+      <Text>Mãe</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="71171ae3-b286-4710-97d0-621fafe9cf07">
+      <Text>É bolonhesa.
+O teste correu bem?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="db50d7fa-1f8b-49f0-8ed4-d5eea292de31">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="c2fb4cad-3626-418e-b9ab-a7bbbad9a68b">
+      <Text>Mais ou menos. Estou cheio de fome. Vou por a mesa.</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="ad66eeb6-cf20-4874-961c-3499105ea545">
+      <Text AdornmentStyle="-1">Vemo</Text>
+    </Paragraph>
+    <Paragraph Type="Shot" id="cd96644f-e98a-415f-a6e7-7ca81b8824ac">
+      <Text>INT. SALA </Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="ad66eeb6-cf20-4874-961c-3499105ea545">
+      <Text>Os forasteiros sentados no sofá</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="ad66eeb6-cf20-4874-961c-3499105ea545">
+      <Text>s o João a pôr a mesa na cozinha.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="0ee159fc-3547-4847-bdcf-46aa32507899">
+      <Text>pequeno</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="0c00e397-95ab-4103-9629-1b2a40e7e90f">
+      <Text>Aqueles </Text>
+      <Text AdornmentStyle="-1">tallheres</Text>
+      <Text> estão todos tortos....?</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="dda39efc-42fa-4990-9de0-0e34f91070e5">
+      <SceneProperties Length="2/8" Page="17" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MATI">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>INT. COZINHA</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="d9820150-a7c6-4d9c-9f7f-5e0388dc7159">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="a79694bf-b201-4db7-a5d1-74e16a61e7c9">
+      <Text>Achas mesmo?</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="17a665e9-5af9-4270-89bc-e88438db0f9f">
+      <Text>(endireita os talheres)</Text>
+    </Paragraph>
+    <Paragraph Type="Shot" id="cf7f57e0-57c9-4d1c-9b39-df72ff9aaf97">
+      <Text>INT. SALA</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="e958aede-1fc7-4435-a43b-c6c091aaa068">
+      <Text AdornmentStyle="-1">MATI</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="cdbbf73c-5b02-4600-9208-b9871425c81f">
+      <Text>(sarcástica)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="e5e04a83-4a65-451b-9ba8-f4245266be52">
+      <Text>Também não é preciso que pareça a mesa da corte.</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="27217be3-f6ae-4588-8ec9-c34b57711b93">
+      <SceneProperties Length="1" Page="18" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="CAS">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MATI">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MÃE">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>INT. COZINHA</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="e93b568f-28bd-4f8a-8ff8-8f9c46cab14b">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="8034b6a4-ebbc-4141-9b17-98eb263551f7">
+      <Text>Fazer bem e fazer mal dá o mesmo trabalho…</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="734256b9-5071-43a1-a08b-1ede9b11499b">
+      <Text>Mãe</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="f84367c5-3bf9-40b9-862d-17ac232ac64d">
+      <Text>Quem dizia isso era o teu avô…</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="8a74be78-f3c1-4ab2-b874-93e7105887d0">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="d8c32e73-f7e1-4517-bc4d-bfc0d0e5f454">
+      <Text>Lembrei-me.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="edf3448f-619e-4d88-a812-828ea4dbf171">
+      <Text>Mãe</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="9926b7a4-2f68-4397-b0c7-bdec254e6065">
+      <Text>A passar, está quente!</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="323af294-56ad-4084-8cc7-1dceba8fd037">
+      <Text>Vemos a mãe do João a passar com uma taça com bolonhesa e massa. O João fica incrédulo a ver a mãe não querer saber dos forasteiros. O João, um bocado constrangido contrasta com a imagem impávida da mãe:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="4c798269-b2e8-4ea0-881d-985026b8a29d">
+      <Text>Mãe</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="35336594-255d-4651-a8a4-4f1a38a9dabf">
+      <Text>E o teste acabaste por não me contar.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="38fd0eaa-45ce-48f6-83ae-dc0c6527638e">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="77d9e5e5-7bf0-40dd-8bff-a8708f49c4dd">
+      <Text>Foi bem… Estava só distraído mas correu bem.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="fb007f7f-f5f1-4eff-bdef-daaa2f5cdd94">
+      <Text>Mãe</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="62232414-e68b-4fb6-841b-bbf65a95d02d">
+      <Text>E a roupa? Andaste à batatada?</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="191cebfe-77e4-408a-a287-11ba569782cf">
+      <Text>(Toca-lhe na cara)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="62232414-e68b-4fb6-841b-bbf65a95d02d">
+      <Text>Não parece.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="c5e714cc-d826-4d56-b46e-ed3b6b22f90c">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="bd215282-a09b-44f1-8ed7-4490bc1da95b">
+      <Text>Uma miúda entornou tinta em cima de mim...
+Ela nem teve culpa...</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="a94d5388-b428-4d24-bd5d-3933171eff68">
+      <Text>MÃE</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="e1f43bb3-7424-4bce-81b8-46a3925c25ef">
+      <Text>Então agora tens um guarda roupa novo... De artista. Já nem vou tentar tirar isto. Assumimos e pronto!</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="928616ac-3502-4e55-9349-c579cbfb38eb"/>
+    <Paragraph Type="Shot" id="ae8f902d-0e14-49ff-ba86-c7e42982bf0f">
+      <Text>INT. SALA</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="c9eaa0f9-6a09-490f-a93b-82bdcbbf4b60"/>
+    <Paragraph Type="Character" id="0fc3e940-3117-40dc-8f26-2d0ad9685d76">
+      <Text>Cas</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="e5144c07-283c-4972-9a7c-8e3503da0ea9">
+      <Text>Man… Acontece! Queres o quê?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="2deaebf7-f33a-450c-9ded-c54b40ae4c6b">
+      <Text AdornmentStyle="-1">MATI</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="75565161-a014-43d9-9e06-c146bf3d10aa">
+      <Text>Até parece que não gostaste de  ajudar a miúda...</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="1dd5a04d-bf28-4427-8002-ccb73689289e">
+      <SceneProperties Length="1 6/8" Page="19" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="CAS">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JU">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MATI">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MÃE">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="PEQUENO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>INT. COZINHA</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="dde8a991-8078-4662-accf-7afe1e1c426a">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="629a9789-4bca-4dea-b901-beb416dc9f47">
+      <Text>(para Cas)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="38a3fa7f-e785-4f18-930a-c1b4fc6af088">
+      <Text>Não percebo. Parece que é tudo ao mesmo tempo. Nova cidade, nova escola, e agora isto.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="45f6a8f6-0538-42d6-a714-3b9e2ef18665">
+      <Text>Mãe</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="4fcd7cfa-ba2a-43a7-a82a-88b55305c6a0">
+      <Text>Calma João…</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="ddef453e-ec28-4537-bbc6-e5397912fc37">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="bfb77410-37a5-4fec-b5c8-8e3e89badef0">
+      <Text>(murmurando)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="d09640eb-a2cf-4794-a268-fa75bcc8e27f">
+      <Text>Calma… Calma… Só me pedem calma mas vai lá tu andar com um grupo de circo atrás... Só falta o carro com 17 palhaços lá dentro.</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="2dff6881-d36d-4b8a-bcc1-35c73b7927c3">
+      <Text>A Mãe desata a rir...</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="b1a04f8a-24d6-4451-975e-422b69644496">
+      <Text>Mãe</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="a23670b5-eeb2-41f3-ba69-3d241e7667e2">
+      <Text>Olha só por essa vou abrir o gelado.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="9037c24f-65db-496e-b491-adc5c82f3825">
+      <Text>Mãe</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="8af25e27-21b0-4609-9419-a311b87e316a">
+      <Text>(para João)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="a66d08a3-2494-4c92-abaa-3d51e6323f51">
+      <Text>Mas lavas a panela que já não cabe na máquina.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="61619bfb-460b-4b05-bafa-71057e1c5f13">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="ed36a423-47cc-46cd-9681-3b0246fb9429">
+      <Text AdornmentStyle="-1">Deal</Text>
+      <Text>.</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="d6530657-702f-4cb3-a736-b5a01d02e22f">
+      <Text>Vemos o João a lavar a panela com alguma loiça à sua volta. Vemos o Cas a aproximar-se:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="d6f8c41a-382c-403d-97d3-3de27bf9af76">
+      <Text>Cas</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="75c81e62-fad1-45e1-8fe4-806897dbafb0">
+      <Text>Olha tu achas que a malta da escola gostou de nós? Foi um dia fixe não achas? Assim em geral? </Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="b59f8ed3-405f-4b67-99fd-81b6279418e3">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="e7940844-75a5-43b3-9556-d6a6df77d0f6">
+      <Text>Epá deixa-me…</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="e0e36284-706d-4e66-972f-fafb2c8fe9bb">
+      <Text>Quando roda a panela bate num copo que cai no chão…</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="e583fa25-770d-4ecc-953b-a95d16ad7a9a">
+      <Text>Mãe</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="0020afb0-7ca9-4e3a-910e-dea9f9d6b439">
+      <Text>(de longe)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="1ba9e26c-5025-43ce-b253-d4fe84a72537">
+      <Text>Estás bem?!?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="286618f2-b4a1-4d39-94b1-7f31d776a008">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="c9a7c367-5497-402b-a5db-283c5295e1e4">
+      <Text>Sim... parti um copo…</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="913f1e6e-a104-40cf-9dd8-108de1d3cbfe">
+      <Text>(murmurando)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="f19b934f-8058-4f49-8bac-4ca1b1546580">
+      <Text>mais um.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="81064df0-9ad4-4273-82f5-26e6f2820356">
+      <Text>Vemos agora um plano aberto da cozinha onde estão já estão os restantes, João varre os vidros. O Pequeno está em cima da bancada. Todos falam.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="f06dd41f-e976-4d2e-be85-0f1c1e6808b8">
+      <Text>Pequeno</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="8a3d4f1c-55de-40b9-b49f-a25478c6c028">
+      <Text>(a abrir portas dos armários)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="158cfbb0-55fd-4c38-9fa9-c9ca782f9cf3">
+      <Text>Tenho fome. Haverá aqui comida?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="4ce73c26-16b6-4198-94db-33f97501ee05">
+      <Text AdornmentStyle="-1">Mati</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="43ff3cfd-1087-4c23-b952-9d0d9f0f1ea9">
+      <Text>Estás sempre a comer.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="086c63d3-a33b-4233-b4fd-ec9e83f201c7">
+      <Text>Cas</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="d6ef7be1-e2d7-4965-8251-e5e71b2b4074">
+      <Text>(para pequeno)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="382e16b6-1d17-4c33-b95b-c757b6e54c8f">
+      <Text>Aí não deve haver nada. Tenta na de baixo.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="8f222e5b-42a6-40b9-bbcb-e9a4ba817d9b">
+      <Text>PEQUENO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="afe7f485-6804-45e1-9398-6da5e322fec7">
+      <Text>(para </Text>
+      <Text AdornmentStyle="-1">Mati</Text>
+      <Text>)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="60ede4cb-104b-4405-ab87-a3100660540e">
+      <Text>E tu sempre passivo agressiva...</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="2e36e3b9-f1fe-45b8-a686-494d12e20bdb">
+      <Text>JU</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="e24e6591-7ecc-44e0-a330-9b34178fef9a">
+      <Text>Mais valia termos pedido comida não acham?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="e7d04f34-f3ca-434b-95c6-cb36650d9b76">
+      <Text>CAS</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="11746e4b-80f3-48f8-93dc-7ee0c1c2a0e8">
+      <Text>(recebendo uma lata de atum do pequeno)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="11f3c292-2a6b-4e0f-9215-79d6813b4a5f">
+      <Text>Isso! Não ha aí esparguete?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="0f608e5a-8754-49d3-a9aa-9aa9c83c2d69">
+      <Text>JoÃO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="ecdcceb7-4c74-47c1-b1a7-d5868da8661e">
+      <Text>JÁ CHEGA! PORRA!!!</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="3b4f8240-bae2-4fa3-8ae7-b754f3da4d53">
+      <Text AdornmentStyle="-1">MaTI</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="2aebc07f-fc33-41a4-b0da-f805841df7b9">
+      <Text>Tens razão...</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="96fc0b62-f40f-4948-aa3f-e87a2d95eb51">
+      <Text>MÃE</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="7491e697-a608-49f0-8ad5-065d23384646">
+      <Text>João estás bem?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="17bdb247-bca6-4ed6-9c45-11c94413fd9b">
+      <Text>JOÃO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="aa2a44ad-eb1f-471d-b01c-feee5c68ba63">
+      <Text>Sim tudo bem desculpa magoei-me.</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="0709e865-ad2a-45dd-b1d7-fdd073e8a048">
+      <SceneProperties Length="1/8" Page="20" Title="">
+        <SceneArcBeats/>
+      </SceneProperties>
+      <Text>INT. SALA DE ESTAR</Text>
+    </Paragraph>
+    <Paragraph Type="Shot" id="bf525adc-334d-4acb-8a04-4c9d3a537bd4">
+      <Text>Corta para a sala onde vemos a mãe e o João a comer gelado no sofá com os restantes por perto.</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="3b1e6608-ae68-496f-80dc-9fa3847cd64e"/>
+    <Paragraph Type="Scene Heading" id="26dfaa26-07f9-4cb0-a035-88a00f54f299">
+      <SceneProperties Length="1" Page="21" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="CAS">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JOÃO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="JU">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="MATI">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+          <CharacterArcBeat Name="PEQUENO">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>INT. QUARTO JOÃO</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="422fd4f7-1ddb-46b8-bbbf-b362784286fb">
+      <Text>Ele está sentado a ler na cama. À sua volta estão os outros deitados no chão ou sentados por ali.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="4ffd1b88-690f-44c5-8164-d9c915cae2e4">
+      <Text>Cas</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="e3e21032-3551-43ab-9365-2a3aa36e52aa">
+      <Text>Até foi um bom dia...</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="cec94133-7bcc-4d88-aea5-e40d54958570">
+      <Text>PEQUENO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="10e7a897-164e-49bf-94bf-df21a50378a0">
+      <Text>Eu achei.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="1f34ce83-8e86-4c80-88f5-e9b21007b05d">
+      <Text AdornmentStyle="-1">Mati</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="14b530fd-a0b5-4db4-a81a-4afdbc5cfa4b">
+      <Text>Não foi mau...</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="0bffe13c-5007-4301-a2ec-1ac9a986d320">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="4d8d0eb1-100e-4dd2-9062-34f354b48a93">
+      <Text>Não foi mau para quem? Para quem? E não ha maneira de se esfumarem..
+</Text>
+      <Text AdornmentStyle="-1">Dessaparecerem</Text>
+      <Text>... Vaporizarem...Irem...
+Só não estarem aqui</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="e99619d3-ba98-4792-9915-002a3ce1c866">
+      <Text>Vemos todos os outros já de pé. O João Pequeno está a fazer festas na cabeça do João:</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="4a690a26-fa2f-4b32-92ee-96727509e8e3">
+      <Text>Ju</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="c3b9090e-8eae-49ec-9980-2fbdad0d725d">
+      <Text>Devias tentar descansar. Dizem que a noite é boa conselheira.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="2c71dfaa-179e-4862-a8c9-ed40c89a9ab6">
+      <Text>Pequeno</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="2b14a4ff-4875-4b10-a4b5-cf51b157f88e">
+      <Text>Dorme bem… Queres um beijinho?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="3dc5a89f-cc9d-4ee1-ad1f-37b04c4a373d">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="b1a558d6-07c1-4734-aaa9-193a9d1b39ea">
+      <Text>(enxotando o Pequeno que se ri)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="b016c1d5-b3a8-4d88-add5-78d9d31d63b0">
+      <Text>DEIXEM-ME DORMIR!!!!!</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="2786e015-5b83-4984-931e-4b3422508cb3">
+      <Text AdornmentStyle="-1">Mati</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="be080489-7356-444c-9401-b98cee9ba462">
+      <Text>Dorme bem. Acho que está a precisar.</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="60c1a2e1-957d-4d97-95a9-cd35856aefe4"/>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="b9ea7d21-cd64-47eb-807c-c9351bb9db43">
+      <Text>Todos se calam e saem do quarto um a um.
+O pequeno volta-se para trás e atira um beijo pelo ar com um ar sarcástico.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="6b70046d-c095-43a7-8530-a5e711a6d5a5">
+      <Text>João</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="62dcd8ad-aeb4-4a67-96f5-99e43b33a7a5">
+      <Text>(sozinho)</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical" id="f8de305b-0ff1-4c14-a976-9c6378611ec6">
+      <Text>(Suspira)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="3f9b001c-f041-45c4-ab5f-6db44bf1eafd">
+      <Text>Que silêncio. Está como quando entrei em casa. </Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="9813bab2-7eb5-4060-a74b-b96f6dfedaed">
+      <Text>Nem posso acreditar que consegui…</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.74" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action" id="340c35b8-1dba-4b80-befb-7b50bf0fd9e7">
+      <Text>Rola para o lado. Plano abre com o João a dormir e com os personagens deitados no chão debaixo e em volta da cama.</Text>
+    </Paragraph>
+    <Paragraph Type="Transition" id="1b1f6e9f-b251-4eb3-986b-871f045d72cc">
+      <Text>Fade to black</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" id="b3934e28-badc-42ab-902e-72aae79ce099">
+      <SceneProperties Length="2/8" Page="22" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="CAS">
+            <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="0" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+          </CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>Int Quarto do joão Amanhecer</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="b95bd09b-b989-42a0-b662-deda0e07db59">
+      <Text>POV</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="315a9f16-1e40-4991-b0ac-c6fd1929f610">
+      <Text>Vemos o teto do quarto com um candeeiro colorido.
+A câmara mexe-se levemente.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="7576cf64-1814-4192-a67a-74db3107e3d2">
+      <Text>A cara do Cas sorridente surge em primeiro plano.</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="0f286960-3978-47eb-aef5-1498160ba291">
+      <Text>CAS</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="627a52ad-d0ef-4785-99e8-e398457ea043">
+      <Text>Cucu!</Text>
+    </Paragraph>
+    <Paragraph Type="Sequence" id="238154ec-d74a-4759-9174-cad8ff6d9c6e">
+      <Text>Plano aberto do quarto + </Text>
+      <Text AdornmentStyle="-1">aperttados</Text>
+      <Text> com diálogos</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="adad8aae-a97c-43fb-bdd7-f781b833cb22">
+      <Text>joão</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="0e98be52-1a2e-4c02-9f56-1380f261968d">
+      <Text>Não...</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="f0137f3b-8f61-421a-9c49-bffddbb3e015">
+      <Text>PeQUENO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="42693e7c-6640-49ad-87c4-b784c313cb0b">
+      <Text>Não o que?</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="749a1796-7511-4fd4-a366-779bace833a8">
+      <Text>JU</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="cc9e2239-5e92-4584-a52b-25793a4df12c">
+      <Text>Deixa-o em paz ainda é cedo</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="4c456805-2692-4163-93fa-d04cc67767d9">
+      <Text>PEQUENO</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="61663f17-698a-44a8-bb36-3fc1e50c6dbd">
+      <Text>‘Né Nada! Vá já ha imenso que fazer</Text>
+    </Paragraph>
+    <Paragraph Type="Character" id="d650e7b4-55d0-4efc-8fdf-4940da70f191">
+      <Text>CAS</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue" id="2e64cb3d-0ae4-4403-98d4-edaf1fd7f5fe">
+      <Text>Bora comer?</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="6d019807-05bd-483e-bf15-2fd0c9d57629">
+      <Text>João deixa cair a </Text>
+      <Text AdornmentStyle="-1">cabeçã</Text>
+      <Text> na almofada derrotado.</Text>
+    </Paragraph>
+    <Paragraph Type="Action" id="bd4e19ab-fc32-4d09-8aad-38f0fdede074">
+      <Text>Fim</Text>
+    </Paragraph>
+  </Content>
+
+  <Watermarking Opacity="70" Position="Diagonal Descending">
+    <DynamicContent>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.00" OutlineLevel="1" RightIndent="1.39" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+    </DynamicContent>
+    <Distribution>
+      <Name></Name>
+    </Distribution>
+    <WatermarkImage Height="144"></WatermarkImage>
+  </Watermarking>
+
+  <HeaderAndFooter FooterFirstPage="Yes" FooterVisible="No" HeaderFirstPage="No" HeaderVisible="Yes" StartingPage="1">
+    <Header>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" OutlineLevel="1" RightIndent="-1.00" SpaceBefore="0" Spacing="1" StartsNewPage="No">
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">	</Text>
+        <DynamicLabel AdornmentStyle="0" Background="#RRRRGGGGBBBB" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="" Type="Collated Revisions"/>
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">	</Text>
+        <DynamicLabel AdornmentStyle="0" Background="#RRRRGGGGBBBB" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="" Type="Page #"/>
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">.</Text>
+        <Tabstops>
+          <Tabstop Position="4.50" Type="Center"/>
+          <Tabstop Position="7.25" Type="Right"/>
+        </Tabstops>
+      </Paragraph>
+    </Header>
+    <Footer>
+      <Paragraph Alignment="Right" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" OutlineLevel="1" RightIndent="-1.25" SpaceBefore="0" Spacing="1" StartsNewPage="No">
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""> </Text>
+      </Paragraph>
+    </Footer>
+  </HeaderAndFooter>
+
+  <SpellCheckIgnoreLists>
+    <IgnoredRanges/>
+    <IgnoredWords/>
+  </SpellCheckIgnoreLists>
+
+  <PageLayout BackgroundColor="#FFFFFFFFFFFF" BottomMargin="72" BreakDialogueAndActionAtSentences="Yes" DocumentLeading="Normal" FooterMargin="36" ForegroundColor="#000000000000" HeaderMargin="36" InvisiblesColor="#808080808080" TopMargin="72" UsesSmartQuotes="Yes">
+    <PageSize Height="11.00" Width="8.50"/>
+    <AutoCastList AddParentheses="Yes" AutomaticallyGenerate="Yes" CastListElement="Cast List"/>
+  </PageLayout>
+
+  <WindowState Height="1600" Left="2008" Mode="Normal" Top="92" Width="2127"/>
+
+  <TextState Scaling="150" Selection="19689,19689" ShowInvisibles="No"/>
+
+  <ElementSettings Type="General">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="0" Spacing="1" StartsNewPage="No" Type="General"/>
+    <Behavior PaginateAs="General" ReturnKey="General" Shortcut="0" WinShortcut="0"/>
+    <Outline CanHide="No" Level="1"/>
+  </ElementSettings>
+
+  <ElementSettings Type="Scene Heading">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="AllCaps"/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="24" Spacing="1" StartsNewPage="No" Type="Scene Heading"/>
+    <Behavior PaginateAs="Scene Heading" ReturnKey="Action" Shortcut="1" WinShortcut="1"/>
+    <Outline CanHide="No" Level="2"/>
+  </ElementSettings>
+
+  <ElementSettings Type="Action">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action"/>
+    <Behavior PaginateAs="Action" ReturnKey="Action" Shortcut="2" WinShortcut="2"/>
+    <Outline CanHide="No" Level="1"/>
+  </ElementSettings>
+
+  <ElementSettings Type="Character">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="AllCaps"/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Character"/>
+    <Behavior PaginateAs="Character" ReturnKey="Dialogue" Shortcut="3" WinShortcut="3"/>
+    <Outline CanHide="No" Level="1"/>
+  </ElementSettings>
+
+  <ElementSettings Type="Parenthetical">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""/>
+    <ParagraphSpec Alignment="Left" FirstIndent="-0.10" Leading="Regular" LeftIndent="3.00" RightIndent="5.50" SpaceBefore="0" Spacing="1" StartsNewPage="No" Type="Parenthetical"/>
+    <Behavior PaginateAs="Parenthetical" ReturnKey="Dialogue" Shortcut="4" WinShortcut="4"/>
+    <Outline CanHide="No" Level="1"/>
+  </ElementSettings>
+
+  <ElementSettings Type="Dialogue">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="2.50" RightIndent="6.00" SpaceBefore="0" Spacing="1" StartsNewPage="No" Type="Dialogue"/>
+    <Behavior PaginateAs="Dialogue" ReturnKey="Action" Shortcut="5" WinShortcut="5"/>
+    <Outline CanHide="No" Level="1"/>
+  </ElementSettings>
+
+  <ElementSettings Type="Transition">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="AllCaps"/>
+    <ParagraphSpec Alignment="Right" FirstIndent="0.00" Leading="Regular" LeftIndent="5.50" RightIndent="7.10" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Transition"/>
+    <Behavior PaginateAs="Transition" ReturnKey="Scene Heading" Shortcut="6" WinShortcut="6"/>
+    <Outline CanHide="No" Level="1"/>
+  </ElementSettings>
+
+  <ElementSettings Type="Shot">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="AllCaps"/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Shot"/>
+    <Behavior PaginateAs="Scene Heading" ReturnKey="Action" Shortcut="7" WinShortcut="7"/>
+    <Outline CanHide="No" Level="1"/>
+  </ElementSettings>
+
+  <ElementSettings Type="Cast List">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="AllCaps"/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="0" Spacing="1" StartsNewPage="No" Type="Cast List"/>
+    <Behavior PaginateAs="Action" ReturnKey="Action" Shortcut="8" WinShortcut="8"/>
+    <Outline CanHide="No" Level="1"/>
+  </ElementSettings>
+
+  <ElementSettings Type="New Act">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="Bold+Underline+AllCaps"/>
+    <ParagraphSpec Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" RightIndent="7.50" SpaceBefore="12" Spacing="1" StartsNewPage="Yes" Type="New Act"/>
+    <Behavior PaginateAs="Scene Heading" ReturnKey="Scene Heading" Shortcut="9" WinShortcut="9"/>
+    <Outline CanHide="No" Level="6"/>
+  </ElementSettings>
+
+  <ElementSettings Type="Sequence">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="Bold+Underline+AllCaps"/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" RightIndent="7.50" SpaceBefore="24" Spacing="1" StartsNewPage="No" Type="Sequence"/>
+    <Behavior PaginateAs="Scene Heading" ReturnKey="Scene Heading" Shortcut="Ctrl+8" WinShortcut="Shift+8"/>
+    <Outline CanHide="No" Level="4"/>
+  </ElementSettings>
+
+  <ElementSettings Type="End of Act">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="Bold+Underline+AllCaps"/>
+    <ParagraphSpec Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" RightIndent="7.50" SpaceBefore="24" Spacing="1" StartsNewPage="No" Type="End of Act"/>
+    <Behavior PaginateAs="Character" ReturnKey="New Act" Shortcut="Ctrl+9" WinShortcut="Shift+9"/>
+    <Outline CanHide="No" Level="6"/>
+  </ElementSettings>
+
+  <ElementSettings Type="Summary">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#87878F8FE0E0" Font="Arial" RevisionID="0" Size="12" Style="HiddenText"/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.88" RightIndent="7.50" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Summary"/>
+    <Behavior PaginateAs="Outline Body" ReturnKey="Summary" Shortcut="Ctrl+0" WinShortcut="Shift+0"/>
+    <Outline CanHide="Yes" Level="0"/>
+  </ElementSettings>
+
+  <ElementSettings Type="Outline 1">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#87878F8FE0E0" Font="Arial" RevisionID="0" Size="16" Style="Bold+HiddenText"/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="0.88" RightIndent="7.50" SpaceBefore="16" Spacing="1" StartsNewPage="No" Type="Outline 1"/>
+    <Behavior PaginateAs="Outline" ReturnKey="Summary" Shortcut="Ctrl+1" WinShortcut="Shift+1"/>
+    <Outline CanHide="Yes" Level="7"/>
+  </ElementSettings>
+
+  <ElementSettings Type="Outline 2">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#87878F8FE0E0" Font="Arial" RevisionID="0" Size="14" Style="Bold+HiddenText"/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.12" RightIndent="7.50" SpaceBefore="14" Spacing="1" StartsNewPage="No" Type="Outline 2"/>
+    <Behavior PaginateAs="Outline" ReturnKey="Summary" Shortcut="Ctrl+2" WinShortcut="Shift+2"/>
+    <Outline CanHide="Yes" Level="5"/>
+  </ElementSettings>
+
+  <ElementSettings Type="Outline 3">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#87878F8FE0E0" Font="Arial" RevisionID="0" Size="12" Style="Bold+HiddenText"/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.38" RightIndent="7.50" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Outline 3"/>
+    <Behavior PaginateAs="Outline" ReturnKey="Summary" Shortcut="Ctrl+3" WinShortcut="Shift+3"/>
+    <Outline CanHide="Yes" Level="3"/>
+  </ElementSettings>
+
+  <ElementSettings Type="Note">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#87878F8FE0E0" Font="Arial" RevisionID="0" Size="12" Style="Italic+HiddenText"/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.62" RightIndent="7.50" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Note"/>
+    <Behavior PaginateAs="Outline" ReturnKey="Summary" Shortcut="Ctrl+4" WinShortcut="Shift+4"/>
+    <Outline CanHide="Yes" Level="1"/>
+  </ElementSettings>
+
+  <TitlePage>
+    <HeaderAndFooter FooterFirstPage="Yes" FooterVisible="No" HeaderFirstPage="No" HeaderVisible="Yes" StartingPage="1">
+      <Header>
+        <Paragraph Alignment="Right" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" OutlineLevel="1" RightIndent="-1.25" SpaceBefore="0" Spacing="1" StartsNewPage="No">
+          <DynamicLabel AdornmentStyle="0" Background="#RRRRGGGGBBBB" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="" Type="Page #"/>
+          <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">.</Text>
+        </Paragraph>
+      </Header>
+      <Footer>
+        <Paragraph Alignment="Right" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" OutlineLevel="1" RightIndent="-1.25" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      </Footer>
+    </HeaderAndFooter>
+    <Content>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No">
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="Underline+AllCaps">Script Title</Text>
+      </Paragraph>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No">
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Written by</Text>
+      </Paragraph>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No">
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Name of First Writer</Text>
+      </Paragraph>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No">
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Based on, If Any</Text>
+      </Paragraph>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Full" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Full" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Full" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Full" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Full" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Full" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Full" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Full" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No"/>
+      <Paragraph Alignment="Full" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No">
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Address</Text>
+      </Paragraph>
+      <Paragraph Alignment="Full" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" OutlineLevel="1" RightIndent="8.21" SpaceBefore="0" Spacing="1" StartsNewPage="No">
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Phone Number</Text>
+      </Paragraph>
+    </Content>
+    <TextState Scaling="100" Selection="0,0" ShowInvisibles="No"/>
+  </TitlePage>
+
+  <SmartType>
+    <Characters>
+      <Character>Cas</Character>
+      <Character>João</Character>
+      <Character>JU</Character>
+      <Character>Júlio</Character>
+      <Character>Lu</Character>
+      <Character>Mati</Character>
+      <Character>Mãe</Character>
+      <Character>PEQUENO</Character>
+      <Character>PROF</Character>
+      <Character>Prof Gin</Character>
+      <Character>Random</Character>
+      <Character>Ruben</Character>
+      <Character>Sr ANTÓNIO</Character>
+    </Characters>
+    <Extensions>
+      <Extension>(V.O.)</Extension>
+      <Extension>(O.S.)</Extension>
+      <Extension>(O.C.)</Extension>
+      <Extension>(CONT'D)</Extension>
+      <Extension>(SUBTITLE)</Extension>
+      <Extension>(TEXT)</Extension>
+    </Extensions>
+    <SceneIntros Separator=". ">
+      <SceneIntro>INT</SceneIntro>
+      <SceneIntro>EXT</SceneIntro>
+      <SceneIntro>I/E</SceneIntro>
+    </SceneIntros>
+    <Locations>
+      <Location>RUA. POR DO SOL</Location>
+      <Location>WC CASA</Location>
+      <Location>MADRUGADA. QUARTO DE ADOLESCENTE.</Location>
+      <Location>PREDIO MANHÃ.</Location>
+      <Location>JARDIM MANHÃ.</Location>
+      <Location>PORTÃO ESCOLA. MANHÃ</Location>
+      <Location>CORREDOR ESCOLA</Location>
+      <Location>GINASIO</Location>
+      <Location>INT QUARTO DO JOÃO AMANHECER</Location>
+      <Location>WC ESCOLA</Location>
+      <Location>COZINHA</Location>
+    </Locations>
+    <TimesOfDay Separator=" - ">
+      <TimeOfDay>DAY</TimeOfDay>
+      <TimeOfDay>NIGHT</TimeOfDay>
+      <TimeOfDay>AFTERNOON</TimeOfDay>
+      <TimeOfDay>MORNING</TimeOfDay>
+      <TimeOfDay>EVENING</TimeOfDay>
+      <TimeOfDay>LATER</TimeOfDay>
+      <TimeOfDay>MOMENTS LATER</TimeOfDay>
+      <TimeOfDay>CONTINUOUS</TimeOfDay>
+      <TimeOfDay>THE NEXT DAY</TimeOfDay>
+      <TimeOfDay>MAGIC HOUR</TimeOfDay>
+      <TimeOfDay>DAWN</TimeOfDay>
+      <TimeOfDay>DUSK</TimeOfDay>
+      <TimeOfDay>SAME</TimeOfDay>
+      <TimeOfDay>SAME TIME</TimeOfDay>
+    </TimesOfDay>
+    <Transitions>
+      <Transition>CUT TO:</Transition>
+      <Transition>FADE IN:</Transition>
+      <Transition>FADE OUT.</Transition>
+      <Transition>FADE TO:</Transition>
+      <Transition>DISSOLVE TO:</Transition>
+      <Transition>BACK TO:</Transition>
+      <Transition>MATCH CUT TO:</Transition>
+      <Transition>JUMP CUT TO:</Transition>
+      <Transition>FADE TO BLACK.</Transition>
+      <Transition>SMASH CUT TO:</Transition>
+      <Transition>CUT TO BLACK.</Transition>
+      <Transition>TIME CUT:</Transition>
+    </Transitions>
+  </SmartType>
+
+  <MoresAndContinueds>
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""/>
+    <DialogueBreaks AutomaticCharacterContinueds="Yes" BottomOfPage="Yes" DialogueBottom="(MORE)" DialogueTop="(CONT'D)" TopOfNext="Yes"/>
+    <SceneBreaks ContinuedNumber="No" SceneBottom="(CONTINUED)" SceneBottomOfPage="No" SceneTop="CONTINUED:" SceneTopOfNext="No"/>
+  </MoresAndContinueds>
+
+  <LockedPages/>
+
+  <Revisions ActiveSet="1" Location="7.75" RevisionMode="No" RevisionsShown="Active" ShowPageColor="No">
+    <Revision FullRevision="No" ID="1" Mark="*" Name="Blue Rev. (mm/dd/yy)" PageColor="#C6C6EDEDFEFE" Style=""/>
+    <Revision FullRevision="No" ID="2" Mark="*" Name="Pink Rev. (mm/dd/yy)" PageColor="#FDFDCCCCD4D4" Style=""/>
+    <Revision FullRevision="No" ID="3" Mark="*" Name="Yellow Rev. (mm/dd/yy)" PageColor="#FDFDFFFFABAB" Style=""/>
+    <Revision FullRevision="No" ID="4" Mark="*" Name="Green Rev. (mm/dd/yy)" PageColor="#D1D1FEFED0D0" Style=""/>
+    <Revision FullRevision="No" ID="5" Mark="*" Name="Goldenrod Rev. (mm/dd/yy)" PageColor="#FAFACDCD3939" Style=""/>
+    <Revision FullRevision="No" ID="6" Mark="*" Name="Buff Rev. (mm/dd/yy)" PageColor="#FCFCEDED9D9D" Style=""/>
+    <Revision FullRevision="No" ID="7" Mark="*" Name="Salmon Rev. (mm/dd/yy)" PageColor="#F8F8AEAE8E8E" Style=""/>
+    <Revision FullRevision="No" ID="8" Mark="*" Name="Cherry Rev. (mm/dd/yy)" PageColor="#FBFBA4A4B4B4" Style=""/>
+    <Revision FullRevision="No" ID="9" Mark="*" Name="Tan Rev. (mm/dd/yy)" PageColor="#FDFDF1F1C7C7" Style=""/>
+    <Revision FullRevision="No" ID="10" Mark="*" Name="2nd White Rev. (mm/dd/yy)" PageColor="#FFFFFFFFFFFF" Style=""/>
+    <Revision FullRevision="No" ID="11" Mark="*" Name="2nd Blue Rev. (mm/dd/yy)" PageColor="#C6C6EDEDFEFE" Style=""/>
+    <Revision FullRevision="No" ID="12" Mark="*" Name="2nd Pink Rev. (mm/dd/yy)" PageColor="#FDFDCCCCD4D4" Style=""/>
+    <Revision FullRevision="No" ID="13" Mark="*" Name="2nd Yellow Rev. (mm/dd/yy)" PageColor="#FDFDFFFFABAB" Style=""/>
+    <Revision FullRevision="No" ID="14" Mark="*" Name="2nd Green Rev. (mm/dd/yy)" PageColor="#D1D1FEFED0D0" Style=""/>
+    <Revision FullRevision="No" ID="15" Mark="*" Name="2nd Goldenrod Rev. (mm/dd/yy)" PageColor="#FAFACDCD3939" Style=""/>
+    <Revision FullRevision="No" ID="16" Mark="*" Name="2nd Buff Rev. (mm/dd/yy)" PageColor="#FCFCEDED9D9D" Style=""/>
+    <Revision FullRevision="No" ID="17" Mark="*" Name="2nd Salmon Rev. (mm/dd/yy)" PageColor="#F8F8AEAE8E8E" Style=""/>
+    <Revision FullRevision="No" ID="18" Mark="*" Name="2nd Cherry Rev. (mm/dd/yy)" PageColor="#FBFBA4A4B4B4" Style=""/>
+    <Revision FullRevision="No" ID="19" Mark="*" Name="2nd Tan Rev. (mm/dd/yy)" PageColor="#FDFDF1F1C7C7" Style=""/>
+  </Revisions>
+
+  <SplitState ActivePanel="1" CardsAcross="2" ShowAction="Yes" ShowSceneTitle="Yes" ShowSummary="Yes" SplitMode="None" SplitterPosition="0">
+    <ScriptPanel DisplayMode="Page">
+      <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Arial" RevisionID="0" Size="12" Style=""/>
+    </ScriptPanel>
+  </SplitState>
+
+  <Macros>
+    <Macro Element="Scene Heading" Name="INT" Shortcut="Ctrl+Alt+1" Text="INT. " Transition="None">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Scene Heading" Name="EXT" Shortcut="Ctrl+Alt+2" Text="EXT. " Transition="None">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Scene Heading" Name="I/E" Shortcut="Ctrl+Alt+3" Text="I/E " Transition="None">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Scene Heading" Name="DAY" Shortcut="Ctrl+Alt+4" Text=" - DAY" Transition="Action">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Scene Heading" Name="NIGHT" Shortcut="Ctrl+Alt+5" Text=" - NIGHT" Transition="Action">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Scene Heading" Name="SUNRISE" Shortcut="Ctrl+Alt+6" Text=" - SUNRISE" Transition="Action">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Scene Heading" Name="MAGIC" Shortcut="Ctrl+Alt+7" Text=" - MAGIC" Transition="Action">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Parenthetical" Name="CONT" Shortcut="Ctrl+Alt+8" Text="continuing" Transition="Dialogue">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Parenthetical" Name="INTER" Shortcut="Ctrl+Alt+9" Text="interrupting" Transition="Dialogue">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="None" Name="" Shortcut="Ctrl+Alt+0" Text="" Transition="None">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Transition" Name="CUTTO" Shortcut="Ctrl+Shift+Alt+1" Text="CUT TO:" Transition="Scene Heading">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Action" Name="FADEIN" Shortcut="Ctrl+Shift+Alt+2" Text="FADE IN:" Transition="Scene Heading">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Transition" Name="FADEOUT" Shortcut="Ctrl+Shift+Alt+3" Text="FADE OUT." Transition="Scene Heading">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Transition" Name="FADETO" Shortcut="Ctrl+Shift+Alt+4" Text="FADE TO:" Transition="Scene Heading">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Transition" Name="DISSLV" Shortcut="Ctrl+Shift+Alt+5" Text="DISSOLVE TO:" Transition="Scene Heading">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Transition" Name="BACKTO" Shortcut="Ctrl+Shift+Alt+6" Text="BACK TO:" Transition="Scene Heading">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Transition" Name="MATCHCUT" Shortcut="Ctrl+Shift+Alt+7" Text="MATCH CUT TO:" Transition="Scene Heading">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Transition" Name="JUMPCUT" Shortcut="Ctrl+Shift+Alt+8" Text="JUMP CUT TO:" Transition="Scene Heading">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="Transition" Name="FBLACK" Shortcut="Ctrl+Shift+Alt+9" Text="FADE TO BLACK." Transition="None">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+    <Macro Element="None" Name="" Shortcut="E" Text="" Transition="None">
+      <Alias Confirm="No" MatchCase="No" SmartReplace="Yes" Text="" WordOnly="No">
+        <ActivateIn Element="General"/>
+        <ActivateIn Element="Scene Heading"/>
+        <ActivateIn Element="Action"/>
+        <ActivateIn Element="Character"/>
+        <ActivateIn Element="Parenthetical"/>
+        <ActivateIn Element="Dialogue"/>
+        <ActivateIn Element="Transition"/>
+        <ActivateIn Element="Shot"/>
+      </Alias>
+    </Macro>
+  </Macros>
+
+  <Actors>
+    <Actor MacVoice="" Name="Man 1" Pitch="Normal" Speed="Medium" WinVoice=""/>
+    <Actor MacVoice="" Name="Man 2" Pitch="Normal" Speed="Medium" WinVoice=""/>
+    <Actor MacVoice="" Name="Woman 1" Pitch="Normal" Speed="Medium" WinVoice=""/>
+    <Actor MacVoice="" Name="Woman 2" Pitch="Normal" Speed="Medium" WinVoice=""/>
+    <Actor MacVoice="" Name="Boy 1" Pitch="Normal" Speed="Medium" WinVoice=""/>
+    <Actor MacVoice="" Name="Boy 2" Pitch="Normal" Speed="Medium" WinVoice=""/>
+    <Actor MacVoice="" Name="Girl 1" Pitch="Normal" Speed="Medium" WinVoice=""/>
+    <Actor MacVoice="" Name="Girl 2" Pitch="Normal" Speed="Medium" WinVoice=""/>
+    <Actor MacVoice="" Name="Old Man" Pitch="Normal" Speed="Medium" WinVoice=""/>
+    <Actor MacVoice="" Name="Old Woman" Pitch="Normal" Speed="Medium" WinVoice=""/>
+  </Actors>
+
+  <Cast>
+    <Narrator Actor="Man 1">
+      <Element Type="Character"/>
+      <Element Type="Dialogue"/>
+    </Narrator>
+    <Member Actor="" Character="Cas"/>
+    <Member Actor="" Character="João"/>
+    <Member Actor="" Character="JU"/>
+    <Member Actor="" Character="Júlio"/>
+    <Member Actor="" Character="Lu"/>
+    <Member Actor="" Character="Mati"/>
+    <Member Actor="" Character="Mãe"/>
+    <Member Actor="" Character="PEQUENO"/>
+    <Member Actor="" Character="PROF"/>
+    <Member Actor="" Character="Prof Gin"/>
+    <Member Actor="" Character="Random"/>
+    <Member Actor="" Character="Ruben"/>
+    <Member Actor="" Character="Sr ANTÓNIO"/>
+  </Cast>
+
+  <SceneNumberOptions LeftLocation="0.75" NumberScheme="1A" RightLocation="7.38" ShowNumbersOnLeft="Yes" ShowNumbersOnRight="Yes">
+    <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""/>
+  </SceneNumberOptions>
+
+  <CastList SortOption="Alphabetical">
+    <CustomOrder/>
+  </CastList>
+
+  <CharacterHighlighting>
+    <Character Color="#AFAF9393E8E8" Name="CAS" Visible="Yes"/>
+    <Character Color="#8F8FC3C36A6A" Name="JOÃO" Visible="Yes"/>
+    <Character Color="#AFAF9393E8E8" Name="JOÃO PEQUENO" Visible="Yes"/>
+    <Character Color="#AFAF9393E8E8" Name="JU" Visible="Yes"/>
+    <Character Color="#EBEB62627B7B" Name="JÚLIO" Visible="Yes"/>
+    <Character Color="#E5E5CBCB6C6C" Name="LU" Visible="Yes"/>
+    <Character Color="#EBEB62627B7B" Name="MAE LU" Visible="Yes"/>
+    <Character Color="#AFAF9393E8E8" Name="MATI" Visible="Yes"/>
+    <Character Color="#C0C0C0C0C0C0" Name="MÃE" Visible="Yes"/>
+    <Character Color="#E5E5CBCB6C6C" Name="PEQUENO" Visible="Yes"/>
+    <Character Color="#AFAF9393E8E8" Name="PROF" Visible="Yes"/>
+    <Character Color="#AFAF9393E8E8" Name="PROF GINÁSTICA" Visible="Yes"/>
+    <Character Color="#6363A7A7EFEF" Name="RANDOM" Visible="Yes"/>
+    <Character Color="#6363A7A7EFEF" Name="RUBEN" Visible="Yes"/>
+    <Character Color="#6363A7A7EFEF" Name="SR. ANTÓNIO" Visible="Yes"/>
+  </CharacterHighlighting>
+
+  <ScriptNavigatorPreferences>
+    <TableColumnSettings Filter="" IsSortAscending="Yes" Label="Script" SortColumn="" TableIdentifier="NavDynScenes" id="1e92a7e6-67c7-4479-8a15-8cdf0008a4cd"/>
+  </ScriptNavigatorPreferences>
+
+  <AltCollection/>
+
+  <TargetScriptLength>120</TargetScriptLength>
+
+  <ListItems/>
+
+  <DisplayBoards>
+    <DisplayBoard Height="10000" Id="ea5ac6af-4926-415c-897c-51bfeff25831" ScrollOrigin="0,0" Type="Beat" Width="24000" ZoomLevel="100.000"/>
+    <DisplayBoard Height="90" Id="f54e428f-4469-484b-8c9d-7dba54866258" ScrollOrigin="421,0" Type="StoryMap" Width="11599" ZoomLevel="579.971">
+      <Lanes>
+        <Lane Id="33d2e39b-7047-4ef3-a023-0fa70da28419" Label="Outline 1" Level="7" Type="Outline 1"/>
+        <Lane Id="aad22a29-3407-4166-895e-3ad4cf49a63d" Label="Outline 2" Level="5" Type="Outline 2"/>
+      </Lanes>
+    </DisplayBoard>
+  </DisplayBoards>
+
+  <Writers/>
+
+  <WriterMarkup State="Off"/>
+
+  <TagData>
+    <TagCategories>
+      <TagCategory Color="#00003600B700" Id="01fc9642-84ff-4366-b37c-a3068dee57e8" Name="Cast Members" Number="2" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="028a4e2b-b507-4d09-88ab-90e3edae9071" Name="Background Actors" Number="3" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="0377dbe6-77a3-41af-bda8-86eb2468fdbf" Name="Stunts" Number="4" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="04721a56-f54b-49c8-80ad-d53887d6b851" Name="Vehicles" Number="5" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="05c556eb-6bc1-4a3a-b09f-f8b5ba1b6afa" Name="Props" Number="6" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="069e18b8-2109-4f3d-94e7-d802027a60a8" Name="Special Effects" Number="8" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="0726fa85-1e65-4ab8-87de-bf21d09b01f0" Name="Wardrobe" Number="9" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="08ae1eef-32ce-415f-9a9b-0982d2453ec4" Name="Makeup/Hair" Number="10" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="09cb0d1c-ce01-4f22-bb64-b5f2e6c491c6" Name="Animals" Number="11" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="0ae40617-cc7c-48e6-ae2b-5aaecc09986f" Name="Animal Wrangler" Number="12" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="0b0b44c9-aa4b-4c40-88b1-d94472ad7a26" Name="Music" Number="13" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="0ce7d308-096d-4603-8fe8-349f72cd89ff" Name="Sound" Number="15" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="0debb71b-5743-4c53-80cc-e17e841ce645" Name="Set Dressing" Number="17" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="0e7a8fc5-5441-4bad-a9bf-5ddd3fe51c69" Name="Greenery" Number="18" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="0ff5cda4-4d43-4cfe-940f-91380c46fdad" Name="Special Equipment" Number="19" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="109d0eaa-0334-4823-ac0c-b44d3f209dc4" Name="Security" Number="20" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="1179a4b1-70ee-4011-b4a2-809a0af09e92" Name="Additional Labor" Number="21" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="12ab0932-e3b9-4b4a-bcd0-3da1b4e61d5e" Name="Visual Effects" Number="23" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="135cc9d1-c4d5-4d00-83d9-571f584ea9cd" Name="Mechanical Effects" Number="24" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="15b6f4fd-4e74-4ad8-9971-b239d88c2997" Name="Notes" Number="26" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="216f33fd-fc42-4269-be01-b05b18f815a0" Name="Comments" Number="31" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="47b02ff1-5161-4137-b736-f36eebba7643" Name="Camera" Number="7" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="63c140da-ef2b-491a-b416-b46f461abb89" Name="Script Day" Number="27" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="70877d87-30ef-45b6-be46-c6fa94b83a71" Name="Sequence" Number="29" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="849f1ebf-5507-4f33-bff6-3a5b4d73be14" Name="Unit" Number="28" Style="Bold"/>
+      <TagCategory Color="#000000000000" Id="8e5e75c2-713b-47df-a75f-f12648b98ded" Name="Synopsis" Number="1" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="c5e89e4d-f83e-4c28-950c-92a63f1b5f26" Name="Location" Number="30" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="c86eae40-3b01-41c3-a7de-6859e6ec971d" Name="Art Department" Number="16" Style="Bold"/>
+      <TagCategory Color="#94AA11150000" Id="ce04f547-f7ee-40c9-ab66-d95a0c98034e" Name="Miscellaneous" Number="25" Style="Bold"/>
+    </TagCategories>
+  </TagData>
+
+  <Characters>
+    <CharacterTraitData>
+      <Traits>
+        <Trait ID="a771e8a7-0c6f-401c-ab87-b50f83fc64b4" Name="Age" Type="text"/>
+        <Trait ID="6b3a0017-69de-4c7a-b6e8-1d0b4d2ad047" Name="Disability" Type="text"/>
+        <Trait ID="4b987a9f-24dc-44ae-9bb5-0756485c1c80" Name="Ethnicity" Type="text"/>
+        <Trait ID="611965b7-ffab-41a1-a154-023ea8caf768" Name="Gender" Type="text"/>
+        <Trait ID="9b51b304-a8c0-4277-a841-342b5f84fc65" Name="Occupation" Type="text"/>
+        <Trait ID="ecdbbc67-9a69-40dc-8e9f-745a665ab73a" Name="Orientation" Type="text"/>
+        <Trait ID="338d378b-5235-40ad-8102-0dbe0b32ff84" Name="Role" Type="text"/>
+      </Traits>
+      <Holders/>
+    </CharacterTraitData>
+    <ChartOptions Identifier="InclusivityAnalysis">
+      <FilterSets/>
+    </ChartOptions>
+  </Characters>
+
+  <ScriptNotes/>
+
+  <Navigator>
+    <Tabs>
+      <Tab Selected="Yes" id="1e92a7e6-67c7-4479-8a15-8cdf0008a4cd"/>
+    </Tabs>
+  </Navigator>
+
+  <Images/>
+
+  <Outlines Paragraphs="Show" StructureLines="Show"/>
+
+</FinalDraft>

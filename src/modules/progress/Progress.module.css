@@ -1,0 +1,153 @@
+/* ── Progress Module — Liquid Glass ── */
+.root { height: 100%; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+
+.header {
+  position: relative;
+  z-index: 1;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-4) var(--space-8);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1); flex-shrink: 0;
+  gap: var(--space-4); flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+.title { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 800; display: flex; align-items: center; }
+.sub   { font-size: var(--text-xs); color: var(--text-muted); margin-top: 1px; }
+
+/* ── Tabs ── */
+.tabs {
+  display: flex; gap: var(--space-2); overflow-x: auto;
+  padding: var(--space-3) var(--space-8); flex-shrink: 0;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.15);
+}
+.tab, .tabActive {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: var(--radius-full);
+  border: 0.5px solid rgba(255, 255, 255, 0.15); background: var(--bg-elevated);
+  color: var(--text-secondary); font-size: var(--text-sm); font-weight: 500;
+  cursor: pointer; white-space: nowrap; transition: all var(--transition-fast);
+}
+.tab:hover { border-color: var(--border-active); color: var(--text-primary); }
+.tabActive {
+  background: var(--accent); border-color: var(--accent);
+  color: #fff; font-weight: 600;
+}
+
+/* ── Content ── */
+.content { position: relative; z-index: 1; flex: 1; overflow-y: auto; padding: var(--space-6) var(--space-8); }
+
+/* ── KPI Row ── */
+.overviewGrid { display: flex; flex-direction: column; gap: var(--space-6); }
+.kpiRow { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-4); }
+.kpiCard {
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+}
+.kpiLabel { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: var(--space-2); text-transform: uppercase; letter-spacing: 0.04em; }
+.kpiValue { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 800; color: var(--text-primary); margin-bottom: var(--space-3); }
+.kpiPct { font-size: var(--text-sm); font-weight: 700; margin-top: var(--space-2); }
+.kpiMeta { font-size: var(--text-sm); color: var(--text-muted); }
+
+/* ── Progress Bar (reusable) ── */
+.progressBar {
+  height: 8px; border-radius: var(--radius-full); background: rgba(255, 255, 255, 0.1); overflow: hidden;
+}
+.progressFill {
+  height: 100%; border-radius: var(--radius-full); transition: width 0.4s ease;
+}
+
+/* ── Section ── */
+.section {
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+}
+.sectionTitle {
+  font-family: var(--font-display); font-size: var(--text-md); font-weight: 700;
+  margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2);
+}
+
+/* ── Chart (CSS bars) ── */
+.chartArea {
+  display: flex; align-items: flex-end; gap: var(--space-2);
+  height: 180px; padding-top: var(--space-4);
+}
+.chartBar {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  justify-content: flex-end; height: 100%; min-width: 30px;
+}
+.chartBarInner {
+  width: 70%; max-width: 40px; border-radius: 4px 4px 0 0;
+  transition: height 0.4s ease; min-height: 4px;
+}
+.chartBarLabel { font-size: 9px; color: var(--text-muted); margin-top: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 50px; text-align: center; }
+.chartBarValue { font-size: 9px; color: var(--text-secondary); font-weight: 600; }
+
+/* ── Episode List ── */
+.episodeList { display: flex; flex-direction: column; gap: var(--space-4); }
+.episodeCard {
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+}
+.episodeHeader { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3); }
+.episodeName { font-weight: 700; color: var(--text-primary); flex: 1; }
+.episodePct { font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); }
+.episodeMeta {
+  display: flex; gap: var(--space-4); margin-top: var(--space-3);
+  font-size: var(--text-xs); color: var(--text-muted);
+}
+.episodeMeta span { display: flex; align-items: center; gap: 4px; }
+
+/* ── Department Grid ── */
+.deptGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-4); }
+.deptCard {
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+}
+.deptName { font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-1); }
+.deptCount { font-size: var(--text-sm); color: var(--text-muted); margin-bottom: var(--space-3); }
+.deptPct { font-size: var(--text-sm); font-weight: 700; margin-top: var(--space-2); }
+
+/* ── Risk List ── */
+.riskList { display: flex; flex-direction: column; gap: var(--space-3); }
+.riskCard {
+  display: flex; align-items: center; gap: var(--space-3);
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5);
+  font-size: var(--text-sm); color: var(--text-primary);
+}
+.risk_critical { border-color: var(--health-red); background: rgba(248,113,113,0.06); color: var(--health-red); }
+.risk_high     { border-color: #F5A623; background: rgba(245,166,35,0.06); color: #F5A623; }
+.risk_medium   { border-color: var(--health-yellow); background: rgba(245,196,35,0.06); color: var(--health-yellow); }
+.risk_ok       { border-color: var(--health-green); background: rgba(46,160,128,0.06); color: var(--health-green); }
+
+/* ── Empty ── */
+.empty {
+  text-align: center; padding: var(--space-16) var(--space-8); color: var(--text-muted);
+}
+.emptyIcon { margin-bottom: var(--space-4); opacity: 0.4; }
+.emptyText { font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-2); color: var(--text-secondary); }
+.emptyHint { font-size: var(--text-sm); }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .header { padding: var(--space-3) var(--space-4); }
+  .tabs { padding: var(--space-2) var(--space-4); }
+  .content { padding: var(--space-4); }
+  .kpiRow { grid-template-columns: 1fr 1fr; }
+  .deptGrid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .kpiRow { grid-template-columns: 1fr; }
+  .chartArea { height: 120px; }
+}

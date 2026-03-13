@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head><title>FrameFlow Auto-Recovery</title>
+<style>
+  body { font-family: system-ui; background: #0a0e14; color: #e8ecf2; padding: 40px; max-width: 700px; margin: 0 auto; }
+  h1 { color: #A06AFF; }
+  .ok { color: #34D399; } .warn { color: #F5A623; } .err { color: #F87171; }
+  #log p { margin: 4px 0; font-size: 14px; }
+  button { background: #7B4FBF; color: white; border: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; cursor: pointer; margin-top: 20px; }
+  button:hover { background: #9060df; }
+  .done { font-size: 20px; margin-top: 20px; }
+</style>
+</head>
+<body>
+<h1>FrameFlow — Auto Recovery</h1>
+<div id="log"></div>
+<script>
+const STORE_KEY = 'frame-v1'
+const log = (msg, cls) => document.getElementById('log').innerHTML += `<p class="${cls||''}">${msg}</p>`
+
+function isCharName(s) {
+  return s && s.length > 1 && s.length < 40 && /^[A-ZÁÀÃÉÍÓÚÂÊÔÇ]/.test(s) && !/^(INT|EXT|FADE|CUT|DISSOLVE|CORTE|FIM|CONTINUA)/.test(s)
+}
+
+function parseFDX(xml, epId) {
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(xml, 'application/xml')
+  if (doc.querySelector('parsererror')) throw new Error('XML inválido')
+  const paragraphs = Array.from(doc.querySelectorAll('Content > Paragraph'))
+  const scenes = []; let cur = null, curChar = null, sc = 0
+  const getText = el => Array.from(el.querySelectorAll('Text')).map(t => t.textContent).join('').trim()
+
+  paragraphs.forEach(p => {
+    const type = p.getAttribute('Type') || '', content = getText(p)
+    if (!content) return
+    if (type === 'Scene Heading') {
+      if (cur) { cur.characters = [...cur.characters]; scenes.push(cur) }
+      sc++; curChar = null
+      const m = content.match(/^(INT\.?(?:\/EXT\.?)?|EXT\.?(?:\/INT\.?)?)\s*\.?\s*(.+?)(?:\s*[-–—]\s*(DIA|NOITE|AMANHECER|CREPÚSCULO|GOLDEN|TARDE|MANHÃ|ENTARDECER))?\s*\.?\s*$/i)
+      cur = { id: `SC${String(sc).padStart(3,'0')}`, episode: epId, intExt: (m?.[1]||'INT').replace(/[./]/g,'').trim().toUpperCase(), location: m?.[2]?.trim()||content, timeOfDay: (m?.[3]||'DIA').toUpperCase(), synopsis: '', characters: new Set(), dialogue: [], action: [], lineCount: 0 }
+    } else if (type === 'Character' && cur) {
+      const cl = content.replace(/\s*\(.*?\)\s*/g,'').trim()
+      if (isCharName(cl)) { curChar = cl.toUpperCase(); cur.characters.add(curChar) } else curChar = null
+    } else if (type === 'Dialogue' && cur && curChar) {
+      cur.dialogue.push({ character: curChar, text: content }); cur.lineCount++
+      cur.synopsis = (cur.synopsis + ' ' + content).slice(0, 250)
+    } else if (type === 'Action' && cur) {
+      cur.action.push(content)
+      cur.synopsis = (cur.synopsis + ' ' + content).slice(0, 250)
+    }
+  })
+  if (cur) { cur.characters = [...cur.characters]; scenes.push(cur) }
+
+  // Extract characters
+  const cm = {}
+  scenes.forEach(sc => {
+    (sc.characters||[]).forEach(n => { if (!cm[n]) cm[n] = { name: n, scenes: 0, lineCount: 0 }; cm[n].scenes++ })
+    ;(sc.dialogue||[]).forEach(d => { if (cm[d.character]) cm[d.character].lineCount++ })
+  })
+  const characters = Object.values(cm).sort((a,b) => b.lineCount - a.lineCount)
+
+  // Extract locations
+  const ls = new Set(), locs = []
+  scenes.forEach(sc => { const k = sc.location?.toUpperCase(); if (k && !ls.has(k)) { ls.add(k); locs.push({ name: sc.location, intExt: sc.intExt }) } })
+
+  return { scenes, characters, locations: locs, title: epId }
+}
+
+async function run() {
+  log('A verificar estado...')
+
+  const raw = localStorage.getItem(STORE_KEY)
+  if (!raw) { log('Store "frame-v1" não existe. Abre o FrameFlow primeiro e volta aqui.', 'err'); return }
+
+  let data
+  try { data = JSON.parse(raw) } catch { log('Store corrompido!', 'err'); return }
+  const state = data.state || data
+
+  const hasScripts = state.parsedScripts && Object.keys(state.parsedScripts).length > 0
+  const scriptScenes = hasScripts ? Object.values(state.parsedScripts).reduce((s,e) => s + (e.scenes||[]).length, 0) : 0
+
+  log(`Store: ${(raw.length/1024).toFixed(0)} KB`)
+  log(`Scripts: ${Object.keys(state.parsedScripts||{}).length} eps, ${scriptScenes} cenas`, hasScripts && scriptScenes > 0 ? 'ok' : 'warn')
+  log(`Equipa: ${(state.team||[]).length}`, (state.team||[]).length ? 'ok' : 'warn')
+  log(`Dias rodagem: ${(state.shootingDays||[]).length}`, (state.shootingDays||[]).length ? 'ok' : 'warn')
+  log(`Universo: ${(state.universe?.chars||[]).length} chars`, (state.universe?.chars||[]).length ? 'ok' : 'warn')
+
+  // --- AUTO-LOAD SCRIPTS ---
+  if (!hasScripts || scriptScenes === 0) {
+    log('')
+    log('A carregar guiões FDX automaticamente...', 'warn')
+
+    const fdxFiles = [
+      { url: '/GUIOES/DESDOBRADO_EP_01.fdx', epId: 'EP01' },
+      { url: '/GUIOES/DESDOBRADO_EP_02.fdx', epId: 'EP02' },
+    ]
+
+    if (!state.parsedScripts) state.parsedScripts = {}
+
+    for (const f of fdxFiles) {
+      try {
+        const resp = await fetch(f.url)
+        if (!resp.ok) { log(`${f.url}: não encontrado (HTTP ${resp.status})`, 'err'); continue }
+        const xml = await resp.text()
+        const parsed = parseFDX(xml, f.epId)
+        state.parsedScripts[f.epId] = parsed
+        log(`${f.epId}: ${parsed.scenes.length} cenas, ${parsed.characters.length} personagens`, 'ok')
+      } catch(e) { log(`Erro ${f.epId}: ${e.message}`, 'err') }
+    }
+
+    // Rebuild parsedCharacters
+    const allChars = {}
+    for (const [epId, ep] of Object.entries(state.parsedScripts)) {
+      for (const ch of (ep.characters || [])) {
+        if (!allChars[ch.name]) allChars[ch.name] = { name: ch.name, scenes: 0, lineCount: 0, episodes: [] }
+        allChars[ch.name].scenes += ch.scenes || 0
+        allChars[ch.name].lineCount += ch.lineCount || 0
+        allChars[ch.name].episodes.push(epId)
+      }
+    }
+    state.parsedCharacters = Object.values(allChars).sort((a,b) => b.lineCount - a.lineCount)
+
+    // Rebuild parsedLocations
+    const allLocs = {}
+    for (const [epId, ep] of Object.entries(state.parsedScripts)) {
+      for (const loc of (ep.locations || [])) {
+        const key = loc.name?.toUpperCase()
+        if (key && !allLocs[key]) allLocs[key] = { name: loc.name, intExt: loc.intExt, episodes: [] }
+        if (!allLocs[key].episodes?.includes(epId)) allLocs[key].episodes.push(epId)
+      }
+    }
+    state.parsedLocations = Object.values(allLocs)
+
+    log(`Total: ${state.parsedCharacters.length} personagens, ${state.parsedLocations.length} locais`, 'ok')
+  } else {
+    log('Scripts já carregados — OK', 'ok')
+  }
+
+  // --- SAVE ---
+  if (data.state) data.state = state
+  else Object.assign(data, state)
+  try {
+    localStorage.setItem(STORE_KEY, JSON.stringify(data))
+    log('')
+    log('Dados guardados com sucesso!', 'ok')
+    log('<span class="done">A redirecionar para o FrameFlow em 2 segundos...</span>')
+    setTimeout(() => { window.location.href = '/' }, 2000)
+  } catch(e) {
+    log('Erro ao guardar: ' + e.message, 'err')
+  }
+}
+
+run()
+</script>
+</body>
+</html>

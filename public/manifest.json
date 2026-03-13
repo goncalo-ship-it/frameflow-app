@@ -1,0 +1,13 @@
+{
+  "name": "FrameFlow",
+  "short_name": "FrameFlow",
+  "description": "Ferramenta de produção audiovisual",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D0F14",
+  "theme_color": "#E8A838",
+  "orientation": "any",
+  "icons": [
+    { "src": "/flameboard.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

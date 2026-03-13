@@ -1,0 +1,145 @@
+/* ── GoogleMapsEmbed ──────────────────────────────────────────── */
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.3);
+}
+
+/* ── Cabeçalho ──────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs, 4px);
+  padding: var(--space-sm, 12px) var(--space-md, 16px);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.15);
+}
+
+.header > svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.headerInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.coords {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.externalLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  transition: color 0.15s ease, background 0.15s ease;
+  flex-shrink: 0;
+}
+
+.externalLink:hover {
+  color: var(--accent);
+  background: var(--bg-elevated);
+}
+
+/* ── Área do mapa ───────────────────────────────────────────── */
+.mapWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--bg-base);
+}
+
+.iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ── Loading ────────────────────────────────────────────────── */
+.loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* ── Fallback ───────────────────────────────────────────────── */
+.fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs, 4px);
+  padding: var(--space-xl, 32px);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  min-height: 200px;
+}
+
+.fallback svg {
+  opacity: 0.4;
+}
+
+.fallbackLink {
+  margin-top: var(--space-xs, 4px);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.fallbackLink:hover {
+  opacity: 0.8;
+}
+
+/* ── Rodapé ─────────────────────────────────────────────────── */
+.footer {
+  padding: var(--space-xs, 4px) var(--space-md, 16px);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+  text-align: right;
+}
+
+.footerLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs, 4px);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footerLink:hover {
+  color: var(--accent);
+}

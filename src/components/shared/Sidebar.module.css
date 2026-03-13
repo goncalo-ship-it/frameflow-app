@@ -1,0 +1,606 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Sidebar — Liquid Glass (CLAUDE.md FF08)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.sidebar {
+  position: relative;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border-right: 0.5px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.3);
+  z-index: 10;
+}
+
+/* ── Lensing overlay (refração de luz no topo) ── */
+.sidebar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 120% 60% at 50% -10%, rgba(255, 255, 255, 0.12) 0%, transparent 50%);
+  mix-blend-mode: overlay;
+  z-index: 0;
+}
+
+/* ── Cabeçalho ── */
+.header {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-3) var(--space-3) var(--space-2);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 36px;
+}
+
+.logoMark {
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: rgba(255, 255, 255, 0.95);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.logoText {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-md);
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.collapseBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+  transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  flex-shrink: 0;
+  margin-left: auto;
+  box-shadow: inset 0 0.5px 0.5px rgba(255, 255, 255, 0.2);
+}
+.collapseBtn:active {
+  transform: scale(0.95);
+}
+
+/* ── Nome do projecto (subtítulo) ── */
+.projectNameBtn {
+  display: block;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  text-align: left;
+  line-height: 1.2;
+  margin-top: -1px;
+}
+.projectNameBtn:active { transform: scale(0.98); }
+
+.projectNameInput {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 4px 8px;
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  outline: none;
+  width: 100%;
+}
+.projectNameInput:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+/* ── Saúde ── */
+.health {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Navegação — Glass Tray (inner card) ── */
+.nav {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  margin: var(--space-2) var(--space-2);
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Glass tray — nested card: parent sidebar has no explicit radius, so use md */
+  background: rgba(255, 255, 255, 0.04);
+  border: 0.5px solid rgba(255, 255, 255, 0.10);
+  border-radius: 20px;
+}
+
+/* Scrollbar subtle */
+.nav::-webkit-scrollbar { width: 3px; }
+.nav::-webkit-scrollbar-track { background: transparent; }
+.nav::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 9999px; }
+
+.divider {
+  height: 0.5px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: var(--space-2) var(--space-1);
+}
+
+/* ── Item ── */
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0 var(--space-3);
+  height: 38px;
+  border-radius: 12px;
+  background: none;
+  border: 0.5px solid transparent;
+  color: rgba(255, 255, 255, 0.65);
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  overflow: hidden;
+  white-space: nowrap;
+}
+.item:active {
+  transform: scale(0.96);
+}
+
+.itemActive {
+  background: rgba(16, 185, 129, 0.15);
+  color: rgba(255, 255, 255, 0.95) !important;
+  border: 0.5px solid rgba(16, 185, 129, 0.40);
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.40), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.2);
+}
+
+.itemSmall {
+  height: 32px;
+}
+
+.itemIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--item-color) !important;
+  width: 18px;
+}
+
+.itemLabel {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.itemChevron {
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.4);
+  opacity: 0.6;
+}
+
+.activeBar {
+  position: absolute;
+  left: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 2px;
+  border-radius: 9999px;
+  background: var(--item-color);
+  box-shadow: 0 0 6px var(--item-color);
+}
+
+/* ── Menu Groups ── */
+.menuGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.groupHeader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0 var(--space-3);
+  height: 38px;
+  border-radius: 12px;
+  background: none;
+  border: 0.5px solid transparent;
+  color: rgba(255, 255, 255, 0.65);
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  overflow: hidden;
+  white-space: nowrap;
+}
+.groupHeader:active {
+  transform: scale(0.96);
+}
+
+.groupActive {
+  background: rgba(16, 185, 129, 0.15);
+  color: rgba(255, 255, 255, 0.95) !important;
+  border: 0.5px solid rgba(16, 185, 129, 0.40);
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.40), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.2);
+}
+
+.groupChevron {
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.4);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.groupChildren {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.childItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-3) 0 calc(var(--space-3) + 22px);
+  height: 32px;
+  border-radius: 12px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  white-space: nowrap;
+}
+.childItem:active {
+  transform: scale(0.96);
+}
+
+.childActive {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981 !important;
+}
+
+.childDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.childActive .childDot {
+  opacity: 1;
+  background: var(--item-color);
+  box-shadow: 0 0 6px var(--item-color);
+}
+
+/* ── Rodapé — Glass Tray ── */
+.footer {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-2);
+  margin: 0 var(--space-2) var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 0.5px solid rgba(255, 255, 255, 0.10);
+  border-radius: 16px;
+}
+
+/* ── API Key — Glass Element ── */
+.apiKeyWrap {
+  padding: var(--space-2);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  margin-bottom: var(--space-1);
+  overflow: hidden;
+  box-shadow: inset 0 0.5px 0.5px rgba(255, 255, 255, 0.2);
+}
+
+.apiKeyRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.apiKeyInput {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.6);
+  min-width: 0;
+  padding: 2px 0;
+}
+.apiKeyInput::placeholder { color: rgba(255, 255, 255, 0.3); }
+
+.eyeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.eyeBtn:active { transform: scale(0.95); }
+
+.apiKeyStatus {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 4px;
+  padding-left: 2px;
+}
+
+/* ── User profile chip — Glass Element ── */
+.userChip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  margin: 0 var(--space-2);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  box-shadow: inset 0 0.5px 0.5px rgba(255, 255, 255, 0.2);
+}
+
+.userAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.userAvatarFallback {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.userName {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userEmail, .userRole {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Preview menu — Glass Element ── */
+.previewMenu {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  margin: var(--space-1) var(--space-2);
+  padding: var(--space-1);
+  overflow: hidden;
+  max-height: 260px;
+  overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.2);
+}
+.previewItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 5px 8px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.previewItem:active {
+  transform: scale(0.96);
+}
+.previewDivider {
+  height: 0.5px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 4px 0;
+}
+.previewRoleLabel {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 2px 8px;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+.previewDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE — Sidebar → Bottom Tab Bar
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .sidebar {
+    height: auto !important;
+    width: 100% !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    flex-direction: column;
+    border-right: none;
+    border-top: 0.5px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .sidebar::before { display: none; }
+
+  .header { display: none; }
+  .health { display: none; }
+  .footer { display: none; }
+  .divider { display: none; }
+  .collapseBtn { display: none; }
+
+  .nav {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 0;
+    padding: var(--space-1) var(--space-2);
+    gap: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+
+  .item {
+    flex-direction: column;
+    height: auto;
+    min-width: 56px;
+    padding: 6px 8px;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .itemSmall { display: none; }
+  .menuGroup { flex-direction: row; }
+  .groupHeader {
+    flex-direction: column;
+    height: auto;
+    min-width: 56px;
+    padding: 6px 8px;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .groupChevron { display: none; }
+  .groupChildren { display: none; }
+  .childItem { display: none; }
+
+  .itemLabel {
+    font-size: 9px;
+    white-space: nowrap;
+    overflow: visible;
+  }
+
+  .itemChevron { display: none; }
+
+  .activeBar {
+    left: 20%;
+    right: 20%;
+    top: auto;
+    bottom: 0;
+    width: auto;
+    height: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .item {
+    min-width: 48px;
+    padding: 4px 6px;
+  }
+  .itemLabel {
+    font-size: 8px;
+  }
+}

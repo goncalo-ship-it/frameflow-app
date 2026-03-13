@@ -1,0 +1,119 @@
+/* ── Finance Module — Liquid Glass ── */
+.root { height: 100%; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+
+.header {
+  position: relative;
+  z-index: 1;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-4) var(--space-8);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1); flex-shrink: 0;
+  gap: var(--space-4); flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+.title { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 800; display: flex; align-items: center; }
+.sub   { font-size: var(--text-xs); color: var(--text-muted); margin-top: 1px; }
+
+.budgetSelect {
+  background: var(--bg-elevated); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md); padding: 6px 12px;
+  font-size: var(--text-sm); color: var(--text-primary); outline: none;
+}
+
+/* ── Content ── */
+.content { position: relative; z-index: 1; flex: 1; overflow-y: auto; padding: var(--space-6) var(--space-8); display: flex; flex-direction: column; gap: var(--space-6); }
+
+/* ── Summary Row ── */
+.summaryRow { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-4); }
+.summaryCard {
+  display: flex; align-items: center; gap: var(--space-4);
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+}
+.summaryIcon {
+  width: 44px; height: 44px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.summaryInfo { flex: 1; }
+.summaryLabel { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
+.summaryValue { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 800; color: var(--text-primary); }
+.summaryMeta { font-size: var(--text-xs); color: var(--text-muted); margin-top: 2px; }
+
+/* ── Two Column ── */
+.twoCol { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+
+/* ── Section ── */
+.section {
+  background: rgba(255, 255, 255, 0.04); border: 0.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+}
+.sectionTitle {
+  font-family: var(--font-display); font-size: var(--text-md); font-weight: 700;
+  margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2);
+}
+
+/* ── Category List ── */
+.catList { display: flex; flex-direction: column; gap: var(--space-4); }
+.catRow { display: flex; flex-direction: column; gap: 4px; }
+.catInfo { display: flex; justify-content: space-between; align-items: baseline; }
+.catName { font-size: var(--text-sm); color: var(--text-primary); font-weight: 600; }
+.catAmount { font-size: var(--text-sm); color: var(--text-secondary); font-weight: 700; }
+.catBar { height: 6px; border-radius: 3px; background: var(--bg-elevated); overflow: hidden; }
+.catBarFill { height: 100%; border-radius: 3px; background: var(--accent); transition: width 0.4s ease; }
+.catSpent { font-size: var(--text-xs); color: var(--text-muted); }
+
+/* ── Sources ── */
+.sourceList { display: flex; flex-direction: column; gap: var(--space-3); }
+.sourceCard {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-4); border-radius: var(--radius-md);
+  background: var(--bg-elevated); border: 0.5px solid rgba(255, 255, 255, 0.15);
+}
+.sourceInfo { flex: 1; }
+.sourceName { font-size: var(--text-sm); color: var(--text-primary); font-weight: 600; }
+.sourceAmount { font-size: var(--text-xs); color: var(--text-muted); margin-top: 2px; }
+.sourceBadge {
+  padding: 3px 10px; border-radius: var(--radius-full);
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;
+}
+
+/* ── Cash Flow Chart ── */
+.cashFlowChart {
+  display: flex; align-items: flex-end; gap: var(--space-2);
+  height: 140px; padding-top: var(--space-4);
+}
+.cfBar {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  justify-content: flex-end; height: 100%; min-width: 24px;
+}
+.cfBarInner {
+  width: 70%; max-width: 36px; border-radius: 4px 4px 0 0;
+  background: var(--accent); opacity: 0.7; transition: height 0.4s ease;
+  min-height: 4px;
+}
+.cfBarLabel { font-size: 9px; color: var(--text-muted); margin-top: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 44px; text-align: center; }
+
+/* ── Empty ── */
+.empty {
+  text-align: center; padding: var(--space-16) var(--space-8); color: var(--text-muted);
+}
+.emptyIcon { margin-bottom: var(--space-4); opacity: 0.4; }
+.emptyText { font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-2); color: var(--text-secondary); }
+.emptyHint { font-size: var(--text-sm); color: var(--text-muted); }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .header { padding: var(--space-3) var(--space-4); }
+  .content { padding: var(--space-4); }
+  .summaryRow { grid-template-columns: 1fr 1fr; }
+  .twoCol { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .summaryRow { grid-template-columns: 1fr; }
+  .cashFlowChart { height: 100px; }
+}

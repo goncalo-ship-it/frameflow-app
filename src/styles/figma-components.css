@@ -1,0 +1,155 @@
+/* FrameFlow Figma Components CSS — auto-generated */
+
+/* === biblia/14-FIGMA-SYNC.md (1 blocos) === */
+/* block 1 */
+/* Auto-generated from Figma exports */
+:root {
+  /* Colors */
+  --fb-primary: #10b981;
+  --fb-background-dark: #2A3040;
+  
+  /* Typography */
+  --fb-font-heading-1-size: 32px;
+  --fb-font-heading-1-weight: 700;
+  --fb-font-heading-1-height: 1.2;
+  
+  /* Effects */
+  --fb-effect-shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+  --fb-effect-blur-glass: 20px;
+}
+
+/* === biblia/MOBILE_COMPLETE_GUIDE.md (5 blocos) === */
+/* block 1 */
+/* Mobile-first approach */
+/* Base styles = Mobile (< 768px) */
+
+sm:   640px   /* Small tablets */
+md:   768px   /* Tablets */
+lg:   1024px  /* Desktop */
+xl:   1280px  /* Large desktop */
+2xl:  1536px  /* Extra large */
+/* block 2 */
+/* Visual feedback em touch */
+active:scale-95        /* Shrink on press */
+active:opacity-80      /* Dim on press */
+
+transition-all         /* Smooth 200ms */
+/* block 3 */
+/* Mobile spacing é mais generoso */
+Mobile:
+  padding: 16px (p-4)
+  gap: 12px (gap-3)
+  
+Desktop:
+  padding: 24px (p-6)
+  gap: 16px (gap-4)
+/* block 4 */
+/* Tamanhos optimizados para legibilidade mobile */
+
+Headings:
+  h1: 28px (mobile) → 32px (desktop)
+  h2: 20px (mobile) → 24px (desktop)
+  h3: 16px (mobile) → 18px (desktop)
+
+Body:
+  text-base: 14px (mobile) → 16px (desktop)
+  text-sm: 13px (mobile) → 14px (desktop)
+  text-xs: 11px (mobile) → 12px (desktop)
+
+Labels:
+  font-bold: 600 (sempre)
+  tracking-tight: -0.02em
+/* block 5 */
+/* Mobile: Blur reduzido (performance) */
+@media (max-width: 768px) {
+  backdrop-filter: blur(10px);  /* vs 20px desktop */
+}
+
+/* Mobile: Borders mais finos */
+border: 0.5px solid rgba(255, 255, 255, 0.12);
+
+/* Mobile: Sombras mais suaves */
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+/* === biblia/VARIABLES.md (7 blocos) === */
+/* block 1 */
+:root {
+  --fb-bg-base: #2A3040;        /* Base escura */
+  --fb-bg-elevated: #343A46;    /* Elementos elevados */
+  --fb-bg-overlay: #3E4450;     /* Overlays/modals */
+}
+/* block 2 */
+:root {
+  --fb-text-primary: #f5f5f7;     /* Texto principal (branco) */
+  --fb-text-secondary: #a0a0ab;   /* Texto secundário (cinza claro) */
+  --fb-text-tertiary: #6e6e78;    /* Texto terciário (cinza escuro) */
+}
+/* block 3 */
+:root {
+  --fb-border-subtle: rgba(255, 255, 255, 0.08);   /* Bordas subtis */
+  --fb-border-normal: rgba(255, 255, 255, 0.12);   /* Bordas normais */
+  --fb-border-hover: rgba(255, 255, 255, 0.18);    /* Bordas hover */
+}
+/* block 4 */
+:root {
+  /* Emerald (primária) */
+  --fb-emerald: #10b981;
+  --fb-emerald-dim: rgba(16, 185, 129, 0.15);
+
+  /* Estados */
+  --fb-error: #ef4444;
+  --fb-error-dim: rgba(239, 68, 68, 0.15);
+
+  --fb-warning: #f59e0b;
+  --fb-warning-dim: rgba(245, 158, 11, 0.15);
+
+  --fb-info: #3b82f6;
+  --fb-info-dim: rgba(59, 130, 246, 0.15);
+
+  --fb-purple: #a855f7;
+  --fb-purple-dim: rgba(168, 85, 247, 0.15);
+}
+/* block 5 */
+:root {
+  --fb-sidebar-width: 240px;
+  --fb-topbar-height: 64px;
+}
+/* block 6 */
+[data-theme="light"] {
+  --fb-bg-base: #f8f9fa;
+  --fb-bg-elevated: #ffffff;
+  --fb-bg-overlay: #e9ecef;
+
+  --fb-text-primary: #1a1a1f;
+  --fb-text-secondary: #4a4a55;
+  --fb-text-tertiary: #7a7a85;
+
+  --fb-border-subtle: rgba(0, 0, 0, 0.08);
+  --fb-border-normal: rgba(0, 0, 0, 0.12);
+  --fb-border-hover: rgba(0, 0, 0, 0.18);
+
+  /* Accent dims ajustados */
+  --fb-emerald-dim: rgba(16, 185, 129, 0.1);
+  --fb-error-dim: rgba(239, 68, 68, 0.1);
+  --fb-warning-dim: rgba(245, 158, 11, 0.1);
+  --fb-info-dim: rgba(59, 130, 246, 0.1);
+  --fb-purple-dim: rgba(168, 85, 247, 0.1);
+}
+/* block 7 */
+/* Firefox */
+scrollbar-color: rgba(16, 185, 129, 0.4) rgba(22, 25, 32, 0.3);
+
+/* Webkit */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.5), rgba(5, 150, 105, 0.6));
+  box-shadow: 
+    0 0 8px rgba(16, 185, 129, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.7), rgba(5, 150, 105, 0.8));
+  box-shadow: 
+    0 0 16px rgba(16, 185, 129, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
