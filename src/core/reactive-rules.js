@@ -394,10 +394,13 @@ export const RULES = [
       // Step 1: Geocode if needed
       if (!lat && !lng && loc.address) {
         try {
+          const ac1 = new AbortController()
+          const t1 = setTimeout(() => ac1.abort(), 5000)
           const r = await fetch(
             `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(loc.address)}&format=json&limit=1`,
-            { headers: { 'Accept-Language': 'pt', 'User-Agent': 'FrameFlow-App' } }
+            { headers: { 'Accept-Language': 'pt', 'User-Agent': 'FrameFlow-App' }, signal: ac1.signal }
           )
+          clearTimeout(t1)
           const d = await r.json()
           if (d[0]) {
             lat = parseFloat(d[0].lat)
@@ -410,8 +413,11 @@ export const RULES = [
       // Step 2: Fetch POIs (parking, restaurants, hospital) within 800m
       if (lat && lng) {
         try {
+          const ac2 = new AbortController()
+          const t2 = setTimeout(() => ac2.abort(), 6000)
           const q = `[out:json][timeout:12];(node["amenity"~"restaurant|cafe|parking|fuel|hospital"](around:800,${lat},${lng}););out body;`
-          const r = await fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(q)}`)
+          const r = await fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(q)}`, { signal: ac2.signal })
+          clearTimeout(t2)
           const d = await r.json()
           const pois = (d.elements || []).map(el => ({
             name: el.tags?.name || el.tags?.amenity || 'POI',

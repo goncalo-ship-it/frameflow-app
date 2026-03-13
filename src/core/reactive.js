@@ -25,7 +25,6 @@ export function initReactiveCore() {
     }, 300)
   })
 
-  console.log('[ReactiveCore] Inicializado com', RULES.length, 'regras')
 }
 
 async function processRules(prev, next) {
@@ -37,8 +36,9 @@ async function processRules(prev, next) {
       if (!payload) continue
 
       if (rule.confidence === 'high') {
-        // Suporta execute sync e async (ex: geocoding, fetch POIs)
-        await Promise.resolve(rule.execute(payload, store))
+        // Timeout de 8s para regras async (ex: geocoding, Overpass)
+        const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 8000))
+        await Promise.race([Promise.resolve(rule.execute(payload, store)), timeout])
         // Log no audit
         useStore.getState().addAuditEntry({
           ruleId: rule.id,
