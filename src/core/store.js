@@ -71,6 +71,7 @@ export const useStore = create(
       sceneAssignments: {},      // { [sceneKey]: dayId }  sceneKey = `${epId}-${sceneNumber}`
       sceneTakes: {},            // { [sceneKey]: [{ id, status, notes, timestamp }] }  status: bom|parcial|repetir
       sceneTags: {},             // { [sceneKey]: string[] } — tags/características (croma, stunts, sfx, etc.)
+      sceneNotes: {},            // { [sceneKey]: [{ id, text, photo, timestamp, authorName }] }
 
       // ── Dados extraídos dos guiões ────────────────────────────
       parsedCharacters: [],   // [{ name, scenes, lineCount }]
@@ -997,6 +998,20 @@ export const useStore = create(
         sceneTags: {
           ...state.sceneTags,
           [sceneKey]: (state.sceneTags[sceneKey] || []).filter(t => t !== tag),
+        },
+      })),
+
+      // ── Acções: Scene Notes (notas com foto por cena) ─────────
+      addSceneNote: (sceneKey, note) => set(state => ({
+        sceneNotes: {
+          ...state.sceneNotes,
+          [sceneKey]: [...(state.sceneNotes[sceneKey] || []), { id: Date.now(), timestamp: new Date().toISOString(), ...note }],
+        },
+      })),
+      removeSceneNote: (sceneKey, noteId) => set(state => ({
+        sceneNotes: {
+          ...state.sceneNotes,
+          [sceneKey]: (state.sceneNotes[sceneKey] || []).filter(n => n.id !== noteId),
         },
       })),
 

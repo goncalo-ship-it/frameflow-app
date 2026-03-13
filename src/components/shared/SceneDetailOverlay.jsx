@@ -1,11 +1,11 @@
 // SceneDetailOverlay — Floating glass card with scene details
 // Shows: description, location, storyboard, dialogue, continuity, director notes, characters, equipment, wardrobe
 
-import { Film, Users, Shirt, Camera, MessageSquare, MapPin, Clapperboard, ExternalLink, BookOpen, CheckCircle, Megaphone } from 'lucide-react'
+import { Film, Users, Shirt, Camera, MessageSquare, MapPin, Clapperboard, ExternalLink, BookOpen, CheckCircle, Megaphone, StickyNote, Plus, Trash2, ImagePlus } from 'lucide-react'
 import { GlassOverlay } from './GlassOverlay.jsx'
 import { useStore } from '../../core/store.js'
 import { useShallow } from 'zustand/react/shallow'
-import { useMemo } from 'react'
+import { useMemo, useState, useRef } from 'react'
 
 const sectionTitle = {
   fontSize: 10, fontWeight: 700, textTransform: 'uppercase',
@@ -32,12 +32,21 @@ const CONTINUITY_LABELS = {
 }
 
 export function SceneDetailOverlay({ open, onClose, scene, dayLabel }) {
-  const { departmentItems, departmentConfig, sceneTakes, navigate } = useStore(useShallow(s => ({
+  const { departmentItems, departmentConfig, sceneTakes, sceneNotes, addSceneNote, removeSceneNote, auth, navigate } = useStore(useShallow(s => ({
     departmentItems: s.departmentItems,
     departmentConfig: s.departmentConfig,
     sceneTakes: s.sceneTakes,
+    sceneNotes: s.sceneNotes,
+    addSceneNote: s.addSceneNote,
+    removeSceneNote: s.removeSceneNote,
+    auth: s.auth,
     navigate: s.navigate,
   })))
+
+  const [noteText, setNoteText] = useState('')
+  const [notePhoto, setNotePhoto] = useState(null)
+  const [adding, setAdding] = useState(false)
+  const photoRef = useRef(null)
 
   const deptMap = useMemo(() => {
     const m = {}
@@ -50,6 +59,27 @@ export function SceneDetailOverlay({ open, onClose, scene, dayLabel }) {
   const sc = scene
   const sceneKey = sc.sceneKey || `${sc.epId}-${sc.sceneNumber || sc.id}`
   const takes = sceneTakes?.[sceneKey] || []
+  const notes = sceneNotes?.[sceneKey] || []
+
+  const handlePhotoSelect = (e) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    const reader = new FileReader()
+    reader.onload = (ev) => setNotePhoto(ev.target.result)
+    reader.readAsDataURL(file)
+  }
+
+  const handleAddNote = () => {
+    if (!noteText.trim() && !notePhoto) return
+    addSceneNote(sceneKey, {
+      text: noteText.trim(),
+      photo: notePhoto,
+      authorName: auth?.user?.name || 'Equipa',
+    })
+    setNoteText('')
+    setNotePhoto(null)
+    setAdding(false)
+  }
   const takeCount = takes.length
 
   // Department items for this scene
@@ -434,6 +464,151 @@ export function SceneDetailOverlay({ open, onClose, scene, dayLabel }) {
             })}
           </div>
         </>
+      )}
+
+      {/* ── NOTAS DA CENA ── */}
+      <div style={sectionTitle}><StickyNote size={12} /> NOTAS DA CENA</div>
+
+      {/* Lista de notas existentes */}
+      {notes.length > 0 && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 10 }}>
+          {notes.map(note => (
+            <div key={note.id} style={{
+              ...glassInner,
+              display: 'flex', gap: 10, alignItems: 'flex-start', position: 'relative',
+            }}>
+              {note.photo && (
+                <img src={note.photo} alt="" style={{
+                  width: 72, height: 72, borderRadius: 8, objectFit: 'cover', flexShrink: 0,
+                  border: '0.5px solid rgba(255,255,255,0.12)',
+                }} />
+              )}
+              <div style={{ flex: 1, minWidth: 0 }}>
+                {note.text && (
+                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', margin: 0, lineHeight: 1.5 }}>
+                    {note.text}
+                  </p>
+                )}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 6 }}>
+                  <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', fontWeight: 600 }}>
+                    {note.authorName}
+                  </span>
+                  <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)' }}>
+                    {new Date(note.timestamp).toLocaleString('pt-PT', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}
+                  </span>
+                </div>
+              </div>
+              <button
+                onClick={() => removeSceneNote(sceneKey, note.id)}
+                style={{
+                  position: 'absolute', top: 8, right: 8,
+                  width: 24, height: 24, borderRadius: 6, border: 'none',
+                  background: 'rgba(239,68,68,0.1)', color: '#ef4444',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  cursor: 'pointer', flexShrink: 0,
+                }}
+              >
+                <Trash2 size={11} />
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Formulário de nova nota */}
+      {adding ? (
+        <div style={{ ...glassInner, display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {/* Preview da foto */}
+          {notePhoto && (
+            <div style={{ position: 'relative', display: 'inline-block' }}>
+              <img src={notePhoto} alt="" style={{
+                width: 120, height: 90, borderRadius: 8, objectFit: 'cover',
+                border: '0.5px solid rgba(255,255,255,0.15)',
+              }} />
+              <button
+                onClick={() => setNotePhoto(null)}
+                style={{
+                  position: 'absolute', top: 4, right: 4,
+                  width: 20, height: 20, borderRadius: '50%', border: 'none',
+                  background: 'rgba(0,0,0,0.6)', color: '#fff',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  cursor: 'pointer', fontSize: 10,
+                }}
+              >✕</button>
+            </div>
+          )}
+
+          <textarea
+            value={noteText}
+            onChange={e => setNoteText(e.target.value)}
+            placeholder="Ex: Cena 02 — roupa suja ref., mancha no joelho direito..."
+            autoFocus
+            rows={3}
+            style={{
+              width: '100%', padding: '10px 12px', borderRadius: 10,
+              background: 'rgba(255,255,255,0.04)',
+              border: '0.5px solid rgba(255,255,255,0.12)',
+              color: 'var(--text-primary)', fontSize: 13, lineHeight: 1.5,
+              resize: 'none', outline: 'none', fontFamily: 'var(--font-body)',
+            }}
+          />
+
+          <div style={{ display: 'flex', gap: 8 }}>
+            {/* Botão câmera / upload */}
+            <button
+              onClick={() => photoRef.current?.click()}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 5,
+                padding: '8px 14px', borderRadius: 10, border: 'none',
+                background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.6)',
+                fontSize: 12, fontWeight: 600, cursor: 'pointer',
+              }}
+            >
+              <ImagePlus size={13} /> {notePhoto ? 'Trocar foto' : 'Foto'}
+            </button>
+            <input
+              ref={photoRef}
+              type="file"
+              accept="image/*"
+              capture="environment"
+              style={{ display: 'none' }}
+              onChange={handlePhotoSelect}
+            />
+
+            <div style={{ flex: 1 }} />
+
+            <button
+              onClick={() => { setAdding(false); setNoteText(''); setNotePhoto(null) }}
+              style={{
+                padding: '8px 14px', borderRadius: 10,
+                background: 'transparent', border: '0.5px solid rgba(255,255,255,0.12)',
+                color: 'rgba(255,255,255,0.5)', fontSize: 12, fontWeight: 600, cursor: 'pointer',
+              }}
+            >Cancelar</button>
+            <button
+              onClick={handleAddNote}
+              disabled={!noteText.trim() && !notePhoto}
+              style={{
+                padding: '8px 18px', borderRadius: 10, border: 'none',
+                background: (!noteText.trim() && !notePhoto) ? 'rgba(16,185,129,0.3)' : 'linear-gradient(135deg,#10b981,#059669)',
+                color: '#fff', fontSize: 12, fontWeight: 700, cursor: 'pointer',
+              }}
+            >Guardar</button>
+          </div>
+        </div>
+      ) : (
+        <button
+          onClick={() => setAdding(true)}
+          style={{
+            width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+            padding: '10px 16px', borderRadius: 12,
+            background: 'rgba(255,255,255,0.04)',
+            border: '0.5px dashed rgba(255,255,255,0.15)',
+            color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, cursor: 'pointer',
+          }}
+        >
+          <Plus size={13} /> Adicionar nota
+        </button>
       )}
 
       {/* ── ACTION BUTTONS ── */}
