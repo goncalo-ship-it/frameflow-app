@@ -45,7 +45,8 @@ const DeptStuntsModule    = lazy(() => import('./app/pages/DepartamentoStunts.ts
 const DailiesModule       = lazy(() => import('./app/pages/DailiesModule.tsx').then(m => ({ default: m.DailiesModule })))
 const EspelhoShell        = lazy(() => import('./app/pages/EspelhoModule.tsx').then(m => ({ default: m.EspelhoModule })))
 const RealTimeInfoModule  = lazy(() => import('./app/pages/RealTimeInfoModule.tsx').then(m => ({ default: m.RealTimeInfoModule })))
-// ── Pós-Produção sub-pages ───────────────────────────────────────
+// ── Pós-Produção hub + sub-pages ────────────────────────────────
+const PosProducaoModule   = lazy(() => import('./app/pages/PosProducao.tsx').then(m => ({ default: m.PosProducaoModule })))
 const PosSelectsModule    = lazy(() => import('./app/pages/PosSelects.tsx').then(m => ({ default: m.PosSelectsModule })))
 const PosMontagemModule   = lazy(() => import('./app/pages/PosMontagem.tsx').then(m => ({ default: m.PosMontagemModule })))
 const PosVFXModule        = lazy(() => import('./app/pages/PosVFX.tsx').then(m => ({ default: m.PosVFXModule })))
@@ -68,7 +69,7 @@ export function AppShell() {
       case 'filme':            return <UniverseModule />
       case 'equipa':           return <TeamModule />
       case 'departamentos':    return <TeamModule initialSection="departamentos" />
-      case 'pos':              return <ProductionModule initialTab="post-production" />
+      case 'pos':              return <PosProducaoModule />
       case 'pos-selects':      return <PosSelectsModule />
       case 'pos-montagem':     return <PosMontagemModule />
       case 'pos-vfx':          return <PosVFXModule />

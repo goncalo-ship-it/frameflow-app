@@ -9,6 +9,7 @@ import { Cpu, Layers, TrendingUp, Zap, CheckCircle, Clock, AlertCircle } from 'l
 import {
   LiquidPage, LiquidCard, LiquidSection, LiquidBadge, LiquidStatCard,
 } from '../components/liquid-system';
+import { PosNavPills } from '../components/PosNavPills';
 import { nestedCard, iconGradient, springConfigs } from '../utils/liquidGlassStyles';
 
 /* ─────────────────────────────────────────────────────────────
@@ -181,6 +182,7 @@ export function PosVFXModule() {
       description="Efeitos visuais — DESDOBRADO"
       section="pos"
     >
+      <PosNavPills activeTab="pos-vfx" onTabChange={() => {}} />
       {/* Stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 20 }}>
         <LiquidStatCard label="Total shots"  value={total}   accent={ACCENT} />

@@ -75,6 +75,16 @@ const ROUTE_LABELS: Record<string, { section: string; page: string; emoji: strin
   'settings':           { section: 'Sistema',       page: 'Definições',       emoji: '⚙️' },
   'invites':            { section: 'Sistema',       page: 'Convites',         emoji: '✉️' },
   'myday':              { section: 'FrameFlow',     page: 'O Meu Dia',        emoji: '☀️' },
+  // Pós-Produção sub-pages
+  'pos-selects':        { section: 'Pós-Produção',  page: 'Selects',          emoji: '🎯' },
+  'pos-montagem':       { section: 'Pós-Produção',  page: 'Montagem',         emoji: '✂️' },
+  'pos-vfx':            { section: 'Pós-Produção',  page: 'VFX',              emoji: '⚡' },
+  'pos-cor':            { section: 'Pós-Produção',  page: 'Color',            emoji: '🎨' },
+  'pos-som':            { section: 'Pós-Produção',  page: 'Sound Mix',        emoji: '🎵' },
+  // Mirror sub-pages
+  'mirror-consultas':   { section: 'Mirror',        page: 'Consultas',        emoji: '❓' },
+  'mirror-sugestoes':   { section: 'Mirror',        page: 'Sugestões',        emoji: '💡' },
+  'mirror-memoria':     { section: 'Mirror',        page: 'Memória',          emoji: '🧠' },
 };
 
 /* ─────────────────────────────────────────────────────────────────────────────

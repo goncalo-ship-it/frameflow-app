@@ -9,6 +9,7 @@ import { Scissors, Clock, CheckCircle, AlertCircle, RotateCcw, Film } from 'luci
 import {
   LiquidPage, LiquidCard, LiquidSection, LiquidButton, LiquidBadge, LiquidStatCard,
 } from '../components/liquid-system';
+import { PosNavPills } from '../components/PosNavPills';
 import { glassCard, nestedCard, iconGradient, springConfigs } from '../utils/liquidGlassStyles';
 
 /* ─────────────────────────────────────────────────────────────
@@ -218,6 +219,7 @@ export function PosMontagemModule() {
       description="Assembly cut — DESDOBRADO"
       section="pos"
     >
+      <PosNavPills activeTab="pos-montagem" onTabChange={() => {}} />
       {/* Stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 20 }}>
         <LiquidStatCard label="Total cenas"   value={scenes.length} accent={ACCENT} />

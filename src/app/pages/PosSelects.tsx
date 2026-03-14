@@ -9,6 +9,7 @@ import { Film, Grid, List, CheckCircle, Clock, XCircle, Eye } from 'lucide-react
 import {
   LiquidPage, LiquidCard, LiquidSection, LiquidButton, LiquidBadge, LiquidStatCard,
 } from '../components/liquid-system';
+import { PosNavPills } from '../components/PosNavPills';
 import { glassCard, nestedCard, springConfigs } from '../utils/liquidGlassStyles';
 
 /* ─────────────────────────────────────────────────────────────
@@ -204,6 +205,7 @@ export function PosSelectsModule() {
       description="Revisão e selecção de takes — DESDOBRADO"
       section="pos"
     >
+      <PosNavPills activeTab="pos-selects" onTabChange={() => {}} />
       {/* Stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 20 }}>
         <LiquidStatCard label="Total clips"   value={total}      accent="#a855f7" />

@@ -9,6 +9,7 @@ import { Volume2, Music, Mic, Wind, Disc, CheckSquare, Square } from 'lucide-rea
 import {
   LiquidPage, LiquidCard, LiquidSection, LiquidBadge, LiquidStatCard,
 } from '../components/liquid-system';
+import { PosNavPills } from '../components/PosNavPills';
 import { nestedCard, iconGradient, springConfigs } from '../utils/liquidGlassStyles';
 
 /* ─────────────────────────────────────────────────────────────
@@ -233,6 +234,7 @@ export function PosSomModule() {
       description="Mix de som e deliverables — DESDOBRADO"
       section="pos"
     >
+      <PosNavPills activeTab="pos-som" onTabChange={() => {}} />
       {/* Stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 20 }}>
         <LiquidStatCard label="Sessões"         value={MOCK_SESSIONS.length} accent={ACCENT} />

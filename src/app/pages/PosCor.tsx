@@ -9,6 +9,7 @@ import { Palette, CheckCircle, Clock, ThumbsUp, FileText } from 'lucide-react';
 import {
   LiquidPage, LiquidCard, LiquidSection, LiquidBadge, LiquidStatCard,
 } from '../components/liquid-system';
+import { PosNavPills } from '../components/PosNavPills';
 import { nestedCard, iconGradient, springConfigs } from '../utils/liquidGlassStyles';
 
 /* ─────────────────────────────────────────────────────────────
@@ -191,6 +192,7 @@ export function PosCorModule() {
       description="Grade & Look Development — DESDOBRADO"
       section="pos"
     >
+      <PosNavPills activeTab="pos-cor" onTabChange={() => {}} />
       {/* Stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 20 }}>
         <LiquidStatCard label="Sessões"        value={sessions.length} accent={ACCENT} />

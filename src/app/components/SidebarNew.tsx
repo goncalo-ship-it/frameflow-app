@@ -110,7 +110,8 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
     'filme':         ['universe', 'script', 'script-analysis', 'bible', 'writers-room', 'files', 'continuity', 'locations'],
     'equipa':        ['team', 'cast', 'departments', 'invites'],
     'departamentos': ['dept-arte', 'dept-guardaroupa', 'dept-makeup', 'dept-camara', 'dept-som', 'dept-casting', 'dept-transporte', 'dept-stunts'],
-    'pos':           ['post-production', 'dailies'],
+    'pos':           ['post-production', 'dailies', 'pos-selects', 'pos-montagem', 'pos-vfx', 'pos-cor', 'pos-som'],
+    'mirror':        ['mirror-consultas', 'mirror-sugestoes', 'mirror-memoria'],
     'convites':      ['invites'],
     'definicoes':    ['settings'],
   };
