@@ -52,6 +52,16 @@ export function AppShell() {
 
   const renderModule = () => {
     switch (activeModule) {
+      // ── Novos IDs (aliases dos antigos) ─────────────────────────────
+      case 'hoje':             return <MyDay />
+      case 'planeamento':      return <ProductionModulePage />
+      case 'filme':            return <UniverseModule />
+      case 'equipa':           return <TeamModule />
+      case 'departamentos':    return <TeamModule initialSection="departamentos" />
+      case 'pos':              return <ProductionModule initialTab="post-production" />
+      case 'convites':         return <InvitesModule />
+      case 'definicoes':       return <SettingsModule />
+      // ── IDs originais (backward compat) ─────────────────────────────
       case 'myday':            return <MyDay />
       case 'dashboard':        return <Dashboard />
       case 'universe':         return <UniverseModule />

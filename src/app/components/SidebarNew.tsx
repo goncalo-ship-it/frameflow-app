@@ -103,54 +103,68 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
     stunts:    { label: 'Stunts',       emoji: '🔥', icon: Flame,    moduleId: 'dept-stunts' },
   };
 
+  // Mapa de aliases: moduleId do menu → IDs internos que o activam
+  const MODULE_ALIASES: Record<string, string[]> = {
+    'hoje':          ['myday', 'dashboard', 'live-board', 'realtime'],
+    'planeamento':   ['production', 'pre-production', 'schedule', 'callsheet', 'optimization'],
+    'filme':         ['universe', 'script', 'script-analysis', 'bible', 'writers-room', 'files', 'continuity', 'locations'],
+    'equipa':        ['team', 'cast', 'departments', 'invites'],
+    'departamentos': ['dept-arte', 'dept-guardaroupa', 'dept-makeup', 'dept-camara', 'dept-som', 'dept-casting', 'dept-transporte', 'dept-stunts'],
+    'pos':           ['post-production', 'dailies'],
+    'convites':      ['invites'],
+    'definicoes':    ['settings'],
+  };
+
   const fullMenu: MenuItem[] = [
     // ── 1. HOJE ──────────────────────────────────────────────────────
     {
-      icon: Sun, label: 'Hoje', moduleId: 'myday', emoji: '☀️', color: '#8b5cf6',
+      icon: Sun, label: 'Hoje', moduleId: 'hoje', emoji: '☀️', color: '#8b5cf6',
       submenu: [
-        { label: 'Resumo',    moduleId: 'myday',      icon: LayoutDashboard },
-        { label: 'Set Live',  moduleId: 'live-board', icon: Zap },
-        { label: 'Timeline',  moduleId: 'schedule',   icon: Clock },
-        { label: 'Alertas',   moduleId: 'realtime',   icon: AlertTriangle },
+        { label: 'Agenda de Hoje',    moduleId: 'hoje',      icon: Calendar },
+        { label: 'Cenas do Dia',      moduleId: 'hoje',      icon: Clapperboard },
+        { label: 'Meteorologia',      moduleId: 'hoje',      icon: Sun },
+        { label: 'Call Sheet do Dia', moduleId: 'callsheet', icon: FileText },
+        { label: 'Alertas',           moduleId: 'realtime',  icon: AlertTriangle },
+        { label: 'Progresso do Filme',moduleId: 'hoje',      icon: Layers },
       ],
     },
     // ── 2. PLANEAMENTO ───────────────────────────────────────────────
     {
-      icon: Calendar, label: 'Planeamento', moduleId: 'production', emoji: '🎯', color: '#3b82f6',
+      icon: Calendar, label: 'Planeamento', moduleId: 'planeamento', emoji: '🎯', color: '#3b82f6',
       submenu: [
-        { label: 'Strip Board',      moduleId: 'production',   icon: Clapperboard },
-        { label: 'Calendário',       moduleId: 'schedule',     icon: Calendar },
-        { label: 'Folha de Serviço', moduleId: 'callsheet',    icon: FileText },
-        { label: 'Otimização',       moduleId: 'optimization', icon: Layers },
-        { label: 'Cenários',         moduleId: 'optimization', icon: Sparkles },
+        { label: 'Strip Board',    moduleId: 'production', icon: Clapperboard },
+        { label: 'Schedule',       moduleId: 'schedule',   icon: Calendar },
+        { label: 'Shoot Days',     moduleId: 'production', icon: Clock },
+        { label: 'Call Sheets',    moduleId: 'callsheet',  icon: FileText },
+        { label: 'Day Out Of Days',moduleId: 'production', icon: Layers },
       ],
     },
     // ── 3. FILME ─────────────────────────────────────────────────────
     {
-      icon: Film, label: 'Filme', moduleId: 'universe', emoji: '🎬', color: '#f59e0b',
+      icon: Film, label: 'Filme', moduleId: 'filme', emoji: '🎬', color: '#f59e0b',
       submenu: [
-        { label: 'Guião',           moduleId: 'script',          icon: FileText },
-        { label: 'Continuidade',    moduleId: 'continuity',      icon: RefreshCw },
-        { label: 'Locais da Hist.', moduleId: 'locations',       icon: MapPin },
-        { label: 'Universo',        moduleId: 'universe',        icon: Network },
-        { label: 'Episódios',       moduleId: 'script-analysis', icon: Clapperboard },
-        { label: 'Bíblia',          moduleId: 'bible',           icon: BookOpen },
-        { label: 'Writers Room',    moduleId: 'writers-room',    icon: Users },
+        { label: 'Guião',        moduleId: 'script',          icon: FileText },
+        { label: 'Continuidade', moduleId: 'continuity',      icon: RefreshCw },
+        { label: 'Episódios',    moduleId: 'script-analysis', icon: Clapperboard },
+        { label: 'Universo',     moduleId: 'universe',        icon: Network },
+        { label: 'Bíblia',       moduleId: 'bible',           icon: BookOpen },
+        { label: 'Writers Room', moduleId: 'writers-room',    icon: Users },
+        { label: 'Ficheiros',    moduleId: 'files',           icon: Folder },
       ],
     },
     // ── 4. EQUIPA ────────────────────────────────────────────────────
     {
-      icon: Users, label: 'Equipa', moduleId: 'team', emoji: '👥', color: '#06b6d4',
+      icon: Users, label: 'Equipa', moduleId: 'equipa', emoji: '👥', color: '#06b6d4',
       submenu: [
-        { label: 'Crew',              moduleId: 'team',     icon: Users },
-        { label: 'Elenco',            moduleId: 'cast',     icon: UserPlus },
-        { label: 'Convites',          moduleId: 'invites',  icon: Mail },
-        { label: 'Roles & Perm.',     moduleId: 'settings', icon: Target },
+        { label: 'Crew',             moduleId: 'team',    icon: Users },
+        { label: 'Elenco',           moduleId: 'cast',    icon: UserPlus },
+        { label: 'Disponibilidades', moduleId: 'team',    icon: Calendar },
+        { label: 'Contactos',        moduleId: 'team',    icon: Mail },
       ],
     },
     // ── 5. DEPARTAMENTOS ─────────────────────────────────────────────
     {
-      icon: Network, label: 'Departamentos', moduleId: 'departments', emoji: '🎨', color: '#10b981',
+      icon: Network, label: 'Departamentos', moduleId: 'departamentos', emoji: '🎨', color: '#10b981',
       submenu: [
         { label: 'Arte',          moduleId: 'dept-arte',        icon: Palette },
         { label: 'Guarda-Roupa',  moduleId: 'dept-guardaroupa', icon: Scissors },
@@ -164,24 +178,23 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
     },
     // ── 6. PÓS ───────────────────────────────────────────────────────
     {
-      icon: Sparkles, label: 'Pós', moduleId: 'post-production', emoji: '✨', color: '#a855f7',
+      icon: Sparkles, label: 'Pós', moduleId: 'pos', emoji: '✨', color: '#a855f7',
       submenu: [
-        { label: 'Dailies',   moduleId: 'dailies',          icon: Film },
-        { label: 'Selects',   moduleId: 'post-production',  icon: Target },
-        { label: 'Montagem',  moduleId: 'post-production',  icon: Scissors },
-        { label: 'VFX',       moduleId: 'post-production',  icon: Zap },
-        { label: 'Cor',       moduleId: 'post-production',  icon: Palette },
-        { label: 'Som',       moduleId: 'post-production',  icon: Mic },
+        { label: 'Dailies',   moduleId: 'dailies',         icon: Film },
+        { label: 'Selects',   moduleId: 'post-production', icon: Target },
+        { label: 'Rough Cut', moduleId: 'post-production', icon: Scissors },
+        { label: 'VFX',       moduleId: 'post-production', icon: Zap },
+        { label: 'Color',     moduleId: 'post-production', icon: Palette },
+        { label: 'Sound Mix', moduleId: 'post-production', icon: Mic },
       ],
     },
     // ── 7. MIRROR ────────────────────────────────────────────────────
     {
       icon: Eye, label: 'Mirror', moduleId: 'mirror', emoji: '🪞', color: '#ec4899',
       submenu: [
-        { label: 'Chat',             moduleId: 'mirror', icon: Sparkles },
-        { label: 'Consultas',        moduleId: 'mirror', icon: FileText },
-        { label: 'Sugestões',        moduleId: 'mirror', icon: Zap },
-        { label: 'Memória Projecto', moduleId: 'mirror', icon: BookOpen },
+        { label: 'Chat IA',              moduleId: 'mirror', icon: Sparkles },
+        { label: 'Perguntas ao Projeto', moduleId: 'mirror', icon: FileText },
+        { label: 'Sugestões',            moduleId: 'mirror', icon: Zap },
       ],
     },
   ];
@@ -206,15 +219,32 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
   }
 
   const bottomItems: MenuItem[] = [
-    { icon: Settings, label: 'Definições', moduleId: 'settings', emoji: '⚙️' },
+    { icon: Mail,     label: 'Convites',   moduleId: 'convites',  emoji: '✉️' },
+    { icon: Settings, label: 'Definições', moduleId: 'definicoes', emoji: '⚙️' },
   ];
 
-  const isActive = (moduleId: string) => activeModule === moduleId;
-  const hasActiveSubmenu = (item: MenuItem) => item.submenu?.some(sub => activeModule === sub.moduleId) ?? false;
+  // Resolve new IDs to internal IDs for navigation
+  const NAV_RESOLVE: Record<string, string> = {
+    'hoje':        'myday',
+    'planeamento': 'production',
+    'filme':       'universe',
+    'equipa':      'team',
+    'departamentos': 'departments',
+    'pos':         'post-production',
+    'convites':    'invites',
+    'definicoes':  'settings',
+  };
+
+  const isActive = (moduleId: string) => {
+    if (activeModule === moduleId) return true;
+    const aliases = MODULE_ALIASES[moduleId];
+    return aliases ? aliases.includes(activeModule) : false;
+  };
+  const hasActiveSubmenu = (item: MenuItem) => item.submenu?.some(sub => isActive(sub.moduleId)) ?? false;
 
   const handleNav = (moduleId: string) => {
     if (!moduleId || moduleId.startsWith('/')) return;
-    navigate(moduleId);
+    navigate(NAV_RESOLVE[moduleId] || moduleId);
     onClose?.();
   };
 

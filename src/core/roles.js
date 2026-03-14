@@ -121,37 +121,49 @@ export const ACCESS_LEVELS = {
 // ── Módulos por nível de acesso ────────────────────────────────────
 const MODULES_BY_LEVEL = {
   1: [
+    // Novos IDs
+    'hoje', 'planeamento', 'filme', 'equipa', 'departamentos', 'pos', 'convites', 'definicoes',
+    // IDs originais (backward compat)
     'myday', 'dashboard', 'universe', 'pre-production', 'schedule', 'production', 'script', 'script-analysis',
     'optimization', 'locations', 'team', 'cast', 'departments', 'mirror',
     'continuity', 'budget', 'finance', 'progress', 'settings', 'live-board', 'callsheet',
-    'post-production', 'meals', 'gps-nav', 'integrations', 'invites', 'store', 'equipment',
+    'post-production', 'dailies', 'meals', 'gps-nav', 'integrations', 'invites', 'store', 'equipment',
     'bible', 'writers-room', 'files', 'canon', 'health-safety',
     'dept-arte', 'dept-guardaroupa', 'dept-makeup', 'dept-camara', 'dept-som', 'dept-casting', 'dept-transporte', 'dept-stunts',
   ],
   2: [
-    'myday', 'dashboard', 'universe', 'production', 'script', 'script-analysis',
+    // Realizador & 1º AD — Hoje, Planeamento, Filme, Equipa, Departamentos, Pós, Mirror
+    'hoje', 'planeamento', 'filme', 'equipa', 'departamentos', 'pos',
+    // IDs originais
+    'myday', 'dashboard', 'universe', 'production', 'schedule', 'callsheet', 'script', 'script-analysis',
     'optimization', 'locations', 'team', 'cast', 'departments', 'mirror',
     'continuity', 'progress', 'live-board', 'callsheet', 'equipment',
-    'meals', 'gps-nav',
+    'meals', 'gps-nav', 'post-production', 'dailies',
     'bible', 'writers-room', 'files', 'canon', 'health-safety',
     'dept-arte', 'dept-guardaroupa', 'dept-makeup', 'dept-camara', 'dept-som', 'dept-casting', 'dept-transporte', 'dept-stunts',
   ],
   3: [
-    'myday', 'dashboard', 'production', 'script', 'locations', 'team', 'cast', 'departments',
-    'continuity', 'live-board', 'callsheet', 'equipment',
-    'meals', 'gps-nav',
+    // HOD — Hoje, Planeamento, Departamento, Equipa
+    'hoje', 'planeamento', 'departamentos', 'equipa',
+    // IDs originais
+    'myday', 'dashboard', 'production', 'schedule', 'callsheet', 'script', 'locations', 'team', 'cast', 'departments',
+    'continuity', 'live-board', 'equipment', 'meals', 'gps-nav',
     'dept-arte', 'dept-guardaroupa', 'dept-makeup', 'dept-camara', 'dept-som', 'dept-casting', 'dept-transporte', 'dept-stunts',
   ],
   4: [
+    // Crew — Hoje, Agenda
+    'hoje',
+    // IDs originais
     'myday', 'dashboard', 'production', 'locations', 'team', 'cast', 'departments', 'live-board', 'callsheet', 'equipment',
     'meals', 'gps-nav',
     'dept-arte', 'dept-guardaroupa', 'dept-makeup', 'dept-camara', 'dept-som', 'dept-casting', 'dept-transporte', 'dept-stunts',
   ],
   5: [
-    'myday', 'dashboard', 'live-board', 'callsheet',
+    // Elenco — Hoje, Minhas Cenas, Agenda
+    'hoje', 'myday', 'dashboard', 'live-board', 'callsheet',
   ],
   6: [
-    'myday', 'dashboard', 'live-board', 'callsheet',
+    'hoje', 'myday', 'dashboard', 'live-board', 'callsheet',
   ],
 }
 

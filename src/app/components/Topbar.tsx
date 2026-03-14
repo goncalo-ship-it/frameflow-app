@@ -28,6 +28,16 @@ import { UniversalSearchModal } from './UniversalSearchModal';
 ───────────────────────────────────────────────────────────────────────────── */
 
 const ROUTE_LABELS: Record<string, { section: string; page: string; emoji: string }> = {
+  // Novos IDs
+  'hoje':          { section: 'FrameFlow',     page: 'Hoje',         emoji: '☀️' },
+  'planeamento':   { section: 'Produção',      page: 'Planeamento',  emoji: '🎯' },
+  'filme':         { section: 'O Filme',       page: 'Filme',        emoji: '🎬' },
+  'equipa':        { section: 'Equipa',        page: 'Equipa',       emoji: '👥' },
+  'departamentos': { section: 'Departamentos', page: 'Departamentos',emoji: '🎨' },
+  'pos':           { section: 'Pós-Produção',  page: 'Pós',          emoji: '✨' },
+  'convites':      { section: 'Sistema',       page: 'Convites',     emoji: '✉️' },
+  'definicoes':    { section: 'Sistema',       page: 'Definições',   emoji: '⚙️' },
+  // IDs originais
   'dashboard':          { section: 'FrameFlow',     page: 'Dashboard',        emoji: '📊' },
   'production':         { section: 'Produção',      page: 'Strip Board',      emoji: '🎬' },
   'schedule':           { section: 'Produção',      page: 'Schedule',         emoji: '📅' },
