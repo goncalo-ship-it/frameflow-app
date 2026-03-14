@@ -57,7 +57,7 @@ import { ArtWidget } from '../components/ArtWidget';
 import { SceneDetailWidget } from '../components/SceneDetailWidget';
 import { RecceWidget } from '../components/RecceWidget';
 import { ServiceSheetWidget } from '../components/ServiceSheetWidget';
-import { SceneCardWithHover } from '../components/SceneCardWithHover';
+import { ScenePrepCard } from '../components/ScenePrepCard';
 import { NextScenesWidget } from '../components/NextScenesWidget';
 
 /**
@@ -880,7 +880,7 @@ export function DashboardProducerLiquid() {
         {/* PRÓXIMAS CENAS - NEW MAGICAL CARDS WITH HOVER */}
         <div className="space-y-3">
           {upcomingScenes.map((scene, sceneIdx) => (
-            <SceneCardWithHover
+            <ScenePrepCard
               key={scene.id}
               id={scene.id}
               number={scene.number}

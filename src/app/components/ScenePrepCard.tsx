@@ -72,7 +72,7 @@ const ITEM_ICONS: Record<string, typeof Shirt> = {
   'Arte': Palette,
 };
 
-export function SceneCardWithHover({
+export function ScenePrepCard({
   id,
   number,
   title,

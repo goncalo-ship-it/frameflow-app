@@ -27,7 +27,7 @@ import { ArtWidget }            from '../../app/components/ArtWidget';
 import { SceneDetailWidget }    from '../../app/components/SceneDetailWidget';
 import { RecceWidget }          from '../../app/components/RecceWidget';
 import { ServiceSheetWidget }   from '../../app/components/ServiceSheetWidget';
-import { SceneCardWithHover }   from '../../app/components/SceneCardWithHover';
+import { ScenePrepCard }        from '../../app/components/ScenePrepCard';
 
 /* ─────────────────────────────────────────────────────────────
    LIQUID WIDGET
@@ -310,7 +310,7 @@ export function ProducerDashboard() {
     }),
   [shootingDays, sceneAssignments, parsedScripts, today]);
 
-  /* ── Upcoming scenes (SceneCardWithHover) ── */
+  /* ── Upcoming scenes (ScenePrepCard) ── */
   const upcomingScenes = useMemo(() => {
     const futureDays = (shootingDays || []).filter(d => d.date >= today).slice(0, 3);
     return futureDays.flatMap(d => {
@@ -457,7 +457,7 @@ export function ProducerDashboard() {
         {/* ══ §3 SCENE CARDS ══ */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {upcomingScenes.map((sc, i) => (
-            <SceneCardWithHover key={sc.id} {...sc} isNext={i === 0} />
+            <ScenePrepCard key={sc.id} {...sc} isNext={i === 0} />
           ))}
           {upcomingScenes.length === 0 && (
             <LiquidWidget>
