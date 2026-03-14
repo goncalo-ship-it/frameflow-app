@@ -111,40 +111,9 @@ interface Notif {
   read: boolean;
 }
 
-const MOCK_NOTIFS: Notif[] = [
-  {
-    id: 'n1',
-    priority: 'critical',
-    title: 'Orçamento Excedido',
-    body: 'Equipamento +18% vs. budget. Requer aprovação.',
-    time: '5m',
-    read: false,
-  },
-  {
-    id: 'n2',
-    priority: 'warning',
-    title: 'Chuva prevista',
-    body: 'EXT Marginal – 15 Mar está em risco. Ver Schedule.',
-    time: '22m',
-    read: false,
-  },
-  {
-    id: 'n3',
-    priority: 'info',
-    title: 'Dailies prontos',
-    body: 'Dia 4 – 23 clips disponíveis para review.',
-    time: '1h',
-    read: false,
-  },
-  {
-    id: 'n4',
-    priority: 'success',
-    title: 'Cena 2B aprovada',
-    body: 'Director confirmou take 4 como seleccionado.',
-    time: '3h',
-    read: true,
-  },
-];
+// Notifications will be populated from the store / reactive system when implemented.
+// Empty by default — no placeholder data in production UI.
+const INITIAL_NOTIFS: Notif[] = [];
 
 /* ─────────────────────────────────────────────────────────────────────────────
    PILL GLASS — base style reutilizável
@@ -414,7 +383,7 @@ export const Topbar = forwardRef<HTMLDivElement, TopbarProps>(
     const currentTime = useClock();
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [isNotifOpen, setIsNotifOpen] = useState(false);
-    const [notifs, setNotifs] = useState<Notif[]>(MOCK_NOTIFS);
+    const [notifs, setNotifs] = useState<Notif[]>(INITIAL_NOTIFS);
     const notifRef = useRef<HTMLDivElement>(null);
 
     const unreadCount = notifs.filter(n => !n.read).length;

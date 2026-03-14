@@ -44,6 +44,7 @@ import { useStore } from '../../core/store';
 import { useShallow } from 'zustand/react/shallow';
 // @ts-expect-error JSX module
 import { FrameFlowLogo } from '../../components/shared/FrameFlowLogo';
+import { GLASS, R, SHADOW } from '../../components/shared/ui/tokens';
 
 interface MenuItem {
   icon: any;
@@ -276,7 +277,7 @@ export function SidebarNew({ onClose, expanded, onToggleExpand }: SidebarNewProp
       <div
         className="h-full flex flex-col w-full overflow-hidden relative"
         style={{
-          borderRadius: isExpanded ? '28px' : '0',
+          borderRadius: isExpanded ? `${R.xl}px` : '0',
           transition: 'border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
       >
@@ -284,9 +285,9 @@ export function SidebarNew({ onClose, expanded, onToggleExpand }: SidebarNewProp
         <div
           className="absolute inset-0"
           style={{
-            background: 'rgba(78, 80, 88, 0.18)',
-            backdropFilter: 'blur(20px) saturate(120%)',
-            WebkitBackdropFilter: 'blur(20px) saturate(120%)',
+            background: GLASS.bg,
+            backdropFilter: GLASS.blur,
+            WebkitBackdropFilter: GLASS.blur,
           }}
         />
 
@@ -295,8 +296,8 @@ export function SidebarNew({ onClose, expanded, onToggleExpand }: SidebarNewProp
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              borderRadius: '28px',
-              background: 'radial-gradient(ellipse 120% 60% at 50% -10%, rgba(255, 255, 255, 0.10) 0%, transparent 50%)',
+              borderRadius: `${R.xl}px`,
+              background: GLASS.lensing,
               mixBlendMode: 'overlay',
             }}
           />
@@ -306,8 +307,8 @@ export function SidebarNew({ onClose, expanded, onToggleExpand }: SidebarNewProp
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            borderRadius: isExpanded ? '28px' : '0',
-            boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.12)',
+            borderRadius: isExpanded ? `${R.xl}px` : '0',
+            boxShadow: GLASS.highlight,
           }}
         />
 
@@ -315,8 +316,8 @@ export function SidebarNew({ onClose, expanded, onToggleExpand }: SidebarNewProp
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            borderRadius: isExpanded ? '28px' : '0',
-            border: isExpanded ? '1px solid rgba(255, 255, 255, 0.12)' : 'none',
+            borderRadius: isExpanded ? `${R.xl}px` : '0',
+            border: isExpanded ? GLASS.border : 'none',
             borderRight: isExpanded ? undefined : '1px solid rgba(255, 255, 255, 0.08)',
           }}
         />
@@ -326,8 +327,8 @@ export function SidebarNew({ onClose, expanded, onToggleExpand }: SidebarNewProp
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              borderRadius: '28px',
-              boxShadow: '0 4px 24px rgba(0, 0, 0, 0.3)',
+              borderRadius: `${R.xl}px`,
+              boxShadow: SHADOW.md,
             }}
           />
         )}
@@ -499,13 +500,14 @@ export function SidebarNew({ onClose, expanded, onToggleExpand }: SidebarNewProp
                     {/* Flyout Submenu (collapsed mode) */}
                     {item.submenu && showFlyout && (
                       <div
-                        className="absolute top-0 w-[220px] rounded-[16px] overflow-hidden z-50"
+                        className="absolute top-0 w-[220px] overflow-hidden z-50"
                         style={{
                           left: 'calc(100% + 8px)',
-                          background: 'rgba(78, 80, 88, 0.18)',
-                          backdropFilter: 'blur(20px) saturate(120%)',
-                          WebkitBackdropFilter: 'blur(20px) saturate(120%)',
-                          border: '1px solid rgba(255, 255, 255, 0.12)',
+                          borderRadius: `${R.lg}px`,
+                          background: GLASS.bg,
+                          backdropFilter: GLASS.blur,
+                          WebkitBackdropFilter: GLASS.blur,
+                          border: GLASS.border,
                           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
                         }}
                         onMouseEnter={() => setHoveredItem(item.label)}

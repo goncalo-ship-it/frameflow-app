@@ -135,8 +135,6 @@ export default function App() {
     </div>
   ) : null
 
-  const offlineHeight = offline ? 0 : 0
-
   // Painel 2 (management) e Painel 3 (roleview) partilham Sidebar + AppShell
   // A diferença está nos módulos visíveis (filtrados pelo canAccess) e no dashboard
   const wpActive = wallpaper?.type && wallpaper.type !== 'none'
@@ -166,8 +164,8 @@ export default function App() {
       <UniversalUpload>
         <div className="app-layout" style={{
           display: 'flex',
-          height: hasPreview ? `calc(100vh - ${32 + offlineHeight}px)` : `calc(100vh - ${offlineHeight}px)`,
-          marginTop: topOffset + offlineHeight,
+          height: hasPreview ? 'calc(100vh - 32px)' : '100vh',
+          marginTop: topOffset,
           width: '100vw',
           overflow: 'hidden',
           position: 'relative',
