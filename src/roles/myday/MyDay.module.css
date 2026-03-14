@@ -1,31 +1,46 @@
 /* ══ MyDay — "O Teu Dia" ════════════════════════════════════════════ */
 
+/*
+ * Scroll model:
+ *   .dashboard  — flex column, fills AppShell motion.div (height: 100%)
+ *                 NO overflow:hidden — avoids WebKit backdrop-filter hit-test bug
+ *   .content    — flex: 1, min-height: 0 (critical), overflow-y: auto — scrolls
+ *   .dayNav     — flex-shrink: 0, stays pinned at bottom of flex column
+ */
+
 .dashboard {
   height: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   position: relative;
+  /* overflow: hidden intentionally omitted —
+     overflow:hidden on a backdrop-filter ancestor triggers a WebKit compositing
+     bug that breaks pointer-events across the entire subtree. Containment is
+     provided by .content (overflow-y:auto) and the AppShell motion.div. */
 }
 
-/* ── Scrollable content ── */
+/* ── Scrollable content area ── */
 .content {
   position: relative;
   z-index: 1;
   flex: 1;
+  min-height: 0;              /* ← critical: allows flex child to shrink for scroll */
   overflow-y: auto;
-  padding: 20px 24px 32px;
+  -webkit-overflow-scrolling: touch;  /* iOS momentum scroll */
+  overscroll-behavior: contain;       /* prevent scroll chaining to parent */
+  padding: 20px 24px 36px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
-/* ── Hero Card ("O TEU DIA") ── */
+/* ══ Hero Card ═══════════════════════════════════════════════════════ */
+
 .heroCard {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
+  padding: 22px 28px;
   background: rgba(78, 80, 88, 0.18);
   backdrop-filter: blur(20px) saturate(120%);
   -webkit-backdrop-filter: blur(20px) saturate(120%);
@@ -35,141 +50,176 @@
     0 4px 24px rgba(0, 0, 0, 0.30),
     inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
-.heroLeft { flex: 1; }
+
+.heroLeft {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.heroTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
 .heroTitle {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.55);
-  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.50);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   margin: 0;
+  line-height: 1;
 }
-.heroSub {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.45);
-  margin: 5px 0 0;
+
+.heroDate {
+  font-size: 15px;
   font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+  line-height: 1.3;
 }
+
+.heroUser {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.32);
+  margin: 0;
+  line-height: 1.3;
+}
+
 .heroRight {
-  text-align: right;
   flex-shrink: 0;
   cursor: pointer;
+  padding-left: 24px;
 }
+
 .heroClock {
-  font-size: 48px;
+  font-size: 52px;
   font-weight: 900;
   background: linear-gradient(135deg, #10b981, #34d399);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums;
+  display: block;
 }
 
-/* ── Service Sheet CTA ── */
-.serviceBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 14px 20px;
-  background: rgba(59, 130, 246, 0.10);
-  backdrop-filter: blur(20px) saturate(120%);
-  -webkit-backdrop-filter: blur(20px) saturate(120%);
-  border: 0.5px solid rgba(59, 130, 246, 0.35);
-  border-radius: 18px;
-  color: rgba(255, 255, 255, 0.80);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.12), inset 0 0.5px 0 rgba(255, 255, 255, 0.15);
-}
-.serviceBtn:active { transform: scale(0.98); }
-
-/* ── 3-column entity card row ── */
-.infoRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
-}
-
-/* ── Department pills ── */
-.pillRow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 4px 0;
-}
-.pillGroup {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  flex: 1;
-}
-.pill {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border: 0.5px solid;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 800;
-  cursor: pointer;
-  background: transparent;
-}
-.pill:active { transform: scale(0.96); }
-.pillCount {
-  font-size: 9px;
-  font-weight: 800;
-  min-width: 18px;
-  height: 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-}
 .filmingBadge {
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.06em;
-  padding: 5px 14px;
+  padding: 4px 12px;
   border-radius: 999px;
   background: rgba(16, 185, 129, 0.12);
   color: #10B981;
   border: 0.5px solid rgba(16, 185, 129, 0.25);
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
-/* ── Section label ── */
-.sectionLabel {
+/* ══ Glass Panels ════════════════════════════════════════════════════
+ *
+ * .panel receives SURFACE.panel as inline style (background + backdropFilter).
+ * overflow:hidden is safe here — the backdrop-filter compositing bug only
+ * occurs when overflow:hidden is on an ANCESTOR of backdrop-filter elements,
+ * not on the backdrop-filter element itself.
+ */
+
+.panel {
+  border-radius: 28px;
+  border: 0.5px solid rgba(255, 255, 255, 0.10);
+  overflow: hidden;           /* clips card corner overflow — safe on self */
+}
+
+.panelHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 18px 22px 0;
+  gap: 12px;
+}
+
+.panelTitle {
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.30);
-  padding: 0 2px;
+  color: rgba(255, 255, 255, 0.40);
+  flex-shrink: 0;
 }
 
-/* ── Generic card grid (scenes + crew) ── */
-.cardGrid {
+.panelMeta {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.panelAction {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+  pointer-events: auto;       /* explicit: never inherit none from a parent */
+}
+.panelAction:active { opacity: 0.5; }
+
+.panelBody {
+  padding: 14px 18px 20px;
+}
+
+/* ── Day Overview: 3-column card grid ── */
+.overviewGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 10px;
+  /* align-items defaults to stretch — empty card fills to card height */
 }
 
-/* ── Empty state ── */
-.emptyScenes {
+/* ── Department Readiness: horizontal scroll ── */
+.deptScroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  /* overflow-y: visible is not valid when overflow-x is auto (CSS spec forces
+     overflow-y to auto). Card shadows that extend below are clipped by .panel
+     overflow:hidden — acceptable trade-off for the horizontal scroll pattern. */
+  padding-bottom: 4px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.deptScroll::-webkit-scrollbar { display: none; }
+.deptScroll > * {
+  flex-shrink: 0;
+  width: 280px;               /* comfortable width for DepartmentStatusCard */
+}
+
+/* ── Empty card placeholder (no scenes scheduled) ── */
+.emptyCard {
+  border-radius: 20px;
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding: 48px 0;
-  color: rgba(255, 255, 255, 0.30);
-  font-size: 13px;
+  padding: 36px 20px;
+  color: rgba(255, 255, 255, 0.28);
+  font-size: 12px;
+  text-align: center;
+  /* no fixed height — fills grid row via default stretch */
 }
 .emptyBtn {
   padding: 8px 18px;
@@ -180,13 +230,15 @@
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
+  margin-top: 2px;
+  pointer-events: auto;
 }
 .emptyBtn:active { transform: scale(0.96); }
 
-/* ── Day nav (bottom bar) ── */
+/* ── Day nav (bottom bar) — pinned by flex column layout ── */
 .dayNav {
   position: relative;
-  z-index: 1;
+  z-index: 2;                 /* above .content z-index:1 */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -206,6 +258,7 @@
   font-weight: 600;
   color: rgba(255, 255, 255, 0.55);
   cursor: pointer;
+  pointer-events: auto;
 }
 .dayBtn:active:not(:disabled) { transform: scale(0.96); }
 .dayBtn:disabled { opacity: 0.25; cursor: default; }
@@ -217,15 +270,16 @@
 
 /* ═══ RESPONSIVE ════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
-  .infoRow    { grid-template-columns: 1fr 1fr; }
-  .cardGrid   { grid-template-columns: 1fr 1fr; }
+  .overviewGrid { grid-template-columns: 1fr 1fr; }
+  .deptScroll > * { width: 240px; }
 }
 @media (max-width: 600px) {
-  .infoRow    { grid-template-columns: 1fr; }
-  .cardGrid   { grid-template-columns: 1fr; }
-  .heroCard   { flex-direction: column; gap: 8px; }
-  .heroClock  { font-size: 36px; }
-  .heroTitle  { font-size: 18px; }
-  .content    { padding: 12px 16px 24px; }
-  .pillRow    { flex-wrap: wrap; }
+  .overviewGrid  { grid-template-columns: 1fr; }
+  .heroCard      { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .heroRight     { padding-left: 0; }
+  .heroClock     { font-size: 40px; }
+  .heroTitle     { font-size: 17px; }
+  .content       { padding: 12px 16px 28px; }
+  .panelHeader   { padding: 16px 18px 0; }
+  .panelBody     { padding: 12px 14px 18px; }
 }
