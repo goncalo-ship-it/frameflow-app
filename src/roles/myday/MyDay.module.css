@@ -8,39 +8,6 @@
   position: relative;
 }
 
-/* ── Green Banner ── */
-.banner {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 14px 24px;
-  background: linear-gradient(135deg, #059669 0%, #10B981 50%, #34D399 100%);
-  border: none;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: filter 0.15s;
-  color: #fff;
-}
-.banner:active { filter: brightness(1.05); }
-.bannerText { text-align: center; }
-.bannerTitle {
-  display: block;
-  font-family: 'Inter', system-ui;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-}
-.bannerSub {
-  display: block;
-  font-family: 'Inter', system-ui;
-  font-size: 11px;
-  font-weight: 500;
-  opacity: 0.85;
-  margin-top: 2px;
-}
 
 /* ── Scrollable content ── */
 .content {
@@ -60,14 +27,14 @@
   align-items: flex-start;
   justify-content: space-between;
   padding: 20px 24px;
-  background: rgba(30, 34, 42, 0.50);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 0.5px solid rgba(255, 255, 255, 0.18);
+  background: rgba(78, 80, 88, 0.18);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 28px;
   box-shadow:
-    0 2px 20px rgba(0, 0, 0, 0.08),
-    inset 0 0.5px 0.5px rgba(255, 255, 255, 0.3);
+    0 4px 24px rgba(0, 0, 0, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 .heroLeft { flex: 1; }
 .heroTitle {
@@ -105,11 +72,11 @@
   justify-content: center;
   gap: 10px;
   padding: 16px;
-  background: rgba(30, 34, 50, 0.60);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 0.5px solid rgba(255, 255, 255, 0.14);
-  border-radius: 18px;
+  background: rgba(59, 130, 246, 0.13);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 0.5px solid rgba(59, 130, 246, 0.40);
+  border-radius: 20px;
   color: #fff;
   font-family: 'Inter', system-ui;
   font-size: 14px;
@@ -117,7 +84,7 @@
   letter-spacing: 0.04em;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 24px rgba(59, 130, 246, 0.20), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.20);
 }
 .serviceBtn:active {
   transform: scale(0.98);
@@ -283,11 +250,12 @@
 
 /* ── Scene Sections ── */
 .sceneSection {
-  background: rgba(30, 34, 42, 0.50);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 0.5px solid rgba(255, 255, 255, 0.18);
-  border-radius: 20px;
+  background: rgba(78, 80, 88, 0.18);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   padding: 16px;
 }
 .sceneHeader {
@@ -449,11 +417,12 @@
 
 /* ── Section card (reused for crew) ── */
 .section {
-  background: rgba(30, 34, 42, 0.50);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 0.5px solid rgba(255, 255, 255, 0.18);
-  border-radius: 20px;
+  background: rgba(78, 80, 88, 0.18);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   padding: 16px;
 }
 .sectionHeader {

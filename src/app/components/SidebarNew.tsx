@@ -261,10 +261,16 @@ export function SidebarNew({ onClose, expanded, onToggleExpand }: SidebarNewProp
 
   return (
     <motion.div
-      className="h-screen flex overflow-hidden"
-      animate={{ width: onClose ? 260 : (isExpanded ? 260 : 56) }}
+      className="flex overflow-hidden"
+      style={{
+        height: onClose ? '100%' : '100vh',
+        background: 'transparent',
+        padding: onClose ? '12px' : isExpanded ? '12px 0 12px 12px' : '12px 0 12px 12px',
+        flexShrink: 0,
+        width: onClose ? 240 : undefined,
+      }}
+      animate={onClose ? undefined : { width: isExpanded ? 240 : 56 }}
       transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-      style={{ background: 'transparent', padding: (onClose || isExpanded) ? '12px' : '0', flexShrink: 0 }}
     >
       {/* ── Liquid Glass panel ── */}
       <div
@@ -329,75 +335,67 @@ export function SidebarNew({ onClose, expanded, onToggleExpand }: SidebarNewProp
         {/* ── Conteúdo real — z-10 acima das camadas glass ── */}
         <div className="relative z-10 h-full flex flex-col">
 
-          {/* LOGO + TOGGLE */}
-          <div className="flex-shrink-0 border-b" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+          {/* LOGO HEADER */}
+          <div
+            className="flex-shrink-0 flex items-center gap-2 border-b"
+            style={{ borderColor: 'rgba(255,255,255,0.08)', height: 56, padding: isExpanded ? '0 12px' : '0 8px', justifyContent: isExpanded ? undefined : 'center' }}
+          >
+            {/* Conic-gradient orb */}
+            <div style={{
+              width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
+              background: 'conic-gradient(from 180deg, #ec4899, #a855f7, #3b82f6, #10b981, #f59e0b, #ef4444, #ec4899)',
+              boxShadow: '0 2px 10px rgba(168,85,247,0.35)',
+              position: 'relative', overflow: 'hidden',
+            }}>
+              {/* Highlight overlay */}
+              <div style={{
+                position: 'absolute', inset: 0, borderRadius: '50%',
+                background: 'radial-gradient(circle at 35% 30%, rgba(255,255,255,0.35) 0%, transparent 60%)',
+              }} />
+            </div>
+            {/* Title */}
+            {isExpanded && (
+              <div style={{
+                fontSize: 15, fontWeight: 900, letterSpacing: '-0.02em',
+                color: 'var(--fb-text-primary, #f5f5f7)',
+                flex: 1, lineHeight: 1.15, whiteSpace: 'nowrap', overflow: 'hidden',
+              }}>
+                Frame<br />Flow
+              </div>
+            )}
+            {/* Toggle button — collapses/expands sidebar */}
             {!onClose && (
               <button
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="h-14 w-full flex items-center justify-center transition-all"
-                style={{ padding: isExpanded ? '0 16px' : '0', background: 'none', border: 'none', cursor: 'pointer' }}
-                title={isExpanded ? 'Recolher sidebar' : 'Expandir sidebar'}
+                onClick={() => {
+                  setIsExpanded(v => !v);
+                  if (onToggleExpand) onToggleExpand();
+                }}
+                style={{
+                  width: 28, height: 28, borderRadius: 8, flexShrink: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  background: 'rgba(255,255,255,0.06)',
+                  color: 'rgba(255,255,255,0.35)',
+                  border: 'none', cursor: 'pointer',
+                  transition: 'background 0.15s, color 0.15s',
+                  marginLeft: isExpanded ? 0 : 'auto',
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.10)';
+                  (e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.7)';
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.06)';
+                  (e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.35)';
+                }}
               >
-                {isExpanded ? (
-                  <div className="flex items-center gap-3 flex-1">
-                    {/* F orb */}
-                    <div style={{
-                      width: 28, height: 28, borderRadius: 8, flexShrink: 0,
-                      background: 'linear-gradient(135deg, #a855f7, #6366f1, #3b82f6, #10b981)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: 15, fontWeight: 900, color: '#fff', letterSpacing: '-0.5px',
-                    }}>F</div>
-                    {/* FrameFlow gradient text */}
-                    <span style={{
-                      fontSize: 16, fontWeight: 800, letterSpacing: '-0.4px',
-                      background: 'linear-gradient(90deg, #f472b6, #a855f7, #6366f1, #10b981)',
-                      WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                    }}>FrameFlow</span>
-                    <PanelLeftClose className="w-4 h-4 ml-auto" style={{ color: 'var(--fb-text-tertiary, rgba(255,255,255,0.4))' }} />
-                  </div>
-                ) : (
-                  <div style={{
-                    width: 28, height: 28, borderRadius: 8,
-                    background: 'linear-gradient(135deg, #a855f7, #6366f1, #3b82f6, #10b981)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 15, fontWeight: 900, color: '#fff',
-                  }}>F</div>
-                )}
+                <PanelLeftClose style={{ width: 16, height: 16, transform: isExpanded ? 'none' : 'rotate(180deg)', transition: 'transform 0.2s' }} />
               </button>
-            )}
-            {onClose && (
-              <div className="h-14 flex items-center justify-between px-4">
-                <div className="flex items-center gap-2.5">
-                  {/* Conic gradient ORB — matching reference */}
-                  <div style={{
-                    width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
-                    background: 'conic-gradient(from 180deg, #ec4899, #a855f7, #3b82f6, #10b981, #f59e0b, #ef4444, #ec4899)',
-                    boxShadow: '0 2px 10px rgba(168,85,247,0.35)',
-                    position: 'relative', overflow: 'hidden',
-                  }}>
-                    <div style={{
-                      position: 'absolute', inset: 0, borderRadius: '50%',
-                      background: 'radial-gradient(circle at 35% 30%, rgba(255,255,255,0.35) 0%, transparent 60%)',
-                    }} />
-                  </div>
-                  <div style={{ fontSize: 15, fontWeight: 900, letterSpacing: '-0.02em', color: 'var(--fb-text-primary, #f5f5f7)', lineHeight: 1.15 }}>
-                    Frame<br />Flow
-                  </div>
-                </div>
-                <button
-                  onClick={onClose}
-                  className="w-8 h-8 flex items-center justify-center rounded-[10px]"
-                  style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', border: 'none', cursor: 'pointer' }}
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
             )}
           </div>
 
           {/* MAIN MENU */}
-          <div className="flex-1 overflow-y-auto" style={{ padding: isExpanded ? '12px' : '6px' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: isExpanded ? '4px' : '2px' }}>
+          <div className="flex-1 overflow-y-auto" style={{ padding: '12px 8px', display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               {menuItems.map((item) => {
                 const active = isActive(item.moduleId) || hasActiveSubmenu(item);
                 const Icon = item.icon;
@@ -419,52 +417,45 @@ export function SidebarNew({ onClose, expanded, onToggleExpand }: SidebarNewProp
                           handleNav(item.moduleId);
                         }
                       }}
-                      className="w-full rounded-lg flex items-center transition-all relative group overflow-hidden"
+                      className="w-full flex items-center transition-all relative group overflow-hidden"
                       style={{
-                        height: isExpanded ? '44px' : '38px',
-                        background: active ? `linear-gradient(135deg, ${sectionColor}, ${sectionColor}cc)` : 'transparent',
+                        height: '40px',
+                        borderRadius: '10px',
+                        background: active ? 'rgba(255,255,255,0.08)' : 'transparent',
                         color: active ? '#ffffff' : 'var(--fb-text-secondary, rgba(255,255,255,0.6))',
-                        paddingLeft: isExpanded ? '12px' : '0',
+                        padding: isExpanded ? '0 10px' : '0',
                         justifyContent: isExpanded ? 'flex-start' : 'center',
-                        boxShadow: active ? `0 2px 12px ${sectionColor}66` : 'none',
+                        fontSize: 13,
+                        fontWeight: 600,
+                        whiteSpace: 'nowrap',
                         border: 'none',
                         cursor: 'pointer',
                       }}
                       title={!isExpanded ? item.label : undefined}
                     >
-                      <Icon className="flex-shrink-0" style={{ width: isExpanded ? 20 : 18, height: isExpanded ? 20 : 18 }} />
+                      {/* Icon */}
+                      <span style={{ width: 20, height: 20, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Icon style={{ width: 20, height: 20 }} />
+                      </span>
 
+                      {/* Label */}
                       {isExpanded && (
-                        <motion.span
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          className="ml-3 text-[13px] font-bold whitespace-nowrap"
-                        >
+                        <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', marginLeft: 10 }}>
                           {item.label}
-                        </motion.span>
-                      )}
-
-                      {item.badge && isExpanded && (
-                        <span className="absolute top-1 right-1 text-[10px]">
-                          {item.badge}
                         </span>
                       )}
 
-                      {/* Collapsed: subtle dot indicator for items with submenu */}
-                      {item.submenu && !isExpanded && (
-                        <div
-                          className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
-                          style={{ background: active ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.25)' }}
-                        />
-                      )}
-
+                      {/* Chevron */}
                       {item.submenu && isExpanded && (
-                        <ChevronRight
-                          className="w-4 h-4 ml-auto mr-2 opacity-50 transition-transform"
-                          style={{
-                            transform: expandedItem === item.label ? 'rotate(90deg)' : 'rotate(0deg)',
-                          }}
-                        />
+                        <span style={{ width: 14, height: 14, opacity: 0.4, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <ChevronRight
+                            style={{
+                              width: 14, height: 14,
+                              transform: expandedItem === item.label ? 'rotate(90deg)' : 'rotate(0deg)',
+                              transition: 'transform 0.2s',
+                            }}
+                          />
+                        </span>
                       )}
                     </button>
 
@@ -565,41 +556,38 @@ export function SidebarNew({ onClose, expanded, onToggleExpand }: SidebarNewProp
           </div>
 
           {/* BOTTOM MENU */}
-          <div className="flex-shrink-0 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)', padding: isExpanded ? '12px' : '6px' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: isExpanded ? '4px' : '2px' }}>
-              {bottomItems.map((item) => {
-                const active = isActive(item.moduleId);
-                const Icon = item.icon;
-                return (
-                  <button
-                    key={item.label}
-                    onClick={() => handleNav(item.moduleId)}
-                    className="w-full rounded-lg flex items-center transition-all relative group"
-                    style={{
-                      height: isExpanded ? '44px' : '38px',
-                      background: active ? 'linear-gradient(135deg, #10b981, #059669)' : 'transparent',
-                      color: active ? '#ffffff' : 'rgba(255,255,255,0.6)',
-                      paddingLeft: isExpanded ? '12px' : '0',
-                      justifyContent: isExpanded ? 'flex-start' : 'center',
-                      border: 'none',
-                      cursor: 'pointer',
-                    }}
-                    title={!isExpanded ? item.label : undefined}
-                  >
-                    <Icon className="flex-shrink-0" style={{ width: isExpanded ? 20 : 18, height: isExpanded ? 20 : 18 }} />
-                    {isExpanded && (
-                      <motion.span
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className="ml-3 text-[13px] font-bold whitespace-nowrap"
-                      >
-                        {item.label}
-                      </motion.span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
+          <div className="flex-shrink-0 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)', padding: '8px' }}>
+            {bottomItems.map((item) => {
+              const active = isActive(item.moduleId);
+              const Icon = item.icon;
+              return (
+                <button
+                  key={item.label}
+                  onClick={() => handleNav(item.moduleId)}
+                  className="w-full flex items-center transition-all"
+                  style={{
+                    height: '40px',
+                    borderRadius: '10px',
+                    background: active ? 'rgba(255,255,255,0.08)' : 'transparent',
+                    color: active ? '#ffffff' : 'var(--fb-text-secondary, rgba(255,255,255,0.6))',
+                    padding: isExpanded ? '0 10px' : '0',
+                    justifyContent: isExpanded ? 'flex-start' : 'center',
+                    fontSize: 13, fontWeight: 600,
+                    border: 'none', cursor: 'pointer',
+                  }}
+                  title={!isExpanded ? item.label : undefined}
+                >
+                  <span style={{ width: 20, height: 20, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Icon style={{ width: 18, height: 18 }} />
+                  </span>
+                  {isExpanded && (
+                    <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', marginLeft: 10 }}>
+                      {item.label}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
 
         </div>{/* fim z-10 */}

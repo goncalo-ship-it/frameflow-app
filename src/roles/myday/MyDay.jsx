@@ -192,17 +192,7 @@ export function MyDay() {
   return (
     <div className={styles.dashboard}>
 
-      {/* ── Call Sheet Banner ── */}
-      <button className={styles.banner} onClick={() => navigate('callsheet')}>
-        <Calendar size={18} />
-        <div className={styles.bannerText}>
-          <span className={styles.bannerTitle}>FOLHA DE SERVIÇO COMPLETA</span>
-          <span className={styles.bannerSub}>Cenas &bull; Catering &bull; Calls &bull; Storyboard &bull; Diálogos &bull; Continuidade</span>
-        </div>
-        <Calendar size={18} />
-      </button>
-
-      {/* ── Scrollable content ── */}
+{/* ── Scrollable content ── */}
       <div className={styles.content}>
 
         {/* ── "O TEU DIA" Header Card ── */}

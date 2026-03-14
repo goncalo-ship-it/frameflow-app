@@ -14,7 +14,7 @@
 import { forwardRef, HTMLAttributes, useState, useEffect, useRef, useCallback } from 'react';
 import type { CSSProperties } from 'react';
 import { clsx } from 'clsx';
-import { Menu, Bell, Clapperboard, AlertTriangle, Info, CheckCircle2, X, Clock } from 'lucide-react';
+import { Bell, Clapperboard, Info, CheckCircle2, X, Clock } from 'lucide-react';
 
 function useClock() {
   const [time, setTime] = useState(() => new Date().toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' }));
@@ -471,16 +471,6 @@ export const Topbar = forwardRef<HTMLDivElement, TopbarProps>(
           {/* ════════════════════════════════════ LEFT ═══════════════════════════════ */}
           <div className="flex items-center gap-2 min-w-0">
 
-            {/* Hamburger */}
-            <motion.button
-              whileTap={{ scale: 0.92 }}
-              onClick={onMenuClick}
-              className="w-10 h-10 flex items-center justify-center rounded-[12px] transition-colors flex-shrink-0"
-              style={{ ...iconBtnGlass, background: 'rgba(255,255,255,0.07)', border: 'none', cursor: 'pointer' }}
-            >
-              <Menu className="w-[18px] h-[18px]" style={{ color: 'rgba(255,255,255,0.85)' }} />
-            </motion.button>
-
             {/* Project pill — nome + dia de rodagem */}
             <div
               className="flex items-center gap-0 rounded-full overflow-hidden flex-shrink-0"
@@ -520,18 +510,18 @@ export const Topbar = forwardRef<HTMLDivElement, TopbarProps>(
 
             {/* Health pill */}
             <div
-              className="flex items-center px-3 h-9 rounded-full gap-1.5 flex-shrink-0"
-              style={pillGlass}
+              className="flex items-center px-3 rounded-full gap-1.5 flex-shrink-0"
+              style={{ ...pillGlass, height: 32 }}
             >
               <div
                 className="w-2 h-2 rounded-full"
                 style={{
                   background: healthScore >= 70 ? '#10b981' : healthScore >= 40 ? '#f59e0b' : '#ef4444',
-                  boxShadow: `0 0 6px ${healthScore >= 70 ? '#10b981' : healthScore >= 40 ? '#f59e0b' : '#ef4444'}`,
-                  animation: 'pulse 2s ease-in-out infinite',
+                  boxShadow: `0 0 6px ${healthScore >= 70 ? '#10b981' : healthScore >= 40 ? '#f59e0b' : '#ef4444'}, 0 0 12px ${healthScore >= 70 ? 'rgba(16,185,129,0.6)' : healthScore >= 40 ? 'rgba(245,158,11,0.6)' : 'rgba(239,68,68,0.6)'}`,
+                  animation: 'pulse-dot 2s ease-in-out infinite',
                 }}
               />
-              <span className="text-[12px] font-medium" style={{ color: 'rgba(255,255,255,0.7)' }}>{healthScore}%</span>
+              <span className="text-[11px] font-medium" style={{ color: 'rgba(255,255,255,0.65)' }}>{healthScore}%</span>
             </div>
 
           </div>
@@ -554,18 +544,23 @@ export const Topbar = forwardRef<HTMLDivElement, TopbarProps>(
           {/* ════════════════════════════════════ RIGHT ══════════════════════════════ */}
           <div className="flex items-center gap-2 flex-shrink-0">
 
-            {/* Search button — icon only */}
+            {/* Search — icon + ⌘K badge (compact, per TOPBAR-STANDALONE spec) */}
             <motion.button
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.92 }}
               onClick={() => setIsSearchOpen(true)}
-              className="w-9 h-9 flex items-center justify-center rounded-[12px] transition-all duration-150"
-              style={{ ...iconBtnGlass, border: 'none', cursor: 'pointer' }}
+              className="flex items-center rounded-[12px] transition-all duration-150"
+              style={{ ...iconBtnGlass, border: 'none', cursor: 'pointer', gap: 6, padding: '0 10px', height: 36 }}
               title="Procurar (⌘K)"
             >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ color: 'rgba(255,255,255,0.55)', flexShrink: 0 }}>
-                <circle cx="7" cy="7" r="4.5" stroke="currentColor" strokeWidth="1.2" />
-                <path d="M11 11l2.5 2.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <circle cx="7" cy="7" r="4.5" stroke="rgba(255,255,255,0.5)" strokeWidth="1.2" />
+                <path d="M11 11l2.5 2.5" stroke="rgba(255,255,255,0.5)" strokeWidth="1.3" strokeLinecap="round" />
               </svg>
+              <span style={{
+                fontSize: 11, fontWeight: 500, color: 'rgba(255,255,255,0.35)',
+                fontFamily: 'monospace', padding: '1px 5px', borderRadius: 4,
+                background: 'rgba(255,255,255,0.06)', border: '0.5px solid rgba(255,255,255,0.10)',
+              }}>⌘K</span>
             </motion.button>
 
             {/* Notifications bell */}

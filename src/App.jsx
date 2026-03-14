@@ -141,16 +141,7 @@ export default function App() {
   // A diferença está nos módulos visíveis (filtrados pelo canAccess) e no dashboard
   const wpActive = wallpaper?.type && wallpaper.type !== 'none'
 
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
   const [sidebarExpanded, setSidebarExpanded] = useState(true)
-  const closeMobileSidebar = useCallback(() => setMobileSidebarOpen(false), [])
-  const toggleSidebar = useCallback(() => {
-    if (window.innerWidth >= 1024) {
-      setSidebarExpanded(v => !v)
-    } else {
-      setMobileSidebarOpen(v => !v)
-    }
-  }, [])
 
   return (
     <>
@@ -182,50 +173,14 @@ export default function App() {
           position: 'relative',
           zIndex: 1,
         }}>
-          {/* Sidebar persistente — desktop lg+ */}
-          <div className="hidden lg:flex">
-            <SidebarNew expanded={sidebarExpanded} onToggleExpand={() => setSidebarExpanded(v => !v)} />
-          </div>
-
-          {/* Mobile sidebar overlay — fixed, z-100 */}
-          <AnimatePresence>
-            {mobileSidebarOpen && (
-              <div
-                className="lg:hidden"
-                style={{ position: 'fixed', inset: 0, zIndex: 100, display: 'flex' }}
-                onClick={closeMobileSidebar}
-              >
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  style={{
-                    position: 'absolute', inset: 0,
-                    background: 'rgba(0,0,0,0.5)',
-                    backdropFilter: 'blur(8px)',
-                    WebkitBackdropFilter: 'blur(8px)',
-                  }}
-                />
-                <motion.div
-                  initial={{ x: '-100%' }}
-                  animate={{ x: 0 }}
-                  exit={{ x: '-100%' }}
-                  transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-                  style={{ position: 'relative', zIndex: 1 }}
-                  onClick={e => e.stopPropagation()}
-                >
-                  <SidebarNew onClose={closeMobileSidebar} />
-                </motion.div>
-              </div>
-            )}
-          </AnimatePresence>
+          {/* Sidebar — sempre visível */}
+          <SidebarNew expanded={sidebarExpanded} onToggleExpand={() => setSidebarExpanded(v => !v)} />
 
           {/* MAIN AREA — stacking context z-10, topbar at z-30, scroll <main> sem z-index */}
           <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0, position: 'relative', zIndex: 10 }}>
             {/* TOPBAR WRAPPER — z-30 garante que fica acima do conteúdo scrollado */}
             <div style={{ position: 'relative', zIndex: 30, flexShrink: 0 }}>
-              <Topbar onMenuClick={toggleSidebar} />
+              <Topbar />
               {/* Fade gradient — transição suave entre topbar e scroll */}
               <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0,

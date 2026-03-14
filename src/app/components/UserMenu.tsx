@@ -98,13 +98,13 @@ export const UserMenu = forwardRef<HTMLDivElement, UserMenuProps>(
             {userInitials}
           </div>
 
-          {/* Name + Role — always visible (no hidden sm:block) */}
-          <div className="text-left">
-            <div className="text-[13px] font-medium" style={{ color: 'rgba(255,255,255,0.9)' }}>
+          {/* Name + Role — hidden below 1024px per TOPBAR-STANDALONE spec */}
+          <div className="hidden lg:block text-left">
+            <div className="text-[12px] font-medium" style={{ color: 'rgba(255,255,255,0.9)' }}>
               {userName}
             </div>
             {userRole && (
-              <div className="text-[11px]" style={{ color: 'rgba(255,255,255,0.5)' }}>
+              <div className="text-[10px]" style={{ color: 'rgba(255,255,255,0.45)' }}>
                 {userRole}
               </div>
             )}
