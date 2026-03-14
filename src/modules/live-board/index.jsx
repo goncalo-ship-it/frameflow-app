@@ -290,7 +290,7 @@ function HojeView({ shooting }) {
           return (
             <SceneCard
               key={id}
-              variant="live"
+              context="live"
               scene={toLiveSceneData(scene, takes)}
             />
           )

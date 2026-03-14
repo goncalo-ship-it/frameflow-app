@@ -168,7 +168,7 @@ function TakeRow({ take }: { take: TakeData }) {
 }
 
 // ── Variant: DASHBOARD ────────────────────────────────────────────
-function DashboardVariant({ scene, onPress }: { scene: SceneData; onPress?: () => void }) {
+function DashboardVariant({ scene, onPress, highlighted }: { scene: SceneData; onPress?: () => void; highlighted?: boolean }) {
   const status  = sceneStatus(scene.takes)
   const accent  = scene.locationColor ?? ENTITY_COLOR.scene
   const bom     = bomCount(scene.takes)
@@ -178,12 +178,19 @@ function DashboardVariant({ scene, onPress }: { scene: SceneData; onPress?: () =
     <CardShell variant="standard" accentColor={accent} onClick={onPress ? () => onPress() : undefined}>
       <CardHeader
         compact
-        icon={<Film size={14} />}
+        icon={
+          scene.thumbnailUrl
+            ? <img src={scene.thumbnailUrl} alt="" style={{ width: 28, height: 28, borderRadius: R.xs, objectFit: 'cover', flexShrink: 0 }} />
+            : <Film size={14} />
+        }
         title={`SC ${scene.sceneNumber}`}
         subtitle={scene.epId}
         badge={<StatusBadge status={status} size="xs" showLabel={false} />}
         action={
           <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+            {highlighted && (
+              <EntityPill label="PRÓXIMA" type="custom" color={C.emerald} size="xs" />
+            )}
             {total > 0 && (
               <span style={{ fontSize: T.micro, color: bom > 0 ? C.emerald : C.textTertiary }}>
                 {bom}/{total}
@@ -635,7 +642,7 @@ function LiveVariant({ scene, onBOM, onNG }: {
 }
 
 // ── Variant: DETAIL ───────────────────────────────────────────────
-function DetailVariant({ scene, onPress }: { scene: SceneData; onPress?: () => void }) {
+function DetailVariant({ scene, onPress, highlighted }: { scene: SceneData; onPress?: () => void; highlighted?: boolean }) {
   const accent  = scene.locationColor ?? ENTITY_COLOR.scene
   const status  = sceneStatus(scene.takes)
   const takes   = scene.takes ?? []
@@ -648,7 +655,10 @@ function DetailVariant({ scene, onPress }: { scene: SceneData; onPress?: () => v
         icon={<Film size={16} />}
         badge={<StatusBadge status={status} size="sm" />}
         action={
-          <div style={{ display: 'flex', gap: 4 }}>
+          <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+            {highlighted && (
+              <EntityPill label="PRÓXIMA" type="custom" color={C.emerald} size="xs" />
+            )}
             <EntityPill label={scene.intExt ?? 'INT'} type="custom" color={accent} size="xs" />
             {scene.timeOfDay && (
               <EntityPill label={scene.timeOfDay} type="custom" color={C.warning} size="xs" />
@@ -658,6 +668,19 @@ function DetailVariant({ scene, onPress }: { scene: SceneData; onPress?: () => v
       />
 
       <CardBody>
+        {/* Thumbnail */}
+        {scene.thumbnailUrl && (
+          <img
+            src={scene.thumbnailUrl}
+            alt=""
+            style={{
+              width: '100%', height: 96, objectFit: 'cover',
+              borderRadius: R.sm, flexShrink: 0,
+              border: `0.5px solid rgba(255,255,255,0.10)`,
+            }}
+          />
+        )}
+
         {/* Location */}
         {scene.location && (
           <MetaRow
@@ -678,6 +701,31 @@ function DetailVariant({ scene, onPress }: { scene: SceneData; onPress?: () => v
             }}>
               {scene.description}
             </p>
+          </>
+        )}
+
+        {/* Dialogue */}
+        {(scene.dialogue?.length ?? 0) > 0 && (
+          <>
+            <SectionHeader title="Diálogo" separator />
+            <div style={{
+              display: 'flex', flexDirection: 'column', gap: SP.xs,
+              padding: SP.tight,
+              background: hexAlpha(C.info, 0.06),
+              border: `0.5px solid ${hexAlpha(C.info, 0.15)}`,
+              borderRadius: R.sm,
+            }}>
+              {scene.dialogue!.map((line, i) => (
+                <p key={i} style={{
+                  fontSize: T.sm, color: C.textSecondary,
+                  fontFamily: 'monospace',
+                  lineHeight: T.leading, margin: 0,
+                  whiteSpace: 'pre-wrap',
+                }}>
+                  {line}
+                </p>
+              ))}
+            </div>
           </>
         )}
 
@@ -810,28 +858,42 @@ function DetailVariant({ scene, onPress }: { scene: SceneData; onPress?: () => v
 
 export interface SceneCardProps {
   scene: SceneData
-  variant?: SceneCardVariant
+  /**
+   * Information context — selects which fields and layout are shown.
+   * This is NOT a size selector (that is CardShell.variant).
+   *
+   * dashboard  → day briefing, status at a glance, take bar
+   * callsheet  → call time hero, all characters, director notes
+   * schedule   → strip board style, location accent, drag handle
+   * dailies    → take grid focus, BOM/NG/HOLD review
+   * live       → 72px real-time cockpit row, action buttons
+   * detail     → full context, all sections, scrollable body
+   */
+  context?: SceneCardVariant
   onPress?: () => void
-  /** Live variant: record BOM take */
+  /** live context only: record BOM take */
   onBOM?: () => void
-  /** Live variant: record NG take */
+  /** live context only: record NG take */
   onNG?: () => void
   style?: CSSProperties
   className?: string
+  /** When true, renders a "PRÓXIMA" priority badge — use to mark the next scene to shoot. */
+  highlighted?: boolean
 }
 
 export function SceneCard({
   scene,
-  variant = 'dashboard',
+  context = 'dashboard',
   onPress,
   onBOM,
   onNG,
   style,
   className,
+  highlighted,
 }: SceneCardProps) {
   const wrapStyle: CSSProperties = { ...style }
 
-  switch (variant) {
+  switch (context) {
     case 'schedule':
       return <div style={wrapStyle} className={className}><ScheduleVariant scene={scene} onPress={onPress} /></div>
     case 'callsheet':
@@ -841,8 +903,8 @@ export function SceneCard({
     case 'live':
       return <div style={wrapStyle} className={className}><LiveVariant scene={scene} onBOM={onBOM} onNG={onNG} /></div>
     case 'detail':
-      return <div style={wrapStyle} className={className}><DetailVariant scene={scene} onPress={onPress} /></div>
+      return <div style={wrapStyle} className={className}><DetailVariant scene={scene} onPress={onPress} highlighted={highlighted} /></div>
     default:
-      return <div style={wrapStyle} className={className}><DashboardVariant scene={scene} onPress={onPress} /></div>
+      return <div style={wrapStyle} className={className}><DashboardVariant scene={scene} onPress={onPress} highlighted={highlighted} /></div>
   }
 }

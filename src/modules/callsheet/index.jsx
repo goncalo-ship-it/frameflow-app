@@ -1466,7 +1466,7 @@ export function CallSheetModule({ embedded = false, initialDayId = '', onBack: o
               {dayScenes.map(scene => (
                 <SceneCard
                   key={scene.id}
-                  variant="callsheet"
+                  context="callsheet"
                   scene={toCallsheetSceneData(scene, parsedScripts, sceneTakes, callTime)}
                   onPress={() => {
                     const ep = parsedScripts?.[scene.episodeId]

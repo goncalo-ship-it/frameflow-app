@@ -38,6 +38,7 @@ export interface SceneData {
   duration?: number       // eighths of a page
   dialogue?: string[]
   storyboardUrl?: string
+  thumbnailUrl?: string
   notes?: string
   directorNotes?: string
   continuityNotes?: string[]

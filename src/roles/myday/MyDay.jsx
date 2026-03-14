@@ -394,7 +394,7 @@ export function MyDay() {
             {myScenes.map(sc => (
               <SceneCard
                 key={sc.sceneKey}
-                variant="dashboard"
+                context="dashboard"
                 scene={toSceneData(sc, sceneTakes?.[sc.sceneKey], currentDay, dayNum, departmentItems)}
                 onPress={() => setSceneDetail(sc)}
               />

@@ -14,7 +14,46 @@ import { useShallow } from 'zustand/react/shallow'
 import { validateDragDrop } from '../utils/scheduleConstraints.js'
 import { exportCallSheet } from '../utils/scheduleExport.js'
 import { getSunsetSync, prewarmSolarCache } from '../utils/solarCalc.js'
+import { DayTimeline } from '../../../../components/shared/ui'
 import styles from '../Schedule.module.css'
+
+// ── Adapter: schedule timeline items → DayTimelineItemData ───────
+function toTimelineItems(timeline, TYPE_COLORS) {
+  return timeline.map((item, idx) => {
+    if (item.type === 'pause') {
+      return {
+        id: `p-${idx}`,
+        type: 'meal',
+        time: item.start || '',
+        duration: item.duration,
+        label: item.label || 'ALMOÇO',
+        sublabel: 'Pausa Obrigatória',
+      }
+    }
+    if (item.type === 'move') {
+      return {
+        id: `m-${idx}`,
+        type: 'move',
+        time: item.start || '',
+        duration: item.duration,
+        label: `Deslocação → ${item.to}`,
+        sublabel: `${item.duration}min`,
+      }
+    }
+    // scene
+    const scene = item.scene
+    return {
+      id: scene?.sceneKey || `s-${idx}`,
+      type: 'scene',
+      time: item.start || '',
+      duration: item.duration,
+      label: `Sc.${scene?.sceneNumber || scene?.sceneKey} — ${item.location || scene?.location || ''}`,
+      sublabel: [scene?.intExt, scene?.sceneType].filter(Boolean).join(' · '),
+      accentColor: TYPE_COLORS[scene?.sceneType] || undefined,
+      scene,
+    }
+  })
+}
 
 const TYPE_COLORS = {
   'Âncora':    '#A02E6F',
@@ -422,74 +461,18 @@ function DayLoreCard({ day, dayNumber, engineResult, onClose, onSceneClick }) {
               </button>
             </div>
 
-            {timeline.map((item, idx) => {
-              if (item.type === 'pause') {
-                return (
-                  <div key={`p-${idx}`} className={styles.lorePause}>
-                    <Coffee size={12} />
-                    <span className={styles.lorePauseTime}>{item.start} → {item.end}</span>
-                    <span className={styles.lorePauseLabel}>{item.label} ({item.duration}min)</span>
-                    <span className={styles.lorePauseLine}>PAUSA OBRIGATÓRIA</span>
-                  </div>
-                )
-              }
-
-              if (item.type === 'move') {
-                return (
-                  <div key={`m-${idx}`} className={styles.loreMove}>
-                    <Truck size={10} />
-                    {item.start && <span className={styles.loreMoveTime}>{item.start}</span>}
-                    <span>DESLOCAÇÃO para {item.to} ({item.duration}min)</span>
-                  </div>
-                )
-              }
-
-              // Scene row
-              const scene = item.scene
-              const color = TYPE_COLORS[scene.sceneType] || '#6E6E78'
-              return (
-                <div
-                  key={scene.sceneKey}
-                  className={styles.loreSceneRow}
-                  style={{ borderLeftColor: color }}
-                  onClick={() => onSceneClick?.(scene)}
-                >
-                  <div className={styles.loreSceneTime}>
-                    <span className={styles.loreSceneStart}>{item.start}</span>
-                    <span className={styles.loreSceneEnd}>{item.end}</span>
-                  </div>
-                  <div className={styles.loreSceneBody}>
-                    <div className={styles.loreSceneTop}>
-                      <span className={styles.loreSceneKey}>{scene.sceneKey}</span>
-                      <span className={styles.loreSceneEp}>{scene.epId}</span>
-                      <span className={styles.loreSceneLoc}>
-                        <MapPin size={9} /> {scene.location}
-                      </span>
-                      <span className={styles.loreSceneIE} style={{ color: scene.intExt === 'EXT' ? '#F5A623' : 'var(--text-muted)' }}>
-                        {scene.intExt}
-                      </span>
-                      <span className={styles.loreSceneType} style={{ color }}>
-                        {scene.sceneType}
-                      </span>
-                      <span className={styles.loreSceneDur}>{item.duration}min</span>
-                    </div>
-                    {scene.synopsis && (
-                      <div className={styles.loreSceneSynopsis}>{scene.synopsis}</div>
-                    )}
-                    {(scene.characters || []).length > 0 && (
-                      <div className={styles.loreSceneChars}>
-                        {scene.characters.join(' · ')}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )
-            })}
-
-            {timeline.length === 0 && (
+            {timeline.length === 0 ? (
               <p style={{ color: 'var(--text-muted)', textAlign: 'center', padding: 20 }}>
                 Nenhuma cena atribuída
               </p>
+            ) : (
+              <DayTimeline
+                items={toTimelineItems(timeline, TYPE_COLORS)}
+                compact
+                onItemClick={(item) => {
+                  if (item.type === 'scene' && item.scene) onSceneClick?.(item.scene)
+                }}
+              />
             )}
           </div>
 
