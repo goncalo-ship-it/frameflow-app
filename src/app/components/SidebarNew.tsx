@@ -379,6 +379,7 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
                       onClick={() => {
                         if (item.submenu) {
                           setExpandedItem(expandedItem === item.label ? null : item.label);
+                          handleNav(item.moduleId);
                         } else {
                           handleNav(item.moduleId);
                         }
