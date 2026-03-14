@@ -50,11 +50,11 @@ export function LiquidBadge({
         WebkitBackdropFilter: 'blur(12px)',
         letterSpacing:        '0.02em',
         background: rgb
-          ? `rgba(${rgb}, 0.15)`
-          : 'rgba(255, 255, 255, 0.08)',
+          ? `rgba(${rgb}, 0.25)`
+          : 'rgba(255, 255, 255, 0.12)',
         border: rgb
-          ? `0.5px solid rgba(${rgb}, 0.40)`
-          : '0.5px solid rgba(255, 255, 255, 0.18)',
+          ? `0.5px solid rgba(${rgb}, 0.50)`
+          : '0.5px solid rgba(255, 255, 255, 0.20)',
         boxShadow: [
           rgb && glow ? `0 0 12px rgba(${rgb}, 0.40)` : null,
           rgb ? `0 2px 8px rgba(${rgb}, 0.18)` : null,

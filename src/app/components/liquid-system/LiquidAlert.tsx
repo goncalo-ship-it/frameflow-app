@@ -45,11 +45,11 @@ export function LiquidAlert({
       <div
         style={{
           position:     'absolute',
-          left:         0, top: 0, bottom: 0,
+          left: 0, top: 12, bottom: 12,
           width:        2.5,
           background:   color,
-          boxShadow:    `0 0 8px rgba(${rgb}, 0.60)`,
-          borderRadius: '20px 0 0 20px',
+          boxShadow:    `0 0 10px rgba(${rgb}, 0.70)`,
+          borderRadius: 2,
         }}
       />
 
@@ -73,11 +73,11 @@ export function LiquidAlert({
         )}
         <div>
           {title && (
-            <div style={{ fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.95)', marginBottom: 4 }}>
+            <div style={{ fontSize: 14, fontWeight: 900, color: '#ffffff', marginBottom: 2 }}>
               {title}
             </div>
           )}
-          <div style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.70)', lineHeight: 1.5 }}>
+          <div style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.60)', lineHeight: 1.6 }}>
             {children}
           </div>
         </div>

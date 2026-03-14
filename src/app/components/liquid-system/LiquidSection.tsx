@@ -27,9 +27,9 @@ export function LiquidSection({
   animationDelay = 0,
 }: LiquidSectionProps) {
   const content = (
-    <div className={`flex flex-col gap-4 ${className}`}>
+    <div className={`flex flex-col ${className}`}>
       {(title || action) && (
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between" style={{ marginBottom: 12 }}>
           {title && (
             <div className="flex items-center gap-2">
               {accentColor && (
@@ -42,7 +42,13 @@ export function LiquidSection({
                 />
               )}
               <span
-                style={{ fontSize: 15, fontWeight: 600, color: 'rgba(255,255,255,0.95)' }}
+                style={{
+                  fontSize:      10,
+                  fontWeight:    900,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  color:         'rgba(255,255,255,0.5)',
+                }}
               >
                 {title}
               </span>

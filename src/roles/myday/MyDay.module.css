@@ -104,18 +104,20 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 14px;
-  background: linear-gradient(135deg, #059669 0%, #10B981 100%);
-  border: none;
-  border-radius: 14px;
+  padding: 16px;
+  background: rgba(30, 34, 50, 0.60);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 0.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
   color: #fff;
   font-family: 'Inter', system-ui;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.25);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 .serviceBtn:active {
   transform: scale(0.98);
@@ -131,18 +133,29 @@
   display: flex;
   gap: 12px;
   padding: 16px;
-  background: rgba(30, 34, 42, 0.50);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 0.5px solid rgba(255, 255, 255, 0.18);
   border-radius: 20px;
   transition: all 0.25s;
   cursor: pointer;
 }
-/* Middle card highlight */
+/* Card 1 — Meteorologia: blue */
+.infoCard:nth-child(1) {
+  background: rgba(59, 130, 246, 0.12);
+  border: 0.5px solid rgba(59, 130, 246, 0.30);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+}
+/* Card 2 — Próxima Chamada: emerald */
 .infoCard:nth-child(2) {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%) !important;
-  border-color: rgba(59, 130, 246, 0.3) !important;
+  background: rgba(16, 185, 129, 0.12);
+  border: 0.5px solid rgba(16, 185, 129, 0.30);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+}
+/* Card 3 — Localização: purple */
+.infoCard:nth-child(3) {
+  background: rgba(168, 85, 247, 0.12);
+  border: 0.5px solid rgba(168, 85, 247, 0.30);
+  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.15);
 }
 .infoCard:active {
   transform: scale(0.98);
@@ -170,9 +183,9 @@
   color: #EF4444;
   text-transform: uppercase;
 }
-.infoCard:nth-child(1) .infoLabel { color: #3b82f6; }
-.infoCard:nth-child(2) .infoLabel { color: #3b82f6; }
-.infoCard:nth-child(3) .infoLabel { color: #a855f7; }
+.infoCard:nth-child(1) .infoLabel { color: #60a5fa; }
+.infoCard:nth-child(2) .infoLabel { color: #34d399; }
+.infoCard:nth-child(3) .infoLabel { color: #c084fc; }
 .infoValue {
   font-family: 'Inter', system-ui;
   font-size: 22px;
@@ -234,12 +247,12 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 6px 16px;
   border: 0.5px solid;
   border-radius: 999px;
   font-family: 'Inter', system-ui;
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 800;
   cursor: pointer;
   transition: all 0.15s;
   background: transparent;

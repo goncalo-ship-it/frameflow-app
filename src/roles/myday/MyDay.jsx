@@ -244,8 +244,8 @@ export function MyDay() {
 
           {/* Next Call — clickable for schedule overlay */}
           <div className={styles.infoCard} style={{ cursor: 'pointer' }} onClick={() => currentDay && setScheduleOpen(true)}>
-            <div className={styles.infoIcon} style={{ background: 'rgba(59,130,246,0.15)' }}>
-              <Clock size={20} color="#3b82f6" />
+            <div className={styles.infoIcon} style={{ background: 'rgba(16,185,129,0.15)' }}>
+              <Clock size={20} color="#10b981" />
             </div>
             <div className={styles.infoBody}>
               <span className={styles.infoLabel}>PRÓXIMA CHAMADA</span>

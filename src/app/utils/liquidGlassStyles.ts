@@ -102,7 +102,7 @@ export function glassCard(options?: {
   interactive?: boolean;
 }): CSSProperties {
   const { intensity = 'medium', radius = 'xl' } = options ?? {};
-  const preset = GLASS_PRESETS[intensity];
+  const preset = GLASS_PRESETS[intensity as keyof typeof GLASS_PRESETS] ?? GLASS_PRESETS.medium;
   const r      = CORNER_VALUES[radius];
   return {
     position:          'relative',

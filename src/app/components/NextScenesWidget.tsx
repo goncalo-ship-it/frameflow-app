@@ -39,10 +39,10 @@ export function NextScenesWidget({
     <div
       className="rounded-[20px] overflow-hidden relative"
       style={{
-        background: 'rgba(255, 255, 255, 0.06)',
+        background: 'rgba(78, 80, 88, 0.18)',
         backdropFilter: 'blur(20px) saturate(120%)',
         WebkitBackdropFilter: 'blur(20px) saturate(120%)',
-        border: '0.5px solid rgba(255, 255, 255, 0.18)',
+        border: '1px solid rgba(255, 255, 255, 0.12)',
         boxShadow: '0 2px 20px rgba(0, 0, 0, 0.08), 0 0 0 0.5px rgba(255, 255, 255, 0.08), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.25)',
       }}
     >

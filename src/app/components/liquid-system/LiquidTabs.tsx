@@ -33,7 +33,7 @@ export function LiquidTabs({ tabs, active, onChange }: LiquidTabsProps) {
         background:           'rgba(255, 255, 255, 0.08)',
         backdropFilter:       'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
-        border:               '0.5px solid rgba(255, 255, 255, 0.12)',
+        border:               '0.5px solid rgba(255, 255, 255, 0.15)',
         boxShadow:            'inset 0 0.5px 0.5px rgba(255,255,255,0.15)',
         borderRadius:         14,
         padding:              4,

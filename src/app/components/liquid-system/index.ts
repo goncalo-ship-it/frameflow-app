@@ -1,7 +1,19 @@
 /**
  * LIQUID GLASS DESIGN SYSTEM — Barrel exports
- * 10 átomos canónicos. Importar sempre daqui.
+ * Components + DNA utilities. Importar sempre daqui.
  */
+
+// ── DNA Utilities (re-exported from source of truth) ────────────────────────
+export {
+  glassCard, nestedCard, lensingOverlay,
+  glassBadge, glassButton, glassButtonAccent,
+  glassInput, glassDivider, iconGradient, departmentOverlay,
+  BLUR_VALUES, CORNER_VALUES, ACCENT_COLORS,
+  GLASS_PRESETS, SHADOW_PRESETS, DEPARTMENT_COLORS_MAP,
+  springConfigs,
+  hexToRgb,
+  type GlassIntensity, type GlassVariant, type CornerRadius,
+} from '../../utils/liquidGlassStyles';
 
 export { LiquidCard }        from './LiquidCard';
 export type { LiquidCardProps } from './LiquidCard';
@@ -19,7 +31,7 @@ export { LiquidTabs }        from './LiquidTabs';
 export type { LiquidTabsProps, LiquidTab } from './LiquidTabs';
 
 export { LiquidPage }        from './LiquidPage';
-export type { LiquidPageProps } from './LiquidPage';
+export type { LiquidPageProps, LiquidPageBackAction, PageSection } from './LiquidPage';
 
 export { LiquidSection }     from './LiquidSection';
 export type { LiquidSectionProps } from './LiquidSection';

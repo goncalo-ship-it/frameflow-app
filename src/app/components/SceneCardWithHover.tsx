@@ -11,9 +11,8 @@ import {
   AlertCircle,
   ChevronDown,
 } from 'lucide-react';
-import { 
-  LiquidOverlayCard, 
-  LiquidOverlayListItem, 
+import {
+  LiquidOverlayListItem,
   LiquidOverlayScriptBlock,
   LiquidBadge,
 } from './liquid-system';
@@ -90,7 +89,6 @@ export function SceneCardWithHover({
   wardrobe = [],
   isNext = false,
 }: SceneCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
   const [isExpanded, setIsExpanded] = useState(isNext);
 
   // Cores semânticas cinematográficas — INT=azul, EXT=verde
@@ -109,9 +107,19 @@ export function SceneCardWithHover({
       title: 'Personagens',
       color,
       content: (
-        <div className="space-y-1">
+        <div className="flex flex-wrap gap-2">
           {characters.map((char, i) => (
-            <LiquidOverlayListItem key={i}>{char}</LiquidOverlayListItem>
+            <span
+              key={i}
+              className="px-2.5 py-1 rounded-full text-[11px] font-semibold"
+              style={{
+                background: `${color}18`,
+                border: `0.5px solid ${color}40`,
+                color: color,
+              }}
+            >
+              {char}
+            </span>
           ))}
         </div>
       ),
@@ -163,35 +171,17 @@ export function SceneCardWithHover({
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={springConfigs.gentle}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      whileHover={{ scale: 1.008 }}
       whileTap={{ scale: 0.995 }}
     >
       {/* Main card */}
       <motion.div
-        style={cardStyles}
-        animate={{
-          boxShadow: isHovered
-            ? `0 8px 32px rgba(0,0,0,0.2), 0 0 24px ${color}20, inset 0 0.5px 0.5px rgba(255,255,255,0.3)`
-            : `0 2px 20px rgba(0,0,0,0.12), inset 0 0.5px 0.5px rgba(255,255,255,0.25)`,
+        style={{
+          ...cardStyles,
+          boxShadow: `0 2px 20px rgba(0,0,0,0.12), inset 0 0.5px 0.5px rgba(255,255,255,0.25)`,
         }}
-        transition={{ duration: 0.3 }}
       >
         {/* Lensing effect */}
         <div style={lensingStyles} />
-
-        {/* Hover border glow */}
-        <motion.div
-          className="absolute inset-0 pointer-events-none"
-          style={{ borderRadius: 'inherit' }}
-          animate={{
-            boxShadow: isHovered
-              ? `inset 0 0 0 0.5px ${color}50`
-              : 'inset 0 0 0 0.5px transparent',
-          }}
-          transition={{ duration: 0.25 }}
-        />
 
         {/* Main content container */}
         <div className="relative z-10">
@@ -201,7 +191,7 @@ export function SceneCardWithHover({
             className="w-full p-5 flex items-start gap-4 text-left group"
           >
             {/* Thumbnail */}
-            <motion.div
+            <div
               className="relative flex-shrink-0 overflow-hidden"
               style={{
                 width: '120px',
@@ -213,8 +203,6 @@ export function SceneCardWithHover({
                 border: `0.5px solid ${color}40`,
                 boxShadow: `0 0 16px ${color}20`,
               }}
-              whileHover={{ scale: 1.05 }}
-              transition={springConfigs.snappy}
             >
               {/* No thumbnail placeholder */}
               {!thumbnail && (
@@ -250,7 +238,7 @@ export function SceneCardWithHover({
                   PRÓX
                 </div>
               )}
-            </motion.div>
+            </div>
 
             {/* Info column */}
             <div className="flex-1 min-w-0">
@@ -261,18 +249,12 @@ export function SceneCardWithHover({
                     className="text-base font-black leading-tight mb-1 flex items-center gap-2"
                     style={{ color: '#ffffff' }}
                   >
-                    <motion.div
+                    <div
                       className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                       style={{
                         background: color,
                         boxShadow: `0 0 8px ${color}`,
                       }}
-                      animate={{
-                        boxShadow: isHovered
-                          ? `0 0 12px ${color}, 0 0 24px ${color}60`
-                          : `0 0 8px ${color}`,
-                      }}
-                      transition={{ duration: 0.3 }}
                     />
                     {id} - {title}
                   </h3>
@@ -315,7 +297,6 @@ export function SceneCardWithHover({
                     background: `${color}20`,
                     border: `0.5px solid ${color}40`,
                   }}
-                  whileHover={{ scale: 1.15, backgroundColor: `${color}35` }}
                   whileTap={{ scale: 0.9 }}
                   transition={springConfigs.snappy}
                 >
@@ -340,7 +321,7 @@ export function SceneCardWithHover({
                 transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
                 className="overflow-hidden"
               >
-                <div className="px-5 pb-4">
+                <div className="px-5 pb-5 space-y-4">
                   <div
                     className="rounded-[20px] overflow-hidden"
                     style={innerCardStyles}
@@ -351,12 +332,8 @@ export function SceneCardWithHover({
 
                       return (
                         <div key={idx}>
-                          <motion.div
+                          <div
                             className="flex items-center gap-3 px-4 py-3"
-                            whileHover={{
-                              background: 'rgba(255,255,255,0.03)',
-                            }}
-                            transition={{ duration: 0.15 }}
                           >
                             {/* Icon */}
                             <div
@@ -401,7 +378,7 @@ export function SceneCardWithHover({
                                     : '0 0 8px #f59e0b, 0 0 16px rgba(245,158,11,0.4)',
                               }}
                             />
-                          </motion.div>
+                          </div>
 
                           {/* Divider */}
                           {idx < items.length - 1 && (
@@ -417,25 +394,31 @@ export function SceneCardWithHover({
                       );
                     })}
                   </div>
+
+                  {/* Inline detail sections */}
+                  {overlaySections.map((section, idx) => (
+                    <div key={idx}>
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <div
+                          className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                          style={{ background: section.color, boxShadow: `0 0 6px ${section.color}` }}
+                        />
+                        <span
+                          className="text-[10px] font-black uppercase tracking-wider"
+                          style={{ color: section.color }}
+                        >
+                          {section.title}
+                        </span>
+                      </div>
+                      <div>{section.content}</div>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
       </motion.div>
-
-      {/* HOVER DETAIL PANEL — Rich Overlay via LiquidOverlayCard */}
-      <LiquidOverlayCard
-        isVisible={isHovered && overlaySections.length > 0}
-        accentColor={color}
-        title="Detalhes da Cena"
-        subtitle={`${location}`}
-        sections={overlaySections}
-        position="auto"
-        alignX="auto"
-        maxWidth={520}
-        showArrow
-      />
     </motion.div>
   );
 }

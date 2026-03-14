@@ -1,642 +1,1665 @@
+import React, { useState, useEffect, useMemo } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+
+import { 
+  Calendar, 
+  Clock, 
+  MapPin, 
+  Users, 
+  Film, 
+  TrendingUp, 
+  AlertCircle,
+  CheckCircle,
+  CheckCircle2,
+  ChevronDown,
+  ChevronUp,
+  ChevronRight,
+  Sun,
+  Moon,
+  Camera,
+  Video,
+  Clapperboard,
+  User,
+  Car,
+  Sparkles,
+  Package,
+  Palette,
+  Mic,
+  Zap,
+  ArrowUpRight,
+  Utensils,
+  ExternalLink,
+  Shirt,
+  Sunrise,
+  Sunset
+} from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { 
+  mockDailyLoad, 
+  mockScenes, 
+  mockProject, 
+  mockDashboardStats, 
+  mockCharacters, 
+  mockLocations 
+} from '../data/mockData';
+import { FloatingMediaButton } from '../components/FloatingMediaButton';
+import { DashboardLoadingState } from '../components/DashboardLoadingState';
+import { SceneDetailModal } from '../components/SceneDetailModal';
+import { WeatherWidget } from '../components/WeatherWidget';
+import { CharacterDetailWidget } from '../components/CharacterDetailWidget';
+import { WardrobeWidget } from '../components/WardrobeWidget';
+import { CrewWidget } from '../components/CrewWidget';
+import { LocationWidget } from '../components/LocationWidget';
+import { NextCallWidget } from '../components/NextCallWidget';
+import { CameraWidget } from '../components/CameraWidget';
+import { DirectionWidget } from '../components/DirectionWidget';
+import { ArtWidget } from '../components/ArtWidget';
+import { SceneDetailWidget } from '../components/SceneDetailWidget';
+import { RecceWidget } from '../components/RecceWidget';
+import { ServiceSheetWidget } from '../components/ServiceSheetWidget';
+import { SceneCardWithHover } from '../components/SceneCardWithHover';
+import { NextScenesWidget } from '../components/NextScenesWidget';
+
 /**
- * DASHBOARD PRODUCER LIQUID — Golden Standard
- *
- * Este ficheiro É a referência visual para toda a app.
- * CADA padrão aqui existe por uma razão. COPIA, não "inspiras".
- *
- * Padrões demonstrados:
- *  1. Widget container (glassCard + lensing)
- *  2. Nested colored cards (INT azul / EXT verde / misto roxo)
- *  3. Nested list items (elenco, locais)
- *  4. Status badges com dot pulsante
- *  5. Micro-badges inline
- *  6. Department pills com count badge
- *  7. Icon containers (w-10 h-10 radius-[12px])
- *  8. Progress bars (emerald glow)
- *  9. Gradient text (hero clock)
- * 10. Glow action button (Section 12)
- * 11. Stagger animations (+0.1s)
- * 12. Toolbar bar (pills bar, radius 24px)
+ * AUTHENTIC LIQUID GLASS DASHBOARD - Apple WWDC25 Style
+ * Based on official Apple design language:
+ * - Physical glass refraction (lensing effect)
+ * - Ultra-subtle blur (20px)
+ * - Minimal shadows (almost invisible)
+ * - Thin borders (0.5px)
+ * - Light concentration at edges
+ * - Vibrancy adapts background colors
+ * - Pill-shaped components
  */
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import {
-  Film, Users, MapPin, DollarSign, Calendar, Clock,
-  TrendingUp, CheckCircle2, AlertTriangle, Clapperboard,
-  CloudRain, Sun, Wind, Thermometer, ArrowRight, Plus,
-  Radio, FileText, Zap,
-} from 'lucide-react';
-import {
-  LiquidCard, LiquidBadge, LiquidButton, LiquidStatCard,
-  LiquidSection, LiquidPage,
-} from '../components/liquid-system';
-import {
-  glassCard, lensingOverlay, nestedCard, springConfigs,
-  DEPARTMENT_COLORS_MAP,
-} from '../utils/liquidGlassStyles';
+// Apple Authentic Liquid Glass Widget
+interface LiquidWidgetProps {
+  children: React.ReactNode;
+  className?: string;
+  interactive?: boolean;
+}
 
-/* ─────────────────────────────────────────────────────────────
-   MOCK DATA (substituir por store real)
-───────────────────────────────────────────────────────────── */
-
-const MOCK_TODAY = {
-  day:       3,
-  total:     12,
-  date:      '2026-03-13',
-  location:  'Armazém dos Ossos, Alfama',
-  scenes:    ['42', '43', '44', '47'],
-  call:      '06:30',
-  wrap:      '19:00',
-};
-
-const MOCK_SCENES_TODAY = [
-  { id: '42', type: 'EXT', time: 'DIA',   heading: 'EXT PRAIA — DIA',      pages: 2.5, cast: ['João', 'Sofia'], status: 'done'     },
-  { id: '43', type: 'INT', time: 'NOITE', heading: 'INT ARMAZÉM — NOITE',   pages: 3.0, cast: ['João', 'Miguel'], status: 'rolling'  },
-  { id: '44', type: 'INT', time: 'DIA',   heading: 'INT ESCRITÓRIO — DIA',  pages: 1.5, cast: ['Sofia'],          status: 'waiting'  },
-  { id: '47', type: 'EXT', time: 'DIA',   heading: 'EXT RUA — DIA',        pages: 2.0, cast: ['João'],           status: 'waiting'  },
-];
-
-const MOCK_WEATHER = {
-  temp: 16, feels: 13, condition: 'Parcialmente nublado',
-  wind: 18, rain: 20, uv: 3,
-  sunrise: '07:12', sunset: '19:38',
-  alert: null as string | null,
-};
-
-const MOCK_TEAM = [
-  { group: 'Realização',  count: 4,  color: '#3b82f6' },
-  { group: 'Câmara',      count: 6,  color: '#10b981' },
-  { group: 'Som',         count: 3,  color: '#f59e0b' },
-  { group: 'Arte',        count: 5,  color: '#a855f7' },
-  { group: 'Produção',    count: 8,  color: '#ec4899' },
-];
-
-const MOCK_WARNINGS = [
-  { id: 'w1', severity: 'critical', text: 'Chuva forte prevista às 15h — Cena 47 (EXT) em risco',     time: '08:42' },
-  { id: 'w2', severity: 'warning',  text: 'Adereço #A-042 \'Mala vintage\' não confirmado — Arte',     time: '07:15' },
-  { id: 'w3', severity: 'warning',  text: 'Actor João Silva indisponível 14h–15h30 — Cena 43',         time: '06:58' },
-];
-
-/* ─────────────────────────────────────────────────────────────
-   SCENE STATUS COLORS
-───────────────────────────────────────────────────────────── */
-
-const SCENE_STATUS: Record<string, { color: string; label: string; variant: 'emerald' | 'blue' | 'amber' | 'default' }> = {
-  done:    { color: '#10b981', label: 'Filmado',  variant: 'emerald' },
-  rolling: { color: '#3b82f6', label: 'A Filmar', variant: 'blue'    },
-  setup:   { color: '#f59e0b', label: 'Setup',    variant: 'amber'   },
-  waiting: { color: 'rgba(255,255,255,0.4)', label: 'Aguarda', variant: 'default' },
-};
-
-/* ─────────────────────────────────────────────────────────────
-   COMPONENT
-───────────────────────────────────────────────────────────── */
-
-export function DashboardProducerLiquid() {
-  const [clock, setClock] = useState('');
-  const [activeView, setActiveView] = useState<'producao' | 'myday'>('producao');
-
-  /* Live clock */
-  useEffect(() => {
-    const tick = () => {
-      const now = new Date();
-      setClock(now.toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
-    };
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  const donePct = Math.round(
-    (MOCK_SCENES_TODAY.filter(s => s.status === 'done').length / MOCK_SCENES_TODAY.length) * 100
-  );
+function LiquidWidget({ children, className = '', interactive = false }: LiquidWidgetProps) {
+  const [isPressed, setIsPressed] = useState(false);
 
   return (
-    <div
-      className="min-h-screen p-6"
-      style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+      onTouchStart={() => interactive && setIsPressed(true)}
+      onTouchEnd={() => interactive && setIsPressed(false)}
+      onMouseDown={() => interactive && setIsPressed(true)}
+      onMouseUp={() => interactive && setIsPressed(false)}
+      onMouseLeave={() => setIsPressed(false)}
+      className={`relative overflow-hidden ${className}`}
+      style={{
+        borderRadius: '28px', // More pill-like
+        transform: isPressed ? 'scale(0.98)' : 'scale(1)',
+        transition: 'transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
+      }}
     >
-      {/* ── PAGE HEADER ─────────────────────────────────────── */}
-      <motion.div
-        initial={{ opacity: 0, y: -8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-        className="flex items-start justify-between gap-4 mb-8"
-      >
-        <div>
-          <h1
-            className="text-3xl font-black tracking-tight"
-            style={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}
-          >
-            DESDOBRADO
-          </h1>
-          <p className="text-xs font-bold mt-1" style={{ color: 'rgba(255,255,255,0.6)' }}>
-            DIA {MOCK_TODAY.day} / {MOCK_TODAY.total} · {MOCK_TODAY.date} · {MOCK_TODAY.location}
-          </p>
-        </div>
-
-        {/* Hero clock (Section 15 — gradient text) */}
-        <div className="text-right">
-          <div
-            className="text-5xl font-black tabular-nums"
-            style={{
-              background: 'linear-gradient(135deg, #10b981, #34d399)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              filter: 'drop-shadow(0 2px 4px rgba(16,185,129,0.3))',
-            }}
-          >
-            {clock}
-          </div>
-          <p className="text-xs font-bold mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>
-            CALL {MOCK_TODAY.call} · WRAP EST. {MOCK_TODAY.wrap}
-          </p>
-        </div>
-      </motion.div>
-
-      {/* ── VIEW TOGGLE (toolbar pills, Section 2) ──────────── */}
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.05 }}
-        className="flex gap-2 mb-6"
+      {/* Layer 1 — Glass background */}
+      <div
+        className="absolute inset-0"
         style={{
-          background:    'rgba(255, 255, 255, 0.04)',
-          backdropFilter:'blur(20px) saturate(120%)',
+          background: 'rgba(78, 80, 88, 0.18)',
+          backdropFilter: 'blur(20px) saturate(120%)',
           WebkitBackdropFilter: 'blur(20px) saturate(120%)',
-          border:        '0.5px solid rgba(255, 255, 255, 0.15)',
-          boxShadow:     '0 4px 24px rgba(0,0,0,0.1), inset 0 0.5px 0.5px rgba(255,255,255,0.2)',
-          borderRadius:  24,
-          padding:       '6px 8px',
-          alignSelf:     'flex-start',
+        }}
+      />
+
+      {/* Layer 2 — Top-edge highlight */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          borderRadius: '28px',
+          boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.12)',
+        }}
+      />
+
+      {/* Layer 3 — Border */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          borderRadius: '28px',
+          border: '1px solid rgba(255, 255, 255, 0.12)',
+        }}
+      />
+
+      {/* Layer 4 — Shadow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          borderRadius: '28px',
+          boxShadow: isPressed
+            ? '0 2px 8px rgba(0, 0, 0, 0.4)'
+            : '0 4px 24px rgba(0, 0, 0, 0.3)',
+          transition: 'box-shadow 0.2s ease',
+        }}
+      />
+
+      {/* Content */}
+      <div className="relative z-10 p-6">
+        {children}
+      </div>
+    </motion.div>
+  );
+}
+
+// Pill Button (like Apple's toolbar buttons)
+function PillButton({ 
+  children, 
+  onClick, 
+  variant = 'glass',
+  color,
+}: { 
+  children: React.ReactNode; 
+  onClick?: () => void;
+  variant?: 'glass' | 'accent' | 'colored';
+  color?: string;
+}) {
+  const [isPressed, setIsPressed] = useState(false);
+
+  const getBackgroundStyle = () => {
+    if (variant === 'colored' && color) {
+      return {
+        background: color,
+        boxShadow: `0 4px 16px ${color}60, inset 0 1px 0 rgba(255, 255, 255, 0.3)`,
+      };
+    }
+    if (variant === 'accent') {
+      return {
+        background: '#10b981',
+        boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
+      };
+    }
+    return {
+      background: 'rgba(255, 255, 255, 0.08)',
+      backdropFilter: 'blur(20px) saturate(120%)',
+      WebkitBackdropFilter: 'blur(20px) saturate(120%)',
+      border: '1px solid rgba(255, 255, 255, 0.12)',
+      boxShadow: '0 2px 12px rgba(0, 0, 0, 0.2)',
+    };
+  };
+
+  return (
+    <button
+      onClick={onClick}
+      onTouchStart={() => setIsPressed(true)}
+      onTouchEnd={() => setIsPressed(false)}
+      onMouseDown={() => setIsPressed(true)}
+      onMouseUp={() => setIsPressed(false)}
+      onMouseLeave={() => setIsPressed(false)}
+      className="relative overflow-hidden"
+      style={{
+        borderRadius: '20px',
+        padding: '12px 20px',
+        transform: isPressed ? 'scale(0.96)' : 'scale(1)',
+        transition: 'transform 0.15s ease',
+      }}
+    >
+      {/* Background */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          borderRadius: '20px',
+          ...getBackgroundStyle(),
+        }}
+      />
+      
+      {/* Content */}
+      <div className="relative z-10 flex items-center gap-2 text-sm font-semibold" style={{ 
+        color: variant === 'glass' ? 'rgba(255, 255, 255, 0.9)' : '#ffffff',
+      }}>
+        {children}
+      </div>
+    </button>
+  );
+}
+
+// NEW: Status Badge Component (images 69-78)
+function StatusBadge({ 
+  status, 
+  label 
+}: { 
+  status: 'shooting' | 'setup' | 'delay' | 'done' | 'priority'; 
+  label?: string;
+}) {
+  const configs = {
+    shooting: { color: '#10b981', bg: 'rgba(16, 185, 129, 0.15)', label: 'Filmando' },
+    setup: { color: '#f59e0b', bg: 'rgba(245, 158, 11, 0.15)', label: 'Setup' },
+    delay: { color: '#ef4444', bg: 'rgba(239, 68, 68, 0.15)', label: 'Atraso' },
+    done: { color: '#3b82f6', bg: 'rgba(59, 130, 246, 0.15)', label: 'Completo' },
+    priority: { color: '#ec4899', bg: 'rgba(236, 72, 153, 0.15)', label: 'Prioridade' },
+  };
+
+  const config = configs[status];
+
+  return (
+    <div 
+      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider"
+      style={{
+        background: config.bg,
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        border: `0.5px solid ${config.color}60`,
+        color: config.color,
+        boxShadow: `0 2px 8px ${config.color}30, inset 0 0.5px 0.5px rgba(255, 255, 255, 0.2)`,
+      }}
+    >
+      <div 
+        className="w-1.5 h-1.5 rounded-full animate-pulse"
+        style={{ 
+          background: config.color,
+          boxShadow: `0 0 6px ${config.color}, 0 0 12px ${config.color}80`,
+        }}
+      />
+      {label || config.label}
+    </div>
+  );
+}
+
+// NEW: Department Pill (images 41-42)
+function DepartmentPill({ 
+  icon: Icon, 
+  label, 
+  color,
+  count,
+  onClick 
+}: { 
+  icon: any; 
+  label: string; 
+  color: string;
+  count?: number;
+  onClick?: () => void;
+}) {
+  const [isPressed, setIsPressed] = useState(false);
+
+  return (
+    <button
+      onClick={onClick}
+      onTouchStart={() => setIsPressed(true)}
+      onTouchEnd={() => setIsPressed(false)}
+      onMouseDown={() => setIsPressed(true)}
+      onMouseUp={() => setIsPressed(false)}
+      onMouseLeave={() => setIsPressed(false)}
+      className="relative flex items-center gap-2 px-4 py-2.5 rounded-full transition-all cursor-pointer"
+      style={{
+        background: `${color}15`,
+        backdropFilter: 'blur(16px) saturate(120%)',
+        WebkitBackdropFilter: 'blur(16px) saturate(120%)',
+        border: `0.5px solid ${color}40`,
+        boxShadow: isPressed 
+          ? `0 2px 8px ${color}40, inset 0 0.5px 0.5px rgba(255, 255, 255, 0.2)`
+          : `0 4px 12px ${color}30, inset 0 0.5px 0.5px rgba(255, 255, 255, 0.15)`,
+        transform: isPressed ? 'scale(0.96)' : 'scale(1)',
+      }}
+    >
+      <Icon size={14} style={{ color }} />
+      <span className="text-xs font-black" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+        {label}
+      </span>
+      {count !== undefined && (
+        <div 
+          className="px-1.5 py-0.5 rounded-full text-[9px] font-black min-w-[18px] text-center"
+          style={{
+            background: color,
+            color: '#fff',
+            boxShadow: `0 0 8px ${color}60`,
+          }}
+        >
+          {count}
+        </div>
+      )}
+    </button>
+  );
+}
+
+// NEW: Glowing Action Button (images 47, 49, 50)
+function GlowButton({ 
+  children,
+  onClick,
+  color,
+  icon: Icon,
+}: { 
+  children: React.ReactNode;
+  onClick?: () => void;
+  color: string;
+  icon?: any;
+}) {
+  const [isPressed, setIsPressed] = useState(false);
+
+  return (
+    <button
+      onClick={onClick}
+      onTouchStart={() => setIsPressed(true)}
+      onTouchEnd={() => setIsPressed(false)}
+      onMouseDown={() => setIsPressed(true)}
+      onMouseUp={() => setIsPressed(false)}
+      onMouseLeave={() => setIsPressed(false)}
+      className="relative overflow-hidden group"
+      style={{
+        borderRadius: '18px',
+        padding: '16px 24px',
+        transform: isPressed ? 'scale(0.96)' : 'scale(1)',
+        transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
+      }}
+    >
+      {/* Outer glow */}
+      <div 
+        className="absolute inset-0 rounded-[18px] blur-xl opacity-60"
+        style={{
+          background: color,
+          transform: isPressed ? 'scale(0.9)' : 'scale(1)',
+          transition: 'transform 0.2s ease',
+        }}
+      />
+      
+      {/* Main background with 3D depth */}
+      <div 
+        className="absolute inset-0 rounded-[18px]"
+        style={{
+          background: `linear-gradient(135deg, ${color}, ${color}dd)`,
+          boxShadow: isPressed
+            ? `0 4px 20px ${color}60, inset 0 -2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.4)`
+            : `0 8px 24px ${color}70, 0 2px 8px ${color}40, inset 0 -3px 12px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.5)`,
+          transition: 'box-shadow 0.2s ease',
+        }}
+      />
+
+      {/* Inner glow (key detail!) */}
+      <div 
+        className="absolute inset-0 rounded-[18px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 100% 80% at 50% 20%, rgba(255, 255, 255, 0.5) 0%, transparent 60%)',
+          mixBlendMode: 'overlay',
+        }}
+      />
+      
+      {/* Content */}
+      <div className="relative z-10 flex items-center gap-2 justify-center text-base font-black" style={{ color: '#ffffff' }}>
+        {Icon && <Icon size={18} />}
+        {children}
+      </div>
+    </button>
+  );
+}
+
+// Chart Container with Liquid Glass
+function LiquidChartContainer({ children, title }: { children: React.ReactNode; title: string }) {
+  return (
+    <LiquidWidget>
+      <h3 className="text-sm font-black mb-4 flex items-center gap-2" style={{ color: '#ffffff' }}>
+        <div 
+          className="w-1.5 h-1.5 rounded-full"
+          style={{ 
+            background: '#10b981',
+            boxShadow: '0 0 8px #10b981',
+          }}
+        />
+        {title}
+      </h3>
+      <div 
+        className="rounded-[18px] p-4"
+        style={{
+          background: 'rgba(0, 0, 0, 0.25)',
+          border: '1px solid rgba(255, 255, 255, 0.06)',
         }}
       >
-        {[
-          { id: 'producao', label: 'Produção' },
-          { id: 'myday',    label: 'O Meu Dia' },
-        ].map(tab => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveView(tab.id as typeof activeView)}
-            style={{
-              padding:    '8px 20px',
-              borderRadius: 9999,
-              fontSize:   13,
-              fontWeight: activeView === tab.id ? 700 : 500,
-              color:      activeView === tab.id ? '#10b981' : 'rgba(255,255,255,0.5)',
-              background: activeView === tab.id ? 'rgba(16,185,129,0.15)' : 'transparent',
-              backdropFilter: activeView === tab.id ? 'blur(16px) saturate(120%)' : 'none',
-              border:     activeView === tab.id
-                ? '0.5px solid rgba(16,185,129,0.4)'
-                : '0.5px solid transparent',
-              boxShadow:  activeView === tab.id
-                ? '0 4px 12px rgba(16,185,129,0.3), inset 0 0.5px 0.5px rgba(255,255,255,0.15)'
-                : undefined,
-              cursor: 'pointer',
-            }}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </motion.div>
-
-      {/* ── STAT CARDS ROW ──────────────────────────────────── */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        {[
-          { label: 'Cenas Hoje',  value: MOCK_SCENES_TODAY.length, variant: 'emerald' as const, pulse: true  },
-          { label: 'Filmadas',    value: MOCK_SCENES_TODAY.filter(s => s.status === 'done').length, variant: 'blue'    as const },
-          { label: 'Em Setup',    value: MOCK_SCENES_TODAY.filter(s => s.status === 'setup').length, variant: 'amber'   as const },
-          { label: 'Equipa',      value: MOCK_TEAM.reduce((s, t) => s + t.count, 0), variant: 'default' as const },
-        ].map((stat, i) => (
-          <LiquidStatCard
-            key={stat.label}
-            label={stat.label}
-            value={stat.value}
-            variant={stat.variant}
-            pulse={stat.pulse}
-            animationDelay={i * 100}
-          />
-        ))}
+        {children}
       </div>
+    </LiquidWidget>
+  );
+}
 
-      {/* ── MAIN GRID ───────────────────────────────────────── */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+export function DashboardProducerLiquid() {
+  
+  // Stable gradient IDs for recharts SVG defs — unique per component instance
+  const chartId = useMemo(() => `ffdailyload-${Math.random().toString(36).slice(2)}`, []);
+  const [isLoading, setIsLoading] = useState(true);
+  const [backgroundImage, setBackgroundImage] = useState<string | null>(null);
+  const [isDarkTheme, setIsDarkTheme] = useState(true); // New: theme toggle
+  const [currentTime, setCurrentTime] = useState(
+    new Date().toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })
+  );
+  const [expandedScenes, setExpandedScenes] = useState<number[]>([0]); // First scene expanded by default
+  const [sceneModalOpen, setSceneModalOpen] = useState(false);
+  const [showFloatingToolbar, setShowFloatingToolbar] = useState(true);
+  const [weatherWidgetOpen, setWeatherWidgetOpen] = useState(false);
+  const [characterWidgetOpen, setCharacterWidgetOpen] = useState(false);
+  const [wardrobeWidgetOpen, setWardrobeWidgetOpen] = useState(false);
+  const [crewWidgetOpen, setCrewWidgetOpen] = useState(false);
+  const [locationWidgetOpen, setLocationWidgetOpen] = useState(false);
+  const [nextCallWidgetOpen, setNextCallWidgetOpen] = useState(false);
+  const [cameraWidgetOpen, setCameraWidgetOpen] = useState(false);
+  const [directionWidgetOpen, setDirectionWidgetOpen] = useState(false);
+  const [artWidgetOpen, setArtWidgetOpen] = useState(false);
+  const [sceneDetailWidgetOpen, setSceneDetailWidgetOpen] = useState(false);
+  const [recceWidgetOpen, setRecceWidgetOpen] = useState(false);
+  const [serviceSheetOpen, setServiceSheetOpen] = useState(false);
+  const [selectedCharacter, setSelectedCharacter] = useState<any>(null);
+  const [selectedScene, setSelectedScene] = useState<any>(null);
+  const [selectedLocation, setSelectedLocation] = useState<any>(null);
 
-        {/* ── Col 1+2: Cenas do dia ────────────────────────── */}
-        <div className="lg:col-span-2 flex flex-col gap-6">
+  const toggleScene = (sceneIdx: number) => {
+    setExpandedScenes(prev => {
+      if (prev.includes(sceneIdx)) {
+        // COLLAPSE EM CASCATA: Se colapsar 1, colapsa TUDO
+        return [];
+      } else {
+        // EXPAND: Só abre este
+        return [sceneIdx];
+      }
+    });
+  };
 
-          {/* WIDGET: Cenas hoje */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
-            className="relative overflow-hidden"
-            style={glassCard()}
-          >
-            <div className="absolute inset-0 pointer-events-none" style={lensingOverlay()} />
-            <div className="relative z-10 p-6">
+  // Mock scene data for the modal
+  const sceneDetailData = {
+    number: '05',
+    title: 'Guarda-Roupa',
+    location: 'Set Principal - Estúdio A',
+    time: 'Interior / Dia',
+    description: 'A equipa de guarda-roupa prepara os figurinos para a próxima cena. Três personagens principais discutem os detalhes dos trajes enquanto fazem ajustes de última hora.',
+    script: [
+      '[A porta do guarda-roupa abre-se]',
+      'SOFIA: Precisamos de ter tudo pronto em 30 minutos.',
+      'MIGUEL: O casaco do protagonista ainda não está ajustado.',
+      'SOFIA: Então temos de trabalhar rápido. Ana, traz a máquina de costura.',
+      'ANA: Já estou nisso! Onde está o tecido de reserva?',
+      '[Som de tecidos e movimento apressado]',
+      'MIGUEL: Aqui. Vamos conseguir terminar a tempo.',
+    ],
+    myRole: {
+      department: 'Produtor Executivo',
+      responsibilities: [
+        'Garantir que todos os figurinos estão aprovados e dentro do orçamento',
+        'Coordenar com o departamento de guarda-roupa e diretor de fotografia',
+        'Verificar timeline e assegurar que a cena está pronta para filmagem',
+        'Comunicar com assistente de direção sobre o estado da preparação',
+      ],
+      notes: '⚠️ CRÍTICO: Esta cena tem de ser filmada até às 15h00 devido à disponibilidade do estúdio. Confirmar com DOP sobre a iluminação às 13h30.',
+    },
+    characters: ['Sofia (Coordenadora)', 'Miguel (Assistente)', 'Ana (Costureira)'],
+    props: ['Máquina de costura', 'Tecidos variados', 'Manequins', 'Espelhos', 'Caixas de adereços'],
+  };
 
-              {/* Section header */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <span
-                    className="w-1.5 h-1.5 rounded-full animate-pulse"
-                    style={{ background: '#10b981', boxShadow: '0 0 8px #10b981' }}
-                  />
-                  <span className="text-sm font-black" style={{ color: '#ffffff' }}>
-                    CENAS DO DIA
-                  </span>
-                </div>
-                <LiquidBadge variant="emerald" size="md" pulse>
-                  {donePct}% completo
-                </LiquidBadge>
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date().toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' }));
+    }, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Load background from localStorage
+  useEffect(() => {
+    const savedBg = localStorage.getItem('dashboard-background');
+    console.log('🎨 Dashboard - Loading background:', savedBg ? 'Found' : 'Not found');
+    if (savedBg) {
+      setBackgroundImage(savedBg);
+      console.log('✅ Background set:', savedBg.substring(0, 50) + '...');
+    }
+    
+    // Load theme from localStorage
+    const savedTheme = localStorage.getItem('dashboard-theme');
+    setIsDarkTheme(savedTheme !== 'bright');
+    
+    // Listen for changes from Settings
+    const handleStorageChange = () => {
+      const savedBg = localStorage.getItem('dashboard-background');
+      console.log('🔄 Background updated event received');
+      setBackgroundImage(savedBg);
+    };
+    
+    const handleThemeChange = () => {
+      const savedTheme = localStorage.getItem('dashboard-theme');
+      setIsDarkTheme(savedTheme !== 'bright');
+    };
+    
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('background-updated', handleStorageChange);
+    window.addEventListener('theme-updated', handleThemeChange);
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('background-updated', handleStorageChange);
+      window.removeEventListener('theme-updated', handleThemeChange);
+    };
+  }, []);
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const imageUrl = event.target?.result as string;
+        setBackgroundImage(imageUrl);
+        localStorage.setItem('dashboard-background', imageUrl);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const clearBackground = () => {
+    setBackgroundImage(null);
+    localStorage.removeItem('dashboard-background');
+  };
+
+  if (isLoading) return <DashboardLoadingState />;
+
+  const today = new Date().toLocaleDateString('pt-PT', { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+
+  // Mock upcoming scenes data - ENHANCED com thumbs, guião, notas
+  const upcomingScenes = [
+    {
+      id: '02A',
+      number: '02A',
+      title: 'Sala de Reunião',
+      description: 'Equipa de produção discute o orçamento e planeamento da semana.',
+      location: 'Estúdio Principal - Sala 3',
+      timeOfDay: 'INT' as const,
+      period: 'DIA' as const,
+      color: '#10b981',
+      thumbnail: 'https://images.unsplash.com/photo-1633431303895-8236f0a04b46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400&h=300',
+      items: [
+        { title: 'Traje Formal', type: 'Guarda-Roupa' as const, status: 'confirmed' as const },
+        { title: 'Documentos Prop', type: 'Adereço' as const, status: 'pending' as const },
+        { title: 'Mesa de Reunião', type: 'Arte' as const, status: 'ready' as const },
+      ],
+      script: [
+        'MARIA entra na sala com uma pasta cheia de documentos.',
+        'MARIA: Bom dia a todos. Temos muito por onde começar.',
+        'JOÃO: O orçamento está apertado esta semana.',
+        'MARIA: Sei. Vamos ter de ser criativos.',
+      ],
+      continuityNotes: [
+        'Maria usa casaco cinzento (continuidade da cena anterior)',
+        'Relógio de parede marca 14:30',
+        'Café nas chávenas ainda fumega',
+      ],
+      characters: ['Maria (Produtora)', 'João (Assistente)', 'Ana (Coordenadora)'],
+      wardrobe: ['Traje formal cinzento', 'Camisa branca', 'Sapatos pretos'],
+    },
+    {
+      id: '03B',
+      number: '03B',
+      title: 'Exterior Cidade',
+      description: 'Protagonista caminha pela rua movimentada ao fim do dia.',
+      location: 'Rua da Prata, Lisboa',
+      timeOfDay: 'EXT' as const,
+      period: 'ANOITECER' as const,
+      color: '#f59e0b',
+      thumbnail: 'https://images.unsplash.com/photo-1701353588669-d1dee04895c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400&h=300',
+      items: [
+        { title: 'Casaco Casual', type: 'Guarda-Roupa' as const, status: 'confirmed' as const },
+        { title: 'Mochila Prop', type: 'Adereço' as const, status: 'confirmed' as const },
+      ],
+      script: [
+        '[SOM de trânsito ao fundo]',
+        'PEDRO caminha distraído, olhando para o telemóvel.',
+        'Uma MULHER esbarra nele.',
+        'MULHER: Desculpe!',
+        'PEDRO (sem olhar): Não faz mal.',
+      ],
+      continuityNotes: [
+        'Pedro usa auriculares brancos',
+        'Mochila preta às costas',
+        'Sol poente - golden hour obrigatório',
+      ],
+      characters: ['Pedro (Protagonista)', 'Transeuntes (Figuração)'],
+      wardrobe: ['Casaco azul escuro', 'Calças jeans', 'Ténis brancos', 'Mochila preta'],
+    },
+    {
+      id: '04C',
+      number: '04C',
+      title: 'Café Noturno',
+      description: 'Encontro tenso entre dois amigos que não se vêem há anos.',
+      location: 'Café Vintage - Bairro Alto',
+      timeOfDay: 'INT' as const,
+      period: 'NOITE' as const,
+      color: '#ef4444',
+      thumbnail: 'https://images.unsplash.com/photo-1731313181496-3e3aeb1addf1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400&h=300',
+      items: [
+        { title: 'Roupa Casual Noite', type: 'Guarda-Roupa' as const, status: 'pending' as const },
+        { title: 'Xícara e Pires', type: 'Prop' as const, status: 'confirmed' as const },
+        { title: 'Decoração Vintage', type: 'Arte' as const, status: 'ready' as const },
+      ],
+      script: [
+        'LUÍS está sentado, mexendo nervosamente na chávena.',
+        'SOFIA entra. Pausa. Olhares cruzam-se.',
+        'SOFIA: Olá, Luís.',
+        'LUÍS (tenso): Quanto tempo...',
+        'SOFIA senta-se lentamente.',
+        'SOFIA: Três anos. Três anos e meio, para ser exacta.',
+      ],
+      continuityNotes: [
+        'Luís tem cicatriz visível na mão direita',
+        'Sofia usa colar de prata (importante para flashback)',
+        'Café servido mas não bebido durante a cena',
+        'Luz ambiente quente - CRITICAL para mood',
+      ],
+      characters: ['Luís (Protagonista)', 'Sofia (Ex-namorada)', 'Empregado (Fundo)'],
+      wardrobe: ['Camisa preta (Luís)', 'Vestido verde escuro (Sofia)', 'Colar de prata (Sofia)'],
+    },
+  ];
+
+  return (
+    <>
+      <div className="max-w-[1600px] mx-auto relative p-4">
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 items-start">
+        <div className="lg:col-span-2 space-y-3">
+
+        {/* O MEU DIA - Contextual Widget */}
+        <LiquidWidget>
+          <div className="space-y-3">
+            {/* Header com nome, data e hora */}
+            <div className="flex items-center justify-between">
+              <div>
+                <h1 className="text-[30px] font-semibold tracking-tight mb-1" style={{
+                  color: '#ffffff',
+                  textShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
+                }}>
+                  O TEU DIA
+                </h1>
+                <p className="text-sm font-normal flex items-center gap-2" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                  <span>{today}</span>
+                  <span>•</span>
+                  <span>{mockProject.name}</span>
+                </p>
               </div>
-
-              {/* Progress bar (Section 13) */}
-              <div
-                className="h-1.5 rounded-full mb-5"
-                style={{ background: 'rgba(255,255,255,0.08)' }}
+              
+              {/* Time */}
+              <div 
+                className="text-5xl font-black tabular-nums"
+                style={{ 
+                  background: 'linear-gradient(135deg, #10b981, #34d399)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  filter: 'drop-shadow(0 2px 4px rgba(16, 185, 129, 0.3))',
+                }}
               >
-                <motion.div
-                  className="h-full rounded-full"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${donePct}%` }}
-                  transition={{ delay: 0.5, duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-                  style={{
-                    background: 'linear-gradient(90deg, #10b981, #34d399)',
-                    boxShadow:  '0 0 12px rgba(16,185,129,0.6)',
-                  }}
-                />
-              </div>
-
-              {/* Scene list — nested list items (Section 4) */}
-              <div className="flex flex-col gap-2">
-                {MOCK_SCENES_TODAY.map((scene, i) => {
-                  const st     = SCENE_STATUS[scene.status];
-                  const isInt  = scene.type === 'INT';
-                  const nested = nestedCard(isInt ? '#3b82f6' : '#10b981', 'subtle');
-
-                  return (
-                    <motion.div
-                      key={scene.id}
-                      initial={{ opacity: 0, x: -8 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 + i * 0.07, duration: 0.4 }}
-                      className="flex items-center gap-3 p-3 hover:scale-[1.008] transition-transform cursor-pointer"
-                      style={{
-                        ...nested,
-                        borderRadius: 16,
-                      }}
-                    >
-                      {/* INT/EXT icon container (Section 7) */}
-                      <div
-                        className="w-10 h-10 flex items-center justify-center flex-shrink-0"
-                        style={{
-                          borderRadius: 12,
-                          background:   isInt ? 'rgba(59,130,246,0.15)' : 'rgba(16,185,129,0.15)',
-                          border:       `0.5px solid ${isInt ? 'rgba(59,130,246,0.3)' : 'rgba(16,185,129,0.3)'}`,
-                          backdropFilter: 'blur(12px)',
-                          boxShadow:    'inset 0 0.5px 0 rgba(255,255,255,0.2)',
-                        }}
-                      >
-                        <Clapperboard
-                          size={16}
-                          color={isInt ? '#3b82f6' : '#10b981'}
-                        />
-                      </div>
-
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-0.5">
-                          <span className="text-sm font-black" style={{ color: '#ffffff' }}>
-                            Cena {scene.id}
-                          </span>
-                          <LiquidBadge variant={isInt ? 'blue' : 'emerald'} size="sm">
-                            {scene.type}
-                          </LiquidBadge>
-                          <LiquidBadge variant="default" size="sm">
-                            {scene.time}
-                          </LiquidBadge>
-                        </div>
-                        <p className="text-xs truncate" style={{ color: 'rgba(255,255,255,0.55)' }}>
-                          {scene.heading}
-                        </p>
-                      </div>
-
-                      <div className="flex items-center gap-2 flex-shrink-0">
-                        <span className="text-xs font-bold" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                          {scene.pages}p
-                        </span>
-                        <LiquidBadge variant={st.variant} size="md" pulse={scene.status === 'rolling'}>
-                          {st.label}
-                        </LiquidBadge>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-
-            </div>
-          </motion.div>
-
-          {/* WIDGET: Meteorologia */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
-            className="relative overflow-hidden"
-            style={glassCard()}
-          >
-            <div className="absolute inset-0 pointer-events-none" style={lensingOverlay()} />
-            <div className="relative z-10 p-6">
-
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#3b82f6', boxShadow: '0 0 8px #3b82f6' }} />
-                <span className="text-sm font-black" style={{ color: '#ffffff' }}>METEOROLOGIA</span>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                {/* Main weather card (Section 3 — AZUL) */}
-                <div
-                  className="p-4 col-span-2 md:col-span-1"
-                  style={nestedCard('#3b82f6')}
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <div>
-                      <div className="text-2xl font-black" style={{ color: '#ffffff' }}>
-                        {MOCK_WEATHER.temp}°C
-                      </div>
-                      <div className="text-xs font-bold" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                        Sensação {MOCK_WEATHER.feels}°C
-                      </div>
-                    </div>
-                    <div
-                      className="w-10 h-10 flex items-center justify-center"
-                      style={{
-                        borderRadius: 12,
-                        background: 'rgba(59,130,246,0.15)',
-                        border: '0.5px solid rgba(59,130,246,0.3)',
-                        backdropFilter: 'blur(12px)',
-                        boxShadow: 'inset 0 0.5px 0 rgba(255,255,255,0.2)',
-                      }}
-                    >
-                      <CloudRain size={18} color="#3b82f6" />
-                    </div>
-                  </div>
-                  <p className="text-xs font-bold" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                    {MOCK_WEATHER.condition}
-                  </p>
-                  <div className="flex gap-3 mt-3">
-                    <span className="text-[10px] font-black" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                      VENTO {MOCK_WEATHER.wind}km/h
-                    </span>
-                    <span className="text-[10px] font-black" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                      CHUVA {MOCK_WEATHER.rain}%
-                    </span>
-                    <span className="text-[10px] font-black" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                      UV {MOCK_WEATHER.uv}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Sunrise/sunset (Section 3 — VERDE) */}
-                <div className="p-4" style={nestedCard('#10b981', 'subtle')}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <Sun size={14} color="#fbbf24" />
-                    <span className="text-[10px] font-black uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                      LUZ NATURAL
-                    </span>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <div className="flex justify-between">
-                      <span className="text-xs font-bold" style={{ color: 'rgba(255,255,255,0.6)' }}>Nascer</span>
-                      <span className="text-xs font-black" style={{ color: 'rgba(255,255,255,0.8)' }}>{MOCK_WEATHER.sunrise}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-xs font-bold" style={{ color: 'rgba(255,255,255,0.6)' }}>Pôr</span>
-                      <span className="text-xs font-black" style={{ color: 'rgba(255,255,255,0.8)' }}>{MOCK_WEATHER.sunset}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </motion.div>
-
-        </div>
-
-        {/* ── Col 3: Sidebar widgets ───────────────────────── */}
-        <div className="flex flex-col gap-6">
-
-          {/* WIDGET: Avisos */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.25 }}
-            className="relative overflow-hidden"
-            style={glassCard()}
-          >
-            <div className="absolute inset-0 pointer-events-none" style={lensingOverlay()} />
-            <div className="relative z-10 p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <span
-                    className="w-1.5 h-1.5 rounded-full animate-pulse"
-                    style={{ background: '#ef4444', boxShadow: '0 0 8px #ef4444' }}
-                  />
-                  <span className="text-sm font-black" style={{ color: '#ffffff' }}>AVISOS</span>
-                </div>
-                <LiquidBadge variant="error" size="sm">{MOCK_WARNINGS.length}</LiquidBadge>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                {MOCK_WARNINGS.map((w, i) => {
-                  const isCrit = w.severity === 'critical';
-                  return (
-                    <motion.div
-                      key={w.id}
-                      initial={{ opacity: 0, x: 8 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.4 + i * 0.07 }}
-                      className="p-3 cursor-pointer hover:scale-[1.02] transition-transform"
-                      style={{
-                        background: isCrit ? 'rgba(239,68,68,0.1)' : 'rgba(245,158,11,0.1)',
-                        borderRadius: 14,
-                        border: `1px solid ${isCrit ? 'rgba(239,68,68,0.3)' : 'rgba(245,158,11,0.3)'}`,
-                        boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
-                      }}
-                    >
-                      <div className="flex items-start gap-2">
-                        <AlertTriangle
-                          size={13}
-                          className="flex-shrink-0 mt-0.5"
-                          color={isCrit ? '#ef4444' : '#f59e0b'}
-                        />
-                        <div className="flex-1 min-w-0">
-                          <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.9)' }}>
-                            {w.text}
-                          </p>
-                          <span className="text-[10px] font-bold mt-1" style={{ color: 'rgba(255,255,255,0.4)' }}>
-                            {w.time}
-                          </span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
+                {currentTime}
               </div>
             </div>
-          </motion.div>
 
-          {/* WIDGET: Departamentos (department pills, Section 10) */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.35 }}
-            className="relative overflow-hidden"
-            style={glassCard()}
-          >
-            <div className="absolute inset-0 pointer-events-none" style={lensingOverlay()} />
-            <div className="relative z-10 p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#a855f7', boxShadow: '0 0 8px #a855f7' }} />
-                <span className="text-sm font-black" style={{ color: '#ffffff' }}>EQUIPA DE HOJE</span>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                {MOCK_TEAM.map((dept, i) => (
-                  <motion.div
-                    key={dept.group}
-                    initial={{ opacity: 0, x: 8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + i * 0.06 }}
-                    className="flex items-center justify-between p-2.5 cursor-pointer hover:scale-[1.02] transition-transform"
-                    style={{
-                      background:    `${dept.color}15`,
-                      backdropFilter:'blur(16px) saturate(120%)',
-                      WebkitBackdropFilter: 'blur(16px) saturate(120%)',
-                      border:        `0.5px solid ${dept.color}40`,
-                      borderRadius:  9999,
-                      boxShadow:     `0 4px 12px ${dept.color}30, inset 0 0.5px 0.5px rgba(255,255,255,0.15)`,
-                    }}
-                  >
-                    <span className="text-xs font-bold px-2" style={{ color: 'rgba(255,255,255,0.9)' }}>
-                      {dept.group}
-                    </span>
-                    <span
-                      style={{
-                        background: dept.color,
-                        color: '#fff',
-                        fontSize: 9,
-                        fontWeight: 900,
-                        padding: '2px 8px',
-                        borderRadius: 9999,
-                        minWidth: 24,
-                        textAlign: 'center',
-                        boxShadow: `0 0 8px ${dept.color}60`,
-                      }}
-                    >
-                      {dept.count}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* WIDGET: Acção Rápida — Folha de Serviço (Section 6) */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.45 }}
-            className="relative overflow-hidden cursor-pointer active:scale-95 transition-transform"
-            style={{
-              ...glassCard({ intensity: 'medium', radius: 'md' }),
-              background: 'rgba(59,130,246,0.13)',
-              border:     '0.5px solid rgba(59,130,246,0.40)',
-              boxShadow:  '0 0 24px rgba(59,130,246,0.2), inset 0 0.5px 0.5px rgba(255,255,255,0.2)',
-              borderRadius: 16,
-              padding: 0,
-            }}
-          >
-            <div className="absolute inset-0 pointer-events-none" style={lensingOverlay()} />
-            <div className="relative z-10 p-5 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div
-                  className="w-10 h-10 flex items-center justify-center flex-shrink-0"
-                  style={{
-                    borderRadius: 12,
-                    background: 'rgba(59,130,246,0.15)',
-                    border: '0.5px solid rgba(59,130,246,0.3)',
-                    backdropFilter: 'blur(12px)',
-                    boxShadow: 'inset 0 0.5px 0 rgba(255,255,255,0.2)',
-                  }}
-                >
-                  <FileText size={18} color="#3b82f6" />
-                </div>
-                <div>
-                  <div className="text-sm font-black" style={{ color: '#ffffff' }}>Folha de Serviço</div>
-                  <div className="text-[10px] font-bold" style={{ color: 'rgba(255,255,255,0.6)' }}>Dia 3 · {MOCK_TODAY.date}</div>
-                </div>
-              </div>
-              <ArrowRight size={16} color="rgba(255,255,255,0.5)" />
-            </div>
-          </motion.div>
-
-          {/* WIDGET: Live Board CTA (Section 12 — glow button) */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.5 }}
-            style={{ position: 'relative' }}
-          >
-            {/* Outer glow */}
-            <div
-              style={{
-                position: 'absolute', inset: -4,
-                borderRadius: 22,
-                background: '#10b981',
-                filter: 'blur(16px)',
-                opacity: 0.4,
-                pointerEvents: 'none',
-              }}
-            />
+            {/* SERVICE SHEET BUTTON - NOVO! */}
             <button
-              className="w-full active:scale-95 transition-transform"
+              onClick={() => setServiceSheetOpen(true)}
+              className="w-full rounded-[16px] p-4 transition-transform active:scale-95"
               style={{
-                position: 'relative',
-                borderRadius: 18,
-                padding: '16px 24px',
-                background: 'linear-gradient(135deg, #10b981, #10b981dd)',
-                boxShadow: '0 8px 24px rgba(16,185,129,0.7), 0 2px 8px rgba(16,185,129,0.4), inset 0 -3px 12px rgba(0,0,0,0.2), inset 0 1px 2px rgba(255,255,255,0.5)',
-                border: 'none',
-                color: '#ffffff',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 10,
-                fontSize: 14,
-                fontWeight: 700,
+                background: 'rgba(59, 130, 246, 0.13)',
+                backdropFilter: 'blur(20px) saturate(120%)',
+                WebkitBackdropFilter: 'blur(20px) saturate(120%)',
+                border: '0.5px solid rgba(59, 130, 246, 0.40)',
+                boxShadow: '0 0 24px rgba(59, 130, 246, 0.2), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.2)',
               }}
             >
-              {/* Inner glow overlay */}
-              <span
-                style={{
-                  position: 'absolute', inset: 0,
-                  borderRadius: 'inherit',
-                  background: 'radial-gradient(ellipse 100% 80% at 50% 20%, rgba(255,255,255,0.5) 0%, transparent 60%)',
-                  mixBlendMode: 'overlay',
-                  pointerEvents: 'none',
-                }}
-              />
-              <Radio size={18} />
-              <span style={{ position: 'relative' }}>Abrir Live Board</span>
+              <div className="flex items-center justify-center gap-3">
+                <Calendar size={20} style={{ color: '#ffffff' }} />
+                <span className="text-base font-black" style={{ color: '#ffffff' }}>
+                  📋 FOLHA DE SERVIÇO DO DIA
+                </span>
+              </div>
             </button>
-          </motion.div>
 
+            {/* Info Grid - Meteorologia, Próxima Chamada, Sol */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {/* Meteorologia */}
+              <div 
+                onClick={() => setWeatherWidgetOpen(true)}
+                className="rounded-[16px] p-4 relative overflow-hidden cursor-pointer transition-transform active:scale-95"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.1))',
+                  border: '1px solid rgba(59, 130, 246, 0.3)',
+                }}
+              >
+                <div className="flex items-start gap-3 mb-3">
+                  <div 
+                    className="w-10 h-10 rounded-[12px] flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: 'rgba(59, 130, 246, 0.15)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: '0.5px solid rgba(59, 130, 246, 0.30)',
+                      boxShadow: 'inset 0 0.5px 0 rgba(255, 255, 255, 0.2)',
+                    }}
+                  >
+                    <Sun className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-[10px] font-black uppercase tracking-wider mb-1" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+                      Meteorologia
+                    </div>
+                    <div className="text-2xl font-black mb-0.5" style={{ color: '#ffffff' }}>
+                      18°C
+                    </div>
+                    <div className="text-xs font-bold" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                      Parcialmente nublado
+                    </div>
+                  </div>
+                </div>
+                {/* Sunrise/Sunset */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    <Sunrise size={14} style={{ color: '#fbbf24' }} />
+                    <span className="text-xs font-bold" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>07:24</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Sunset size={14} style={{ color: '#f97316' }} />
+                    <span className="text-xs font-bold" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>18:42</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Próxima Chamada */}
+              <div 
+                onClick={() => setNextCallWidgetOpen(true)}
+                className="rounded-[16px] p-4 relative overflow-hidden cursor-pointer transition-transform active:scale-95"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.1))',
+                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                }}
+              >
+                <div className="flex items-start gap-3">
+                  <div 
+                    className="w-10 h-10 rounded-[12px] flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: 'rgba(16, 185, 129, 0.15)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: '0.5px solid rgba(16, 185, 129, 0.30)',
+                      boxShadow: 'inset 0 0.5px 0 rgba(255, 255, 255, 0.2)',
+                    }}
+                  >
+                    <Clock className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-[10px] font-black uppercase tracking-wider mb-1" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+                      Próxima Chamada
+                    </div>
+                    <div className="text-2xl font-black mb-0.5" style={{ color: '#ffffff' }}>
+                      14:30
+                    </div>
+                    <div className="text-xs font-bold" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                      Cena 02A • Sala Reunião
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Nascer/Pôr do Sol */}
+              {/* Próxima Localização */}
+              <div 
+                onClick={() => {
+                  setSelectedLocation({
+                    name: 'Palácio Nacional',
+                    address: 'Largo Rainha Dona Amélia',
+                    city: 'Sintra',
+                    coordinates: '38.7979° N, 9.3906° W',
+                    color: '#8b5cf6',
+                  });
+                  setRecceWidgetOpen(true);
+                }}
+                className="rounded-[16px] p-4 relative overflow-hidden cursor-pointer transition-transform active:scale-95"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(124, 58, 237, 0.1))',
+                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                }}
+              >
+                <div className="flex items-start gap-3">
+                  <div 
+                    className="w-10 h-10 rounded-[12px] flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: 'rgba(139, 92, 246, 0.15)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: '0.5px solid rgba(139, 92, 246, 0.30)',
+                      boxShadow: 'inset 0 0.5px 0 rgba(255, 255, 255, 0.2)',
+                    }}
+                  >
+                    <MapPin className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-[10px] font-black uppercase tracking-wider mb-1" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+                      Próxima Localização
+                    </div>
+                    <div className="text-lg font-black mb-0.5" style={{ color: '#ffffff' }}>
+                      Palácio Nacional
+                    </div>
+                    <div className="text-xs font-bold mb-2" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                      Sintra • 35 min
+                    </div>
+                    <div className="text-[10px] font-bold" style={{ color: 'rgba(139, 92, 246, 0.9)' }}>
+                      📍 Abrir no Maps
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </LiquidWidget>
+
+        {/* NEW: DEPARTMENT PILLS BAR + STATUS (images 41-42, 69-78) */}
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="relative overflow-hidden rounded-[24px]"
+          style={{
+            background: 'rgba(78, 80, 88, 0.18)',
+            backdropFilter: 'blur(20px) saturate(120%)',
+            WebkitBackdropFilter: 'blur(20px) saturate(120%)',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            boxShadow: '0 4px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.12)',
+          }}
+        >
+          <div className="p-4">
+            <div className="flex items-center justify-between gap-3 mb-0">
+              <div className="flex items-center gap-2 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
+                <DepartmentPill icon={Camera} label="Câmera" color="#10b981" count={8} onClick={() => setCameraWidgetOpen(true)} />
+                <DepartmentPill icon={Film} label="Direção" color="#3b82f6" count={3} onClick={() => setDirectionWidgetOpen(true)} />
+                <DepartmentPill icon={Users} label="Produção" color="#ec4899" count={12} onClick={() => setCrewWidgetOpen(true)} />
+                <DepartmentPill icon={Shirt} label="Figurinos" color="#f97316" count={5} onClick={() => setWardrobeWidgetOpen(true)} />
+                <DepartmentPill icon={Zap} label="Arte" color="#f59e0b" count={5} onClick={() => setArtWidgetOpen(true)} />
+              </div>
+              <StatusBadge status="shooting" />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* PRÓXIMAS CENAS - NEW MAGICAL CARDS WITH HOVER */}
+        <div className="space-y-3">
+          {upcomingScenes.map((scene, sceneIdx) => (
+            <SceneCardWithHover
+              key={scene.id}
+              id={scene.id}
+              number={scene.number}
+              title={scene.title}
+              description={scene.description}
+              location={scene.location}
+              timeOfDay={scene.timeOfDay}
+              period={scene.period}
+              thumbnail={scene.thumbnail}
+              color={scene.color}
+              items={scene.items}
+              script={scene.script}
+              continuityNotes={scene.continuityNotes}
+              characters={scene.characters}
+              wardrobe={scene.wardrobe}
+              isNext={sceneIdx === 0}
+            />
+          ))}
+        </div>
+
+            {/* CHART - Bar Chart */}
+            <LiquidChartContainer title="Carga por Dia (Horas)">
+              <ResponsiveContainer width="100%" height={200}>
+                <BarChart data={mockDailyLoad} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
+                  <defs>
+                    <linearGradient id={`${chartId}-green`} x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#10b981" stopOpacity={0.9}/>
+                      <stop offset="100%" stopColor="#10b981" stopOpacity={0.4}/>
+                    </linearGradient>
+                    <linearGradient id={`${chartId}-yellow`} x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#f59e0b" stopOpacity={0.9}/>
+                      <stop offset="100%" stopColor="#f59e0b" stopOpacity={0.4}/>
+                    </linearGradient>
+                    <linearGradient id={`${chartId}-red`} x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#ef4444" stopOpacity={0.9}/>
+                      <stop offset="100%" stopColor="#ef4444" stopOpacity={0.4}/>
+                    </linearGradient>
+                  </defs>
+                  <XAxis 
+                    dataKey="day" 
+                    tick={{ fill: 'rgba(255, 255, 255, 0.5)', fontSize: 10, fontWeight: 700 }}
+                    axisLine={false}
+                    tickLine={false}
+                  />
+                  <YAxis 
+                    tick={{ fill: 'rgba(255, 255, 255, 0.5)', fontSize: 10, fontWeight: 700 }}
+                    axisLine={false}
+                    tickLine={false}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      background: 'rgba(20, 25, 35, 0.9)',
+                      backdropFilter: 'blur(20px) saturate(180%)',
+                      border: '1px solid rgba(255, 255, 255, 0.15)',
+                      borderRadius: '12px',
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                    }}
+                    formatter={(value: number) => [`${value}h`, 'Horas']}
+                  />
+                  <Bar 
+                    dataKey="hours" 
+                    radius={[10, 10, 0, 0]}
+                    shape={(props: any) => {
+                      const { x, y, width, height, payload } = props;
+                      const hours = payload?.hours ?? 0;
+                      let gradientId = `${chartId}-green`;
+                      if (hours > 10) gradientId = `${chartId}-red`;
+                      else if (hours >= 8) gradientId = `${chartId}-yellow`;
+                      return (
+                        <rect
+                          x={x}
+                          y={y}
+                          width={width}
+                          height={height}
+                          rx={10}
+                          ry={10}
+                          fill={`url(#${gradientId})`}
+                        />
+                      );
+                    }}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </LiquidChartContainer>
+
+            {/* ELENCO - Liquid list */}
+            <LiquidWidget>
+              <div className="mb-4">
+                <h3 className="text-base font-black flex items-center gap-2" style={{ color: '#ffffff' }}>
+                  <div 
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ 
+                      background: '#8b5cf6',
+                      boxShadow: '0 0 8px #8b5cf6',
+                    }}
+                  />
+                  Elenco Principal
+                </h3>
+                <p className="text-xs font-bold mt-1" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                  {Object.keys(mockCharacters).length} personagens
+                </p>
+              </div>
+              <div className="space-y-2">
+                {Object.values(mockCharacters).slice(0, 4).map((char, idx) => (
+                  <div
+                    key={char.id}
+                    onClick={() => {
+                      setSelectedCharacter(char);
+                      setCharacterWidgetOpen(true);
+                    }}
+                    className="rounded-[16px] p-3 flex items-center justify-between transition-all cursor-pointer active:scale-95"
+                    style={{ 
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      backdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
+                      boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.15)',
+                    }}
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <div 
+                        className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-black"
+                        style={{ 
+                          background: 'rgba(139, 92, 246, 0.18)',
+                          backdropFilter: 'blur(12px)',
+                          WebkitBackdropFilter: 'blur(12px)',
+                          color: '#a78bfa',
+                          border: '0.5px solid rgba(139, 92, 246, 0.35)',
+                          boxShadow: 'inset 0 0.5px 0 rgba(255, 255, 255, 0.2)',
+                        }}
+                      >
+                        {char.name.charAt(0)}
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-sm font-black mb-0.5" style={{ color: '#ffffff' }}>
+                          {char.name}
+                        </div>
+                        <p className="text-xs font-bold" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+                          {char.actor}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="text-sm font-black" style={{ color: '#a78bfa' }}>
+                      {char.scenes}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </LiquidWidget>
+          </div>
+
+          {/* RIGHT COLUMN - Sidebar */}
+          <div className="space-y-3">
+            
+            {/* PRÓXIMAS CENAS */}
+            <NextScenesWidget />
+            
+            {/* PRÓXIMA LOCATION FÍSICA */}
+            <LiquidWidget>
+              <div className="flex items-center gap-2 mb-4">
+                <div 
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ 
+                    background: '#10b981',
+                    boxShadow: '0 0 8px #10b981',
+                  }}
+                />
+                <h3 className="text-sm font-black" style={{ color: '#ffffff' }}>
+                  Próxima Location
+                </h3>
+              </div>
+              
+              {/* Location card */}
+              <div
+                className="rounded-[18px] p-4 mb-3"
+                style={{ 
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.15)',
+                }}
+              >
+                <div className="flex items-start gap-3">
+                  <div 
+                    className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ 
+                      background: 'rgba(16, 185, 129, 0.2)',
+                      border: '1px solid rgba(16, 185, 129, 0.4)',
+                    }}
+                  >
+                    <MapPin size={18} style={{ color: '#10b981' }} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-base font-black mb-1" style={{ color: '#ffffff' }}>
+                      Quinta do Vale
+                    </div>
+                    <p className="text-xs font-bold mb-2" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                      Exterior / Dia
+                    </p>
+                    <div className="flex items-center gap-2 text-xs font-bold" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+                      <Clock size={12} />
+                      <span>14:30 - 18:00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Weather/Info */}
+              <div className="flex items-center justify-between text-xs font-bold">
+                <div className="flex items-center gap-2" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                  <Sun size={14} style={{ color: '#f59e0b' }} />
+                  <span>23°C · Sol</span>
+                </div>
+                <div className="flex items-center gap-1" style={{ color: '#10b981' }}>
+                  <CheckCircle2 size={12} />
+                  <span>Confirmado</span>
+                </div>
+              </div>
+            </LiquidWidget>
+
+            {/* REFEIÇÕES & EMENTA - Agregado */}
+            <LiquidWidget>
+              <div className="flex items-center gap-2 mb-4">
+                <div 
+                  className="w-1.5 h-1.5 rounded-full animate-pulse"
+                  style={{ 
+                    background: '#f59e0b',
+                    boxShadow: '0 0 8px #f59e0b',
+                  }}
+                />
+                <h3 className="text-sm font-black" style={{ color: '#ffffff' }}>
+                  Refeições & A Seguir
+                </h3>
+              </div>
+              
+              <div className="space-y-3">
+                {/* Almoço Clickable */}
+                <button
+                  onClick={() => {
+                    window.open('https://maps.google.com/?q=Restaurante+O+Páteo,+Lisboa', '_blank');
+                  }}
+                  className="rounded-[16px] p-4 w-full text-left transition-all active:scale-[0.97] cursor-pointer"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.15), rgba(249, 115, 22, 0.1))',
+                    border: '1px solid rgba(251, 146, 60, 0.3)',
+                  }}
+                >
+                  <div className="flex items-start gap-3">
+                    <div
+                      className="w-10 h-10 rounded-[12px] flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background: 'rgba(251, 146, 60, 0.15)',
+                        backdropFilter: 'blur(12px)',
+                        WebkitBackdropFilter: 'blur(12px)',
+                        border: '0.5px solid rgba(251, 146, 60, 0.30)',
+                        boxShadow: 'inset 0 0.5px 0 rgba(255, 255, 255, 0.2)',
+                      }}
+                    >
+                      <Utensils className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-black" style={{ color: '#fb923c' }}>
+                          13:00
+                        </span>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(251, 146, 60, 0.2)', color: '#fb923c' }}>
+                          EM 45 MIN
+                        </span>
+                      </div>
+                      <div className="text-sm font-black mb-1" style={{ color: '#ffffff' }}>
+                        Almoço • O Páteo
+                      </div>
+                      <div className="text-xs font-bold flex items-center gap-1" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                        <MapPin className="w-3 h-3" />
+                        Rua da Esperança, 108
+                      </div>
+                    </div>
+                    <ExternalLink className="w-4 h-4 flex-shrink-0" style={{ color: '#fb923c' }} />
+                  </div>
+                </button>
+
+                {/* Próxima Cena - sem link */}
+                <div
+                  className="rounded-[16px] p-4"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.10), rgba(5, 150, 105, 0.07))',
+                    border: '0.5px solid rgba(16, 185, 129, 0.2)',
+                  }}
+                >
+                  <div className="flex items-start gap-3">
+                    <div
+                      className="w-10 h-10 rounded-[12px] flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background: 'rgba(16, 185, 129, 0.15)',
+                        backdropFilter: 'blur(12px)',
+                        WebkitBackdropFilter: 'blur(12px)',
+                        border: '0.5px solid rgba(16, 185, 129, 0.30)',
+                        boxShadow: 'inset 0 0.5px 0 rgba(255, 255, 255, 0.2)',
+                      }}
+                    >
+                      <Film className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-black" style={{ color: '#10b981' }}>
+                          14:30
+                        </span>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(16, 185, 129, 0.2)', color: '#10b981' }}>
+                          PRÓXIMA
+                        </span>
+                      </div>
+                      <div className="text-sm font-black mb-1" style={{ color: '#ffffff' }}>
+                        Cena 02A • Sala de Reunião
+                      </div>
+                      <div className="text-xs font-bold flex items-center gap-1 mb-2" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                        <MapPin className="w-3 h-3" />
+                        Interior / Dia
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(16, 185, 129, 0.2)', color: '#10b981' }}>
+                          Confirmado
+                        </div>
+                        <div className="text-[10px] font-bold" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+                          Director • Câmara • Som
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Próximo Evento */}
+                <button
+                  onClick={() => {
+                    window.open('https://maps.google.com/?q=Rua+Augusta,+Lisboa', '_blank');
+                  }}
+                  className="rounded-[16px] p-4 w-full text-left transition-all active:scale-[0.97] cursor-pointer"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.1))',
+                    border: '1px solid rgba(59, 130, 246, 0.3)',
+                  }}
+                >
+                  <div className="flex items-start gap-3">
+                    <div 
+                      className="w-10 h-10 rounded-[12px] flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background: 'rgba(59, 130, 246, 0.15)',
+                        backdropFilter: 'blur(12px)',
+                        WebkitBackdropFilter: 'blur(12px)',
+                        border: '0.5px solid rgba(59, 130, 246, 0.30)',
+                        boxShadow: 'inset 0 0.5px 0 rgba(255, 255, 255, 0.2)',
+                      }}
+                    >
+                      <Camera className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-black" style={{ color: '#3b82f6' }}>
+                          17:00
+                        </span>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(59, 130, 246, 0.2)', color: '#3b82f6' }}>
+                          DEPOIS
+                        </span>
+                      </div>
+                      <div className="text-sm font-black mb-1" style={{ color: '#ffffff' }}>
+                        Cena 04C • Café
+                      </div>
+                      <div className="text-xs font-bold flex items-center gap-1" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                        <MapPin className="w-3 h-3" />
+                        Exterior / Noite
+                      </div>
+                    </div>
+                    <ExternalLink className="w-4 h-4 flex-shrink-0" style={{ color: '#3b82f6' }} />
+                  </div>
+                </button>
+              </div>
+            </LiquidWidget>
+            <LiquidWidget>
+              <div className="flex items-center gap-2 mb-4">
+                <div 
+                  className="w-1.5 h-1.5 rounded-full animate-pulse"
+                  style={{ 
+                    background: '#10b981',
+                    boxShadow: '0 0 12px #10b981',
+                  }}
+                />
+                <h3 className="text-sm font-black" style={{ color: '#ffffff' }}>
+                  A Seguir
+                </h3>
+              </div>
+              
+              <div className="space-y-3">
+                {/* Almoço */}
+                <button
+                  onClick={() => {
+                    window.open('https://maps.google.com/?q=Restaurante+O+Páteo,+Lisboa', '_blank');
+                  }}
+                  className="rounded-[16px] p-4 w-full text-left transition-all active:scale-[0.97] cursor-pointer relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.15), rgba(249, 115, 22, 0.1))',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(251, 146, 60, 0.3)',
+                  }}
+                >
+                  <div className="flex items-start gap-3">
+                    <div 
+                      className="w-10 h-10 rounded-[12px] flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background: 'rgba(251, 146, 60, 0.15)',
+                        backdropFilter: 'blur(12px)',
+                        WebkitBackdropFilter: 'blur(12px)',
+                        border: '0.5px solid rgba(251, 146, 60, 0.30)',
+                        boxShadow: 'inset 0 0.5px 0 rgba(255, 255, 255, 0.2)',
+                      }}
+                    >
+                      <Utensils className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-black" style={{ color: '#fb923c' }}>
+                          13:00
+                        </span>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(251, 146, 60, 0.2)', color: '#fb923c' }}>
+                          EM 45 MIN
+                        </span>
+                      </div>
+                      <div className="text-sm font-black mb-1" style={{ color: '#ffffff' }}>
+                        Almoço • O Páteo
+                      </div>
+                      <div className="text-xs font-bold flex items-center gap-1" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                        <MapPin className="w-3 h-3" />
+                        Rua da Esperança, 108
+                      </div>
+                    </div>
+                    <ExternalLink className="w-4 h-4 flex-shrink-0" style={{ color: '#fb923c' }} />
+                  </div>
+                </button>
+
+                {/* Próxima Cena - sem link */}
+                <div
+                  className="rounded-[16px] p-4"
+                  style={{ 
+                    background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.10), rgba(5, 150, 105, 0.07))',
+                    border: '0.5px solid rgba(16, 185, 129, 0.2)',
+                  }}
+                >
+                  <div className="flex items-start gap-3">
+                    <div 
+                      className="w-10 h-10 rounded-[12px] flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background: 'rgba(16, 185, 129, 0.15)',
+                        backdropFilter: 'blur(12px)',
+                        WebkitBackdropFilter: 'blur(12px)',
+                        border: '0.5px solid rgba(16, 185, 129, 0.30)',
+                        boxShadow: 'inset 0 0.5px 0 rgba(255, 255, 255, 0.2)',
+                      }}
+                    >
+                      <Film className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-black" style={{ color: '#10b981' }}>
+                          14:30
+                        </span>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(16, 185, 129, 0.2)', color: '#10b981' }}>
+                          PRÓXIMA
+                        </span>
+                      </div>
+                      <div className="text-sm font-black mb-1" style={{ color: '#ffffff' }}>
+                        Cena 02A • Sala de Reunião
+                      </div>
+                      <div className="text-xs font-bold flex items-center gap-1 mb-2" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                        <MapPin className="w-3 h-3" />
+                        Interior / Dia
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(16, 185, 129, 0.2)', color: '#10b981' }}>
+                          Confirmado
+                        </div>
+                        <div className="text-[10px] font-bold" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+                          Director • Câmara • Som
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Próximo Evento */}
+                <button
+                  onClick={() => {
+                    window.open('https://maps.google.com/?q=Rua+Augusta,+Lisboa', '_blank');
+                  }}
+                  className="rounded-[16px] p-4 w-full text-left transition-all active:scale-[0.97] cursor-pointer relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.1))',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(59, 130, 246, 0.3)',
+                  }}
+                >
+                  <div className="flex items-start gap-3">
+                    <div 
+                      className="w-10 h-10 rounded-[12px] flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background: 'rgba(59, 130, 246, 0.15)',
+                        backdropFilter: 'blur(12px)',
+                        WebkitBackdropFilter: 'blur(12px)',
+                        border: '0.5px solid rgba(59, 130, 246, 0.30)',
+                        boxShadow: 'inset 0 0.5px 0 rgba(255, 255, 255, 0.2)',
+                      }}
+                    >
+                      <Camera className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-black" style={{ color: '#3b82f6' }}>
+                          17:00
+                        </span>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(59, 130, 246, 0.2)', color: '#3b82f6' }}>
+                          DEPOIS
+                        </span>
+                      </div>
+                      <div className="text-sm font-black mb-1" style={{ color: '#ffffff' }}>
+                        Cena 04C • Café
+                      </div>
+                      <div className="text-xs font-bold flex items-center gap-1" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                        <MapPin className="w-3 h-3" />
+                        Exterior / Noite
+                      </div>
+                    </div>
+                    <ExternalLink className="w-4 h-4 flex-shrink-0" style={{ color: '#3b82f6' }} />
+                  </div>
+                </button>
+              </div>
+            </LiquidWidget>
+            
+            {/* LOCAIS */}
+            <LiquidWidget>
+              <div className="flex items-center gap-2 mb-4">
+                <div 
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ 
+                    background: '#10b981',
+                    boxShadow: '0 0 8px #10b981',
+                  }}
+                />
+                <h3 className="text-sm font-black" style={{ color: '#ffffff' }}>
+                  Locais Hoje
+                </h3>
+              </div>
+              <div className="space-y-2">
+                {Object.values(mockLocations).slice(0, 5).map((loc, idx) => (
+                  <div
+                    key={loc.id}
+                    className="rounded-[14px] p-3 flex items-center justify-between transition-all"
+                    style={{ 
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      backdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
+                    }}
+                  >
+                    <div className="flex-1 min-w-0 mr-2">
+                      <div className="text-sm font-black mb-0.5" style={{ color: '#ffffff' }}>
+                        {loc.name}
+                      </div>
+                      <p className="text-xs font-bold" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+                        {loc.scenes} cenas
+                      </p>
+                    </div>
+                    <div
+                      className="w-2.5 h-2.5 rounded-full"
+                      style={{ 
+                        background: loc.status === 'confirmed' ? '#10b981' : 
+                                    loc.status === 'pending' ? '#f59e0b' : '#ef4444',
+                        boxShadow: `0 0 12px ${
+                          loc.status === 'confirmed' ? '#10b981' : 
+                          loc.status === 'pending' ? '#f59e0b' : '#ef4444'
+                        }`,
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </LiquidWidget>
+
+            {/* PÓS-PRODUÇÃO */}
+            <LiquidWidget>
+              <div className="flex items-center gap-2 mb-4">
+                <div 
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ 
+                    background: '#8b5cf6',
+                    boxShadow: '0 0 8px #8b5cf6',
+                  }}
+                />
+                <h3 className="text-sm font-black" style={{ color: '#ffffff' }}>
+                  Pós-Produção
+                </h3>
+              </div>
+              <div className="space-y-2">
+                {[
+                  { title: 'Episódio 01', status: 'Em Edição', progress: 65, color: '#3b82f6' },
+                  { title: 'Episódio 02', status: 'Som', progress: 40, color: '#10b981' },
+                  { title: 'Episódio 03', status: 'Cor', progress: 85, color: '#f59e0b' },
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-[14px] p-3"
+                    style={{ 
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      backdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
+                    }}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="text-sm font-black" style={{ color: '#ffffff' }}>
+                        {item.title}
+                      </div>
+                      <div className="text-xs font-bold" style={{ color: item.color }}>
+                        {item.progress}%
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: 'rgba(255, 255, 255, 0.1)' }}>
+                        <div 
+                          className="h-full transition-all"
+                          style={{ 
+                            width: `${item.progress}%`,
+                            background: `linear-gradient(90deg, ${item.color}, ${item.color})`,
+                            boxShadow: `0 0 8px ${item.color}60`,
+                          }}
+                        />
+                      </div>
+                      <div className="text-[10px] font-bold" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+                        {item.status}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </LiquidWidget>
+
+            {/* QUICK ACTIONS */}
+            <LiquidWidget>
+              <h3 className="text-sm font-black mb-3 flex items-center gap-2" style={{ color: '#ffffff' }}>
+                <Zap size={14} style={{ color: '#3b82f6' }} />
+                Acções Rápidas
+              </h3>
+              <div className="space-y-2">
+                {[
+                  { icon: Camera, label: 'Call Sheet', color: '#10b981', onClick: undefined },
+                  { icon: Video, label: 'Dailies', color: '#3b82f6', onClick: undefined },
+                  { icon: Film, label: 'Ver Cena', color: '#f59e0b', onClick: () => setSceneModalOpen(true) },
+                ].map((action, idx) => (
+                  <button
+                    key={idx}
+                    onClick={action.onClick}
+                    className="w-full rounded-[14px] p-3 flex items-center gap-3 transition-all"
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      backdropFilter: 'blur(10px)',
+                      border: `1px solid ${action.color}30`,
+                      boxShadow: `inset 0 1px 0 rgba(255, 255, 255, 0.15)`,
+                    }}
+                  >
+                    <div 
+                      className="w-8 h-8 rounded-full flex items-center justify-center"
+                      style={{ 
+                        background: `${action.color}25`,
+                        boxShadow: `0 0 8px ${action.color}30`,
+                      }}
+                    >
+                      <action.icon size={14} style={{ color: action.color }} />
+                    </div>
+                    <span className="text-xs font-bold flex-1 text-left" style={{ color: '#ffffff' }}>
+                      {action.label}
+                    </span>
+                    <ArrowUpRight size={14} style={{ color: action.color }} />
+                  </button>
+                ))}
+              </div>
+            </LiquidWidget>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* SCENE DETAIL MODAL */}
+      <SceneDetailModal 
+        isOpen={sceneModalOpen}
+        onClose={() => setSceneModalOpen(false)}
+        scene={sceneDetailData}
+      />
+
+      {/* WEATHER WIDGET - Overlay Modal */}
+      <WeatherWidget 
+        isOpen={weatherWidgetOpen}
+        onClose={() => setWeatherWidgetOpen(false)}
+      />
+
+      {/* CHARACTER DETAIL WIDGET - Overlay Modal */}
+      <CharacterDetailWidget 
+        isOpen={characterWidgetOpen}
+        onClose={() => {
+          setCharacterWidgetOpen(false);
+          setSelectedCharacter(null);
+        }}
+        character={selectedCharacter ? {
+          name: selectedCharacter.name,
+          actor: selectedCharacter.actor,
+          role: 'Protagonista',
+          scenes: selectedCharacter.scenes,
+          costume: 'Vestido azul + casaco',
+          notes: 'Maquilhagem pesada. Cabelo apanhado. Anel de casamento visível.',
+        } : undefined}
+      />
+
+      {/* WARDROBE WIDGET - Overlay Modal */}
+      <WardrobeWidget 
+        isOpen={wardrobeWidgetOpen}
+        onClose={() => setWardrobeWidgetOpen(false)}
+      />
+
+      {/* CREW WIDGET - Overlay Modal */}
+      <CrewWidget 
+        isOpen={crewWidgetOpen}
+        onClose={() => setCrewWidgetOpen(false)}
+      />
+
+      {/* LOCATION WIDGET - Overlay Modal */}
+      <LocationWidget 
+        isOpen={locationWidgetOpen}
+        onClose={() => setLocationWidgetOpen(false)}
+      />
+
+      {/* NEXT CALL WIDGET - Overlay Modal */}
+      <NextCallWidget 
+        isOpen={nextCallWidgetOpen}
+        onClose={() => setNextCallWidgetOpen(false)}
+      />
+
+      {/* CAMERA WIDGET - Overlay Modal */}
+      <CameraWidget 
+        isOpen={cameraWidgetOpen}
+        onClose={() => setCameraWidgetOpen(false)}
+      />
+
+      {/* DIRECTION WIDGET - Overlay Modal */}
+      <DirectionWidget 
+        isOpen={directionWidgetOpen}
+        onClose={() => setDirectionWidgetOpen(false)}
+      />
+
+      {/* ART WIDGET - Overlay Modal */}
+      <ArtWidget 
+        isOpen={artWidgetOpen}
+        onClose={() => setArtWidgetOpen(false)}
+      />
+
+      {/* SCENE DETAIL WIDGET - Overlay Modal */}
+      <SceneDetailWidget 
+        isOpen={sceneDetailWidgetOpen}
+        onClose={() => setSceneDetailWidgetOpen(false)}
+        scene={selectedScene}
+      />
+
+      {/* RECCE WIDGET - Overlay Modal */}
+      <RecceWidget 
+        isOpen={recceWidgetOpen}
+        onClose={() => setRecceWidgetOpen(false)}
+        location={selectedLocation}
+      />
+
+      {/* SERVICE SHEET WIDGET - Overlay Modal */}
+      <ServiceSheetWidget 
+        isOpen={serviceSheetOpen}
+        onClose={() => setServiceSheetOpen(false)}
+      />
+
+      {/* FLOATING MEDIA BUTTON - Bottom right */}
+      <FloatingMediaButton />
+    </>
   );
 }
