@@ -96,7 +96,7 @@ export function SceneCardWithHover({
 
   const cardStyles = glassCard({ intensity: 'standard', variant: 'default', radius: 'xl' });
   const lensingStyles = lensingOverlay({ radius: 'xl' });
-  const innerCardStyles = nestedCard({ parentRadius: 'xl', intensity: 'subtle' });
+  const innerCardStyles = nestedCard();
 
   // Build overlay sections for the hover detail panel
   const overlaySections: LiquidOverlaySection[] = [];

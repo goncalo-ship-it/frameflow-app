@@ -61,9 +61,11 @@ interface MenuItem {
 
 interface SidebarNewProps {
   onClose?: () => void;
+  expanded?: boolean;
+  onToggleExpand?: () => void;
 }
 
-export function SidebarNew({ onClose }: SidebarNewProps) {
+export function SidebarNew({ onClose, expanded, onToggleExpand }: SidebarNewProps) {
   const { navigate, ui, auth } = useStore(useShallow((s: any) => ({
     navigate: s.navigate,
     ui: s.ui,
@@ -76,14 +78,13 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
 
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
-  const [isExpanded, setIsExpanded] = useState(() => {
-    const saved = localStorage.getItem('sidebar-expanded');
-    return saved ? JSON.parse(saved) : true;
-  });
-
-  useEffect(() => {
-    localStorage.setItem('sidebar-expanded', JSON.stringify(isExpanded));
-  }, [isExpanded]);
+  const [localExpanded, setLocalExpanded] = useState(true);
+  const isExpanded = expanded !== undefined ? expanded : localExpanded;
+  const setIsExpanded = onToggleExpand
+    ? () => onToggleExpand()
+    : (v: boolean | ((prev: boolean) => boolean)) => {
+        setLocalExpanded(typeof v === 'function' ? v(localExpanded) : v);
+      };
 
   const departmentTabs = [
     { label: 'Hoje',        moduleId: '',           icon: Calendar },
@@ -260,10 +261,10 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
 
   return (
     <motion.div
-      className="h-screen flex"
-      animate={{ width: isExpanded ? 260 : 56 }}
+      className="h-screen flex overflow-hidden"
+      animate={{ width: onClose ? 260 : (isExpanded ? 260 : 56) }}
       transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-      style={{ background: 'transparent', padding: isExpanded ? '12px' : '0', flexShrink: 0 }}
+      style={{ background: 'transparent', padding: (onClose || isExpanded) ? '12px' : '0', flexShrink: 0 }}
     >
       {/* ── Liquid Glass panel ── */}
       <div
@@ -339,20 +340,53 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
               >
                 {isExpanded ? (
                   <div className="flex items-center gap-3 flex-1">
-                    <FrameFlowLogo size={120} variant="icon" />
+                    {/* F orb */}
+                    <div style={{
+                      width: 28, height: 28, borderRadius: 8, flexShrink: 0,
+                      background: 'linear-gradient(135deg, #a855f7, #6366f1, #3b82f6, #10b981)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: 15, fontWeight: 900, color: '#fff', letterSpacing: '-0.5px',
+                    }}>F</div>
+                    {/* FrameFlow gradient text */}
+                    <span style={{
+                      fontSize: 16, fontWeight: 800, letterSpacing: '-0.4px',
+                      background: 'linear-gradient(90deg, #f472b6, #a855f7, #6366f1, #10b981)',
+                      WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                    }}>FrameFlow</span>
                     <PanelLeftClose className="w-4 h-4 ml-auto" style={{ color: 'var(--fb-text-tertiary, rgba(255,255,255,0.4))' }} />
                   </div>
                 ) : (
-                  <FrameFlowLogo size={24} variant="icon" />
+                  <div style={{
+                    width: 28, height: 28, borderRadius: 8,
+                    background: 'linear-gradient(135deg, #a855f7, #6366f1, #3b82f6, #10b981)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: 15, fontWeight: 900, color: '#fff',
+                  }}>F</div>
                 )}
               </button>
             )}
             {onClose && (
               <div className="h-14 flex items-center justify-between px-4">
-                <FrameFlowLogo size={120} variant="icon" />
+                <div className="flex items-center gap-2.5">
+                  {/* Conic gradient ORB — matching reference */}
+                  <div style={{
+                    width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
+                    background: 'conic-gradient(from 180deg, #ec4899, #a855f7, #3b82f6, #10b981, #f59e0b, #ef4444, #ec4899)',
+                    boxShadow: '0 2px 10px rgba(168,85,247,0.35)',
+                    position: 'relative', overflow: 'hidden',
+                  }}>
+                    <div style={{
+                      position: 'absolute', inset: 0, borderRadius: '50%',
+                      background: 'radial-gradient(circle at 35% 30%, rgba(255,255,255,0.35) 0%, transparent 60%)',
+                    }} />
+                  </div>
+                  <div style={{ fontSize: 15, fontWeight: 900, letterSpacing: '-0.02em', color: 'var(--fb-text-primary, #f5f5f7)', lineHeight: 1.15 }}>
+                    Frame<br />Flow
+                  </div>
+                </div>
                 <button
                   onClick={onClose}
-                  className="w-8 h-8 flex items-center justify-center rounded-lg"
+                  className="w-8 h-8 flex items-center justify-center rounded-[10px]"
                   style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', border: 'none', cursor: 'pointer' }}
                 >
                   <X className="w-4 h-4" />
@@ -381,7 +415,6 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
                       onClick={() => {
                         if (item.submenu) {
                           setExpandedItem(expandedItem === item.label ? null : item.label);
-                          handleNav(item.moduleId);
                         } else {
                           handleNav(item.moduleId);
                         }

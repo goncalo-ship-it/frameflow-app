@@ -15,6 +15,15 @@ import { forwardRef, HTMLAttributes, useState, useEffect, useRef, useCallback } 
 import type { CSSProperties } from 'react';
 import { clsx } from 'clsx';
 import { Menu, Bell, Clapperboard, AlertTriangle, Info, CheckCircle2, X, Clock } from 'lucide-react';
+
+function useClock() {
+  const [time, setTime] = useState(() => new Date().toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' }));
+  useEffect(() => {
+    const t = setInterval(() => setTime(new Date().toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })), 30000);
+    return () => clearInterval(t);
+  }, []);
+  return time;
+}
 import { motion, AnimatePresence } from 'motion/react';
 // @ts-expect-error JSX module
 import { useStore } from '../../core/store';
@@ -402,6 +411,7 @@ export const Topbar = forwardRef<HTMLDivElement, TopbarProps>(
     ));
     const healthScore = 35; // static until health module exists
 
+    const currentTime = useClock();
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [isNotifOpen, setIsNotifOpen] = useState(false);
     const [notifs, setNotifs] = useState<Notif[]>(MOCK_NOTIFS);
@@ -449,10 +459,6 @@ export const Topbar = forwardRef<HTMLDivElement, TopbarProps>(
       emoji: '🎬',
     };
 
-    /* ── Alert pill counts (static mock, replace with real state) ── */
-    const criticalCount = 1;
-    const warningCount  = 2;
-
     return (
       <>
         <div
@@ -469,7 +475,7 @@ export const Topbar = forwardRef<HTMLDivElement, TopbarProps>(
             <motion.button
               whileTap={{ scale: 0.92 }}
               onClick={onMenuClick}
-              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-[12px] transition-colors flex-shrink-0"
+              className="w-10 h-10 flex items-center justify-center rounded-[12px] transition-colors flex-shrink-0"
               style={{ ...iconBtnGlass, background: 'rgba(255,255,255,0.07)', border: 'none', cursor: 'pointer' }}
             >
               <Menu className="w-[18px] h-[18px]" style={{ color: 'rgba(255,255,255,0.85)' }} />
@@ -506,57 +512,28 @@ export const Topbar = forwardRef<HTMLDivElement, TopbarProps>(
               {/* Shoot day */}
               <div className="flex items-center gap-1 pr-3">
                 <Clock className="w-3 h-3 flex-shrink-0" style={{ color: 'rgba(255,255,255,0.45)' }} />
-                <span className="text-[12px] font-medium" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                  Dia
-                </span>
-                <span className="text-[12px] font-bold" style={{ color: 'rgba(255,255,255,0.9)' }}>
-                  {shootDay}
-                </span>
-                <span className="text-[11px]" style={{ color: 'rgba(255,255,255,0.35)' }}>
-                  /{totalDays}
-                </span>
+                <span className="text-[12px] font-medium" style={{ color: 'rgba(255,255,255,0.6)' }}>Dia</span>
+                <span className="text-[12px] font-bold" style={{ color: 'rgba(255,255,255,0.9)' }}>{shootDay}</span>
+                <span className="text-[11px]" style={{ color: 'rgba(255,255,255,0.35)' }}>/{totalDays}</span>
               </div>
             </div>
 
-            {/* Health score pill (md+) */}
+            {/* Health pill */}
             <div
-              className="hidden md:flex items-center px-3 py-2 rounded-full flex-shrink-0"
+              className="flex items-center px-3 h-9 rounded-full gap-1.5 flex-shrink-0"
               style={pillGlass}
             >
-              <HealthDot score={healthScore} />
+              <div
+                className="w-2 h-2 rounded-full"
+                style={{
+                  background: healthScore >= 70 ? '#10b981' : healthScore >= 40 ? '#f59e0b' : '#ef4444',
+                  boxShadow: `0 0 6px ${healthScore >= 70 ? '#10b981' : healthScore >= 40 ? '#f59e0b' : '#ef4444'}`,
+                  animation: 'pulse 2s ease-in-out infinite',
+                }}
+              />
+              <span className="text-[12px] font-medium" style={{ color: 'rgba(255,255,255,0.7)' }}>{healthScore}%</span>
             </div>
 
-            {/* Alert badges (lg+) */}
-            <div className="hidden lg:flex items-center gap-1.5 flex-shrink-0">
-              {criticalCount > 0 && (
-                <span
-                  className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold"
-                  style={{
-                    background: 'rgba(239,68,68,0.14)',
-                    border: '0.5px solid rgba(239,68,68,0.35)',
-                    color: '#ef4444',
-                    boxShadow: '0 0 8px rgba(239,68,68,0.15)',
-                  }}
-                >
-                  <AlertTriangle className="w-3 h-3" />
-                  {criticalCount} Crítico
-                </span>
-              )}
-              {warningCount > 0 && (
-                <span
-                  className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold"
-                  style={{
-                    background: 'rgba(245,158,11,0.13)',
-                    border: '0.5px solid rgba(245,158,11,0.30)',
-                    color: '#f59e0b',
-                    boxShadow: '0 0 8px rgba(245,158,11,0.12)',
-                  }}
-                >
-                  <AlertTriangle className="w-3 h-3" />
-                  {warningCount} Avisos
-                </span>
-              )}
-            </div>
           </div>
 
           {/* ══════════════════════════════════ CENTER ═══════════════════════════════ */}
@@ -577,38 +554,18 @@ export const Topbar = forwardRef<HTMLDivElement, TopbarProps>(
           {/* ════════════════════════════════════ RIGHT ══════════════════════════════ */}
           <div className="flex items-center gap-2 flex-shrink-0">
 
-            {/* Search button — sm+ */}
+            {/* Search button — icon only */}
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsSearchOpen(true)}
-              className="hidden sm:flex items-center gap-2 px-3 py-2.5 rounded-[12px] transition-all duration-150 group"
+              className="w-9 h-9 flex items-center justify-center rounded-[12px] transition-all duration-150"
               style={{ ...iconBtnGlass, border: 'none', cursor: 'pointer' }}
+              title="Procurar (⌘K)"
             >
-              {/* Magnifying glass — custom path for sharpness */}
-              <svg
-                width="16" height="16" viewBox="0 0 16 16" fill="none"
-                className="flex-shrink-0"
-                style={{ color: 'rgba(255,255,255,0.55)' }}
-              >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ color: 'rgba(255,255,255,0.55)', flexShrink: 0 }}>
                 <circle cx="7" cy="7" r="4.5" stroke="currentColor" strokeWidth="1.2" />
                 <path d="M11 11l2.5 2.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
               </svg>
-              <span
-                className="hidden lg:block text-[13px]"
-                style={{ color: 'rgba(255,255,255,0.50)' }}
-              >
-                Procurar...
-              </span>
-              <kbd
-                className="hidden lg:flex items-center gap-0.5 ml-4 px-1.5 py-0.5 rounded-[6px] text-[11px] font-medium flex-shrink-0"
-                style={{
-                  color: 'rgba(255,255,255,0.35)',
-                  background: 'rgba(255,255,255,0.06)',
-                  border: '0.5px solid rgba(255,255,255,0.12)',
-                }}
-              >
-                <span style={{ fontSize: '13px', lineHeight: 1 }}>⌘</span>K
-              </kbd>
             </motion.button>
 
             {/* Notifications bell */}

@@ -1,5 +1,5 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
+import { motion, AnimatePresence } from 'motion/react' // motion kept for wallpaper/offline use
 import { useStore } from './core/store.js'
 import { useShallow } from 'zustand/react/shallow'
 import { resolvePanel } from './core/roles.js'
@@ -142,7 +142,15 @@ export default function App() {
   const wpActive = wallpaper?.type && wallpaper.type !== 'none'
 
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
+  const [sidebarExpanded, setSidebarExpanded] = useState(true)
   const closeMobileSidebar = useCallback(() => setMobileSidebarOpen(false), [])
+  const toggleSidebar = useCallback(() => {
+    if (window.innerWidth >= 1024) {
+      setSidebarExpanded(v => !v)
+    } else {
+      setMobileSidebarOpen(v => !v)
+    }
+  }, [])
 
   return (
     <>
@@ -174,12 +182,12 @@ export default function App() {
           position: 'relative',
           zIndex: 1,
         }}>
-          {/* Sidebar persistente — só no desktop (lg+) */}
+          {/* Sidebar persistente — desktop lg+ */}
           <div className="hidden lg:flex">
-            <SidebarNew />
+            <SidebarNew expanded={sidebarExpanded} onToggleExpand={() => setSidebarExpanded(v => !v)} />
           </div>
 
-          {/* Mobile sidebar overlay — abaixo de lg */}
+          {/* Mobile sidebar overlay — fixed, z-100 */}
           <AnimatePresence>
             {mobileSidebarOpen && (
               <div
@@ -187,7 +195,6 @@ export default function App() {
                 style={{ position: 'fixed', inset: 0, zIndex: 100, display: 'flex' }}
                 onClick={closeMobileSidebar}
               >
-                {/* Scrim */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -196,16 +203,15 @@ export default function App() {
                   style={{
                     position: 'absolute', inset: 0,
                     background: 'rgba(0,0,0,0.5)',
-                    backdropFilter: 'blur(4px)',
-                    WebkitBackdropFilter: 'blur(4px)',
+                    backdropFilter: 'blur(8px)',
+                    WebkitBackdropFilter: 'blur(8px)',
                   }}
                 />
-                {/* Panel slide-in */}
                 <motion.div
                   initial={{ x: '-100%' }}
                   animate={{ x: 0 }}
                   exit={{ x: '-100%' }}
-                  transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                  transition={{ type: 'spring', damping: 28, stiffness: 220 }}
                   style={{ position: 'relative', zIndex: 1 }}
                   onClick={e => e.stopPropagation()}
                 >
@@ -219,7 +225,7 @@ export default function App() {
           <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0, position: 'relative', zIndex: 10 }}>
             {/* TOPBAR WRAPPER — z-30 garante que fica acima do conteúdo scrollado */}
             <div style={{ position: 'relative', zIndex: 30, flexShrink: 0 }}>
-              <Topbar onMenuClick={() => setMobileSidebarOpen(true)} />
+              <Topbar onMenuClick={toggleSidebar} />
               {/* Fade gradient — transição suave entre topbar e scroll */}
               <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0,
