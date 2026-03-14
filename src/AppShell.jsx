@@ -45,6 +45,16 @@ const DeptStuntsModule    = lazy(() => import('./app/pages/DepartamentoStunts.ts
 const DailiesModule       = lazy(() => import('./app/pages/DailiesModule.tsx').then(m => ({ default: m.DailiesModule })))
 const EspelhoShell        = lazy(() => import('./app/pages/EspelhoModule.tsx').then(m => ({ default: m.EspelhoModule })))
 const RealTimeInfoModule  = lazy(() => import('./app/pages/RealTimeInfoModule.tsx').then(m => ({ default: m.RealTimeInfoModule })))
+// ── Pós-Produção sub-pages ───────────────────────────────────────
+const PosSelectsModule    = lazy(() => import('./app/pages/PosSelects.tsx').then(m => ({ default: m.PosSelectsModule })))
+const PosMontagemModule   = lazy(() => import('./app/pages/PosMontagem.tsx').then(m => ({ default: m.PosMontagemModule })))
+const PosVFXModule        = lazy(() => import('./app/pages/PosVFX.tsx').then(m => ({ default: m.PosVFXModule })))
+const PosCorModule        = lazy(() => import('./app/pages/PosCor.tsx').then(m => ({ default: m.PosCorModule })))
+const PosSomModule        = lazy(() => import('./app/pages/PosSom.tsx').then(m => ({ default: m.PosSomModule })))
+// ── Mirror sub-pages ─────────────────────────────────────────────
+const MirrorConsultasModule  = lazy(() => import('./app/pages/MirrorConsultas.tsx').then(m => ({ default: m.MirrorConsultasModule })))
+const MirrorSugestoesModule  = lazy(() => import('./app/pages/MirrorSugestoes.tsx').then(m => ({ default: m.MirrorSugestoesModule })))
+const MirrorMemoriaModule    = lazy(() => import('./app/pages/MirrorMemoria.tsx').then(m => ({ default: m.MirrorMemoriaModule })))
 
 export function AppShell() {
   const {  ui, wallpaper  } = useStore(useShallow(s => ({ ui: s.ui, wallpaper: s.wallpaper })))
@@ -59,6 +69,14 @@ export function AppShell() {
       case 'equipa':           return <TeamModule />
       case 'departamentos':    return <TeamModule initialSection="departamentos" />
       case 'pos':              return <ProductionModule initialTab="post-production" />
+      case 'pos-selects':      return <PosSelectsModule />
+      case 'pos-montagem':     return <PosMontagemModule />
+      case 'pos-vfx':          return <PosVFXModule />
+      case 'pos-cor':          return <PosCorModule />
+      case 'pos-som':          return <PosSomModule />
+      case 'mirror-consultas': return <MirrorConsultasModule />
+      case 'mirror-sugestoes': return <MirrorSugestoesModule />
+      case 'mirror-memoria':   return <MirrorMemoriaModule />
       case 'convites':         return <InvitesModule />
       case 'definicoes':       return <SettingsModule />
       // ── IDs originais (backward compat) ─────────────────────────────

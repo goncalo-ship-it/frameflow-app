@@ -536,6 +536,7 @@ export function RealTimeInfoModule() {
    UTIL
 ───────────────────────────────────────────────────────────── */
 function hexToRgb(hex: string): string {
+  if (!hex || typeof hex !== 'string') return '255, 255, 255';
   const clean = hex.replace('#', '');
   const full  = clean.length === 3
     ? clean.split('').map(c => c + c).join('')

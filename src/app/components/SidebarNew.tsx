@@ -180,21 +180,22 @@ export function SidebarNew({ onClose }: SidebarNewProps) {
     {
       icon: Sparkles, label: 'Pós', moduleId: 'pos', emoji: '✨', color: '#a855f7',
       submenu: [
-        { label: 'Dailies',   moduleId: 'dailies',         icon: Film },
-        { label: 'Selects',   moduleId: 'post-production', icon: Target },
-        { label: 'Rough Cut', moduleId: 'post-production', icon: Scissors },
-        { label: 'VFX',       moduleId: 'post-production', icon: Zap },
-        { label: 'Color',     moduleId: 'post-production', icon: Palette },
-        { label: 'Sound Mix', moduleId: 'post-production', icon: Mic },
+        { label: 'Dailies',   moduleId: 'dailies',       icon: Film },
+        { label: 'Selects',   moduleId: 'pos-selects',   icon: Target },
+        { label: 'Montagem',  moduleId: 'pos-montagem',  icon: Scissors },
+        { label: 'VFX',       moduleId: 'pos-vfx',       icon: Zap },
+        { label: 'Color',     moduleId: 'pos-cor',       icon: Palette },
+        { label: 'Sound Mix', moduleId: 'pos-som',       icon: Mic },
       ],
     },
     // ── 7. MIRROR ────────────────────────────────────────────────────
     {
       icon: Eye, label: 'Mirror', moduleId: 'mirror', emoji: '🪞', color: '#ec4899',
       submenu: [
-        { label: 'Chat IA',              moduleId: 'mirror', icon: Sparkles },
-        { label: 'Perguntas ao Projeto', moduleId: 'mirror', icon: FileText },
-        { label: 'Sugestões',            moduleId: 'mirror', icon: Zap },
+        { label: 'Chat IA',              moduleId: 'mirror',            icon: Sparkles },
+        { label: 'Perguntas ao Projeto', moduleId: 'mirror-consultas',  icon: FileText },
+        { label: 'Sugestões',            moduleId: 'mirror-sugestoes',  icon: Zap },
+        { label: 'Memória',              moduleId: 'mirror-memoria',    icon: BookOpen },
       ],
     },
   ];
