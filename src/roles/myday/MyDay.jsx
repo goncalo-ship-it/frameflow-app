@@ -388,18 +388,22 @@ export function MyDay() {
           {isFilming && <span className={styles.filmingBadge}>FILMANDO</span>}
         </div>
 
-        {/* ── Scenes — SceneCard dashboard variant ── */}
+        {/* ── Cenas ── */}
         {myScenes.length > 0 && (
-          <div className={styles.scenesGrid}>
-            {myScenes.map(sc => (
-              <SceneCard
-                key={sc.sceneKey}
-                context="dashboard"
-                scene={toSceneData(sc, sceneTakes?.[sc.sceneKey], currentDay, dayNum, departmentItems)}
-                onPress={() => setSceneDetail(sc)}
-              />
-            ))}
-          </div>
+          <>
+            <span className={styles.sectionLabel}>Cenas do Dia</span>
+            <div className={styles.cardGrid}>
+              {myScenes.map((sc, i) => (
+                <SceneCard
+                  key={sc.sceneKey}
+                  context="dashboard"
+                  highlighted={nextScene?.sceneKey === sc.sceneKey && i > 0}
+                  scene={toSceneData(sc, sceneTakes?.[sc.sceneKey], currentDay, dayNum, departmentItems)}
+                  onPress={() => setSceneDetail(sc)}
+                />
+              ))}
+            </div>
+          </>
         )}
 
         {myScenes.length === 0 && (
@@ -412,17 +416,20 @@ export function MyDay() {
           </div>
         )}
 
-        {/* ── Crew — PersonCard grid ── */}
+        {/* ── Equipa ── */}
         {todayCrew.length > 0 && (
-          <div className={styles.scenesGrid}>
-            {todayCrew.map(m => (
-              <PersonCard
-                key={m.id}
-                person={toPersonData(m)}
-                onCall={m.phone ? () => { window.location.href = `tel:${m.phone}` } : undefined}
-              />
-            ))}
-          </div>
+          <>
+            <span className={styles.sectionLabel}>Equipa Hoje</span>
+            <div className={styles.cardGrid}>
+              {todayCrew.map(m => (
+                <PersonCard
+                  key={m.id}
+                  person={toPersonData(m)}
+                  onCall={m.phone ? () => { window.location.href = `tel:${m.phone}` } : undefined}
+                />
+              ))}
+            </div>
+          </>
         )}
 
       </div>
