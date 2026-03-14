@@ -39,8 +39,9 @@
 
 import { ReactNode, Children } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { LiquidTabs } from './LiquidTabs';
+import { LiquidSkeleton } from './LiquidSkeleton';
 import type { LiquidTab } from './LiquidTabs';
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -80,6 +81,11 @@ export interface LiquidPageBackAction {
   onClick: () => void;
 }
 
+export interface LiquidPageBreadcrumb {
+  label: string;
+  onClick?: () => void;
+}
+
 export interface LiquidPageProps {
   /** Título principal h1 */
   title?: string;
@@ -97,6 +103,10 @@ export interface LiquidPageProps {
   headerAction?: ReactNode;
   /** Botão voltar */
   backAction?: LiquidPageBackAction;
+  /** Breadcrumbs de navegação */
+  breadcrumbs?: LiquidPageBreadcrumb[];
+  /** Mostra shimmer skeleton enquanto carrega */
+  loading?: boolean;
   /** Remove padding exterior */
   noPadding?: boolean;
   children: ReactNode;
@@ -175,6 +185,27 @@ function BackButton({ label, onClick }: LiquidPageBackAction) {
    MAIN COMPONENT
 ───────────────────────────────────────────────────────────────────────────── */
 
+function LoadingSkeleton({ accent }: { accent: { color: string } | null }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: '8px 0' }}>
+      {accent && <LiquidSkeleton height={10} width="25%" radius={5} />}
+      <LiquidSkeleton height={28} width="55%" radius={8} />
+      <LiquidSkeleton height={1} radius={0} />
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+        <LiquidSkeleton height={80} radius={16} />
+        <LiquidSkeleton height={80} radius={16} />
+        <LiquidSkeleton height={80} radius={16} />
+      </div>
+      <LiquidSkeleton height={160} radius={16} />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <LiquidSkeleton height={14} width="90%" radius={6} />
+        <LiquidSkeleton height={14} width="75%" radius={6} />
+        <LiquidSkeleton height={14} width="60%" radius={6} />
+      </div>
+    </div>
+  );
+}
+
 export function LiquidPage({
   title,
   description,
@@ -184,6 +215,8 @@ export function LiquidPage({
   onTabChange,
   headerAction,
   backAction,
+  breadcrumbs,
+  loading = false,
   noPadding = false,
   children,
   className = '',
@@ -206,6 +239,34 @@ export function LiquidPage({
       {/* ── BACK BUTTON ── */}
       {backAction && (
         <BackButton label={backAction.label} onClick={backAction.onClick} />
+      )}
+
+      {/* ── BREADCRUMBS ── */}
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: -4 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+          style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: -8 }}
+        >
+          {breadcrumbs.map((crumb, idx) => (
+            <span key={idx} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              {idx > 0 && <ChevronRight size={11} style={{ color: 'rgba(255,255,255,0.2)' }} />}
+              <span
+                onClick={crumb.onClick}
+                style={{
+                  fontSize: 11, fontWeight: 600, letterSpacing: '0.01em',
+                  color: idx === breadcrumbs.length - 1
+                    ? 'rgba(255,255,255,0.45)'
+                    : 'rgba(255,255,255,0.25)',
+                  cursor: crumb.onClick ? 'pointer' : 'default',
+                }}
+              >
+                {crumb.label}
+              </span>
+            </span>
+          ))}
+        </motion.div>
       )}
 
       {/* ── PAGE HEADER ── */}
@@ -327,21 +388,41 @@ export function LiquidPage({
         </motion.div>
       )}
 
-      {/* ── CONTENT AREA — filhos com stagger ── */}
+      {/* ── CONTENT AREA — shimmer loading ou filhos com stagger ── */}
       <AnimatePresence mode="wait">
-        <div className="space-y-4" style={{ flex: 1 }}>
-          {childArray.map((child, i) => (
-            <motion.div
-              key={i}
-              custom={i}
-              variants={childVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              {child}
-            </motion.div>
-          ))}
-        </div>
+        {loading ? (
+          <motion.div
+            key="skeleton"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <LoadingSkeleton accent={accent} />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="space-y-4"
+            style={{ flex: 1 }}
+          >
+            {childArray.map((child, i) => (
+              <motion.div
+                key={i}
+                custom={i}
+                variants={childVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                {child}
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </AnimatePresence>
 
     </div>
