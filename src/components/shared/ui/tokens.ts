@@ -11,7 +11,17 @@ export const CARD_HEIGHT = {
   live:      72,   // real-time cockpit strip
 } as const
 
-export type CardVariant = keyof typeof CARD_HEIGHT | 'auto'
+/**
+ * Canonical size variants — the only values entity cards may use.
+ * compact=120px  standard=360px  expanded=520px  live=72px
+ */
+export type CanonicalCardVariant = keyof typeof CARD_HEIGHT
+
+/**
+ * Internal layout type used by CardShell only.
+ * 'auto' is an escape hatch for layout containers, never for entity cards.
+ */
+export type CardVariant = CanonicalCardVariant | 'auto'
 
 // ── Radius scale ─────────────────────────────────────────────────
 export const R = {
@@ -94,6 +104,17 @@ export const SURFACE = {
   inner: {
     background: GLASS.bgLight,
     border: GLASS.borderFaint,
+  },
+  /**
+   * Operational surface for live/real-time contexts.
+   * Higher contrast, reduced blur — readability over aesthetics.
+   * No lensing. Used by the live (72px) cockpit strip.
+   */
+  live: {
+    background: 'rgba(0, 0, 0, 0.48)',
+    backdropFilter: 'blur(10px) saturate(120%)',
+    WebkitBackdropFilter: 'blur(10px) saturate(120%)',
+    boxShadow: 'inset 0 0.5px 0 rgba(255,255,255,0.08), 0 2px 12px rgba(0,0,0,0.40)',
   },
 } as const
 

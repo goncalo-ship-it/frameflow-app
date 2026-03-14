@@ -1,26 +1,31 @@
 /**
  * CardShell — Canonical card container.
  *
- * Enforces the size discipline (compact / standard / expanded / live / auto).
+ * Enforces the size discipline. Entity cards use only the four canonical variants:
+ *   compact=120px  standard=360px  expanded=520px  live=72px
+ *
  * Cards NEVER grow past their variant max-height.
  * Overflow content is handled internally via CardBody scrolling.
  *
- * All entity cards are built on CardShell.
+ * NOTE: 'auto' is an internal escape hatch for layout containers only.
+ *       Canonical entity cards must NEVER pass variant='auto'.
  */
 
 import type { CSSProperties, ReactNode, MouseEvent } from 'react'
 import { GlassSurface } from './GlassSurface'
 import { CARD_HEIGHT, R } from '../tokens'
-import type { CardVariant } from '../tokens'
+import type { CanonicalCardVariant } from '../tokens'
 
 export interface CardShellProps {
   children: ReactNode
-  variant?: CardVariant
+  /**
+   * Canonical size variant. Entity cards must use only these four values.
+   * Do NOT pass 'auto' from entity card components.
+   */
+  variant?: CanonicalCardVariant
   accentColor?: string
   accentGradient?: string
-  /** Override card height (only when variant='auto') */
-  height?: number | string
-  /** Fill the height of the parent grid cell */
+  /** Fill the height of the parent grid cell instead of using a fixed height */
   fillHeight?: boolean
   className?: string
   style?: CSSProperties
@@ -34,16 +39,13 @@ export function CardShell({
   variant = 'standard',
   accentColor,
   accentGradient,
-  height,
   fillHeight = false,
   className,
   style,
   onClick,
   selected = false,
 }: CardShellProps) {
-  const fixedHeight = variant !== 'auto'
-    ? CARD_HEIGHT[variant as keyof typeof CARD_HEIGHT] ?? undefined
-    : (height ?? undefined)
+  const fixedHeight = CARD_HEIGHT[variant] ?? undefined
 
   const outerStyle: CSSProperties = {
     height: fillHeight ? '100%' : fixedHeight ? `${fixedHeight}px` : undefined,
