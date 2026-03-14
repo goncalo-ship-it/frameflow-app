@@ -1,25 +1,31 @@
-// MyDay — "O Teu Dia" — Dashboard pessoal (Figma FF_V04)
-// Weather, próxima chamada, localização, department pills, cenas com fotos
+/**
+ * MyDay — "O Teu Dia" — Dashboard pessoal
+ * MIGRATED: visual layer now uses shared entity cards.
+ * Domain logic (hooks, memos, overlays) unchanged.
+ */
 
 import { useState, useMemo, useCallback, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import {
-  Clock, MapPin, Calendar, Phone, Mail, ChevronLeft, ChevronRight,
-  Film, Users, Sun, Sunset, CloudSun, Wind, Droplets, Sunrise,
-  Radio, AlertTriangle, CheckCircle2, Circle, ExternalLink,
-  Car, UtensilsCrossed, ChevronUp, Camera, Palette, Shirt,
-  Clapperboard, Lightbulb, Megaphone, Zap,
+  Clock, MapPin, Calendar, ChevronLeft, ChevronRight,
+  Film, Camera, Palette, Shirt, Clapperboard, Lightbulb,
+  Megaphone, Zap, Car, UtensilsCrossed,
 } from 'lucide-react'
 import { useStore } from '../../core/store.js'
 import { useShallow } from 'zustand/react/shallow'
-import { resolveRole, ROLES, getAccessLevel, getDepartment } from '../../core/roles.js'
+import { resolveRole, getAccessLevel } from '../../core/roles.js'
 import { getScenesForDay } from '../../utils/dashboardHelpers.js'
-import { WeatherOverlay } from '../../components/shared/WeatherOverlay.jsx'
-import { SceneDetailOverlay } from '../../components/shared/SceneDetailOverlay.jsx'
-import { ScheduleOverlay } from '../../components/shared/ScheduleOverlay.jsx'
-import { LocationOverlay } from '../../components/shared/LocationOverlay.jsx'
+import { WeatherOverlay }    from '../../components/shared/WeatherOverlay.jsx'
+import { SceneDetailOverlay }from '../../components/shared/SceneDetailOverlay.jsx'
+import { ScheduleOverlay }   from '../../components/shared/ScheduleOverlay.jsx'
+import { LocationOverlay }   from '../../components/shared/LocationOverlay.jsx'
+import {
+  WeatherCard, SceneCard, FilmLocationCard, MetricCard,
+  PersonCard, DayTimelineItemCard,
+} from '../../components/shared/ui'
+import { C } from '../../components/shared/ui/tokens'
 import styles from './MyDay.module.css'
 
+// ── Dept pill config ──────────────────────────────────────────────
 const DEPT_ICONS = {
   camera: Camera, lighting: Lightbulb, art: Palette, wardrobe: Shirt,
   props: Clapperboard, sfx: Zap, sound: Megaphone, makeup: Palette,
@@ -31,23 +37,76 @@ const DEPT_COLORS = {
   hair: '#f472b6', vehicles: '#6b7280', stunts: '#ef4444', vfx: '#6366f1',
 }
 
+// ── Helpers ───────────────────────────────────────────────────────
+function addTime(timeStr, minutes) {
+  if (!timeStr) return '09:00'
+  const [h, m] = timeStr.split(':').map(Number)
+  const total = (h || 0) * 60 + (m || 0) + minutes
+  return `${String(Math.floor(total / 60) % 24).padStart(2, '0')}:${String(total % 60).padStart(2, '0')}`
+}
+
+// ── Adapters: store shape → UI types ─────────────────────────────
+function toSceneData(sc, rawTakes, currentDay, dayNum, deptItems) {
+  return {
+    sceneKey:    sc.sceneKey,
+    sceneNumber: sc.sceneNumber || sc.id || '?',
+    epId:        sc.epId || '',
+    intExt:      sc.intExt,
+    location:    sc.location,
+    timeOfDay:   sc.timeOfDay,
+    description: sc.description,
+    characters:  sc.characters || [],
+    duration:    sc.duration,
+    callTime:    currentDay?.callTime,
+    dayNumber:   dayNum,
+    takes: (rawTakes || []).map((t, i) => ({
+      id:        t.id,
+      number:    i + 1,
+      status:    t.status,
+      notes:     t.notes,
+      timestamp: t.timestamp,
+    })),
+    departmentItems: (deptItems || [])
+      .filter(item => (item.scenes || []).includes(sc.sceneKey))
+      .map(item => ({
+        id:         item.id,
+        name:       item.name,
+        department: item.department,
+        photos:     item.photos,
+        approved:   item.approved,
+      })),
+  }
+}
+
+function toPersonData(m) {
+  return {
+    id:         m.id,
+    name:       m.name || '?',
+    role:       m.role || m.group || '',
+    photo:      m.photo,
+    phone:      m.phone,
+    department: m.group,
+    status:     (m.confirmedDays?.length > 0) ? 'confirmed' : 'pending',
+  }
+}
+
+// ── Component ─────────────────────────────────────────────────────
 export function MyDay() {
   const {
     auth, team, shootingDays, sceneAssignments, parsedScripts,
     locations, sceneTakes, departmentItems, departmentConfig,
-    preProduction, navigate, rsvp, updateRsvp, owmApiKey,
+    navigate, rsvp, updateRsvp, owmApiKey,
   } = useStore(useShallow(s => ({
     auth: s.auth, team: s.team, shootingDays: s.shootingDays,
     sceneAssignments: s.sceneAssignments, parsedScripts: s.parsedScripts,
     locations: s.locations, sceneTakes: s.sceneTakes,
     departmentItems: s.departmentItems, departmentConfig: s.departmentConfig,
-    preProduction: s.preProduction, navigate: s.navigate,
-    rsvp: s.rsvp, updateRsvp: s.updateRsvp, owmApiKey: s.owmApiKey,
+    navigate: s.navigate, rsvp: s.rsvp, updateRsvp: s.updateRsvp,
+    owmApiKey: s.owmApiKey,
   })))
 
-  const role = resolveRole(auth.role)
-  const roleInfo = ROLES[role]
-  const level = getAccessLevel(role)
+  const role   = resolveRole(auth.role)
+  const level  = getAccessLevel(role)
   const isActor = level === 5
 
   // ── Day navigation ──────────────────────────────────────────────
@@ -55,32 +114,37 @@ export function MyDay() {
     () => [...shootingDays].sort((a, b) => (a.date || '').localeCompare(b.date || '')),
     [shootingDays]
   )
-  const today = new Date().toISOString().slice(0, 10)
+  const today    = new Date().toISOString().slice(0, 10)
   const todayIdx = useMemo(() => {
     const idx = sortedDays.findIndex(d => d.date === today)
     return idx >= 0 ? idx : 0
   }, [sortedDays, today])
 
   const [selectedIdx, setSelectedIdx] = useState(null)
-  const [expandedScene, setExpandedScene] = useState(null)
-  const [weatherOpen, setWeatherOpen] = useState(false)
-  const [sceneDetail, setSceneDetail] = useState(null)
+  const [weatherOpen, setWeatherOpen]   = useState(false)
+  const [sceneDetail, setSceneDetail]   = useState(null)
   const [scheduleOpen, setScheduleOpen] = useState(false)
   const [locationOpen, setLocationOpen] = useState(false)
-  const dayIdx = selectedIdx !== null ? selectedIdx : todayIdx
+
+  const dayIdx     = selectedIdx !== null ? selectedIdx : todayIdx
   const currentDay = sortedDays[dayIdx] || null
-  const dayNum = currentDay?.dayNumber || dayIdx + 1
+  const dayNum     = currentDay?.dayNumber || dayIdx + 1
 
-  const goNext = useCallback(() => setSelectedIdx(Math.min((selectedIdx ?? todayIdx) + 1, sortedDays.length - 1)), [selectedIdx, todayIdx, sortedDays.length])
-  const goPrev = useCallback(() => setSelectedIdx(Math.max((selectedIdx ?? todayIdx) - 1, 0)), [selectedIdx, todayIdx])
+  const goNext = useCallback(
+    () => setSelectedIdx(Math.min((selectedIdx ?? todayIdx) + 1, sortedDays.length - 1)),
+    [selectedIdx, todayIdx, sortedDays.length]
+  )
+  const goPrev = useCallback(
+    () => setSelectedIdx(Math.max((selectedIdx ?? todayIdx) - 1, 0)),
+    [selectedIdx, todayIdx]
+  )
 
-  // ── Scenes ──────────────────────────────────────────────────────
+  // ── Scenes ─────────────────────────────────────────────────────
   const dayScenes = useMemo(
     () => currentDay ? getScenesForDay(currentDay.id, sceneAssignments, parsedScripts) : [],
     [currentDay, sceneAssignments, parsedScripts]
   )
 
-  // Me
   const me = useMemo(() => {
     if (!auth.user) return null
     const name = typeof auth.user === 'string' ? auth.user : auth.user?.name
@@ -88,11 +152,12 @@ export function MyDay() {
     return team.find(m => m.name === name || m.name?.toLowerCase().includes(name.toLowerCase().split(' ')[0]))
   }, [auth.user, team])
 
-  const characterName = me?.characterName || (isActor ? (typeof auth.user === 'string' ? auth.user : auth.user?.name) : null)
-  const charFirst = characterName?.toLowerCase().split(' ')[0]
+  const charFirst = (me?.characterName || (isActor ? (typeof auth.user === 'string' ? auth.user : auth.user?.name) : null))
+    ?.toLowerCase().split(' ')[0]
 
   const myScenes = useMemo(() => {
-    if (isActor && charFirst) return dayScenes.filter(sc => (sc.characters || []).some(ch => ch.toLowerCase().includes(charFirst)))
+    if (isActor && charFirst)
+      return dayScenes.filter(sc => (sc.characters || []).some(ch => ch.toLowerCase().includes(charFirst)))
     return dayScenes
   }, [dayScenes, isActor, charFirst])
 
@@ -125,7 +190,7 @@ export function MyDay() {
     return undone || myScenes[0] || null
   }, [myScenes, sceneTakes])
 
-  // ── Department pills ────────────────────────────────────────────
+  // ── Dept pills ──────────────────────────────────────────────────
   const deptPills = useMemo(() => {
     const map = {}
     for (const item of departmentItems) {
@@ -135,41 +200,24 @@ export function MyDay() {
     return Object.entries(map).sort((a, b) => b[1] - a[1]).slice(0, 6)
   }, [departmentItems])
 
-  // ── Scene department items (photos) ─────────────────────────────
-  const scenePhotos = useCallback((sceneKey) => {
-    return departmentItems
-      .filter(item => (item.scenes || []).includes(sceneKey) && item.photos?.length > 0)
-      .slice(0, 3)
-  }, [departmentItems])
+  const deptMap = useMemo(() => {
+    const m = {}; for (const d of (departmentConfig || [])) m[d.id] = d; return m
+  }, [departmentConfig])
 
   // ── Weather ─────────────────────────────────────────────────────
-  // Demo weather fallback
-  const demoWeather = { temp: 18, desc: 'Parcialmente nublado', wind: 12, humidity: 65, city: 'Porto', feelsLike: 16, visibility: 10000 }
+  const demoWeather = { temp: 18, desc: 'Parcialmente nublado', wind: 12, humidity: 65, city: 'Lisboa', feelsLike: 16 }
   const [weather, setWeather] = useState(demoWeather)
   useEffect(() => {
     if (!owmApiKey) return
-    const loc = todayLocation
-    const city = loc?.city || loc?.name || 'Lisboa'
+    const city = todayLocation?.city || todayLocation?.name || 'Lisboa'
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)},PT&appid=${owmApiKey}&units=metric&lang=pt`
     fetch(url).then(r => r.ok ? r.json() : null).then(d => {
       if (!d) return
-      setWeather({
-        temp: Math.round(d.main?.temp),
-        desc: d.weather?.[0]?.description || '',
-        wind: Math.round(d.wind?.speed * 3.6),
-        humidity: d.main?.humidity,
-        city: d.name || city,
-      })
+      setWeather({ temp: Math.round(d.main?.temp), desc: d.weather?.[0]?.description || '', wind: Math.round((d.wind?.speed || 0) * 3.6), humidity: d.main?.humidity, city: d.name || city })
     }).catch(() => {})
   }, [owmApiKey, todayLocation])
 
-  // ── RSVP ──────────────────────────────────────────────────────────
-  const myRsvp = currentDay && me ? rsvp?.[currentDay.id]?.[me.id] : null
-
-  const callTime = currentDay?.callTime || '08:00'
-  const userName = typeof auth.user === 'string' ? auth.user : auth.user?.name || 'Utilizador'
-
-  // Clock
+  // ── Clock ───────────────────────────────────────────────────────
   const [now, setNow] = useState(new Date())
   useEffect(() => {
     const t = setInterval(() => setNow(new Date()), 30000)
@@ -177,25 +225,106 @@ export function MyDay() {
   }, [])
   const clockStr = now.toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })
 
-  // Date formatted
+  // ── Crew ────────────────────────────────────────────────────────
+  const todayCrew = useMemo(() => {
+    return team.filter(m => {
+      const uname = typeof auth.user === 'string' ? auth.user : auth.user?.name
+      if (m.name === uname) return false
+      if (currentDay && m.confirmedDays?.includes(currentDay.id)) return true
+      if (currentDay && rsvp?.[currentDay.id]?.[m.id]?.status === 'confirmed') return true
+      const r = (m.role || '').toLowerCase()
+      return r.includes('realiz') || r.includes('produção') || r.includes('dop') || r.includes('câmara') || r.includes('som')
+    }).slice(0, 6)
+  }, [team, auth.user, currentDay, rsvp])
+
+  // ── Entity card data ────────────────────────────────────────────
+  const weatherCardData = useMemo(() => ({
+    temp:        weather?.temp ?? 18,
+    feelsLike:   weather?.feelsLike,
+    description: weather?.desc || weather?.description || '',
+    wind:        weather?.wind,
+    humidity:    weather?.humidity,
+    city:        weather?.city || 'Lisboa',
+    sunrise:     currentDay?.sunrise,
+    sunset:      currentDay?.sunset,
+  }), [weather, currentDay])
+
+  const callMetric = useMemo(() => ({
+    label:       'PRÓXIMA CHAMADA',
+    value:       currentDay?.callTime || '—',
+    accentColor: C.emerald,
+    icon:        <Clock size={18} />,
+    delta: dayProgress.total > 0 ? {
+      value:     dayProgress.done,
+      direction: dayProgress.done > 0 ? 'up' : 'neutral',
+      label:     `de ${dayProgress.total} cenas`,
+    } : undefined,
+  }), [currentDay, dayProgress])
+
+  const locationCardData = useMemo(() => ({
+    id:           todayLocation?.id || 'loc',
+    name:         todayLocation?.displayName || todayLocation?.name || 'Sem localização',
+    address:      todayLocation?.address,
+    city:         todayLocation?.city,
+    googleMapsUrl:todayLocation?.googleMapsUrl,
+    travelTime:   todayLocation?.travelTime,
+    photos:       todayLocation?.photos,
+    accentColor:  C.purple,
+  }), [todayLocation])
+
+  const dayCardData = useMemo(() => currentDay ? ({
+    id:         currentDay.id,
+    date:       currentDay.date,
+    dayNumber:  dayNum,
+    callTime:   currentDay.callTime,
+    wrapTime:   currentDay.wrapTime,
+    location:   todayLocation?.name,
+    sceneCount: myScenes.length,
+    status:     isFilming ? 'filming' : dayProgress.pct === 100 && dayProgress.total > 0 ? 'done' : 'planned',
+  }) : null, [currentDay, dayNum, todayLocation, myScenes.length, isFilming, dayProgress])
+
+  const timelineItems = useMemo(() => {
+    if (!currentDay) return []
+    const base = currentDay.callTime || '08:00'
+    const items = [
+      { id: 'call', type: 'call', time: base, label: 'Chamada Geral', sublabel: todayLocation?.name || '' },
+    ]
+    myScenes.forEach((sc, i) => {
+      const takes = sceneTakes?.[sc.sceneKey] || []
+      const done  = takes.some(t => t.status === 'BOM' || t.status === 'bom')
+      items.push({
+        id:       `scene-${sc.sceneKey}`,
+        type:     'scene',
+        time:     addTime(base, 30 + i * 45),
+        label:    `Cena ${sc.sceneNumber || sc.id}`,
+        sublabel: sc.location || '',
+        duration: sc.duration ? Math.round((sc.duration / 8) * 90) : 45,
+        status:   done ? 'done' : i === 0 ? 'active' : 'upcoming',
+      })
+    })
+    if (myScenes.length > 0) {
+      items.push({ id: 'lunch', type: 'meal', time: '13:00', label: 'Almoço', duration: 60, status: 'upcoming' })
+    }
+    if (currentDay.wrapTime) {
+      items.push({ id: 'wrap', type: 'wrap', time: currentDay.wrapTime, label: 'Wrap', status: 'upcoming' })
+    }
+    return items.sort((a, b) => a.time.localeCompare(b.time))
+  }, [currentDay, myScenes, sceneTakes, todayLocation])
+
+  // ── Date string ─────────────────────────────────────────────────
   const dateStr = currentDay?.date
     ? new Date(currentDay.date).toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
     : new Date().toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
-  const dateCap = dateStr.charAt(0).toUpperCase() + dateStr.slice(1)
-
-  // Dept config map
-  const deptMap = useMemo(() => {
-    const m = {}; for (const d of (departmentConfig || [])) m[d.id] = d; return m
-  }, [departmentConfig])
+  const dateCap  = dateStr.charAt(0).toUpperCase() + dateStr.slice(1)
+  const userName = typeof auth.user === 'string' ? auth.user : auth.user?.name || 'Utilizador'
+  const callTime = currentDay?.callTime || '08:00'
 
   // ══════════════════════════════════════════════════════════════════
   return (
     <div className={styles.dashboard}>
-
-{/* ── Scrollable content ── */}
       <div className={styles.content}>
 
-        {/* ── "O TEU DIA" Header Card ── */}
+        {/* ── Hero header ── */}
         <div className={styles.heroCard}>
           <div className={styles.heroLeft}>
             <h1 className={styles.heroTitle}>O TEU DIA</h1>
@@ -206,73 +335,42 @@ export function MyDay() {
           </div>
         </div>
 
-        {/* ── Service Sheet Button ── */}
+        {/* ── Service sheet CTA ── */}
         <button className={styles.serviceBtn} onClick={() => navigate('callsheet')}>
           <Calendar size={16} />
           <span>FOLHA DE SERVIÇO DO DIA</span>
         </button>
 
-        {/* ── 3 Info Cards ── */}
+        {/* ── Info cards row — entity cards ── */}
         <div className={styles.infoRow}>
-          {/* Weather — clickable to open full overlay */}
-          <div className={styles.infoCard} style={{ cursor: 'pointer' }} onClick={() => setWeatherOpen(true)}>
-            <div className={styles.infoIcon} style={{ background: 'rgba(59,130,246,0.15)' }}>
-              <CloudSun size={20} color="#3b82f6" />
-            </div>
-            <div className={styles.infoBody}>
-              <span className={styles.infoLabel}>METEOROLOGIA</span>
-              <span className={styles.infoValue}>{weather ? `${weather.temp}°C` : '—'}</span>
-              <span className={styles.infoDesc}>{weather?.desc || 'Sem dados'}</span>
-              {(currentDay?.sunrise || currentDay?.sunset) && (
-                <div className={styles.infoMeta}>
-                  {currentDay.sunrise && <span><Sunrise size={10} /> {currentDay.sunrise}</span>}
-                  {currentDay.sunset && <span><Sunset size={10} /> {currentDay.sunset}</span>}
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Next Call — clickable for schedule overlay */}
-          <div className={styles.infoCard} style={{ cursor: 'pointer' }} onClick={() => currentDay && setScheduleOpen(true)}>
-            <div className={styles.infoIcon} style={{ background: 'rgba(16,185,129,0.15)' }}>
-              <Clock size={20} color="#10b981" />
-            </div>
-            <div className={styles.infoBody}>
-              <span className={styles.infoLabel}>PRÓXIMA CHAMADA</span>
-              <span className={styles.infoValue}>{callTime}</span>
-              <span className={styles.infoDesc}>
-                {nextScene ? `Cena ${nextScene.sceneNumber} \u2022 ${nextScene.location || '—'}` : 'Sem cenas'}
-              </span>
-            </div>
-          </div>
-
-          {/* Next Location — clickable to open overlay */}
-          <div className={styles.infoCard} style={{ cursor: 'pointer' }} onClick={() => todayLocation && setLocationOpen(true)}>
-            <div className={styles.infoIcon} style={{ background: 'rgba(168,85,247,0.15)' }}>
-              <MapPin size={20} color="#a855f7" />
-            </div>
-            <div className={styles.infoBody}>
-              <span className={styles.infoLabel}>PRÓXIMA LOCALIZAÇÃO</span>
-              <span className={styles.infoValue}>{todayLocation?.displayName || todayLocation?.name || '—'}</span>
-              <span className={styles.infoDesc}>
-                {todayLocation?.address || todayLocation?.city || ''}
-                {todayLocation?.travelTime ? ` \u2022 ${todayLocation.travelTime}` : ''}
-              </span>
-              {todayLocation?.googleMapsUrl && (
-                <a href={todayLocation.googleMapsUrl} target="_blank" rel="noopener noreferrer" className={styles.mapLink}
-                  onClick={e => e.stopPropagation()}>
-                  <MapPin size={10} /> Abrir no Maps
-                </a>
-              )}
-            </div>
-          </div>
+          <WeatherCard
+            weather={weatherCardData}
+            onPress={() => setWeatherOpen(true)}
+          />
+          <MetricCard metric={callMetric} />
+          <FilmLocationCard
+            location={locationCardData}
+            onPress={() => todayLocation && setLocationOpen(true)}
+            onMaps={todayLocation?.googleMapsUrl
+              ? () => window.open(todayLocation.googleMapsUrl, '_blank')
+              : undefined}
+          />
         </div>
 
-        {/* ── Department Pills ── */}
+        {/* ── Day timeline card ── */}
+        {dayCardData && (
+          <DayTimelineItemCard
+            day={dayCardData}
+            items={timelineItems}
+            onPress={() => currentDay && setScheduleOpen(true)}
+          />
+        )}
+
+        {/* ── Dept pills ── */}
         <div className={styles.pillRow}>
           <div className={styles.pillGroup}>
             {deptPills.map(([dept, count]) => {
-              const Icon = DEPT_ICONS[dept] || Film
+              const Icon  = DEPT_ICONS[dept] || Film
               const color = DEPT_COLORS[dept] || deptMap[dept]?.color || '#6E6E78'
               const label = deptMap[dept]?.label || dept
               return (
@@ -287,100 +385,22 @@ export function MyDay() {
               )
             })}
           </div>
-          {isFilming && (
-            <span className={styles.filmingBadge}>FILMANDO</span>
-          )}
+          {isFilming && <span className={styles.filmingBadge}>FILMANDO</span>}
         </div>
 
-        {/* ── Scenes with Photos ── */}
-        {myScenes.map((sc, i) => {
-          const takes = sceneTakes?.[sc.sceneKey] || []
-          const done = takes.some(t => t.status === 'BOM' || t.status === 'bom')
-          const photos = scenePhotos(sc.sceneKey)
-          const isExpanded = expandedScene === sc.sceneKey
-          const dotColors = ['#10B981', '#F59E0B', '#3B82F6', '#A855F7', '#EF4444']
-
-          return (
-            <motion.div key={sc.sceneKey} className={styles.sceneSection}
-              initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05 }}>
-
-              {/* Scene header */}
-              <div className={styles.sceneHeader} onClick={() => setExpandedScene(isExpanded ? null : sc.sceneKey)}>
-                <span className={styles.sceneDot} style={{ background: dotColors[i % dotColors.length] }} />
-                <div className={styles.sceneHeaderText}>
-                  <span className={styles.sceneTitle}>
-                    {i === 0 ? 'Próxima Cena' : `Cena ${i + 1}`} - {sc.sceneNumber} - {sc.location || '—'}
-                  </span>
-                  <span className={styles.sceneMeta}>
-                    {sc.intExt || ''} {sc.timeOfDay ? `/ ${sc.timeOfDay}` : ''} - {callTime}
-                  </span>
-                </div>
-                {done && <CheckCircle2 size={16} color="#10B981" />}
-                <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                  <ChevronUp size={16} className={styles.sceneChevron} />
-                </motion.div>
-              </div>
-
-              {/* Photos */}
-              <AnimatePresence>
-                {(isExpanded || i === 0) && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    style={{ overflow: 'hidden' }}
-                  >
-                    {photos.length > 0 && (
-                      <div className={styles.photoGrid}>
-                        {photos.map(item => (
-                          <div key={item.id} className={styles.photoCard}>
-                            <div className={styles.photoImg}>
-                              {item.photos[0] ? (
-                                <img src={item.photos[0]} alt={item.name} />
-                              ) : (
-                                <div className={styles.photoPlaceholder}>
-                                  <Film size={20} />
-                                </div>
-                              )}
-                            </div>
-                            <div className={styles.photoInfo}>
-                              <span className={styles.photoName}>{item.name}</span>
-                              <span className={styles.photoDept}>
-                                {deptMap[item.department]?.label || item.department}
-                                <span className={styles.photoDot} style={{ background: item.approved ? '#10B981' : '#F59E0B' }} />
-                              </span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Characters */}
-                    {(sc.characters || []).length > 0 && (
-                      <div className={styles.charRow}>
-                        <Users size={12} />
-                        <span>{sc.characters.join(', ')}</span>
-                      </div>
-                    )}
-
-                    {/* Description */}
-                    {sc.description && (
-                      <p className={styles.sceneDesc}>{sc.description}</p>
-                    )}
-
-                    {/* Detail button — opens scene overlay */}
-                    <button className={styles.detailBtn} onClick={() => setSceneDetail(sc)}>
-                      <ExternalLink size={14} />
-                      VER DETALHES DA CENA
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          )
-        })}
+        {/* ── Scenes — SceneCard dashboard variant ── */}
+        {myScenes.length > 0 && (
+          <div className={styles.scenesGrid}>
+            {myScenes.map(sc => (
+              <SceneCard
+                key={sc.sceneKey}
+                variant="dashboard"
+                scene={toSceneData(sc, sceneTakes?.[sc.sceneKey], currentDay, dayNum, departmentItems)}
+                onPress={() => setSceneDetail(sc)}
+              />
+            ))}
+          </div>
+        )}
 
         {myScenes.length === 0 && (
           <div className={styles.emptyScenes}>
@@ -392,12 +412,22 @@ export function MyDay() {
           </div>
         )}
 
-        {/* ── Crew Quick View ── */}
-        <CrewQuickView team={team} currentDay={currentDay} auth={auth} navigate={navigate} rsvp={rsvp} />
+        {/* ── Crew — PersonCard grid ── */}
+        {todayCrew.length > 0 && (
+          <div className={styles.scenesGrid}>
+            {todayCrew.map(m => (
+              <PersonCard
+                key={m.id}
+                person={toPersonData(m)}
+                onCall={m.phone ? () => { window.location.href = `tel:${m.phone}` } : undefined}
+              />
+            ))}
+          </div>
+        )}
 
       </div>
 
-      {/* ── Day nav (bottom) ── */}
+      {/* ── Day navigation ── */}
       {sortedDays.length > 1 && (
         <div className={styles.dayNav}>
           <button className={styles.dayBtn} onClick={goPrev} disabled={dayIdx <= 0}>
@@ -410,14 +440,14 @@ export function MyDay() {
         </div>
       )}
 
-      {/* ── Overlays ── */}
+      {/* ── Overlays (unchanged) ── */}
       <WeatherOverlay
         open={weatherOpen}
         onClose={() => setWeatherOpen(false)}
-        weather={weather || { temp: 18, desc: 'Parcialmente nublado', wind: 12, humidity: 65, feelsLike: 16, visibility: 10000 }}
+        weather={weather || demoWeather}
         sunrise={currentDay?.sunrise || '07:24'}
-        sunset={currentDay?.sunset || '18:42'}
-        location={weather?.city || todayLocation?.city || 'Porto'}
+        sunset={currentDay?.sunset  || '18:42'}
+        location={weather?.city || todayLocation?.city || 'Lisboa'}
       />
       <SceneDetailOverlay
         open={!!sceneDetail}
@@ -435,51 +465,6 @@ export function MyDay() {
         onClose={() => setLocationOpen(false)}
         location={todayLocation}
       />
-    </div>
-  )
-}
-
-// ── Crew Quick View Sub-component ─────────────────────────────────
-function CrewQuickView({ team, currentDay, auth, navigate, rsvp }) {
-  const todayCrew = useMemo(() => {
-    return team.filter(m => {
-      const userName = typeof auth.user === 'string' ? auth.user : auth.user?.name
-      if (m.name === userName) return false
-      if (currentDay && m.confirmedDays?.includes(currentDay.id)) return true
-      if (currentDay && rsvp?.[currentDay.id]?.[m.id]?.status === 'confirmed') return true
-      const r = (m.role || '').toLowerCase()
-      return r.includes('realiz') || r.includes('produção') || r.includes('dop') || r.includes('câmara') || r.includes('som')
-    }).slice(0, 8)
-  }, [team, auth.user, currentDay, rsvp])
-
-  if (todayCrew.length === 0) return null
-
-  return (
-    <div className={styles.section}>
-      <div className={styles.sectionHeader}>
-        <Users size={14} />
-        <span>CREW DE HOJE</span>
-        <button className={styles.seeAllBtn} onClick={() => navigate('team')}>Ver Todos</button>
-      </div>
-      <div className={styles.crewGrid}>
-        {todayCrew.map(m => (
-          <div key={m.id} className={styles.crewChip}>
-            {m.photo
-              ? <img src={m.photo} alt="" className={styles.crewChipImg} />
-              : <span className={styles.crewChipFallback}>{(m.name || '?')[0]}</span>
-            }
-            <div className={styles.crewChipInfo}>
-              <span className={styles.crewChipName}>{m.name}</span>
-              <span className={styles.crewChipRole}>{m.role || m.group || ''}</span>
-            </div>
-            {m.phone && (
-              <a href={`tel:${m.phone}`} className={styles.crewChipCall} onClick={e => e.stopPropagation()}>
-                <Phone size={10} />
-              </a>
-            )}
-          </div>
-        ))}
-      </div>
     </div>
   )
 }

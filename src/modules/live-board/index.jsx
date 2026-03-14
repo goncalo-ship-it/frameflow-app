@@ -16,8 +16,28 @@ import { resolveRole, ROLES, isAdmin } from '../../core/roles.js'
 import { DailiesView } from './DailiesView.jsx'
 import { DigitalSlate } from '../../components/embeds/DigitalSlate.jsx'
 import { WalkieTalkieInterface } from '../../components/embeds/WalkieTalkieInterface.jsx'
+import { SceneCard } from '../../components/shared/ui'
 import { useVirtualizer } from '@tanstack/react-virtual'
 import styles from './LiveBoard.module.css'
+
+// ── Adapter: shootingStore scene → SceneData ──────────────────────
+function toLiveSceneData(scene, takes = []) {
+  return {
+    sceneKey: scene.id,
+    sceneNumber: displaySceneNum(scene),
+    epId: scene.episodeId,
+    location: scene.location,
+    intExt: scene.intExt,
+    timeOfDay: scene.dayNight,
+    characters: scene.characters || [],
+    takes: takes.map((t, i) => ({
+      id: t.id || String(i),
+      number: t.number || i + 1,
+      status: t.status === 'ok' ? 'BOM' : t.status === 'nok' ? 'NG' : 'HOLD',
+      notes: t.notes,
+    })),
+  }
+}
 
 // Role-to-dept map (for HOD views)
 const ROLE_DEPT_MAP = {
@@ -259,41 +279,20 @@ function SetupPanel({ shootingDays, sceneAssignments, parsedScripts, selectedDay
 
 // ── Vista HOJE ───────────────────────────────────────────────────
 function HojeView({ shooting }) {
-  const { sceneOrder, scenes } = shooting
+  const { sceneOrder, scenes, takeLog } = shooting
   return (
     <div>
-      <div className={styles.hojeList}>
-        {sceneOrder.map((id, i) => {
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, padding: '8px 0' }}>
+        {sceneOrder.map((id) => {
           const scene = scenes[id]
           if (!scene) return null
+          const takes = (takeLog || []).filter(t => t.sceneId === id)
           return (
-            <motion.div
+            <SceneCard
               key={id}
-              className={styles.hojeItem}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.04 }}
-            >
-              <span className={styles.hojeNum}>Sc.{displaySceneNum(scene)}</span>
-              <div className={styles.hojeInfo}>
-                <span className={styles.hojeLocation}>
-                  {scene.location}
-                </span>
-                <span className={styles.hojeMeta}>
-                  {scene.intExt && <span>{scene.intExt}</span>}
-                  {scene.dayNight && <span>{scene.dayNight}</span>}
-                  {scene.episodeId && <span>{scene.episodeId}</span>}
-                </span>
-                {scene.characters?.length > 0 && (
-                  <div className={styles.hojeChars}>
-                    {scene.characters.slice(0, 6).map(c => (
-                      <span key={c} className={styles.hojeCharBadge}>{c}</span>
-                    ))}
-                    {scene.characters.length > 6 && <span className={styles.hojeCharBadge}>+{scene.characters.length - 6}</span>}
-                  </div>
-                )}
-              </div>
-            </motion.div>
+              variant="live"
+              scene={toLiveSceneData(scene, takes)}
+            />
           )
         })}
       </div>

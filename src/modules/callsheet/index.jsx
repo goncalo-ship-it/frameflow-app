@@ -23,7 +23,80 @@ import { generateFCPXML, generateEDL, generateALE, generateCameraReportText, dow
 import { resolveLocation } from '../../utils/locationResolver.js'
 import { buildCallMessage, buildActorCallMessage, openWhatsApp } from '../../utils/whatsapp.js'
 import { SceneDetailOverlay } from '../../components/shared/SceneDetailOverlay.jsx'
+import { WeatherCard, FilmLocationCard, MealCard, SceneCard } from '../../components/shared/ui'
 import styles from './CallSheet.module.css'
+
+// ── Entity-card adapters ──────────────────────────────────────────
+
+function toWeatherCardData(weather, sunTimes) {
+  if (!weather) return null
+  return {
+    temp: weather.current?.temp,
+    feelsLike: weather.current?.feelsLike,
+    description: weather.current?.description,
+    icon: weather.current?.icon,
+    humidity: weather.current?.humidity,
+    wind: weather.current?.wind?.speed,
+    hourly: (weather.hourly || []).slice(0, 8).map(h => ({
+      time: h.time, temp: h.temp, icon: h.icon,
+      rain: h.pop > 20 ? h.pop : undefined,
+    })),
+    sunrise: sunTimes?.sunrise,
+    sunset: sunTimes?.sunset,
+    goldenHour: sunTimes?.goldenHour,
+  }
+}
+
+function toLocationCardData(loc) {
+  if (!loc) return null
+  const restrictions = [loc.accessNotes, loc.parkingNotes].filter(Boolean)
+  return {
+    name: loc.name,
+    displayName: loc.name,
+    address: loc.address,
+    lat: loc.lat,
+    lng: loc.lng,
+    restrictions,
+    photos: loc.photos || [],
+  }
+}
+
+function toCateringData(dayData) {
+  const c = dayData?.catering
+  if (!c?.time && !c?.location && !c?.provider) return null
+  return {
+    id: 'catering',
+    type: 'catering',
+    time: c.time || '13:00',
+    location: c.location || '',
+    supplier: c.provider || '',
+    menu: c.menu ? [c.menu] : [],
+  }
+}
+
+function toCallsheetSceneData(scene, parsedScripts, sceneTakes, callTime) {
+  const ep = parsedScripts?.[scene.episodeId]
+  const full = ep?.scenes?.find(s => String(s.sceneNumber) === String(scene.sceneNumber))
+  const takes = (sceneTakes?.[scene.id] || []).map(t => ({
+    id: t.id,
+    number: t.number || 1,
+    status: t.status === 'ok' ? 'BOM' : t.status === 'nok' ? 'NG' : 'HOLD',
+    notes: t.notes,
+    timestamp: t.timestamp,
+  }))
+  return {
+    sceneKey: scene.id,
+    sceneNumber: scene.sceneNumber,
+    epId: scene.episodeId,
+    intExt: scene.intExt,
+    location: scene.location,
+    timeOfDay: scene.dayNight,
+    description: scene.description || full?.heading?.full || '',
+    characters: scene.characters || [],
+    callTime,
+    takes,
+  }
+}
 
 // Minutes since midnight → "HH:MM" string
 function minToTimeStr(min) {
@@ -1067,61 +1140,14 @@ export function CallSheetModule({ embedded = false, initialDayId = '', onBack: o
         />
 
         {/* Location + Weather */}
-        <div className={styles.card}>
-          <h3 className={styles.cardTitle}><MapPin size={14} /> Local</h3>
-          <p className={styles.locationName}>{dayLocation?.name}</p>
-          {dayLocation?.address && <p className={styles.locationAddress}>{dayLocation.address}</p>}
-          <div className={styles.locationMeta}>
-            {dayLocation?.parkingNotes && <span>🅿️ {dayLocation.parkingNotes}</span>}
-            {dayLocation?.accessNotes && <span>🚪 {dayLocation.accessNotes}</span>}
-            {dayLocation?.walkiChannel && <span><Radio size={11} /> {dayLocation.walkiChannel}</span>}
-            {dayLocation?.lat && (
-              <a
-                className={styles.mapBtn}
-                href={`https://www.google.com/maps?q=${dayLocation.lat},${dayLocation.lng}`}
-                target="_blank"
-                rel="noopener"
-              >
-                <ExternalLink size={11} /> Ver no mapa
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* Weather */}
-        {weather && (
-          <div className={styles.card}>
-            <h3 className={styles.cardTitle}><Cloud size={14} /> Meteorologia</h3>
-            <div className={styles.weatherMain}>
-              <span style={{ fontSize: 28 }}>{weatherIcon(weather.current?.icon)}</span>
-              <span className={styles.weatherTemp}>{weather.current?.temp}°C</span>
-              <span className={styles.weatherDesc}>{weather.current?.description}</span>
-            </div>
-            <div className={styles.weatherDetails}>
-              <span><Wind size={12} /> {weather.current?.wind?.speed} km/h</span>
-              <span><Droplets size={12} /> {weather.current?.humidity}%</span>
-              {sunTimes && (
-                <>
-                  <span><Sunrise size={12} /> {sunTimes.sunrise}</span>
-                  <span><Sunset size={12} /> {sunTimes.sunset}</span>
-                  <span>🌅 Golden: {sunTimes.goldenHour}</span>
-                </>
-              )}
-            </div>
-            {weather.hourly?.length > 0 && (
-              <div className={styles.weatherHourly}>
-                {weather.hourly.slice(0, 6).map((h, i) => (
-                  <div key={i} className={styles.weatherHour}>
-                    <span>{h.time}</span>
-                    <span>{weatherIcon(h.icon)}</span>
-                    <span className={styles.weatherHourTemp}>{h.temp}°</span>
-                    {h.pop > 20 && <span className={styles.weatherHourRain}>{h.pop}%</span>}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+        {dayLocation && (
+          <FilmLocationCard
+            location={toLocationCardData(dayLocation)}
+            onMaps={dayLocation.lat ? () => window.open(`https://www.google.com/maps?q=${dayLocation.lat},${dayLocation.lng}`, '_blank') : undefined}
+          />
         )}
+
+        {weather && <WeatherCard weather={toWeatherCardData(weather, sunTimes)} />}
         {!weather && weatherError && (
           <div className={styles.card}>
             <h3 className={styles.cardTitle}><Cloud size={14} /> Meteorologia</h3>
@@ -1173,49 +1199,29 @@ export function CallSheetModule({ embedded = false, initialDayId = '', onBack: o
           )}
         </div>
 
-        {/* ── Catering / Almoço (resumo — gestão completa no módulo Refeições) ── */}
-        <div className={styles.card}>
-          <h3 className={styles.cardTitle}><Coffee size={14} /> Catering / Almoço</h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            {(dayData?.catering?.time || dayData?.catering?.location) ? (
-              <>
-                {dayData.catering.time && (
-                  <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-secondary)', margin: 0 }}>
-                    <Clock size={12} style={{ marginRight: 4, verticalAlign: 'middle' }} />
-                    {dayData.catering.time}
-                  </p>
-                )}
-                {dayData.catering.location && (
-                  <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-secondary)', margin: 0 }}>
-                    <MapPin size={12} style={{ marginRight: 4, verticalAlign: 'middle' }} />
-                    {dayData.catering.location}
-                  </p>
-                )}
-                {dayData.catering.provider && (
-                  <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)', margin: 0 }}>
-                    {dayData.catering.provider}
-                  </p>
-                )}
-              </>
-            ) : (
-              <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)', margin: 0 }}>
+        {/* ── Catering / Almoço ── */}
+        {toCateringData(dayData)
+          ? <MealCard meal={toCateringData(dayData)} onPress={() => useStore.getState().navigate('meals')} />
+          : (
+            <div className={styles.card}>
+              <h3 className={styles.cardTitle}><Coffee size={14} /> Catering</h3>
+              <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)', margin: '0 0 8px' }}>
                 Sem informação de catering definida.
               </p>
-            )}
-            <button
-              onClick={() => useStore.getState().navigate('meals')}
-              style={{
-                marginTop: 4, display: 'inline-flex', alignItems: 'center', gap: 6,
-                background: 'rgba(249,115,22,0.08)', color: 'var(--mod-meals, #F97316)',
-                border: '1px solid rgba(249,115,22,0.2)', borderRadius: 'var(--radius-sm)',
-                padding: '6px 12px', fontSize: 12, fontWeight: 600, cursor: 'pointer',
-                width: 'fit-content',
-              }}
-            >
-              <Utensils size={13} /> Gerir Refeições &rarr;
-            </button>
-          </div>
-        </div>
+              <button
+                onClick={() => useStore.getState().navigate('meals')}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 6,
+                  background: 'rgba(249,115,22,0.08)', color: '#F97316',
+                  border: '1px solid rgba(249,115,22,0.2)', borderRadius: 'var(--radius-sm)',
+                  padding: '6px 12px', fontSize: 12, fontWeight: 600, cursor: 'pointer',
+                }}
+              >
+                <Utensils size={13} /> Gerir Refeições →
+              </button>
+            </div>
+          )
+        }
 
         {/* ── Estacionamento ── */}
         {canEdit && (
@@ -1451,190 +1457,38 @@ export function CallSheetModule({ embedded = false, initialDayId = '', onBack: o
         })()}
 
         {/* Scenes */}
-        <div className={styles.card}>
-          <h3 className={styles.cardTitle}><FileText size={14} /> Cenas do Dia ({dayScenes.length})</h3>
-          {dayScenes.map(scene => {
-            const hasRainAlert = weatherAlerts.some(a =>
-              a.type === 'rain_ext' && a.scenes?.includes(scene.sceneNumber)
-            )
-            const isExpanded = expandedScene === scene.id
-            return (
-              <div key={scene.id}>
-                <div
-                  className={`${styles.sceneRow} ${styles.sceneRowClickable} ${isExpanded ? styles.sceneRowActive : ''}`}
-                  onClick={() => setExpandedScene(isExpanded ? null : scene.id)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <span className={styles.sceneNum}>Sc.{scene.sceneNumber}</span>
-                  <div className={styles.sceneInfo}>
-                    <span className={styles.sceneLocation}>{scene.location}</span>
-                    <span className={styles.sceneMeta}>
-                      {scene.intExt && <span>{scene.intExt}</span>}
-                      {scene.dayNight && <span>{scene.dayNight}</span>}
-                      {scene.episodeId && <span>{scene.episodeId}</span>}
-                      {scene.pages && <span>{scene.pages} pgs</span>}
-                    </span>
-                    {scene.characters?.length > 0 && (
-                      <div className={styles.sceneChars}>
-                        {scene.characters.slice(0, 5).map(c => (
-                          <span key={c} className={styles.charBadge}>{c}</span>
-                        ))}
-                        {scene.characters.length > 5 && <span className={styles.charBadge}>+{scene.characters.length - 5}</span>}
-                      </div>
-                    )}
-                  </div>
-                  {hasRainAlert && <span className={styles.sceneAlert}>⚠️ Chuva</span>}
-                  <ChevronDown size={14} style={{ color: 'var(--text-muted)', transform: isExpanded ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.2s' }} />
-                </div>
-                <AnimatePresence>
-                  {isExpanded && (
-                    <motion.div
-                      className={styles.sceneExpanded}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {/* Scene description/action */}
-                      {scene.description && (
-                        <div className={styles.sceneAction}>
-                          <span className={styles.sceneActionLabel}>Cabeçalho</span>
-                          {scene.description}
-                        </div>
-                      )}
-
-                      {/* Full action text from parsed script */}
-                      {(() => {
-                        const ep = parsedScripts?.[scene.episodeId]
-                        const fullScene = ep?.scenes?.find(s => String(s.sceneNumber) === String(scene.sceneNumber))
-                        const actionText = fullScene?.action || fullScene?.content || ''
-                        return actionText ? (
-                          <div className={styles.sceneAction}>
-                            <span className={styles.sceneActionLabel}>Guião</span>
-                            <div className={styles.sceneActionText}>{actionText}</div>
-                          </div>
-                        ) : null
-                      })()}
-
-                      {/* Takes */}
-                      {(() => {
-                        const takes = sceneTakes?.[scene.id] || []
-                        return takes.length > 0 ? (
-                          <div className={styles.sceneTakes}>
-                            <span className={styles.sceneActionLabel}>Takes ({takes.length})</span>
-                            {takes.map(t => (
-                              <div key={t.id} className={styles.takeRow}>
-                                <span className={styles.takeNum}>T{t.number || takes.indexOf(t) + 1}</span>
-                                <span className={`${styles.takeStatus} ${t.status === 'ok' ? styles.takeOk : t.status === 'nok' ? styles.takeNok : styles.takeMaybe}`}>
-                                  {(t.status || 'pending').toUpperCase()}
-                                </span>
-                                {t.notes && <span className={styles.takeNotes}>{t.notes}</span>}
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <div className={styles.sceneTakes}>
-                            <span className={styles.sceneActionLabel}>Takes</span>
-                            <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)' }}>Sem takes registados</span>
-                          </div>
-                        )
-                      })()}
-
-                      {/* ── Scene Annotations (Script Supervisor) ── */}
-                      <SceneAngleAnnotations
-                        sceneKey={scene.id}
-                        annotations={sceneAnnotations?.[scene.id]}
-                        onUpdate={updateSceneAnnotation}
-                        canEdit={canEdit}
-                      />
-
-                      {/* All characters */}
-                      {scene.characters?.length > 0 && (
-                        <div className={styles.sceneSection}>
-                          <span className={styles.sceneActionLabel}>Elenco ({scene.characters.length})</span>
-                          <div className={styles.sceneCharsFull}>
-                            {scene.characters.map(c => (
-                              <span key={c} className={styles.charBadgeFull}>{c}</span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Department items for this scene */}
-                      {(() => {
-                        const deptItems = (departmentItems || []).filter(item =>
-                          item.scenes?.includes(scene.id) || item.scenes?.includes(scene.sceneNumber?.toString())
-                        )
-                        return deptItems.length > 0 ? (
-                          <div className={styles.sceneSection}>
-                            <span className={styles.sceneActionLabel}>Departamentos ({deptItems.length})</span>
-                            {deptItems.map(item => (
-                              <div key={item.id} className={styles.deptItemRow}>
-                                <span className={styles.deptItemDept}>{item.department || item.dept}</span>
-                                <span className={styles.deptItemName}>{item.name || item.description}</span>
-                                {item.status && <span className={styles.deptItemStatus}>{item.status}</span>}
-                              </div>
-                            ))}
-                          </div>
-                        ) : null
-                      })()}
-
-                      {/* Scene notes (editable) */}
-                      <div className={styles.sceneSection}>
-                        <span className={styles.sceneActionLabel}>Notas</span>
-                        {canEdit ? (
-                          <textarea
-                            className={styles.sceneNoteInput}
-                            placeholder="Adicionar notas para esta cena..."
-                            value={sceneNotes[scene.id] || ''}
-                            onChange={e => setSceneNotes(prev => ({ ...prev, [scene.id]: e.target.value }))}
-                            onClick={e => e.stopPropagation()}
-                          />
-                        ) : (
-                          <div className={styles.sceneNoteText}>
-                            {sceneNotes[scene.id] || 'Sem notas'}
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Botão overlay completo */}
-                      <button
-                        onClick={e => {
-                          e.stopPropagation()
-                          const ep = parsedScripts?.[scene.episodeId]
-                          const full = ep?.scenes?.find(s => String(s.sceneNumber) === String(scene.sceneNumber))
-                          setSceneOverlay({
-                            ...scene,
-                            sceneKey: scene.id,
-                            name: full?.heading?.full || scene.description,
-                            timeOfDay: scene.dayNight,
-                            pageCount: scene.pages,
-                            action: full?.action,
-                            dialogue: full?.dialogue || [],
-                            shots: full?.shots || full?.storyboard || [],
-                            continuidade: full?.continuidade || null,
-                            directorNotes: full?.notas_realizador || full?.directorNotes,
-                          })
-                        }}
-                        style={{
-                          width: '100%', marginTop: 8,
-                          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-                          padding: '10px 16px', borderRadius: 12,
-                          background: 'rgba(139,92,246,0.1)',
-                          border: '0.5px solid rgba(139,92,246,0.25)',
-                          color: '#a78bfa', fontSize: 12, fontWeight: 700,
-                          cursor: 'pointer',
-                        }}
-                      >
-                        <FileText size={13} /> Ver detalhes completos (guião, continuidade, fotos)
-                      </button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            )
-          })}
-        </div>
+        {dayScenes.length > 0 && (
+          <div>
+            <div className={styles.cardTitle} style={{ marginBottom: 10 }}>
+              <FileText size={14} /> Cenas do Dia ({dayScenes.length})
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {dayScenes.map(scene => (
+                <SceneCard
+                  key={scene.id}
+                  variant="callsheet"
+                  scene={toCallsheetSceneData(scene, parsedScripts, sceneTakes, callTime)}
+                  onPress={() => {
+                    const ep = parsedScripts?.[scene.episodeId]
+                    const full = ep?.scenes?.find(s => String(s.sceneNumber) === String(scene.sceneNumber))
+                    setSceneOverlay({
+                      ...scene,
+                      sceneKey: scene.id,
+                      name: full?.heading?.full || scene.description,
+                      timeOfDay: scene.dayNight,
+                      pageCount: scene.pages,
+                      action: full?.action,
+                      dialogue: full?.dialogue || [],
+                      shots: full?.shots || full?.storyboard || [],
+                      continuidade: full?.continuidade || null,
+                      directorNotes: full?.notas_realizador || full?.directorNotes,
+                    })
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Department notes */}
         <div className={styles.card}>
